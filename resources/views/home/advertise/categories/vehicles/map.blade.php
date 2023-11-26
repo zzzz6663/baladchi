@@ -1,0 +1,1 @@
+@include('home.advertise.categories.common.map')
