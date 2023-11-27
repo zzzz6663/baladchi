@@ -149,8 +149,9 @@ class HomeController extends Controller
             if ($region_id) {
                 $baladchies->where('region_id', $region_id);
             }
-        }else{
             $baladchies->where('show_visitor', 1);
+
+        }else{
             $baladchies->where('baladchi', '!=', null);
         }
         if ($request->city_id) {
