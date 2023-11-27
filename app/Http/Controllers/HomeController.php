@@ -155,8 +155,14 @@ class HomeController extends Controller
         }
         if ($request->city_id) {
             $baladchies->where('city_id', $request->city_id);
-
         }
+        if ($request->skill_id) {
+            $skill=$request->skill_id;
+          $baladchies->whereHas("skills", function ($query) use ($skill) {
+                $query->where("id",(int) $skill);
+            });
+        }
+
         if ($request->related_baladchi) {
             $ad = Advertise::find($request->related_baladchi);
 

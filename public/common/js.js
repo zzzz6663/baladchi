@@ -806,7 +806,7 @@ window.onload = function () {
             $('#lable__' + id).remove() // Checks it
 
         }
-        function add_city(id,name) {
+        function add_city(id, name) {
             let city = `
             <span class="applied-filter gray pary" id="lable__${id}" >
             <input type="text" value="${id}"  name="cities[]" hidden id="">
@@ -821,10 +821,10 @@ window.onload = function () {
             </span>
         </span>
         `
-        if( !$('#city_box').find("#lable__"+id).length){
-            $('#city_box').append(city)
+            if (!$('#city_box').find("#lable__" + id).length) {
+                $('#city_box').append(city)
 
-        }
+            }
         }
 
         $(document).on('click', '.new_note', function (event) {
@@ -835,7 +835,7 @@ window.onload = function () {
             let name = el.data("name")
             let id = el.data("id")
             if (el.is(":checked")) {
-                add_city(id,name)
+                add_city(id, name)
             } else {
                 remove_city(id)
             }
@@ -960,6 +960,48 @@ window.onload = function () {
         $(document).on('click', '.accord-box .top .toggle', function (event) {
             console.log('s')
             $(this).parent().parent('.accord-box').toggleClass('active');
+        })
+        $(document).on('click', '.select_kill_id', function (event) {
+            let el = $(this)
+            let id = el.data("id")
+            $('#skill_id').val(id)
+            $('#ba_f').submit()
+            // $(".select_kill_id").removeClass("active_ch")
+            // el.addClass("active_ch")
+         })
+        $(document).on('click', '.all_skill', function (event) {
+            $(this).hide(50)
+            $(".par_c").show(400)
+            $(".par_c").removeClass("active")
+            $('#par_id').val("")
+            $('#skill_id').val("")
+          })
+
+
+
+        $(document).on('click', '.par_c', function (event) {
+            let el = $(this)
+            let par = el.closest(".par_c")
+            par.addClass('active');
+            $('.all_skill').show(400)
+            let id = el.data("id")
+            $('#par_id').val(id)
+            console.log(id)
+            $('.select_p').removeClass("active")
+            // $('.dis_none').removeClass("dis_none")
+            // $(".par_c").hide(50)
+            // setTimeout(() => {
+            //     par.show();
+
+            // }, 100);
+
+
+            $('.par_c').each(function (i, obj) {
+                let elw = $(this)
+                if (!elw.hasClass("active")) {
+                    elw.hide(300)
+                }
+            });
         })
 
 
@@ -1564,7 +1606,7 @@ window.onload = function () {
                     ele.prop('checked', true);
                     let id = ele.data("id")
                     let name = ele.data("name")
-                    add_city(id,name)
+                    add_city(id, name)
                 }
             } else {
                 for (var i = 0; i < children.length; i++) {
@@ -2165,11 +2207,11 @@ window.onload = function () {
             // let info = el.closest('.par').find('.note_info').text()
             let id = el.data('id')
 
-            $('#edit_note_'+id).show()
+            $('#edit_note_' + id).show()
             // $('#user_comment').val(info)
             $('.save_p_note').click(function () {
                 let ele = $(this)
-               let info= ele.closest("form").find('.user_comment').val()
+                let info = ele.closest("form").find('.user_comment').val()
                 console.log(id)
                 console.log(info)
                 $.ajax('/panel/insert_note/' + id, {
@@ -2208,12 +2250,77 @@ window.onload = function () {
                 }
             })
         })
-        $('.add_new_cat_group').click(function () {
 
-            $('.new_at_list').show(400)
 
+        $('.select_skill').click(function () {
+            let el = $(this)
+            let id = el.data('id')
 
         })
+
+        $('.add_new_cat_group').click(function () {
+            $('.new_at_list').show(400)
+        })
+
+        $('.add_new_skill_group').click(function () {
+            $('.new_skill_list').show(400)
+        })
+
+
+        $('.sub_sk').unbind('click').bind('click', function (e) {
+            let el = $(this)
+            el.addClass("animate__backOutDown")
+            setTimeout(() => {
+                el.hide()
+            }, 1000);
+            let id = el.data('id')
+            let name = el.data('name')
+            $('.skill_all_list').append(
+                `
+                <div class="choose-cat pare">
+                <span class="cat-item">
+                    <span class="icon">
+                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M2 18V4.70002C1.99994 4.49474 2.06305 4.29442 2.18077 4.12625C2.29849 3.95809 2.4651 3.83022 2.658 3.76002L12.329 0.244017C12.4045 0.216523 12.4856 0.20765 12.5653 0.218151C12.645 0.228651 12.721 0.258216 12.7869 0.304337C12.8527 0.350459 12.9065 0.411778 12.9436 0.483095C12.9807 0.554413 13 0.633625 13 0.714017V5.66702L19.316 7.77202C19.5152 7.83837 19.6885 7.96573 19.8112 8.13607C19.934 8.3064 20.0001 8.51105 20 8.72102V18H22V20H0V18H2ZM4 18H11V2.85502L4 5.40102V18ZM18 18V9.44202L13 7.77502V18H18Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </span>
+                    <input type="text" name="skills[]" value="${id}" hidden>
+                    <span class="text">${name}</span>
+                </span>
+
+                <div class="left-sec">
+
+
+                    <span class="edit-cat pointer remove_cat_item" data-id="${id}">
+                        <span class="">حذف</span>
+                        <span class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M16.0418 3.01976L8.16183 10.8998C7.86183 11.1998 7.56183 11.7898 7.50183 12.2198L7.07183 15.2298C6.91183 16.3198 7.68183 17.0798 8.77183 16.9298L11.7818 16.4998C12.2018 16.4398 12.7918 16.1398 13.1018 15.8398L20.9818 7.95976C22.3418 6.59976 22.9818 5.01976 20.9818 3.01976C18.9818 1.01976 17.4018 1.65976 16.0418 3.01976Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M14.9102 4.1499C15.5802 6.5399 17.4502 8.4099 19.8502 9.0899"
+                                    stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+
+                        </span>
+                    </span>
+                </div>
+            </div>
+                `
+
+
+            );
+        })
+
         $(document).on('click', '#active_release', function (event) {
             let el = $(this)
             if (el.is(':checked')) {
@@ -2227,6 +2334,8 @@ window.onload = function () {
         $(document).on('click', '.remove_cat_item', function (event) {
             let el = $(this)
             let id = el.data('id')
+            $('#sub_sk' + id).show()
+            $('#sub_sk' + id).removeClass("animate__backOutDown")
             $(this).closest('.pare').remove()
             console.log($('.pare').length)
             if ($('.pare').length == 0) {
@@ -2246,6 +2355,8 @@ window.onload = function () {
                 }
             });
         })
+
+
         $('.no_subs_check').unbind('click').bind('click', function (e) {
             // $('div.sliding-menu .sub-slid').click()
             // $('.no_subs_check').click(function() {
@@ -3481,8 +3592,8 @@ window.onload = function () {
             let el = $(this)
             let id = el.data('id')
             let memo = $('#memo').val()
-            if(!memo){
-                noty("لطفا تغییرات خود را به درستی وارد نمایید ","red")
+            if (!memo) {
+                noty("لطفا تغییرات خود را به درستی وارد نمایید ", "red")
                 ret
             }
             load_animation()
@@ -3497,13 +3608,13 @@ window.onload = function () {
                 success: function (data) {
                     stop_animation()
                     console.log(data)
-                    if(data.code==0){
-                    noty("شما حداکثر سه بار میتوانید پیام ارسال کنید ")
-                    $('#memo').val("")
+                    if (data.code == 0) {
+                        noty("شما حداکثر سه بار میتوانید پیام ارسال کنید ")
+                        $('#memo').val("")
                     }
-                    if(data.code==1){
-                        noty("پیام با موفقیت ارسال شد  ","green"," پیام");
-                        }
+                    if (data.code == 1) {
+                        noty("پیام با موفقیت ارسال شد  ", "green", " پیام");
+                    }
 
                 },
                 error: function (request, status, error) {

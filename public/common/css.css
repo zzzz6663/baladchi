@@ -179,11 +179,15 @@ input[type=number] {
 .parent3 {
     margin-right: 30px;
 }
-
+.par_c{
+    display: block;
+}
 .dis_none {
     display: none;
 }
-
+.par_c.active{
+    display: block;
+}
 .d_none {
     display: none !important;
 }
@@ -625,7 +629,7 @@ display: inline-block; */
         left: 20px;
         top: 18px;
     }
-     
+
 
 
     #bnr .nice-select .option{
@@ -637,3 +641,17 @@ display: inline-block; */
     .accord-content > div{
         padding: 0px 25px!important;;
     }
+    .sub_sk{
+        line-height: 40px;
+        cursor: pointer;
+        color: #2A2A2A;
+        border-bottom: 1px solid #F9F9F9;
+        display: flex;
+        justify-content: space-between;
+    }
+.active_ch{
+    font-size: 20px;
+    border-bottom: 1px solid #fd6245;
+    position: relative;
+    margin-right: 10px
+}

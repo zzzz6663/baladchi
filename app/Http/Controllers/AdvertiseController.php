@@ -86,7 +86,6 @@ class AdvertiseController extends Controller
             $advertises->whereIn('city_id', $cities_all);
         }
 
-
         if ($request->vip) {
             $advertises->whereVip(1);
         }

@@ -12,9 +12,11 @@ class Skill extends Model
         'name',
         'parent_id'
     ];
-
     public function parent(){
         return $this->belongsTo(Skill::class,'parent_id','id');
+    }
+    public function childs(){
+        return Skill::where("parent_id",$this->id)->get();
     }
     public function user(){
         return $this->belongsTo(User::class);
