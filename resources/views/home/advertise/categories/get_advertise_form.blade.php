@@ -52,6 +52,56 @@
         </label>
     </div>
 
+    @php
+    $month = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+@endphp
+
+<div id="select_ime" style="display: none">
+    <h5>
+        زمان بندی انتشار
+    </h5>
+    <div class="row">
+        <div class="col-4">
+            <div class="select-label">
+                <label for="">روز</label>
+                <select name="day" id="" class="nice-select" data-place="انتخاب کنید">
+                    <option value="" selected></option>
+                    @for ($a = 1; $a < 10; $a++)
+                        <option value="{{ Carbon\Carbon::now()->addDays($a)->format('Y-m-d') }}">
+                            {{ Morilog\Jalali\Jalalian::forge(Carbon\Carbon::now()->addDays($a))->format('Y-m-d') }}
+                        </option>
+                    @endfor
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="select-label">
+                <label for="hour">ساعت</label>
+                <select name="hour" id="" class="nice-select" data-place="انتخاب کنید"
+                    style="display: none;">
+                    <option value="" selected></option>
+                    @for ($b = 1; $b < 25; $b++)
+                        <option value="{{ $b }}">{{ $b }} </option>
+                    @endfor
+                </select>
+
+
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="select-label">
+                <label for="min">دقیقه</label>
+                <select name="min" id="" class="nice-select" data-place="انتخاب کنید"
+                    style="display: none;">
+                    <option value="" selected></option>
+                    @for ($c = 1; $c < 60; $c++)
+                        <option value="{{ $c }}">{{ $c }} </option>
+                    @endfor
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="input-toggle text red">
         <input type="text" name="vip" value="0">
         <input type="checkbox" id="vip" name="vip" value="1">
@@ -86,6 +136,8 @@
             مشاهده این آگهی را خواهند داشت
         </p>
     </div>
+    <br>
+    <br>
 @else
 
 {{--  @if($advertise->notif)
@@ -139,9 +191,8 @@
     </div>
 
 </div>  --}}
-@php
-    $month = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
-@endphp
+
+
 {{--  <h5>
     انتخاب تاریخ
 </h5>  --}}
@@ -177,52 +228,6 @@
     </div>
 </div>  --}}
 
-<div id="select_ime" style="display: none">
-    <h5>
-        انتخاب زمان
-    </h5>
-    <div class="row">
-        <div class="col-4">
-            <div class="select-label">
-                <label for="">روز</label>
-                <select name="day" id="" class="nice-select" data-place="انتخاب کنید">
-                    <option value="" selected></option>
-                    @for ($a = 1; $a < 10; $a++)
-                        <option value="{{ Carbon\Carbon::now()->addDays($a)->format('Y-m-d') }}">
-                            {{ Morilog\Jalali\Jalalian::forge(Carbon\Carbon::now()->addDays($a))->format('Y-m-d') }}
-                        </option>
-                    @endfor
-                </select>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="select-label">
-                <label for="hour">ساعت</label>
-                <select name="hour" id="" class="nice-select" data-place="انتخاب کنید"
-                    style="display: none;">
-                    <option value="" selected></option>
-                    @for ($b = 1; $b < 25; $b++)
-                        <option value="{{ $b }}">{{ $b }} </option>
-                    @endfor
-                </select>
-
-
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="select-label">
-                <label for="min">دقیقه</label>
-                <select name="min" id="" class="nice-select" data-place="انتخاب کنید"
-                    style="display: none;">
-                    <option value="" selected></option>
-                    @for ($c = 1; $c < 60; $c++)
-                        <option value="{{ $c }}">{{ $c }} </option>
-                    @endfor
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
 
 {{-- {{ $telic->id }}
 {{ $telic->name }} --}}
