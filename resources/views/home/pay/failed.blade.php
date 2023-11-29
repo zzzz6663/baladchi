@@ -36,15 +36,29 @@
                                     </span>
                                 </li>
                             </ul>
-                            @if($bill->counsel)
-                            <a href="{{ route('panel.new.counsel2',$bill->counsel->id) }}" class="icon-button green full">
-                                <span> بازگشت به پنل</span>
-                            </a>
-                            @else
-                            <a href="{{ route('panel.wallet') }}" class="icon-button green full">
-                                <span> بازگشت به پنل</span>
-                            </a>
-                            @endif
+                            @switch($bill->type)
+                            @case('counsel')
+                                @php($route = route('panel.new.counsel2', $bill->counsel->id))
+                            @break
+
+                            @case('promotion')
+                                @php($route = route('ad.logs',$bill->advertise->id))
+                            @break
+                            @case('pay_counsel')
+                            @php($route = route('panel.new.counsel2',$bill->counsel->id))
+                             @break
+
+                            @default
+                                @php($route = route('panel.wallet'))
+                        @endswitch
+
+
+
+
+
+                        <a href="{{ $route }}" class="icon-button green full">
+                            <span> بازگشت به پنل</span>
+                        </a>
                         </div>
                     </div>
                     <div class="col-lg-6">

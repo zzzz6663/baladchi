@@ -136,7 +136,7 @@
                     <div id="register">
 
                         <div class="form">
-                            <form action="{{ route('panel.new.counsel3', $counsel->id) }}" id="qu_foem" method="post" class="ess">
+                            <form action="{{ route('panel.new.counsel3', $counsel->id) }}" id="qu_foem" method="post" >
                                 @csrf
                                 @method('post')
                                 <div class="input-label big">
@@ -183,7 +183,7 @@
 
                             </form>
 
-
+                            <div class="ess">
                             <div class="footer-section inline-block ess" style="justify-content:space-around">
                                 <div class="pair-button">
                                     <button form="qu_foem" class="mid-button blue pointer" value=" ">
@@ -203,7 +203,7 @@
                             @else
                                 <a class="mid-button" href="{{route('panel.counsel')}}">برگشت </a>
                             @endif
-
+                        </div>
 
                         </div>
 

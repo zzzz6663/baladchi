@@ -137,7 +137,6 @@ class HomeController extends Controller
             });
         }
         if ($request->advertise_id) {
-
             $advertise = Advertise::find($request->advertise_id);
             if ($advertise) {
                 $city_id = $advertise->city_id;
@@ -178,7 +177,7 @@ class HomeController extends Controller
             }
         }
 
-        $baladchies = $baladchies->whereRole('user')->latest()->paginate(112);
+        $baladchies = $baladchies->whereRole('user')->latest()->paginate(12);
         return view('home.baladchiha', compact(['baladchies', "ad"]));
     }
     public function counsels(Request $request)

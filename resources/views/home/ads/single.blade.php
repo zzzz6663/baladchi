@@ -139,14 +139,14 @@
                 @endif  --}}
 
                 @if ($advertise->show_option('deposit')=="0" )
-                اجاره:
+                رهن:
                 رایگان
                 @elseif(!$advertise->show_option('deposit'))
-                اجاره:
+                رهن:
                 توافقی
                 @else
                 <span class="num">
-                    اجاره:
+                    رهن:
                     {{ number_format($advertise->show_option('deposit')) }}
                 </span>
                 <span class="un">تومان</span>

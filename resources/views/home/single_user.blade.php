@@ -55,7 +55,7 @@
             <div id="sidebar">
                 <div class="class-price-box">
 
-                    <h4>قیمت هر جلسه (هر ساعت)</h4>
+                    <h4>قیمت هر جلسه (ده دقیقه)</h4>
                     <div class="class-price">
                         {{--  <span class="percent">۹%</span>  --}}
                         <span class="num">
@@ -69,7 +69,7 @@
                         @method('post')
                         <input type="text" name="type" value="talk" hidden>
                         <input type="text" name="to_id" value="{{ $user->id }}" hidden>
-                        <span class="icon-button green pointer" id="counsel_pop">
+                        <span class="icon-button green pointer" id="counsel_pop" style="width: 100%">
                             <span>
                                 شماره تماس
                             </span>
@@ -85,13 +85,13 @@
                     </form>
                     <div class="add-in-side">
                         <ul>
-                            <li>
+                            {{--  <li>
                                 <span class="tit">امکان بازدید از آگهی </span>
 
                                 <span class="sts {{ $user->visit ? 'green' : 'orange' }}">
                                     {{ $user->visit ? 'دارد' : 'ندارد' }}
                                 </span>
-                            </li>
+                            </li>  --}}
                             <li>
                                 <span class="tit">محل فعالیت :</span>
                                 <span class="pls ">
@@ -551,7 +551,7 @@
                                 )</span>
                         </div>
                         <div class="avrage">
-                            <span class="tit">میزان رضایت</span>
+                            <span class="tit">نظر خود را در مورد بلدچی بنویسید</span>
                             <span class="num">{{ $user->comment_log()['av'] }} %</span>
                         </div>
                         <div class="avrage-bar">
@@ -1473,7 +1473,7 @@
 
                                 </span>
                                 <input type="text" name="to_id" hidden value="{{ $user->id }}">
-                                <textarea name="comment" id="commentbalad" placeholder="نظر خود را در مورد استاد بنویسید" id=""
+                                <textarea name="comment" id="commentbalad" placeholder="نظر خود را در مورد بلدچی بنویسید" id=""
                                     cols="30" rows="10">{{ $old_comment ? $old_comment->comment : '' }}</textarea>
 
                             </div>
@@ -1552,7 +1552,7 @@
                                             <form action="" id="insert_star_format">
 
                                                 <input type="text" name="to_id" hidden value="{{ $user->id }}">
-                                                <input type="number" class="no_arro" name="count" id="count">
+                                                <input type="number" class="no_arro" name="count" id="count" value="0">
                                             </form>
 
                                         </span>
@@ -1705,7 +1705,8 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        مقدار کمک مالی خود را وارد انتقال را بزنید
+                        تمایل دارید بدون دریافت خدمت و کالای خاص از این شخص حمایت کنید ؟
+                        مبلغ حمایت را ثبت کرده و در صورت اطمینان ،پرداخت نمایید
                     </p>
 
                     <form action="{{ route('send.bill') }}" id="donate_form" method="post">

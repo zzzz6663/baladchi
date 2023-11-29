@@ -54,7 +54,7 @@
                     </div>
                     <div class="input-label big postion_relative mb-0">
                         <label for="new_op">
-                            <span> کلید وازه جدید </span>
+                            <span> کلید وازه  </span>
                         </label>
                         <input type="text" name="new_op" id="new_op">
                         <span class=" pointer postion_absolute" id="new_tag" value=" ">

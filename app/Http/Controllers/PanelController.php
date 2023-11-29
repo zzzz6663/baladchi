@@ -73,7 +73,13 @@ class PanelController extends Controller
                 'show_visitor' => "nullable",
             ]);
             $user->update($data);
-            alert()->success("اطلاعات با موفقیت به روز شد ");
+            if($user->show_visitor){
+                alert()->success("شما به عنوان بازدید کننده ثبت شدید  ");
+
+            }else{
+                alert()->success("شما دیگر بازدید کننده نیستید   ");
+
+            }
             redirect()->route("panel.visitor");
         }
         $user = auth()->user();

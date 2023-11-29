@@ -41,6 +41,9 @@
                                 @case('promotion')
                                     @php($route = route('ad.logs',$bill->advertise->id))
                                 @break
+                                @case('pay_counsel')
+                                @php($route = route('panel.new.counsel2',$bill->counsel->id))
+                                 @break
 
                                 @default
                                     @php($route = route('panel.wallet'))
