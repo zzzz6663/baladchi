@@ -215,7 +215,7 @@
                             @auth
                                 @if ($user->id != $advertise->user_id)
                                     <div class="pair-button    d-md-flex">
-                                        <a href="{{ route('baladchiha', ['city_id' => $user->city ? $user->city->id : '0']) }}"
+                                        <a href="{{ route('baladchiha', ['city_id' => $user->city ? $user->city->id : 0,"advertise_id"=>$advertise->id]) }}"
                                             class="icon-button theme">
                                             <span>تقاظای بازدید</span>
                                             <span class="icon">
