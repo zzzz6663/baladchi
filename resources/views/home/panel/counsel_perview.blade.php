@@ -41,7 +41,6 @@
                                     </span>
                                     {{--  <a href="#" class="green">({{ __('arr.'.$counsel) }} )</a>  --}}
                                     <a href="#" class="green">
-
                                         (
 
                                         {{ implode( " - ",$counsel->skills()->pluck("name")->toArray()) }}
