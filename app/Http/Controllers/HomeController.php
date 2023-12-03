@@ -43,9 +43,14 @@ class HomeController extends Controller
     {
         $ret=$request->dir;
         $path=public_path("/media/".$ret);
+        dump( $path);
 
        $res= File::makeDirectory($path, 0777, true, true);
-       return  $res;
+
+       if (file_exists($path)) {
+        return  " path created ";
+    }
+    return  " path note created ";
     }
     public  function  clear()
     {
