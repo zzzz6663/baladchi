@@ -340,7 +340,9 @@ class AdvertiseController extends Controller
                 }
 
                 if (!File::isDirectory($path)) {
-                    File::makeDirectory($path);
+
+                  File::makeDirectory($path, 0777, true, true);
+
                 }
                 $path .= '/';
                 // return response()->json([
