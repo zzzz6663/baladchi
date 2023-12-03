@@ -5039,9 +5039,9 @@ grammarly-desktop-integration {
   .comment-form .comment-rate .statis-form h4 {
     margin-bottom: 20px;
   }
-  .comment-form .comment-rate .star-from h3 {
+  /* .comment-form .comment-rate .star-from h3 {
     display: none;
-  }
+  } */
   .comment-form .comment-rate .star-from .input-star {
     justify-content: space-between;
     width: 100%;

@@ -62,9 +62,12 @@
         </li> <!-- Dashboards -->
         <li class="menu-item {{ Request::url() == route('advertise.index') ? 'active' : '' }}">
             <a href="{{ route('advertise.index') }}"
-                class="menu-link {{ Request::url() == route('advertise.index') ? 'active' : '' }}">
+                class="menu-link  {{ Request::url() == route('advertise.index') ? 'active' : '' }}">
                 <i class="menu-icon  fa-solid fa-users"></i>
                 <div>آگهی ها </div>
+                <span class="red_cir2">
+                    {{ App\Models\Advertise::whereConfirm(null)->count() }}
+                </span>
             </a>
         </li>
         <!-- Dashboards -->

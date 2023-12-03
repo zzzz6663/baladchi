@@ -73,6 +73,12 @@ class AdvertiseController extends Controller
             if ($request->user_id) {
             $advertises->where('user_id',$request->user_id);
         }
+            if (in_array($request->confirm,['confirmed',"rejected"])) {
+            $advertises->where('status',$request->confirm);
+        }
+         if ($request->confirm=="null") {
+            $advertises->where('confirm',null);
+        }
 //         $advertises=$advertises->get();
 //         foreach( $advertises as $ad){
 //             $ad->update([

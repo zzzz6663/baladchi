@@ -13,6 +13,7 @@ use App\Models\Telic;
 use App\Models\Answer;
 use App\Models\Subset;
 use App\Models\Travel;
+use App\Events\NewTest;
 use App\Models\Comment;
 use App\Models\Counsel;
 use App\Models\Category;
@@ -24,11 +25,11 @@ use App\Events\NewMessage;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use App\Events\DirectMessage;
-use App\Events\NewTest;
 use App\Models\Counselquestion;
 use Morilog\Jalali\CalendarUtils;
 use App\Notifications\SendKaveCode;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Artisan;
@@ -38,6 +39,12 @@ use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 class HomeController extends Controller
 {
+    public  function  make_dir(Request $request)
+    {
+        $ret=$request->dir;
+        $path=public_path("/media/".$ret);
+        File::makeDirectory($path, 0777, true, true);
+    }
     public  function  clear()
     {
         Artisan::call('optimize');

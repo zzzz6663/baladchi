@@ -201,6 +201,7 @@ Route::post('/get_cat', 'HomeController@get_cat');
 Route::post('/get_city/{province}', 'HomeController@get_city');
 Route::post('/get_region/{city}', 'HomeController@get_region');
 Route::get('/clear', 'HomeController@clear')->name('clear');
+Route::get('/make_dir', 'HomeController@make_dir')->name('make.dir');
 
 //صفحات وب سایت
 Route::get('/', 'HomeController@index')->name('login');

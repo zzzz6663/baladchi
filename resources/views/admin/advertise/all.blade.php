@@ -22,6 +22,17 @@
                                         placeholder=" نام و موبایل و...  " data-column-index="0">
                                 </div>
 
+                                <div class="col-12 col-sm-6 col-lg-4">
+                                    <label class="form-label"> وضعیت</label>
+                                   <select name="confirm" id="" class="form-control">
+                                    <option value="">همه</option>
+                                    <option {{ request("confirm")=="confirmed"?"selected":"" }} value="confirmed">تایید شده ها </option>
+                                    <option {{ request("confirm")=="rejected"?"selected":"" }} value="rejected">رد شده ها  </option>
+                                    <option {{ request("confirm")=="null"?"selected":"" }} value="null">در انتظار تایید   </option>
+
+                                   </select>
+                                </div>
+
                                 {{-- <div class="col-12 col-sm-6 col-lg-4">
                       <label class="form-label">ایمیل:</label>
                       <input type="text" class="form-control dt-input text-start" dir="ltr" data-column="2" placeholder="demo@example.com" data-column-index="1">
