@@ -43,7 +43,9 @@ class HomeController extends Controller
     {
         $ret=$request->dir;
         $path=public_path("/media/".$ret);
-        File::makeDirectory($path, 0777, true, true);
+
+       $res= File::makeDirectory($path, 0777, true, true);
+       return  $res;
     }
     public  function  clear()
     {
