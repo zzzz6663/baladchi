@@ -41,16 +41,16 @@ class HomeController extends Controller
 {
     public  function  make_dir(Request $request)
     {
-        $ret=$request->dir;
-        $path=public_path("/media/".$ret);
-        dump( $path);
+        $ret = $request->dir;
+        $path = public_path("/media/" . $ret);
+        dump($path);
 
-       $res= File::makeDirectory($path, 0777, true, true);
+        $res = File::makeDirectory($path, 0777, true, true);
 
-       if (file_exists($path)) {
-        return  " path created ";
-    }
-    return  " path note created ";
+        if (file_exists($path)) {
+            return  " path created ";
+        }
+        return  " path note created ";
     }
     public  function  clear()
     {
@@ -136,6 +136,8 @@ class HomeController extends Controller
 
     public function baladchiha(Request $request)
     {
+
+
         $ad = null;
         $baladchies = User::query();
         $city_id = null;
@@ -163,18 +165,22 @@ class HomeController extends Controller
                 $baladchies->where('region_id', $region_id);
             }
             $baladchies->where('show_visitor', 1);
-
-        }else{
+        } else {
             $baladchies->where('baladchi', '!=', null);
         }
         if ($request->city_id) {
             $baladchies->where('city_id', $request->city_id);
         }
         if ($request->skill_id) {
-            $skill=$request->skill_id;
-          $baladchies->whereHas("skills", function ($query) use ($skill) {
-                $query->where("id",(int) $skill);
+            $skill = $request->skill_id;
+            $baladchies->whereHas("skills", function ($query) use ($skill) {
+                $query->where("id", (int) $skill);
             });
+        }
+
+        if ($request->ordering == "favourite") {
+            $baladchies->withCount('comments')
+                ->orderBy('comments_count', 'desc');
         }
 
         if ($request->related_baladchi) {
@@ -190,8 +196,14 @@ class HomeController extends Controller
                 });
             }
         }
-
-        $baladchies = $baladchies->whereRole('user')->latest()->paginate(12);
+        if ($request->ordering == "newest") {
+            $baladchies->latest();
+        }
+        if ($request->ordering == "oldest") {
+            $baladchies->oldest();
+        }
+        $baladchies->whereRole('user');
+        $baladchies =  $baladchies->paginate(12);
         return view('home.baladchiha', compact(['baladchies', "ad"]));
     }
     public function counsels(Request $request)
@@ -388,12 +400,14 @@ class HomeController extends Controller
         // $invitedUser = new User;
         // $invitedUser->notify(new SendKaveCode( '09373699317','login','2121','','','',''));
 
-        if (cache()->has("vip_advertises")) {
-            $vip_advertises = cache()->get("vip_advertises");
-        } else {
-            $vip =  Advertise::whereVip(1)->where('confirm', '!=', null)->whereActive('1')->latest()->take(5)->get();
-            $vip_advertises = cache()->put("vip_advertises", $vip, now()->addMinutes(10));
-        }
+
+        // if (cache()->has("vip_advertises")) {
+        //     $vip_advertises = cache()->get("vip_advertises");
+        // } else {
+
+        //     $vip_advertises = cache()->put("vip_advertises", $vip, now()->addMinutes(10));
+        // }
+        $vip_advertises =  Advertise::whereVip(1)->where('expired_at', '>', Carbon::now()->subDays(30)->toDateTimeString())->where('confirm', '!=', null)->whereActive('1')->latest()->take(5)->get();
 
         $user_fave = [];
         $user = auth()->user();
@@ -715,5 +729,3 @@ class HomeController extends Controller
         ]);
     }
 }
-
-

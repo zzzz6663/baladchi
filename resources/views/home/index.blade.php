@@ -46,7 +46,7 @@
         </div>  --}}
         <div class="search-form">
             <form action="{{ route('ads') }}">
-
+                <input type="text" value="category" hidden name="type">
                 <select name="category" id="mainsearch" class="category">
                     @foreach ($categories as $mcat )
                     <option value="{{ $mcat->id }}">{{ $mcat->name}}</option>
@@ -117,7 +117,6 @@
                 </span>
                 <span class="text">آگهی های ویژه</span>
             </h3>
-
             <a href="{{ route('ads',['vip'=>1]) }}" class="more-of">
                 <span class="text">مشاهده همه</span>
                 <span class="icon">

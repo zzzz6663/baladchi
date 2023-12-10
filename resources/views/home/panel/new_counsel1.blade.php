@@ -1,6 +1,6 @@
 @extends('main.panel')
 @section('content')
-    <div id="dashmain">
+    <div id="">
 
         <div id="register-stpes">
             <div class="dash-title">

@@ -60,8 +60,8 @@
                         @foreach (request()->all() as $inp => $ke)
                             <input type="text" name="{{ $inp }}" value="{{ $ke }}" hidden>
                         @endforeach
-                        <input type="text" name="skill_id" id="skill_id" value="" hidden>
-                        <input type="text" name="par_id" id="par_id" value="" hidden>
+                        <input type="text" name="skill_id" id="skill_id" value="{{ request('skill_id') }}" hidden>
+                        <input type="text" name="par_id" id="par_id" value="{{ request('par_id') }}" hidden>
                         <div class="accord-box  pointer all_skill  " style="dispaly: none">
                             <div class="top nob  pointer ">
                                 <span class="backpage pointer ">
@@ -75,7 +75,7 @@
                                                     fill="currentColor"></path>
                                             </svg>
                                         </span>
-                                        <span>همه دسته ها </span>
+                                        <span> دسته بندی مهارتها </span>
                                     </span>
 
                                     <span class="close close_side">
@@ -97,7 +97,8 @@
                                 @continue
                             @endif  --}}
 
-                            <div class="accord-box   par_c   {{request("par_id")==$skill_par->id ?"active select_p":"" }} {{  request("par_id") ?"dis_none":" " }}  "  data-id="{{ $skill_par->id }}">
+                            <div class="accord-box   par_c   {{ request('par_id') == $skill_par->id ? 'active select_p' : '' }} {{ request('par_id') ? 'dis_none' : ' ' }}  "
+                                data-id="{{ $skill_par->id }}">
                                 <div class="top nob">
                                     <a href="#" class="cat-item toggle_p">
                                         <span class="icon">
@@ -119,7 +120,8 @@
                                             @foreach ($skill_par->childs() as $s_child)
                                                 <li>
                                                     <a href="#" data-id="{{ $s_child->id }}"
-                                                        class="sub-list-item select_kill_id  {{ request("skill_id")==$s_child->id ?"active_ch":"" }}">{{ $s_child->name }} </a>
+                                                        class="sub-list-item select_kill_id  {{ request('skill_id') == $s_child->id ? 'active_ch' : '' }}">{{ $s_child->name }}
+                                                    </a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -132,6 +134,7 @@
 
                             <div class="accord-content">
                                 <div class="input-toggle">
+                                    <input type="text" class="" name="authenticated" hidden value="">
                                     <input type="checkbox" id="ehrax" {{ request('authenticated') ? 'checked' : '' }}
                                         class="fom_action" name="authenticated">
                                     <label for="ehrax">
@@ -148,6 +151,7 @@
 
                             <div class="accord-content">
                                 <div class="input-toggle">
+                                    <input type="text" class="" name="report" hidden value="">
                                     <input type="checkbox" id="oreport" {{ request('report') ? 'checked' : '' }}
                                         class="fom_action" name="report">
                                     <label for="oreport">
@@ -274,18 +278,18 @@
                         </div>
                         <div class="genr-toggle">
                             <ul>
-                                <li>
+                                {{--  <li>
                                     <div class="label-containef">
-                                        <input type="radio" name="ordering" value="related" id="related">
+                                        <input type="radio" {{ request("ordering")=="related"?"checked":"" }} form="ba_f" class="fom_action" name="ordering" value="related" id="related">
                                         <label for="related">
                                             <span>مرتبط ترین</span>
                                         </label>
                                     </div>
-                                </li>
+                                </li>  --}}
                                 <li>
                                     <div class="label-containef">
-                                        <input type="radio" name="ordering" value="newest" id="newest"
-                                            checked="">
+                                        <input type="radio" {{ request("ordering")=="newest"?"checked":"" }} form="ba_f" class="fom_action" name="ordering" value="newest" id="newest"
+                                           >
                                         <label for="newest">
                                             <span>جدیدترین</span>
                                         </label>
@@ -293,7 +297,16 @@
                                 </li>
                                 <li>
                                     <div class="label-containef">
-                                        <input type="radio" name="ordering" value="favourite" id="favourite">
+                                        <input type="radio" {{ request("ordering")=="oldest"?"checked":"" }} form="ba_f" class="fom_action" name="ordering" value="oldest" id="oldest"
+                                           >
+                                        <label for="oldest">
+                                            <span>قدیمی ترین</span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="label-containef">
+                                        <input type="radio" {{ request("ordering")=="favourite"?"checked":"" }} form="ba_f" class="fom_action" name="ordering" value="favourite" id="favourite">
                                         <label for="favourite">
                                             <span>محبوب ترین</span>
                                         </label>
@@ -352,9 +365,52 @@
                         </div>
                     </div>
                 </div>  --}}
-                    @foreach ($baladchies as $baladchi)
-                        @include('home.single_baladchi')
-                    @endforeach
+                    @if ($baladchies->count())
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div style="text-align: center">
+                                <h1>
+                                    این افراد اماده بازدیدن،شما میتونید بعد از ارزشیابی باهاشون تماس بگیرید و با مبلغ توافقی برن کالای مورد نظر شما تو اون منطقه رو بررسی کنن، یادتون باشه ممکنه کارشناس نباشن و فقط میتونن وجود کالا رو به شما تایید بدن
+                                </h1>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                        @foreach ($baladchies as $baladchi)
+                            @include('home.single_baladchi')
+                        @endforeach
+                    @else
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="text-align: center">
+                                    <h1>
+                                        واسه بازدید کسی تو این منطقه اعلام آمادگی نکرده
+                                    </h1>
+                                    @auth
+
+                                        <b>
+                                            <a class="icon-button red" href="{{ route('panel.visitor') }}">
+                                                <span> بازدیدکننده شو</span>
+                                                <span class="icon">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6 6V0H8V6H14V8H8V14H6V8H0V6H6Z" fill="currentColor"></path>
+                                                    </svg>
+
+                                                </span>
+                                            </a>
+                                        </b>
+                                    @endauth
+                                </div>
+
+                            </div>
+                        </div>
+                    @endif
+
 
 
                 </div>

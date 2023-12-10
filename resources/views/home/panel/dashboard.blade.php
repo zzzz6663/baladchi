@@ -73,6 +73,17 @@
         </a>
     </div>
     @else
+    <br>
+    <br>
+    <h1 style="text-align: center">
+        مثلا :شما (
+        {{ $user->advertises()->where('expired_at', '>', Carbon\Carbon::now()->subDays(30)->toDateTimeString())->where('status', 'confirmed')->whereActive('1')->count() }}
+
+        ) اگهی فعال و (
+
+        {{ $user->advertises()->where('expired_at', '<', Carbon\Carbon::now()->subDays(30)->toDateTimeString())->where('status', 'confirmed')->whereActive('1')->count() }}
+        ) اگهی منقضی شده داری
+    </h1>
     <div class="not-found">
     <a class="icon-button red" href="{{route("panel.advertises")}}">
         <span>آگهی های من </span>

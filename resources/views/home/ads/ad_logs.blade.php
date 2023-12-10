@@ -136,7 +136,7 @@
                                                 <div class="">
                                                     <div class="footer-section">
                                                         <div class="pair-button">
-                                                                <span class="mid-button blue pointer insert_new_memo" data-id="{{ $advertise->id  }}" id=" "
+                                                                <span style="width: 100%" class="mid-button blue pointer insert_new_memo" data-id="{{ $advertise->id  }}" id=" "
                                                                     value=" ">
                                                                     ارسال برای کاربران
                                                                    ( {{ $advertise->faves_users()->count() }}

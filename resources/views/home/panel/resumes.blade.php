@@ -192,7 +192,7 @@
                                             </div>
 
                                         </div>
-{{--  
+{{--
                                         <div class="input-section">
 
                                             <h4> باز دید در محل <span>(اختیاری)</span></h4>
@@ -274,7 +274,7 @@
                                         <div class="input-section">
                                             <h4>شبکه های اجتماعی <span>(اختیاری)</span></h4>
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12 s col-md-12">
                                                     <div class="">
                                                         <div class="input-label big">
                                                             <label for=""> youtube</label>
@@ -284,7 +284,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-12 s col-md-12">
                                                     <div class="">
                                                         <div class="input-label big">
                                                             <label for=""> linkedin</label>
@@ -294,7 +294,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-12 s col-md-12">
                                                     <div class="">
                                                         <div class="input-label big">
                                                             <label for=""> instagram</label>
@@ -304,7 +304,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-12 s col-md-12">
                                                     <div class="">
                                                         <div class="input-label big">
                                                             <label for=""> facebook</label>

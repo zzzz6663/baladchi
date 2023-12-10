@@ -199,6 +199,9 @@ class User extends Authenticatable
     public function bills(){
         return $this->hasMany(Bill::class);
     }
+    public function to_bills(){
+        return $this->hasMany(Bill::class,"to_id");
+    }
    public function deposits(){
         return $this->hasMany(Deposit::class);
     }
@@ -257,6 +260,9 @@ class User extends Authenticatable
     }
     public function starscount(){
         return 5 - $this->stars()->count();
+    }
+    public function donate_oute(){
+        return $this->to_bills()->whereStatus("bill_payed")->count();
     }
 
 

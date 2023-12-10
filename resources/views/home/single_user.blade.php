@@ -551,7 +551,7 @@
                                 )</span>
                         </div>
                         <div class="avrage">
-                            <span class="tit">نظر خود را در مورد بلدچی بنویسید</span>
+                            <span class="tit">میزان رضایت</span>
                             <span class="num">{{ $user->comment_log()['av'] }} %</span>
                         </div>
                         <div class="avrage-bar">
@@ -955,7 +955,10 @@
                         <div class="avarage-happiness">
                             <div class="title">
                                 <h4>نظرات </h4>
-                                <span>(تعداد مشاوره ها : 564)</span>
+                                <span>(تعداد نظرات ها :
+                                    {{ $user->comment_log()['count'] }}
+
+                                    )</span>
                             </div>
                             <div class="avrage">
                                 <span class="tit">میزان رضایت</span>
@@ -1054,7 +1057,7 @@
                                     </svg>
                                 </div>
                                 <div class="bar">
-                                    <span style="width: {{ $user->comment_log()['s1'] }}%"></span>
+                                    <span style="width: {{ $user->comment_log()['s5'] }}%"></span>
                                 </div>
                             </div>
                             <div class="avrage-bar">
@@ -1127,7 +1130,7 @@
                                     </svg>
                                 </div>
                                 <div class="bar">
-                                    <span style="width: {{ $user->comment_log()['s2'] }}%"></span>
+                                    <span style="width: {{ $user->comment_log()['s4'] }}%"></span>
                                 </div>
                             </div>
                             <div class="avrage-bar">
@@ -1278,7 +1281,7 @@
                                     </svg>
                                 </div>
                                 <div class="bar">
-                                    <span style="width: {{ $user->comment_log()['s4'] }}%"></span>
+                                    <span style="width: {{ $user->comment_log()['s2'] }}%"></span>
                                 </div>
                             </div>
                             <div class="avrage-bar">
@@ -1344,7 +1347,7 @@
                                     </svg>
                                 </div>
                                 <div class="bar">
-                                    <span style="width: {{ $user->comment_log()['s5'] }}%"></span>
+                                    <span style="width: {{ $user->comment_log()['s1'] }}%"></span>
                                 </div>
                             </div>
                             <div class="points">

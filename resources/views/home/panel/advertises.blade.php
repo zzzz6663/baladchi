@@ -89,6 +89,10 @@
 
                 <div class="stat">
                     <span class="tit">وضعیت : </span>
+                    @if($advertise->expired())
+                    <span class="stat-box orange "> منقضی شده</span>
+
+                    @endif
                     <span class="stat-box {{ $advertise->status=="confirmed" ? 'green':'orange' }} "> {{ __('status.'.$advertise->status) }}</span>
                 </div>
 
