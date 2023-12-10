@@ -213,7 +213,7 @@
                 class="menu-link {{ Request::url() == route('allresumes.index') ? 'active' : '' }}">
                 <i class="menu-icon  fa-solid fa-users"></i>
                 <div>    رزومه ها   </div>
-                @if($re=App\Models\Counsel::whereConfirm(null)->count())
+                @if($re=App\Models\Resume::whereConfirm(null)->count())
                 <span class="red_cir2">
                     {{ $re }}
                 </span>
