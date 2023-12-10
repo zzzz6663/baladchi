@@ -52,7 +52,7 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1 ps ps__rtl ps--active-y">
-        <!-- Dashboards -->
+        <!-- Dashboassssrds -->
         <li class="menu-item {{ Request::url() == route('user.index') ? 'active' : '' }}">
             <a href="{{ route('user.index') }}"
                 class="menu-link {{ Request::url() == route('user.index') ? 'active' : '' }}">
