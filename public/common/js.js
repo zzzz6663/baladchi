@@ -2740,7 +2740,8 @@ window.onload = function () {
         $(document).on('change', '#ad-upload', function (event) {
             let el = $(this)
             var file = this.files[0];
-
+            let pro=$('#prog')
+            let span=$('#prog span')
             if ($('.img_list').length > 5) {
                 Swal.fire('   شما  حداکثر 6 عکس میتواند اپلود کنید  ');
                 return
@@ -2760,11 +2761,11 @@ window.onload = function () {
                 xhr: function () {
                     var xhr = new window.XMLHttpRequest();
                     xhr.upload.addEventListener("progress", function (evt) {
-                        $('#prog').show(200)
+                        pro.show(200)
                         if (evt.lengthComputable) {
                             var percentComplete = evt.loaded / evt.total;
                             percentComplete = parseInt(percentComplete * 100);
-                            $('#prog span').text(percentComplete)
+                            span.text(percentComplete)
                             console.log(percentComplete);
                             if (percentComplete === 100) {
 
@@ -2780,8 +2781,8 @@ window.onload = function () {
                 processData: false,
                 dataType: "json",
                 success: function (result) {
-                    $('#prog').hide(200)
-                    $('#prog').text()
+                    prog.hide(200)
+                    prog.text()
                     console.log(result);
                     $('#img_list').append(`
                     <li class="par img_list">
@@ -2800,7 +2801,7 @@ window.onload = function () {
                 },
                 error: function (request, status, error) {
                     console.log(request);
-                    $('#prog').hide(200)
+                    prog.hide(200)
                     Swal.fire('   تصویر انتخابی شما مشکل دارد   ');
                 }
             });
