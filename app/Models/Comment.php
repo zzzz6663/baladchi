@@ -18,6 +18,7 @@ class Comment extends Model
         'name',//
         'confirm',//
         'rate',//
+        // ssss
     ];
     public function commentable()
     {

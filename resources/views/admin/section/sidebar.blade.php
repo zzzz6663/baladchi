@@ -72,7 +72,7 @@
                 @endif
             </a>
         </li>
-        <!-- Dashboards -->
+        <!-- Dashboardssss -->
         <li class="menu-item {{ Request::url() == route('category.index') ? 'active' : '' }}">
             <a href="{{ route('category.index') }}"
                 class="menu-link {{ Request::url() == route('category.index') ? 'active' : '' }}">
