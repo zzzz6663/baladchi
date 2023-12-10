@@ -439,7 +439,7 @@
                 </div>
 
                 </div>
-                @if ($images->count() > 1)
+                @if ($images->count() )
                     <div class="col-xl-6 order-1 order-xl-2">
                         <div class="ads-gallery">
                             <div class="main-pic">
