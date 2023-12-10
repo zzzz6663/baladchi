@@ -14,7 +14,7 @@
         <!-- Basic Bootstrap Table -->
         <div class="card">
             <div class="card-body">
-                <form class="dt_adv_search" method="get" action="{{ route('resume.index') }}">
+                <form class="dt_adv_search" method="get" action="{{ route('allresumes.index') }}">
                     @csrf
                     @method('get')
                     <div class="row">
@@ -26,7 +26,14 @@
                                         class="form-control dt-input dt-full-name" data-column="1"
                                         placeholder=" نام   ...  " data-column-index="0">
                                 </div>
-
+                                <div class="col-12 col-sm-6 col-lg-4">
+                                    <label class="form-label"> وضعیت</label>
+                                   <select name="confirm" id="" class="form-control">
+                                    <option value="">همه</option>
+                                    <option {{ request("confirm")=="confirm"?"selected":"" }} value="confirm">تایید شده   </option>
+                                    <option {{ request("wait")=="wait"?"selected":"" }} value="wait">در انتظار تایید   </option>
+                                   </select>
+                                </div>
                                 {{-- <div class="col-12 col-sm-6 col-lg-4">
                       <label class="form-label">ایمیل:</label>
                       <input type="text" class="form-control dt-input text-start" dir="ltr" data-column="2" placeholder="demo@example.com" data-column-index="1">

@@ -263,7 +263,7 @@ class User extends Authenticatable
     public function comment_log(){
         // dd(floor($this->comments()->where('confirm', '!=', null)->avg("star")));
         if($count=$this->comments()->where('confirm', '!=', null)->count()){
-            $av=floor($this->comments()->where('confirm', '!=', null)->avg("star"));
+            $av=floor($this->comments()->where('confirm', '!=', null)->avg("rate"));
             $data['all']=$this->comments()->where('confirm', '!=', null)->count() ;
             $data['s1']=($this->comments()->where('confirm', '!=', null)->whereStar(1)->count()*100)/$data['all'];
             $data['s2']=($this->comments()->where('confirm', '!=', null)->whereStar(2)->count()*100)/$data['all'];
@@ -271,7 +271,8 @@ class User extends Authenticatable
             $data['s4']=($this->comments()->where('confirm', '!=', null)->whereStar(4)->count()*100)/$data['all'];
             $data['s5']=($this->comments()->where('confirm', '!=', null)->whereStar(5)->count()*100)/$data['all'];
             // $data['av']=(floor($this->comments()->where('confirm', '!=', null)->avg("star"))*100)/5;
-            $data['av']=$av*20 ;
+            // $data['av']=$av*20 ;
+            $data['av']=floor($av) ;
             $data['count']=$count;
         }else{
             $data['all']=0;

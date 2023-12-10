@@ -15,6 +15,23 @@
               <div class="row">
                 <div class="col-12">
                   <div class="row g-3">
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <label class="form-label">نام:</label>
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            class="form-control dt-input dt-full-name" data-column="1"
+                            placeholder=" نام   ...  " data-column-index="0">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <label class="form-label"> وضعیت</label>
+                       <select name="status" id="" class="form-control">
+                        <option value="">همه</option>
+                        <option {{ request("created")=="created"?"selected":"" }} value="created">{{ __("status.created") }}   </option>
+                        <option {{ request("ready_to_show")=="ready_to_show"?"selected":"" }} value="ready_to_show">{{ __("status.ready_to_show") }}    </option>
+                        <option {{ request("finish")=="finish"?"selected":"" }} value="finish">{{ __("status.finish") }}    </option>
+                        <option {{ request("show")=="show"?"selected":"" }} value="show">{{ __("status.show") }}    </option>
+                       </select>
+                    </div>
                     {{--  <div class="col-12 col-sm-6 col-lg-4">
                       <label class="form-label">نام:
 

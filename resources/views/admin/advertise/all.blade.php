@@ -29,7 +29,6 @@
                                     <option {{ request("confirm")=="confirmed"?"selected":"" }} value="confirmed">تایید شده ها </option>
                                     <option {{ request("confirm")=="rejected"?"selected":"" }} value="rejected">رد شده ها  </option>
                                     <option {{ request("confirm")=="null"?"selected":"" }} value="null">در انتظار تایید   </option>
-
                                    </select>
                                 </div>
 

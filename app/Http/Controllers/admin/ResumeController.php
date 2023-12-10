@@ -22,6 +22,16 @@ class ResumeController extends Controller
                 // });
 
         }
+
+        if (in_array($request->confirm, ['confirmed', "rejected"])) {
+        }
+        if ($request->confirm=="confirm" ) {
+            $resumes->where('confirm',"!=", null);
+
+        }
+        if ($request->confirm=="wait" ) {
+            $resumes->where('confirm', null);
+        }
         // if($request->province){
         //     $resumes->where('province_id',$request->province);
         // }

@@ -2,8 +2,10 @@
 <p>آگهی‌های دارای عکس نسبت به اگهی های بدون عکس توجه بیشتری از کاربران جلب خواهد کرد.</p>
 <span class="light">تعداد عکس‌های انتخاب شده نباید بیشتر از 6 باشد.</span>
 </div>
-
-
+<div id="prog" style="display:none ; font-size:20px; color:green">
+    درحال آپلود تصویر
+    <span >111</span>
+</div>
 <div class="upload-ad-pics">
     <ul id="img_list" >
 

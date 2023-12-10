@@ -19,10 +19,13 @@ class CounselController extends Controller
         $counsels = Counsel::query();
         if ($request->search) {
             $search = $request->search;
-            // $counsels->where('name', 'LIKE', "%{$search}%")
-            //     ->orWhereHas('subset', function ($query) use ($search) {
-            //         $query->where('name', 'LIKE', "%{$search}%");
-            //     });
+            $counsels->where('title', 'LIKE', "%{$search}%")
+                ->orWhereHas('user', function ($query) use ($search) {
+                    $query->where('name', 'LIKE', "%{$search}%");
+                });
+        }
+        if ($request->status ) {
+            $counsels->where('status', $request->status);
         }
         $counsels = $counsels->latest()->get();
         return  view('admin.counsel.all', compact(['counsels']));

@@ -39,53 +39,53 @@ class AdvertiseController extends Controller
         // }
         // dd($ads);
 
-    //     $users->where(function ($query) use ($search, $users) {
-    //         $users->where('name', 'LIKE', "%{$search}%")
-    //         ->orWhere('family', 'LIKE', "%{$search}%")
-    //         ->orWhere('mobile', 'LIKE', "%{$search}%")
-    //         ->orWhereHas('province', function ($query) use ($search) {
-    //             $query->where('name', 'LIKE', "%{$search}%");
-    //         })
-    //         ->orWhereHas('city', function ($query) use ($search) {
-    //             $query->where('name', 'LIKE', "%{$search}%");
-    //         });
-    //    });
+        //     $users->where(function ($query) use ($search, $users) {
+        //         $users->where('name', 'LIKE', "%{$search}%")
+        //         ->orWhere('family', 'LIKE', "%{$search}%")
+        //         ->orWhere('mobile', 'LIKE', "%{$search}%")
+        //         ->orWhereHas('province', function ($query) use ($search) {
+        //             $query->where('name', 'LIKE', "%{$search}%");
+        //         })
+        //         ->orWhereHas('city', function ($query) use ($search) {
+        //             $query->where('name', 'LIKE', "%{$search}%");
+        //         });
+        //    });
 
         $advertises = Advertise::query();
         if ($request->search) {
             $search = $request->search;
             $advertises->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('id', 'LIKE', "%{$search}%")
-            ->orWhere('info', 'LIKE', "%{$search}%")
+                ->orWhere('id', 'LIKE', "%{$search}%")
+                ->orWhere('info', 'LIKE', "%{$search}%")
                 ->orWhereHas('subset', function ($query) use ($search) {
                     $query->where('name', 'LIKE', "%{$search}%");
-                }) ->orWhereHas('user', function ($query) use ($search) {
+                })->orWhereHas('user', function ($query) use ($search) {
                     $query->where('name', 'LIKE', "%{$search}%")
-                     ->orWhere('family', 'LIKE', "%{$search}%")
-                     ->orWhere('mobile', 'LIKE', "%{$search}%");;
+                        ->orWhere('family', 'LIKE', "%{$search}%")
+                        ->orWhere('mobile', 'LIKE', "%{$search}%");;
                 });
         }
         $telic = null;
         if ($request->telic_id) {
             $telic = Telic::find($request->telic_id);
-            $advertises->where('telic_id',$request->telic_id);
+            $advertises->where('telic_id', $request->telic_id);
         }
-            if ($request->user_id) {
-            $advertises->where('user_id',$request->user_id);
+        if ($request->user_id) {
+            $advertises->where('user_id', $request->user_id);
         }
-            if (in_array($request->confirm,['confirmed',"rejected"])) {
-            $advertises->where('status',$request->confirm);
+        if (in_array($request->confirm, ['confirmed', "rejected"])) {
+            $advertises->where('status', $request->confirm);
         }
-         if ($request->confirm=="null") {
-            $advertises->where('confirm',null);
+        if ($request->confirm == "null") {
+            $advertises->where('confirm', null);
         }
-//         $advertises=$advertises->get();
-//         foreach( $advertises as $ad){
-//             $ad->update([
-// 'expired_at'=>Carbon::parse($ad->created_at)->addDays(30)
-//             ]);
-//         }
-//         dd(3);
+        //         $advertises=$advertises->get();
+        //         foreach( $advertises as $ad){
+        //             $ad->update([
+        // 'expired_at'=>Carbon::parse($ad->created_at)->addDays(30)
+        //             ]);
+        //         }
+        //         dd(3);
         $advertises = $advertises->latest()->orderBy('expired_at', 'DESC')->paginate(40);
 
 
@@ -99,7 +99,6 @@ class AdvertiseController extends Controller
      */
     public function create(Request $request)
     {
-
     }
 
     /**
@@ -127,15 +126,15 @@ class AdvertiseController extends Controller
             $file->move(public_path($destinationPath), $name);
             $advertise->update(['icon' => $name]);
         }
-        if($request->years){
+        if ($request->years) {
             $advertise->years()->delete();
-            for($i=0;$i<sizeof($request->years);$i++){
+            for ($i = 0; $i < sizeof($request->years); $i++) {
                 $advertise->years()->create([
-                    'year'=>$request->years[$i]
+                    'year' => $request->years[$i]
                 ]);
             }
-           }
-        alert()->success(' برند   جدید اضافه شد ' , false);
+        }
+        alert()->success(' برند   جدید اضافه شد ', false);
 
         return back();
     }
@@ -187,25 +186,23 @@ class AdvertiseController extends Controller
         return back();
         //
     }
-    public function change_advertise_status(Advertise $advertise,Request $request)
+    public function change_advertise_status(Advertise $advertise, Request $request)
     {
         // dd($request->all());
-        if(!$advertise->confirm){
-            if($request->rejected){
-                $status='rejected';
-            alert()->success('آگهی با موفقیت رد شد ');
-
+        if (!$advertise->confirm) {
+            if ($request->rejected) {
+                $status = 'rejected';
+                alert()->success('آگهی با موفقیت رد شد ');
             }
-            if($request->confirmed){
-                $status='confirmed';
-            alert()->success('آگهی با موفقیت تایید شد ');
-
+            if ($request->confirmed) {
+                $status = 'confirmed';
+                alert()->success('آگهی با موفقیت تایید شد ');
             }
             $advertise->update([
-                'confirm' =>Carbon::now(),
-                'status' =>$status,
+                'confirm' => Carbon::now(),
+                'status' => $status,
             ]);
-        }else{
+        } else {
             alert()->warning('این اگهی قبلا تایید شده ');
         }
 

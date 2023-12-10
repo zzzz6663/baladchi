@@ -28,7 +28,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="form">
+                <div class="form par2">
                     <form action="" id="counsel_form" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('post')
@@ -48,7 +48,7 @@
                         </div>
                         <div class="input-label big">
                             <label for="">تصویر </label>
-                            <input type="file" name="img" placeholder="" accept="image/*">
+                            <input type="file" name="img" placeholder="" class="path_img" accept="image/*">
                             <p style="color: red">
                                 حداقل ابعاد : ارتفاع :300px -
                                 عرض: 1500px -
@@ -58,6 +58,7 @@
                             </p>
                             -
                         </div>
+                        <div class="avatar-pop" style="display:none; height: 200px"></div>
                         <br>
                         {{--  <div class="select-label">
                         <label for="question"> تعداد سوالات</label>
@@ -113,7 +114,7 @@
                         <br>
 
                         <div class="skill_all_list">
-                    
+
                         </div>
 
                         {{--  <div class="select-label">

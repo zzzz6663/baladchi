@@ -158,7 +158,6 @@ Route::prefix('panel')->middleware(['auth',"role:user"])->group(function () {
 });
 
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/choose', 'HomeController@choose')->name('choose');
     Route::post('/get_phone/{user}', 'HomeController@get_phone')->name('get.phone');

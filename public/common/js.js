@@ -2474,6 +2474,9 @@ window.onload = function () {
                 let im = URL.createObjectURL(file)
                 el.closest('.avatar-pop').css('background-image', 'url(' + im + ')');
                 el.closest('.avatar-pop').css('background-size', 'cover');
+                el.closest('.par2').find(".avatar-pop").show(200)
+                el.closest('.par2').find(".avatar-pop").css('background-image', 'url(' + im + ')');
+                el.closest('.par2').find(".avatar-pop").css('background-size', 'cover');
                 // el.closest('.par').find('#poav').attr('src', im);
                 // $('#poav').attr('src', im);
                 // $('#poav').src = im
@@ -2742,6 +2745,7 @@ window.onload = function () {
             // console.log(file)
             if (file.size > 2048) {
                 //   alert('max upload size is 2M');
+                // Swal.fire('   سایز عکس نباید بیشتر از 2 مگ باشد  ');
                 //   return
             }
             var form_data = new FormData();
@@ -2753,9 +2757,11 @@ window.onload = function () {
                 xhr: function () {
                     var xhr = new window.XMLHttpRequest();
                     xhr.upload.addEventListener("progress", function (evt) {
+                        $('#prog').show(200)
                         if (evt.lengthComputable) {
                             var percentComplete = evt.loaded / evt.total;
                             percentComplete = parseInt(percentComplete * 100);
+                            $('#prog span').text(percentComplete)
                             console.log(percentComplete);
                             if (percentComplete === 100) {
 
@@ -2771,6 +2777,8 @@ window.onload = function () {
                 processData: false,
                 dataType: "json",
                 success: function (result) {
+                    $('#prog').hide(200)
+                    $('#prog').text()
                     console.log(result);
                     $('#img_list').append(`
                     <li class="par img_list">
@@ -2789,6 +2797,8 @@ window.onload = function () {
                 },
                 error: function (request, status, error) {
                     console.log(request);
+                    $('#prog').hide(200)
+                    Swal.fire('   تصویر انتخابی شما مشکل دارد   ');
                 }
             });
         });

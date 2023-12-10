@@ -65,9 +65,11 @@
                 class="menu-link  {{ Request::url() == route('advertise.index') ? 'active' : '' }}">
                 <i class="menu-icon  fa-solid fa-users"></i>
                 <div>آگهی ها </div>
+                @if($ad=App\Models\Advertise::whereConfirm(null)->count())
                 <span class="red_cir2">
-                    {{ App\Models\Advertise::whereConfirm(null)->count() }}
+                    {{ $ad }}
                 </span>
+                @endif
             </a>
         </li>
         <!-- Dashboards -->
@@ -173,6 +175,12 @@
                 class="menu-link {{ Request::url() == route('comment.index') ? 'active' : '' }}">
                 <i class="menu-icon  fa-solid fa-users"></i>
                 <div>      نظرات   </div>
+                @if($cm=App\Models\comment::whereConfirm(null)->count())
+                <span class="red_cir2">
+                    {{ $cm }}
+                </span>
+                @endif
+
             </a>
         </li>
 
@@ -191,6 +199,12 @@
                 class="menu-link {{ Request::url() == route('counsel.index') ? 'active' : '' }}">
                 <i class="menu-icon  fa-solid fa-users"></i>
                 <div>    خرد جمعی ها   </div>
+                @if($co=App\Models\Counsel::whereConfirm(null)->count())
+                <span class="red_cir2">
+                    {{ $co }}
+                </span>
+                @endif
+
             </a>
         </li>
 
@@ -199,6 +213,11 @@
                 class="menu-link {{ Request::url() == route('allresumes.index') ? 'active' : '' }}">
                 <i class="menu-icon  fa-solid fa-users"></i>
                 <div>    رزومه ها   </div>
+                @if($re=App\Models\Counsel::whereConfirm(null)->count())
+                <span class="red_cir2">
+                    {{ $re }}
+                </span>
+                @endif
             </a>
         </li>
 
@@ -224,7 +243,7 @@
                 <div>    پشتیبانی    </div>
 
                 @if(auth()->user()->unread_message())
-                <span class="num">{{ auth()->user()->unread_message() }}</span>
+                <span class="num red_cir2">{{ auth()->user()->unread_message() }}</span>
                 @endif
             </a>
 
