@@ -175,7 +175,7 @@
                 class="menu-link {{ Request::url() == route('comment.index') ? 'active' : '' }}">
                 <i class="menu-icon  fa-solid fa-users"></i>
                 <div>      نظرات   </div>
-                @if($cm=App\Models\comment::whereConfirm(null)->count())
+                @if($cm=App\Models\Comment::whereConfirm(null)->count())
                 <span class="red_cir2">
                     {{ $cm }}
                 </span>
