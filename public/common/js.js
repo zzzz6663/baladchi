@@ -1749,6 +1749,7 @@ window.onload = function () {
         $('body').on('change', '.fom_action', function () {
             console.log("fom_action");
             // $(this).closest('form').submit()
+            // $(this).closest('form').submit()
             $('#ba_f').submit()
 
         });

@@ -35,7 +35,7 @@
                     {{ $baladchi->family }}
                 </a>
             </h4>
-            <div class="ehrazus">
+            <div class="ehrazus s">
                 <span class="title">احراز هویت : </span>
                 <span class="val"> تایید
                     {{ $baladchi->authenticated?"شده":"نشده" }}

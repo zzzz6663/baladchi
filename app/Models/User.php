@@ -277,7 +277,7 @@ class User extends Authenticatable
             $data['s4']=($this->comments()->where('confirm', '!=', null)->whereStar(4)->count()*100)/$data['all'];
             $data['s5']=($this->comments()->where('confirm', '!=', null)->whereStar(5)->count()*100)/$data['all'];
             // $data['av']=(floor($this->comments()->where('confirm', '!=', null)->avg("star"))*100)/5;
-            // $data['av']=$av*20 ;
+            // $data['av']=$av*20 s ;
             $data['av']=floor($av) ;
             $data['count']=$count;
         }else{
@@ -290,7 +290,7 @@ class User extends Authenticatable
             $data['av']=0;
             $data['count']=0;
         }
-        // dd($data);
+        // dd($dsata);
 
         return  $data;
     }

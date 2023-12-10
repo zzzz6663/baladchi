@@ -8,11 +8,11 @@
             </div>
             <div id="register">
 
-                <div class="stepes">
+                <div class="stepes ss">
                     <ul>
                         {{-- <li class="step step1 active">
                         <span class="num">.۱</span>
-                        <h4>اطلاعات کاربری</h4>
+                        <h4>اsطلاعات کاربsری</h4>
                     </li> --}}
                         <li class="step step2 active">
                             <span class="num">.1</span>

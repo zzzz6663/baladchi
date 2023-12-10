@@ -90,7 +90,7 @@
         </li>
 
 
-        <!-- Dashboards -->
+        <!-- Dashboardss -->
         <li class="menu-item {{ Request::url() == route('telic.index') ? 'active' : '' }}">
             <a href="{{ route('telic.index') }}"
                 class="menu-link {{ Request::url() == route('telic.index') ? 'active' : '' }}">
@@ -98,7 +98,7 @@
                 <div> زیر دسته ها نهایی </div>
             </a>
         </li>
-        <!-- Dashboards -->
+        <!-- Dashbosards -->
         <li class="menu-item {{ Request::url() == route('question.index') ? 'active' : '' }}">
             <a href="{{ route('question.index') }}"
                 class="menu-link {{ Request::url() == route('question.index') ? 'active' : '' }}">

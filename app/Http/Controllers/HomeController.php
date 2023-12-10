@@ -66,7 +66,7 @@ class HomeController extends Controller
         Artisan::call('config:clear');
 
 
-        // $chat=Chat::find(553);
+        // $chat=Chat::find(55s3);
         // NewMessage::dispatch($chat);
         // Auth::loginUsingId(1,true);
         // $deposit_delay_advertises = Advertise::whereStatus("deposit_delay")->get();

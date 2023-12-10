@@ -1,6 +1,6 @@
 @extends('main.panel')
 @section('content')
-
+{{--  sss  --}}
 <div class="dash-main-content">
     @if(!$user->advertises()->count())
     <div class="not-found">
