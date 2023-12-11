@@ -158,19 +158,23 @@ class HomeController extends Controller
                 $city_id = $advertise->city_id;
                 $region_id = $advertise->region_id;
             }
+            // dd($region_id);
+
             if ($city_id) {
                 $baladchies->where('city_id', $city_id);
             }
-            if ($region_id) {
-                $baladchies->where('region_id', $region_id);
-            }
+            // if ($region_id) {
+            //     $baladchies->where('region_id', $region_id);
+            // }
+            // dd($baladchies->get());
             $baladchies->where('show_visitor', 1);
         } else {
             $baladchies->where('baladchi', '!=', null);
+            if ($request->city_id) {
+                $baladchies->where('city_id', $request->city_id);
+            }
         }
-        if ($request->city_id) {
-            $baladchies->where('city_id', $request->city_id);
-        }
+
         if ($request->skill_id) {
             $skill = $request->skill_id;
             $baladchies->whereHas("skills", function ($query) use ($skill) {
