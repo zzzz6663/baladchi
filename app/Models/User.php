@@ -265,6 +265,10 @@ class User extends Authenticatable
         return $this->to_bills()->whereStatus("bill_payed")->count();
     }
 
+    public function bill_not_seen(){
+        return $this->bills()->where("seen",null);
+    }
+
 
     public function comment_log(){
         // dd(floor($this->comments()->where('confirm', '!=', null)->avg("star")));

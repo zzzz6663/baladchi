@@ -9,6 +9,9 @@
 #dashmain:has(> #chat-boxes){
 padding: 0!important;
 }
+.not_seen{
+    background: #ebebeb;
+}
 .res_name {
     margin-left: 40px;
 }

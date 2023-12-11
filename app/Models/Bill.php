@@ -25,6 +25,7 @@ class Bill extends Model
         'vip',//vip آگهی
         'notif',//ارسال نوتیف
         'sort',//نردبان
+        'seen',//دیده شده ؟
     ];
     public function user(){
         return $this->belongsTo(User::class);

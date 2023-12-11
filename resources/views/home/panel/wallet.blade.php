@@ -268,7 +268,7 @@
                 <tbody>
                     @foreach ($bills as $bill )
 
-                    <tr>
+                    <tr class="{{ $bill->seen?"":"not_seen" }}">
                         <td><span>{{ $loop->iteration }}</span></td>
                         <td><span>
                             {{__('arr.'.$bill->type)}}
@@ -292,6 +292,9 @@
             </table>
         </div>
     </div>
+    @php
+    $user->bill_not_seen()->update(["seen"=>1])
+    @endphp
 {{--
             <div class="load-more justify-content-center d-flex">
                 <button class="vip-load">

@@ -946,8 +946,6 @@ window.onload = function () {
             let index = Cookies.get('index') // => undefined
             console.log("index" + index)
             $(".deposit_sec_li").children().eq(index).click();
-
-
         }
         $(document).on('click', '.deposit_sec_li', function (event) {
             let el = $(this)
@@ -955,6 +953,18 @@ window.onload = function () {
             Cookies.set('index', index)
             console.log("index111" + index)
 
+        })
+        if($('.cook_e').length){
+            let note1 = Cookies.get('note2') // => undefined
+            console.log("note1" + note1)
+            if(note1){
+                $('#note_visitor').hide(300)
+            }else{
+                $('#note_visitor').show(300)
+            }
+        }
+        $(document).on('click', '.cook_e', function (event) {
+            Cookies.set('note2', 1)
         })
 
         $(document).on('click', '.accord-box .top .toggle', function (event) {
@@ -2113,7 +2123,7 @@ window.onload = function () {
                     if (data.reject == 0) {
                         noty('        شما ستاره برای ثبت ندارید      ', 'red', '');
                     } else {
-                        noty('        نظر  شما ثبت شد  ', 'green', '');
+                        noty('        ستاره شما ثبت  شد  ', 'green', '');
                         setTimeout(() => {
                             location.reload();
 

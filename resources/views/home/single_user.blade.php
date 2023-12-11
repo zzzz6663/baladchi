@@ -184,7 +184,7 @@
                         <div class="head"><img src="{{ $user->cover ? $user->cover() : '/home/images/balad.jpg' }}"
                                 alt=""></div>
                         <div class="actions">
-                            <button class="like small-tran white check_fave_user"   data-id="{{ $user->id }}">
+                            <button class="like small-tran white check_fave_user" data-id="{{ $user->id }}">
                                 <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -1555,7 +1555,8 @@
                                             <form action="" id="insert_star_format">
 
                                                 <input type="text" name="to_id" hidden value="{{ $user->id }}">
-                                                <input type="number" class="no_arro" name="count" id="count" value="0">
+                                                <input type="number" class="no_arro" name="count" id="count"
+                                                    value="0">
                                             </form>
 
                                         </span>
@@ -1573,7 +1574,59 @@
                                     </span>
 
                                 </div>
+
+
                             </div>
+                            @auth
+                                @if (sizeof($sts = auth()->user()->stars))
+                                    <div class="tra-table">
+
+                                        <h4 class="dash-in-title">تاریخچه ستاره های اعطایی من </h4>
+
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <span class="tit">شماره</span>
+
+
+                                                    </th>
+                                                    <th>
+                                                        <span class="tit">گیرنده </span>
+
+
+                                                    </th>
+                                                    <th>
+                                                        <span class="tit">تاریخ</span>
+
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($sts as $st)
+                                                    <tr>
+                                                        <td>
+                                                            {{ $loop->iteration }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $st->to->name }}
+                                                            {{ $st->to->family }}
+                                                        </td>
+                                                        <td>
+                                                            {{ jdate($st->creatde_at) }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="ul">
+                                        <ul>
+
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endauth
                         </div>
 
                     @endauth
@@ -1810,88 +1863,88 @@
 
 
 
-        <div id="counsel_pay_pop" class="modal fade    " style="display: none" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title right" id="exampleModalLongTitle">پرداخت حق مشاوره </h5>
-                        <button type="button" class="close close_pops" data-dismiss="modal" aria-label="Close">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M5.99999 4.58599L10.243 0.342987C10.6335 -0.0474781 11.2665 -0.0474791 11.657 0.342986C12.0475 0.733452 12.0475 1.36652 11.657 1.75699L7.41399 5.99999L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.41399L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 5.99999L0.342987 1.75699C-0.0474782 1.36652 -0.0474791 0.733452 0.342986 0.342986C0.733452 -0.0474791 1.36652 -0.0474789 1.75699 0.342987L5.99999 4.58599Z"
-                                    fill="currentColor"></path>
-                            </svg>
+            <div id="counsel_pay_pop" class="modal fade    " style="display: none" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title right" id="exampleModalLongTitle">پرداخت حق مشاوره </h5>
+                            <button type="button" class="close close_pops" data-dismiss="modal" aria-label="Close">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M5.99999 4.58599L10.243 0.342987C10.6335 -0.0474781 11.2665 -0.0474791 11.657 0.342986C12.0475 0.733452 12.0475 1.36652 11.657 1.75699L7.41399 5.99999L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.41399L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 5.99999L0.342987 1.75699C-0.0474782 1.36652 -0.0474791 0.733452 0.342986 0.342986C0.733452 -0.0474791 1.36652 -0.0474789 1.75699 0.342987L5.99999 4.58599Z"
+                                        fill="currentColor"></path>
+                                </svg>
 
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            برای مشاوره با این بلد چی ابتدا باید هزینه مشاوره پرداخت کنید وبعد از پرداخت شماره همراه این مشاور
-                            برای شما پیامک خواهدشد
-                        </p>
-                        <p>
-                            دستمز مشاوره
-                            {{ number_format($user->salary) }}
-                        </p>
-                        <p>
-                            مبلغ برای پرداخت
-                           <b class="res_pay">
-                            {{ number_format($user->salary) }}
-                           </b>
-                        </p>
-                        <div class="right-secd">
-
-                            <div class="input-toggle text red send_pay_p" style="display:">
-                                <input  type="checkbox" form="counsel_form"  name="pay_from_cash" class="pay_from_cash3  "
-                                    data-balance="{{ $current->balance }}"   data-total="{{ $user->salary }}" id="pay_from_cash"
-                                    {{ $current->balance == 0 ? 'disabled' : '' }}  value="1" >
-                                <label for="pay_from_cash">
-                                    <div class="d-flex">
-                                        <span class="icon">
-                                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M16 4H19C19.2652 4 19.5196 4.10536 19.7071 4.29289C19.8946 4.48043 20 4.73478 20 5V17C20 17.2652 19.8946 17.5196 19.7071 17.7071C19.5196 17.8946 19.2652 18 19 18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H16V4ZM2 6V16H18V6H2ZM2 2V4H14V2H2ZM13 10H16V12H13V10Z"
-                                                    fill="currentColor"></path>
-                                            </svg>
-                                        </span>
-                                        <span>کسر از کیف پول</span>
-                                        <span class="num">
-                                            <b>
-                                                {{ number_format($current->balance) }}
-                                                تومان
-                                            </b>
-                                        </span>
-                                    </div>
-                                    <div class="togg">
-                                        <span></span>
-                                    </div>
-                                </label>
-                            </div>
+                            </button>
                         </div>
+                        <div class="modal-body">
+                            <p>
+                                برای مشاوره با این بلد چی ابتدا باید هزینه مشاوره پرداخت کنید وبعد از پرداخت شماره همراه این مشاور
+                                برای شما پیامک خواهدشد
+                            </p>
+                            <p>
+                                دستمز مشاوره
+                                {{ number_format($user->salary) }}
+                            </p>
+                            <p>
+                                مبلغ برای پرداخت
+                                <b class="res_pay">
+                                    {{ number_format($user->salary) }}
+                                </b>
+                            </p>
+                            <div class="right-secd">
 
-                        <div class="pair-button">
-                            <span class="mid-button close_pops">
-                                انصراف
-                            </span>
-                            <span class="mid-button icon-button yellow" id="send_counsel_pay">
-                                پرداخت
-                                {{--  <span class="icon">
+                                <div class="input-toggle text red send_pay_p" style="display:">
+                                    <input type="checkbox" form="counsel_form" name="pay_from_cash" class="pay_from_cash3  "
+                                        data-balance="{{ $current->balance }}" data-total="{{ $user->salary }}"
+                                        id="pay_from_cash" {{ $current->balance == 0 ? 'disabled' : '' }} value="1">
+                                    <label for="pay_from_cash">
+                                        <div class="d-flex">
+                                            <span class="icon">
+                                                <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M16 4H19C19.2652 4 19.5196 4.10536 19.7071 4.29289C19.8946 4.48043 20 4.73478 20 5V17C20 17.2652 19.8946 17.5196 19.7071 17.7071C19.5196 17.8946 19.2652 18 19 18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H16V4ZM2 6V16H18V6H2ZM2 2V4H14V2H2ZM13 10H16V12H13V10Z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                            <span>کسر از کیف پول</span>
+                                            <span class="num">
+                                                <b>
+                                                    {{ number_format($current->balance) }}
+                                                    تومان
+                                                </b>
+                                            </span>
+                                        </div>
+                                        <div class="togg">
+                                            <span></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="pair-button">
+                                <span class="mid-button close_pops">
+                                    انصراف
+                                </span>
+                                <span class="mid-button icon-button yellow" id="send_counsel_pay">
+                                    پرداخت
+                                    {{--  <span class="icon">
                               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20ZM10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18ZM9 13H11V15H9V13ZM11 11.355V12H9V10.5C9 10.2348 9.10536 9.98043 9.29289 9.79289C9.48043 9.60536 9.73478 9.5 10 9.5C10.2841 9.49998 10.5623 9.4193 10.8023 9.26733C11.0423 9.11536 11.2343 8.89837 11.3558 8.64158C11.4773 8.3848 11.5234 8.0988 11.4887 7.81684C11.454 7.53489 11.34 7.26858 11.1598 7.04891C10.9797 6.82924 10.7409 6.66523 10.4712 6.57597C10.2015 6.48671 9.91204 6.47587 9.63643 6.54471C9.36081 6.61354 9.11042 6.75923 8.91437 6.96482C8.71832 7.1704 8.58468 7.42743 8.529 7.706L6.567 7.313C6.68863 6.70508 6.96951 6.14037 7.38092 5.67659C7.79233 5.2128 8.31952 4.86658 8.90859 4.67332C9.49766 4.48006 10.1275 4.44669 10.7337 4.57661C11.3399 4.70654 11.9007 4.99511 12.3588 5.41282C12.8169 5.83054 13.1559 6.36241 13.3411 6.95406C13.5263 7.54572 13.5511 8.17594 13.4129 8.78031C13.2747 9.38467 12.9785 9.9415 12.5545 10.3939C12.1306 10.8462 11.5941 11.1779 11 11.355Z" fill="currentColor"></path>
                               </svg>
                           </span>  --}}
-                            </span>
+                                </span>
+                            </div>
+
                         </div>
 
+
                     </div>
-
-
                 </div>
             </div>
-        </div>
         @endauth
 
 
@@ -2024,4 +2077,9 @@
         </div>
 
     @endauth
+
+
+
+
+    
 @endsection
