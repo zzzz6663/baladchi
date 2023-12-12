@@ -76,7 +76,7 @@
     <br>
     <br>
     <h1 style="text-align: center">
-        مثلا :شما (
+         :شما (
         {{ $user->advertises()->where('expired_at', '>', Carbon\Carbon::now()->subDays(30)->toDateTimeString())->where('status', 'confirmed')->whereActive('1')->count() }}
 
         ) اگهی فعال و (
