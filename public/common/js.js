@@ -525,19 +525,18 @@ window.onload = function () {
         if (performance.navigation.type == 2) {
             Object.keys(add).forEach(key => {
                 if (key != "pusherTransportTLS") {
-                    // console.log(key)
                     // console.log(add[key])
                     da[key] = add[key]
                     // da= {'_method':'get','type':'category',category:category};
                     // console.log(12)
                     console.log(key + "===" + add[key])
 
-
                 }
 
 
             })
             if ($('#ad_li').length) {
+                console.log("09090")
                 update_ad_list(da)
             }
         }
@@ -827,9 +826,7 @@ window.onload = function () {
             }
         }
 
-        $(document).on('click', '.new_note', function (event) {
-            noty("ثبت شد ", "green", "")
-        });
+
         $(document).on('change', '.city_option', function (event) {
             let el = $(this)
             let name = el.data("name")
@@ -885,6 +882,26 @@ window.onload = function () {
         $(document).on('click', '#city_form_can', function (event) {
             let el = $(this);
             el.closest('.modal ').css('display', 'none')
+        });
+        $(document).on('click', '.remove_star', function (event) {
+            console.log(80)
+            let el = $(this);
+            let id = el.data("id");
+            $.ajax('/remove_star', {
+                headers: {
+                    'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+                },
+                data: { id: id},
+                type: 'post',
+                success: function (data) {
+                    console.log(data)
+                    let par=   el.closest(".par")
+                    par.hide(400)
+                },
+                error: function (request, status, error) {
+                    console.log(request)
+                }
+            })
         });
         $(document).on('click', '#city_form_btn', function (event) {
             console.log(60)
@@ -1056,6 +1073,25 @@ window.onload = function () {
         })
         $(document).on('click', '#select_region', function (event) {
             $('#city_all_select').show(400)
+        })
+
+        $(document).on('keyup', '.number_format1', function (event) {
+            let el = $(this);
+            let val = el.val();
+            let num = String(val).replace(/(.)(?=(\d{3})+$)/g, '$1,')
+            console.log(60)
+            if (val > 0) {
+                val = val.num2persian()
+                if (el.closest('.input-label1').find('.green_label').length) {
+                    el.closest('.input-label1').find('.green_label').html(" ( " + num + " ) " + " - " + val + "  تومان ")
+                } else {
+                    el.closest('.input-label1').find(".pn").append(`
+                    <p class="green_label">  ${val} - ${num}
+                    تومان</p>
+                    `)
+                }
+
+            }
         })
         $(document).on('keyup', '.number_format', function (event) {
             let el = $(this);
@@ -1449,6 +1485,7 @@ window.onload = function () {
             return all
         }
         function update_ad_list(data, update = true) {
+
             load_animation()
             $.ajax('/ads', {
                 headers: {
@@ -2245,10 +2282,14 @@ window.onload = function () {
             })
 
         })
-        $('.insert_note').keypress(function () {
+
+        $(document).on('click', '.new_note', function (event) {
+
             let el = $(this)
             let id = el.data('id')
-            let info = el.val()
+            let info = $('.insert_note').val()
+            console.log(id)
+            console.log(info)
             $.ajax('/panel/insert_note/' + id, {
                 headers: {
                     'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
@@ -2257,13 +2298,14 @@ window.onload = function () {
                 type: 'post',
                 success: function (data) {
                     console.log(data)
+            noty("ثبت شد ", "green", "")
+
                 },
                 error: function (request, status, error) {
                     console.log(request)
                 }
             })
-        })
-
+        });
 
         $('.select_skill').click(function () {
             let el = $(this)
@@ -3561,9 +3603,19 @@ window.onload = function () {
             load_recaptcha()
         })
 
+        $('#notif_price').on('change', function () {
+            let el = $(this)
+            let val = el.val()
+            console.log(val)
+            if(el.is(':checked')){
+             console.log("checked")
+             $('#info_sec').show(400)
+            }else{
+                $('#info_sec').hide(400)
+            }
+        })
         $('.check_pr').on('change', function () {
-            // let el = $(this)
-            // let val = el.val()
+
 
             let total = get_total()
             let amount = total
@@ -3637,6 +3689,9 @@ window.onload = function () {
                     }
                     if (data.code == 1) {
                         noty("پیام با موفقیت ارسال شد  ", "green", " پیام");
+                    }
+                    if (data.code == 2) {
+                        noty(" هنوز پرداخت برای ارسال آگهی انجام نشده   ");
                     }
 
                 },

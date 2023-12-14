@@ -57,10 +57,12 @@ class BillController extends Controller
 
         $vip = $request->vip;
         $notif = $request->notif;
+        $memo = $request->memo;
+
         $holdover = $request->holdover;
         $sort = $request->sort;
 
-
+        // dd($request->all());
         if ($type == 'vip') {
             $amount =  $user->vip_price();
         }
@@ -193,12 +195,16 @@ class BillController extends Controller
                             'notif' => $notif,
                             'vip' => $vip,
                             'type' => $type,
+                            'memo' => $memo,
+
                             'status' => 'bill_payed',
                         ]);
                         $user->update(['balance' => $user->balance - $bill->amount]);
                         if ($ad) {
                             if ($notif ) {
                                 $ad->update(['notif' => 1]);
+                                $advertise=Advertise::find($advertise_id);
+                                $user->send_memo_advertise($advertise,$memo);
                             }
 
                             if ($sort) {
@@ -222,7 +228,7 @@ class BillController extends Controller
         } else {
             $invoice->amount($amount);
         }
-        return   shetabit::via($via)->callbackUrl(route('bill.verify'))->purchase($invoice, function ($driver, $transactionId) use ($user, $vip, $notif, $holdover, $counsel_id, $type, $invoice, $advertise_id, $deposit_id,$talk_id, $amount, $to_id, $pay_from_cash, $sort) {
+        return   shetabit::via($via)->callbackUrl(route('bill.verify'))->purchase($invoice, function ($driver, $transactionId) use ($user, $vip, $notif, $holdover, $counsel_id, $type, $invoice, $advertise_id, $deposit_id,$talk_id, $amount, $to_id, $pay_from_cash, $sort,$memo) {
             $payment = Bill::create([
                 'transactionId' => ($transactionId),
                 'amount' => $amount,
@@ -239,6 +245,7 @@ class BillController extends Controller
                 'sort' => $sort,
                 'notif' => $notif,
                 'vip' => $vip,
+                'memo' => $memo,
             ]);
         })->pay()->render();
     }
@@ -361,6 +368,8 @@ class BillController extends Controller
                     case 'promotion':
                         if ($bill->notif) {
                             $bill->advertise->update(['notif' => 1]);
+                            $advertise=$bill->advertise;
+                            $user->send_memo_advertise($advertise,$bill->memo);
                         }
                         if ($bill->vip) {
                             $bill->advertise->update(['vip' => 1]);

@@ -98,6 +98,8 @@
 
                 <div class="actions">
                     <ul>
+
+                        @if($advertise->status!="deposit_delay")
                         <li>
                             <a href="{{ route('ad.logs',$advertise->id) }}" class="action">
                                 <span class="icon">
@@ -110,6 +112,7 @@
                                 <span>آمار و ارتقا</span>
                             </a>
                         </li>
+                        @endif
                         <li>
                           <form action="{{ route('delete.advertise',$advertise->id) }}" method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">
                             @csrf

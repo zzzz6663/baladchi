@@ -7,6 +7,7 @@ use App\Models\Cp;
 use Carbon\Carbon;
 use App\Models\Chat;
 use App\Models\City;
+use App\Models\Star;
 use App\Models\User;
 use App\Models\Brand;
 use App\Models\Telic;
@@ -113,6 +114,15 @@ class HomeController extends Controller
         //
         return response()->json([
             'status' => $status,
+        ]);
+    }
+    public function remove_star(Request $request )
+    {
+        $user = auth()->user();
+        $star=Star::find($request->id);
+        $star->delete();
+        return response()->json([
+            'status' => "ok",
         ]);
     }
 

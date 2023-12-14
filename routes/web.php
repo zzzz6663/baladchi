@@ -176,6 +176,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/counsel_quiz/{counsel}', 'HomeController@counsel_quiz')->name('counsel.quiz');
     Route::post('/insert_comment', 'HomeController@insert_comment')->name('insert.comment');
     Route::post('/insert_star', 'HomeController@insert_star')->name('insert.star');
+    Route::post('/remove_star', 'HomeController@remove_star')->name('remove.star');
 
 });
 

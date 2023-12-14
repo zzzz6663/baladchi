@@ -26,6 +26,7 @@ class Bill extends Model
         'notif',//ارسال نوتیف
         'sort',//نردبان
         'seen',//دیده شده ؟
+        'memo',//ارسال یرای همه کاربران  ؟
     ];
     public function user(){
         return $this->belongsTo(User::class);

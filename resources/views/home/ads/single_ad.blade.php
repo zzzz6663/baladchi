@@ -550,7 +550,7 @@
                                     </label>
                                     <textarea name="" class="insert_note" data-id="{{ $advertise->id }}" id="" cols="30"
                                         rows="10">{{ $note }}</textarea>
-                                    <span class="send-button pointer new_note" data-visitor="15" data-id="62">
+                                    <span class="send-button pointer new_note" data-visitor="15" data-id="{{ $advertise->id }}">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path

@@ -5895,7 +5895,7 @@ grammarly-desktop-integration {
 .ads-gallery .ads-gallery-nav ul li {
   width: 25%;
   padding: 0 12px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   flex-shrink: 0;
   cursor: pointer;
 }

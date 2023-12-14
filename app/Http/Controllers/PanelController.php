@@ -753,22 +753,34 @@ class PanelController extends Controller
 
 
 
-    public function insert_new_memo(Request $request ,advertise $advertise)
+    public function insert_new_memo(Request $request ,Advertise $advertise)
     {
         $user=auth()->user();
-        $count=$user->user_memos()->count();
+        $count=$user->user_memos()->where('advertise_id',$advertise->id)->count();
+        if( !$advertise->notif  ){
+            $code=2;
+            return response()->json(
+                [
+                    'status'=>"ok",
+                    'code'=>$code,
+                    'count'=>$count,
+                ]
+            );
+        }
         if($count >=3 ){
             $code=0;
         }else{
-            if ($request->memo && $advertise->faves_users()->count() > 0) {
-                $memo = $user->user_memos()->create([
-                    'memo' => $request->memo,
-                    'advertise_id' => $advertise->id,
-                    'active' => 1,
-                ]);
-                foreach ($advertise->faves_users as $faver) {
-                    $faver->memos()->attach([$memo->id]);
-                }
+            if (    $request->memo && $advertise->faves_users()->count() > 0) {
+                // $memo = $user->user_memos()->create([
+                //     'memo' => $request->memo,
+                //     'advertise_id' => $advertise->id,
+                //     'active' => 1,
+                // ]);
+                // foreach ($advertise->faves_users as $faver) {
+                //     $faver->memos()->attach([$memo->id]);
+                // }
+
+                $user->send_memo_advertise($advertise,$request->memo);
             }
             $code=1;
         }
@@ -1079,6 +1091,8 @@ class PanelController extends Controller
         }
         return response()->json([
             'all' => $request->all(),
+            'note' =>$note,
+            'advertise' =>$advertise
         ]);
     }
     public function insert_report(Request $request)

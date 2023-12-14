@@ -530,7 +530,7 @@ class AdvertiseController extends Controller
         if ($user  && $user->id != $advertise->user->id) {
             $user->seens()->syncWithoutDetaching($advertise->id, ['date' => Carbon::now()]);
         }
-
+        // dd($advertise);
         if ($user) {
 
             $note = $user->notes()->where('advertise_id', $advertise->id)->first();

@@ -1598,13 +1598,15 @@
                                                     </th>
                                                     <th>
                                                         <span class="tit">تاریخ</span>
-
+                                                    </th>
+                                                    <th>
+                                                        <span class="tit">اقدام</span>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($sts as $st)
-                                                    <tr>
+                                                    <tr class="par">
                                                         <td>
                                                             {{ $loop->iteration }}
                                                         </td>
@@ -1613,7 +1615,14 @@
                                                             {{ $st->to->family }}
                                                         </td>
                                                         <td>
-                                                            {{ jdate($st->creatde_at) }}
+                                                            {{ jdate($st->created_at) }}
+                                                        </td>
+                                                        <td>
+                                                            <div class="add-ads ">
+                                                                <span class="icon-button red remove_star"  data-id="{{  $st->id }}">
+                                                                    <span>حذف</span>
+                                                                </span>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -2081,5 +2090,5 @@
 
 
 
-    
+
 @endsection

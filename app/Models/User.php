@@ -341,4 +341,15 @@ class User extends Authenticatable
         }
         return Chat::where("to_id",$this->id)->where("seen",0)->count();
     }
+    public function send_memo_advertise(  $advertise,$memo){
+
+        $memo = $this->user_memos()->create([
+            'memo' => $memo,
+            'advertise_id' => $advertise->id,
+            'active' => 1,
+        ]);
+        foreach ($advertise->faves_users as $faver) {
+            $faver->memos()->attach([$memo->id]);
+        }
+    }
 }

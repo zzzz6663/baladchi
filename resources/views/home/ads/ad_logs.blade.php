@@ -112,27 +112,31 @@
                                             </div>
                                         </label>
                                     </div>
-                                @else
-                                    <div class="ertegha-option">
+                                    @endif
+                                    <div class="ertegha-option" id="info_sec" style="display: {{ $advertise->notif?"":"none" }}">
                                         <label for="">
-
                                             <div class="text">
                                                 <h4>
-                                                    توضیحات تغییر در آگهی
-
+                                                    ارسال اعلام
                                                 </h4>
                                                 <p>
                                                     در صورتیکه مایلید کسانیکه آگهی شما را ذخیره کرده اند از آخرین تغییرات با خیر بشوند تغییرات خود را در کادر
                                                     زیر بنویسید
                                                 </p>
+                                                <p>
+                                                    ارسال برای کاربران
+                                                    ( {{ $advertise->faves_users()->count() }}
+                                                         کاربر
+                                                    )
+
+                                                </p>
                                                 <br>
                                                 <br>
                                                 <div class="input-label textarea big">
-
                                                     <label for=""> توضیحات </label>
-                                                    <textarea name="info" id="memo" cols="30" rows="10"></textarea>
-
+                                                    <textarea name="memo" form="promotion" id="memo" cols="30" rows="10"></textarea>
                                                 </div>
+                                                @if ($advertise->notif)
                                                 <div class="">
                                                     <div class="footer-section">
                                                         <div class="pair-button">
@@ -147,6 +151,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             </div>
                                             <div class="price">
 
@@ -156,7 +161,6 @@
 
 
                                     </div>
-                                @endif
 
                                 @if ($advertise->expired())
                                     <div class="ertegha-option">

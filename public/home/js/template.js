@@ -169,6 +169,7 @@ if($('#txtEditor').length){
 
 ////////////////////////////////////
 $('.add-charge-form .btn').click(function(e){
+    let el =$(this)
     e.preventDefault();
     var a= $(this).siblings().children('input');
     var c= $(this).siblings().children('.num');
@@ -184,6 +185,21 @@ $('.add-charge-form .btn').click(function(e){
     }
     a.val(b);
         c.text(b);
+        let num = String(b).replace(/(.)(?=(\d{3})+$)/g, '$1,')
+        console.log(60)
+        if (b > 0) {
+            b = b.num2persian()
+            if (el.closest('.input-label1').find('.green_label').length) {
+                el.closest('.input-label1').find('.green_label').html(" ( " + num + " ) " + " - " + b + "  تومان ")
+            } else {
+                el.closest('.input-label1').find(".pn").append(`
+                <p class="green_label">  ${b} - ${num}
+                تومان</p>
+                `)
+            }
+
+        }
+
 });
 ////////////////////////////////////
 $(document).on('click', 'div.sliding-menu .top', function (event) {

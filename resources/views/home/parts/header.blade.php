@@ -488,7 +488,7 @@
                             <a href="{{ route('ads') }}">آگهی ها</a>
                         </li>
                         <li>
-                            <a href="{{ route('baladchiha') }}#share">بلدیچی ها</a>
+                            <a href="{{ route('baladchiha') }}#share">بلدچی ها</a>
                         </li>
                         <li>
                             <a href="{{ route('counsels') }}">خرد جمعی</a>

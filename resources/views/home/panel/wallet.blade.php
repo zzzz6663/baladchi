@@ -102,12 +102,12 @@
                             </div>
                         </div>
 
-                        <div class="add-charge">
+                        <div class="add-charge na input-label1 ">
                             <label for="">چقدر می‌خوای اعتبارت رو شارژ کنی؟</label>
                             <form action="{{ route('send.bill') }}"  method="post" id="send_bill_form">
                                 @csrf
                                 @method('post')
-                                <input type="text" hidden name="type" value="charge_wallet">
+                                <input type="text" hidden name="type" value="charge_wallet" >
                             <div class="add-charge-form">
                                 <button class="btn add">
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -115,7 +115,7 @@
                                     </svg>
                                 </button>
                                 <div class="price">
-                                    <span class="num">2۰,۰۰۰</span>
+                                    <input type="number" class="number_format1">
                                     <span class="un">تومان</span>
                                     <input type="hidden" value="20000" id="wallet_amount" name="amount" >
                                 </div>
@@ -125,6 +125,8 @@
                                     </svg>
                                 </button>
                             </div>
+                            <span class="pn"></span>
+
                                </form>
                             <div class="guide">
                                 <span class="icon">
