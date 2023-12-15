@@ -1,7 +1,9 @@
 .pointer {
     cursor: pointer;
 }
-
+.moving.tooltip{
+background: #c2c2c2;
+}
 .green_label {
     color: green !important;
     font-weight: bold;
@@ -421,9 +423,11 @@ input[type=number] {
     position: relative;
 }
 
+
+
 .moving {
     position: absolute;
-    top: 10px;
+    bottom: 10px;
     background: rgb(255, 255, 255);
     color: #000000;
     vertical-align: middle;
@@ -431,7 +435,16 @@ input[type=number] {
     border-radius: 15px;
     padding: 0 10px;
 }
-
+.tooltip_s {
+    top: 10px;
+    position: absolute;
+    background: rgb(161, 161, 161);
+    color: #000000;
+    vertical-align: middle;
+    line-height: 31px;
+    border-radius: 15px;
+    padding: 0 10px;
+}
 #search_parent {
     max-height: 400px;
     overflow: auto;

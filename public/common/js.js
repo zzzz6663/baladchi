@@ -525,10 +525,7 @@ window.onload = function () {
         if (performance.navigation.type == 2) {
             Object.keys(add).forEach(key => {
                 if (key != "pusherTransportTLS") {
-                    // console.log(add[key])
                     da[key] = add[key]
-                    // da= {'_method':'get','type':'category',category:category};
-                    // console.log(12)
                     console.log(key + "===" + add[key])
 
                 }
@@ -577,6 +574,9 @@ window.onload = function () {
 
 
 
+        if ($('.tooltip_s').length) {
+            $('.tooltip_s').tooltipster();
+        }
         if ($('.get_direct').length) {
             $('.get_direct').each(function (i, obj) {
                 // let id=obj.data('id')

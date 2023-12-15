@@ -1,3 +1,9 @@
 @import "../../public/common/animate.css";
+@import "../../public/common/tooltipster.bundle.min.css";
 @import "../../public/common/css.css";
 @import "../../public/home/css/style.css";
+
+
+.tooltip{
+    opacity: 1!important;
+}

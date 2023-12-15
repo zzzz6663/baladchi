@@ -14,7 +14,9 @@
     @else
         <a class="go_ad" href="{{ route('single.ad', $advertise->id) }}">
 @endif
-
+@php
+$memeos=$advertise->memos
+@endphp
 
 
 
@@ -103,6 +105,23 @@
         @auth
             <span class="moving">{{ $user->ad_note($advertise) }}</span>
         @endauth
+
+        @auth
+        @if($memeos->count() )
+
+        <span class=" tooltip_s " title="
+        @foreach ($memeos as $memo )
+         {{    $memo->memo }}
+        @endforeach
+
+        ">
+
+توضیحات آگهی دهنده
+
+        </span>
+        @endif
+
+    @endauth
     </div>
     <div class="title">
         <h4>
@@ -138,36 +157,36 @@
                     <span class="un">تومان</span>
                 @endif  --}}
 
-                @if ($advertise->show_option('deposit')=="0" )
-                رهن:
-                رایگان
-                @elseif(!$advertise->show_option('deposit'))
-                رهن:
-                توافقی
-                @else
-                <span class="num">
+                @if ($advertise->show_option('deposit') == '0')
                     رهن:
-                    {{ number_format($advertise->show_option('deposit')) }}
-                </span>
-                <span class="un">تومان</span>
+                    رایگان
+                @elseif(!$advertise->show_option('deposit'))
+                    رهن:
+                    توافقی
+                @else
+                    <span class="num">
+                        رهن:
+                        {{ number_format($advertise->show_option('deposit')) }}
+                    </span>
+                    <span class="un">تومان</span>
                 @endif
 
             </div>
             <div>
-                @if ($advertise->show_option('monthly_rent')=="0" )
-                اجاره:
-                رایگان
-                @elseif(!$advertise->show_option('monthly_rent'))
-                اجاره:
-                توافقی
-                @else
-                <span class="num">
+                @if ($advertise->show_option('monthly_rent') == '0')
                     اجاره:
-                    {{ number_format($advertise->show_option('monthly_rent')) }}
-                </span>
-                <span class="un">تومان</span>
+                    رایگان
+                @elseif(!$advertise->show_option('monthly_rent'))
+                    اجاره:
+                    توافقی
+                @else
+                    <span class="num">
+                        اجاره:
+                        {{ number_format($advertise->show_option('monthly_rent')) }}
+                    </span>
+                    <span class="un">تومان</span>
                 @endif
-            {{--  {{ $advertise->show_option('monthly_rent') }}  --}}
+                {{--  {{ $advertise->show_option('monthly_rent') }}  --}}
 
             </div>
         @endif
