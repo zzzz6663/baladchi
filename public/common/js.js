@@ -575,9 +575,9 @@ window.onload = function () {
 
 
 
-        if ($('.tooltip_s').length) {
-            $('.tooltip_s').tooltipster();
-        }
+        // if ($('.tooltip_s').length) {
+        //     $('.tooltip_s').tooltipster();
+        // }
         if ($('.get_direct').length) {
             $('.get_direct').each(function (i, obj) {
                 // let id=obj.data('id')
