@@ -17,14 +17,14 @@
                     <span>از</span>
                     {{--  <span class="small">(تومان)</span>  --}}
                 </label>
-                <input type="number" name="min_function__min" class="left filter_class">
+                <input type="number" name="functionm__min" class="left filter_class">
             </div>
             <div class="input-label">
                 <label for="">
                     <span> تا</span>
                     {{--  <span class="small">(تومان)</span>  --}}
                 </label>
-                <input type="number" name="max_function__max" class="left filter_class">
+                <input type="number" name="functionm__max" class="left filter_class">
             </div>
         </div>
     </div>

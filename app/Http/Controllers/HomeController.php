@@ -27,6 +27,7 @@ use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use App\Events\DirectMessage;
 use App\Models\Counselquestion;
+use App\Models\Option;
 use Morilog\Jalali\CalendarUtils;
 use App\Notifications\SendKaveCode;
 use Illuminate\Support\Facades\Auth;
@@ -55,19 +56,32 @@ class HomeController extends Controller
     }
     public  function  clear()
     {
-        Artisan::call('optimize');
 
+        // return Session()->get("reqs");
         $user = auth()->user();;
+        // Artisan::call('optimize');
+        // Artisan::call('cache:clear');
+        // Artisan::call('route:cache');
+        // Artisan::call('config:cache');
+        // Artisan::call('view:clear');
+        // Artisan::call('optimize:clear');
+        // Artisan::call('config:clear');
+        // Option::create([
+        //     'optionable_id'=>"221",
+        //     'App\Models\Advertise'=>"App\Models\Advertise",
+        //     'name'=>"function",
+        //     'val'=>"20000",
+        //     'info'=>"",
+        //     'show'=>"1",
+        // ]);
 
-        Artisan::call('cache:clear');
-        Artisan::call('route:cache');
-        Artisan::call('config:cache');
-        Artisan::call('view:clear');
-        Artisan::call('optimize:clear');
-        Artisan::call('config:clear');
-
-
-        // $chat=Chat::find(55s3);
+        // $req=Session()->get("reqs");
+        // dd( $req);
+        // $chat=Telic::find(23);
+        // dd($chat->questions);
+        $chat=Advertise::find(80);
+        dd($chat->options->pluck("name")->toArray());
+        // dd($chat->options()->whereName("depoist")->get());
         // NewMessage::dispatch($chat);
         // Auth::loginUsingId(1,true);
         // $deposit_delay_advertises = Advertise::whereStatus("deposit_delay")->get();

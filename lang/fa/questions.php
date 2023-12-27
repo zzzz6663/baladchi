@@ -56,7 +56,7 @@ return [
     "chassis_status" => "وضعیت شاسی ها",
     "motor_status" => "وضعیت موتور",
     "body_status" => "وضعیت بدنه",
-    "function" => "کارکرد",
+    "functionm" => "کارکرد",
     "color" => "رنگ",
     "production_year" => "مدل (سال تولید)",
     "car_plaque_pics" => "عکس خودرو با پلاک",

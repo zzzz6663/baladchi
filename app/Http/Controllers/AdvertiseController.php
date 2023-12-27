@@ -29,9 +29,10 @@ class AdvertiseController extends Controller
         // dd($request->all());
 
         $user = auth()->user();
-
+    //     dd(url()->previous()
+    // );
         $cities_all = [];
-
+        Session()->put("reqs", $request->all());
         // if($request->cities){
         //     $cities_all=$request->cities;;
 
@@ -49,14 +50,14 @@ class AdvertiseController extends Controller
         $page = 12;
 
 
-        if ($request->check_city   ) {
-            $cities_all=$request->cities;
-            if( $user){
-            $user->all_cities()->sync($request->cities);
+        if ($request->check_city) {
+            $cities_all = $request->cities;
+            if ($user) {
+                $user->all_cities()->sync($request->cities);
             }
         }
 
-        if ($user  ) {
+        if ($user) {
             $cities_all = $user->all_cities()->pluck("id")->toArray();
         }
         if (cache()->has("provinces")) {
@@ -100,23 +101,67 @@ class AdvertiseController extends Controller
             $request->page = 1;
         }
         foreach ($request->all() as $eq => $val) {
-            if (in_array($eq, ['_method', "_token", "phpdebugbar-height", "phpdebugbar-open", "pusherTransportNonTLS", "telic_id", "subset_id", "type", "cities", "check_city", "id", "vip", "region_id", "back", "now_page", "category_id", "remove", 'type', 'subset', "local", 'telic', "remove", 'category', 'search', "page", 'length', "pusherTransportTLS", "_", "form_data"])) {
+            if (in_array($eq, ['_method', "_token",
+            "phpdebugbar-height", "phpdebugbar-open",
+             "pusherTransportNonTLS", "telic_id",
+             "subset_id", "type", "cities",
+              "check_city", "id", "vip",
+              "region_id", "back", "now_page",
+               "category_id", "remove", 'type', 'subset', "local", 'telic',
+                "remove", 'category', 'search',
+                 "page", 'length', "pusherTransportTLS", "_", "form_data"])) {
                 continue;
             }
+
+
             $data = explode('__', $eq);
             if (sizeof($data) > 1) {
-                $opertaor = $data['1'] == "min" ? '>=' : '<=';
+                // $opertaor = $data['1'] == "min" ? '>=' : '<=';
                 if ($val) {
-                    $advertises->whereHas('options', function ($query) use ($opertaor, $data, $val) {
-                        $query->where('name', $data[0])
-                            ->where('val', $opertaor, (int) $val);
-                    });
+
+
+                    if ($data['1'] == "min") {
+
+                        $advertises->whereHas('options', function ($query) use ($data, $val) {
+                            $query->where('name', $data[0])
+                                ->where('val', ">=", (int) $val);
+                        });
+                    }
+
+                    if ($data['1'] == "max") {
+
+                        $advertises->whereHas('options', function ($query) use ($data, $val) {
+                            $query->where('name', $data[0])
+                                ->where('val', "<", (int) $val);
+                        });
+                    }
                 }
             } else {
-                $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
-                    $query->where('name', $eq)
-                        ->where('val', $val);
-                });
+
+                switch($val){
+                    case"pictures":
+                        $advertises->whereHas('images', function ($query) use ($eq, $val, $request) {
+
+                        });
+                        break;
+                    case"on":
+                        $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
+                            $query->where('name', $eq)
+                                ->where('val', $val);
+                        });
+                        break;
+
+                        default:
+                        if($val){
+                            $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
+                                $query->where('name', $eq)
+                                    ->where('val', $val);
+                            });
+                        }
+
+                        break;
+                }
+
             }
         }
 
@@ -137,7 +182,7 @@ class AdvertiseController extends Controller
             $now_page = 1;
         }
 
-// sss
+        // sss
         // if (cache()->has("advertises1")) {
         //     // $advertises = cache()->get("advertises1");
         // } else {
@@ -173,7 +218,7 @@ class AdvertiseController extends Controller
                 'page' => $request->page,
                 'all' => $request->all(),
                 'cities_all' => $cities_all,
-                'body' => view('home.ads.ads_list', compact(['all_req',"provinces", 'user', 'advertises', 'user_fave', 'categories']))->render(),
+                'body' => view('home.ads.ads_list', compact(['all_req', "provinces", 'user', 'advertises', 'user_fave', 'categories']))->render(),
             ]);
         } else {
 
@@ -341,8 +386,7 @@ class AdvertiseController extends Controller
 
                 if (!File::isDirectory($path)) {
 
-                  File::makeDirectory($path, 0777, true, true);
-
+                    File::makeDirectory($path, 0777, true, true);
                 }
                 $path .= '/';
                 // return response()->json([

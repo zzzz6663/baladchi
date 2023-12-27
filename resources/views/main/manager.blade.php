@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- BEGIN CSS -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-   <link rel="icon" type="image/x-icon" href="/admin/assets/img/favicon/favicon.ico">
 
    <!-- Icons -->
    <link rel="stylesheet" href="{{ asset("/admin/assets/vendor/fonts/boxicons.css") }}">
@@ -33,6 +32,7 @@
    <link rel="stylesheet" href="{{ asset("/common/select2.min.css") }}">
    <link rel="stylesheet" href="{{ asset("/common/load.css") }}">
    <link rel="stylesheet" href="{{ asset("/common/modal-loading.css") }}">
+   <link rel="icon" type="image/x-icon" href="/icon/favicon.png">
    {{--  <link rel="stylesheet" href="{{ asset("/common/css.css") }}">  --}}
 
    <link href="https://static.neshan.org/sdk/leaflet/1.4.0/leaflet.css" rel="stylesheet" type="text/css">

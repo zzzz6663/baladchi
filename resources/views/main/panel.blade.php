@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/common/google.css">
     <link rel="stylesheet" href="/common/leaf.css">
         <link rel="stylesheet" href="/common/modal-loading.css">
-
+        <link rel="icon" type="image/x-icon" href="/icon/favicon.png">
     {{--  <link rel="stylesheet" href="/common/css.css">  --}}
     @vite('resources/css/app.css')
 

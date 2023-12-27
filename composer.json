@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "barryvdh/laravel-debugbar": "^3.9",
         "beyondcode/laravel-websockets": "^1.14",
+        "diglactic/laravel-breadcrumbs": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "kavenegar/laravel": "^1.3",

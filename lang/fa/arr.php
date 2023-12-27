@@ -52,7 +52,7 @@ return [
     '3_option' => 'سه گزینه ',
     '4_option' => 'چهار گزینه ',
     '5_option' => 'پنج گزینه ',
-    'select_the_best_answer' => 'انتخاب پاسخ برتر ',
+    'select_the_best_answer' => 'پاداش بهترین جواب ',
     'divide_reward' => 'تقسیم ین همه ',
     'no_reward' => ' بدون پاداش',
     'pay_counsel' => ' پرداخت  هزینه خرد جمعی',

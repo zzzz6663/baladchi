@@ -11,7 +11,7 @@
     </div>
     <div class="accord-content">
         <div>
-            <select name="brand_authenticity" id="brand_authenticity" class="nice-select filter_class" data-place="  انتخاب کنید">
+            <select name="brand_authenticity" id="brand_authenticity" class="  filter_class" data-place="  انتخاب کنید">
                 {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
                 <option value="original">اصل</option>
                 <option value="fake">غیراصل</option>

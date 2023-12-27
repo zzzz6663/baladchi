@@ -32,15 +32,9 @@
 </div>
 <script></script>
 <form action="" id="req_form">
-    {{--  @dd(Route::previous()->getName())  --}}
-    {{--  @dd(url()->previous())  --}}
-
-    {{--  @dd(isset($all_req["page"]))  --}}
-
-    @if (!isset($all_req['page']))
+    {{--  @if (!isset($all_req['page']))
         <script>
             @if (isset($all_req['remove']))
-
                 localStorage.clear();
                 localStorage.removeItem("remove");
                 localStorage.removeItem("search");
@@ -56,9 +50,11 @@
         @if (is_array($val))
             @continue
         @endif
+        @if($val)
         <input hidden type="text" name="{{ $req }}" value="{{ $val }}">
+        @endif
         <script>
             localStorage.setItem("{{ $req }}", "{{ $val }}");
         </script>
-    @endforeach
+    @endforeach  --}}
 </form>

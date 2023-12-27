@@ -91,7 +91,7 @@
                         </div>
                         <div class="input-label big postion_relative mb-0">
                             <label for="new_op">
-                                <span> کلید وازه </span>
+                                <span> کلید واژه </span>
                             </label>
                             <input type="text" name="new_op" id="new_op">
                             <span class=" pointer postion_absolute" id="new_tag" value=" ">
@@ -170,7 +170,7 @@
                             <label for="reward"> پاداش پرداختی </label>
                             <select name="reward" id="reward" class="nice-select" data-place="پاداش پرداختی">
                                 <option value="no_reward"> بدون پاداش </option>
-                                <option value="select_the_best_answer"> انتخاب پاسخ برتر </option>
+                                <option value="select_the_best_answer"> پاداش بهترین جواب </option>
                                 <option value="divide_reward"> تقسیم بین همه </option>
                             </select>
                         </div>
@@ -184,7 +184,7 @@
                     </div>  --}}
 
                         <div class="input-label big" id="p_price" style="display:none">
-                            <label for="">قیمت برای پاسخ </label>
+                            <label for="">پاداش پاسخ دهندگان </label>
                             <input type="number" name="price" id="price"
                                 class="rtl_dir number_format amount_zero" placeholder="" value="0">
                             <div class="un">

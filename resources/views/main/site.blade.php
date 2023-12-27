@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/common/map.css">
     <link rel="stylesheet" href="/common/share.css">
     <link rel="stylesheet" href="/common/modal-loading.css">
+    <link rel="icon" type="image/x-icon" href="/icon/favicon.png">
+
     @vite('resources/css/app.css')
 
     {{--  <script src="https://cdn.socket.io/4.4.1/socket.io.esm.min.js" type="text/javascript"></script>  --}}

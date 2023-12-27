@@ -8,7 +8,9 @@ background: #c2c2c2;
     color: green !important;
     font-weight: bold;
 }
-
+.logo_l{
+    width: 100%;
+}
 #dashmain:has(> #chat-boxes) {
     padding: 0 !important;
 }

@@ -12,7 +12,10 @@
 
             </div>  --}}
             <form action="" id="serach_form">
-
+                <input type="text" name="type" id="type" hidden value="">
+                <input type="text" name="category_id" id="category_id" hidden value="">
+                <input type="text" name="subset_id" id="subset_id" hidden value="">
+                <input type="text" name="telic_id" id="telic_id" hidden value="">
                 <div class="accord-box  pointer  ">
                     <div class="top nob  pointer ">
                         <span class="backpage pointer ">
@@ -44,8 +47,8 @@
                 </div>
 
                 @foreach ($categories as $category)
-                    <div class="accord-box side_cat">
 
+                    <div class="accord-box side_cat">
                         <div class="top nob  ">
                             <a href="#" class="cat-item toggle_ad" data-id="{{ $category->id }}"
                                 data-type="category">

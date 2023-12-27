@@ -516,28 +516,29 @@ window.onload = function () {
         // console.log((6000000).num2persian())
         let vals = JSON.stringify(localStorage);
         let add = localStorage
-        // console.log(localStorage)
         Object.keys(localStorage); // ['One', 'Two', 'Three']
-        // Object.keys(localStorage).forEach(key => console.log(key))
         Object.keys(add); // ['One', 'Two', 'Three']
         let da = {}
 
         if (performance.navigation.type == 2) {
-            Object.keys(add).forEach(key => {
-                if (key != "pusherTransportTLS") {
-                    da[key] = add[key]
-                    console.log(key + "===" + add[key])
-
-                }
-
-
-            })
+            // Object.keys(add).forEach(key => {
+            //     if (key != "pusherTransportTLS") {
+            //         da[key] = add[key]
+            //         console.log(key + "===" + add[key])
+            //     }
+            // })
             if ($('#ad_li').length) {
-                console.log("09090")
-                update_ad_list(da)
+                let alldata = get_items()
+                console.log(alldata)
+                update_ad_list(alldata)
+
             }
         }
 
+        function get_items() {
+            let all_data = JSON.parse(localStorage.getItem("alldata"))
+            return all_data
+        }
 
 
 
@@ -891,11 +892,11 @@ window.onload = function () {
                 headers: {
                     'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
                 },
-                data: { id: id},
+                data: { id: id },
                 type: 'post',
                 success: function (data) {
                     console.log(data)
-                    let par=   el.closest(".par")
+                    let par = el.closest(".par")
                     par.hide(400)
                 },
                 error: function (request, status, error) {
@@ -971,12 +972,12 @@ window.onload = function () {
             console.log("index111" + index)
 
         })
-        if($('.cook_e').length){
+        if ($('.cook_e').length) {
             let note1 = Cookies.get('note2') // => undefined
             console.log("note1" + note1)
-            if(note1){
+            if (note1) {
                 $('#note_visitor').hide(300)
-            }else{
+            } else {
                 $('#note_visitor').show(300)
             }
         }
@@ -995,14 +996,14 @@ window.onload = function () {
             $('#ba_f').submit()
             // $(".select_kill_id").removeClass("active_ch")
             // el.addClass("active_ch")
-         })
+        })
         $(document).on('click', '.all_skill', function (event) {
             $(this).hide(50)
             $(".par_c").show(400)
             $(".par_c").removeClass("active")
             $('#par_id').val("")
             $('#skill_id').val("")
-          })
+        })
 
 
 
@@ -1169,14 +1170,25 @@ window.onload = function () {
         $('.final_res').click(function () {
             let el = $(this)
             let telic = el.data('id')
+            let type = el.data('type')
+            console.log(type)
+            if(type=="telic"){
+                $('#telic_id').val(telic)
+                set_main("telic")
+            }else{
+                $('#telic_id').val("")
+            }
+            // $('#telic_id').val(telic)
+            // $('#type').val("telic")
+            // console.log("final_res clicked")
+            // localStorage.setItem('telic', telic)
+            // set_main("telic")
             get_telic(el, telic)
         });
         function get_telic(el, telic, update = true) {
-            console.log('telic' + telic)
-            let data = { '_method': 'get', 'type': 'telic', telic: telic };
             if (update) {
+                let data=get_items()
                 update_ad_list(data)
-
             }
             let type = el.data('type')
             let id = el.data('id')
@@ -1187,21 +1199,115 @@ window.onload = function () {
                 data: { id: id, type: type },
                 type: 'post',
                 success: function (data) {
-                    console.log(data)
-                    console.log(1208)
                     $('#filters_all').html(data.body)
+                    setTimeout(() => {
+                      init_data()
+
+                    }, 500);
                 },
                 error: function (request, status, error) {
                     console.log(request)
                 }
             })
         }
+       function init_data(){
+            let alldata = get_items()
+            console.log(alldata)
+            for (const key in alldata) {
+                let val = alldata[key]
+                if (val) {
+                    const myArray = key.split("__");
+                    if (myArray.length > 1) {
+                        setTimeout(() => {
+                            let name = myArray[0]
+                            let inp = $("[name=" + key + "]")
+                            if (val) {
+                                inp.closest('.accord-box ').addClass("active")
+                                inp.val(val)
+                            }
+                        }, 300);
+                    } else {
+                        let input = $("[name=" + key + "]")
+                        input.closest('.accord-box').addClass("active")
+                        if (val == "on") {
+                            input.prop('checked', true);
+                            input.attr('checked', 'checked');
+                        } else {
+                            let typeinp =input.attr("type")
+                            input.val(val)
+                        }
+
+                    }
+                }
+            }
+        }
+
+        function remove_items() {
+            localStorage.removeItem("alldata");
+            // localStorage.removeItem("mytime");
+        }
+        function set_items() {
+            localStorage.removeItem("alldata");
+            var form_data = $('#serach_form').serializeArray();
+            form_data = ArrayToObject(form_data)
+            localStorage.setItem("alldata", JSON.stringify(form_data));
+            return form_data
+        }
+        function set_main(type) {
+            localStorage.removeItem("alldata");
+            let form_data
+            switch (type) {
+                case 'category':
+                    $('#telic_id').val("")
+                    $('#subset_id').val("")
+                    form_data ={
+                        category_id:$('#category_id').val(),
+                        subset_id:null,
+                        telic_id:null,
+                    }
+                  break;
+                  case 'subset':
+                    $('#telic_id').val("")
+                    form_data ={
+                        category_id:$('#category_id').val(),
+                        subset_id:$('#subset_id').val(),
+                        telic_id:null,
+                    }
+                  break;
+                  case 'telic':
+                    form_data ={
+                        category_id:$('#category_id').val(),
+                        subset_id:$('#subset_id').val(),
+                        telic_id:$('#telic_id').val(),
+                    }
+                  break;
+
+              }
+            localStorage.setItem("alldata", JSON.stringify(form_data));
+            console.log(type)
+            console.log(form_data)
+            return form_data
+
+        }
+
+        $('body').on('keyup change', '.filter_class', function (e) {
+            let el = $(this)
+            if (e.originalEvent) {
+                let form_data = set_items()
+                console.log(form_data)
+                update_ad_list(form_data, false)
+            }
+        });
+
         $('.subset_side').click(function () {
             let el = $(this)
             let subset = el.data('id')
+            $('#subset_id').val(subset)
             $('#filters_all').html("")
             localStorage.removeItem("telic")
+            localStorage.setItem("subset", subset)
             get_subset(el, subset, update = true)
+            set_main("subset")
         });
 
         function get_subset(el, subset, update = true) {
@@ -1303,15 +1409,22 @@ window.onload = function () {
 
         });
         $('body').on('click', '.all_cat_show', function (e) {
-            console.log(12);
-            let data = { '_method': 'get', 'type': 'category', "remove": 1 };
-            update_ad_list(data)
+            // let data = { '_method': 'get', 'type': 'category', "remove": 1 };
+            remove_items()
+            let data=get_items()
+            console.log(data);
+
             $('.accord-box.side_cat').each(function (i, obj) {
                 let pl = $(this)
                 pl.removeClass('active')
                 pl.removeClass('d_none')
             });
-            $('.search_box').val("")
+
+            // $('.accord-box.side_cat').removeClass('active')
+            // $('.accord-box.side_cat').removeClass('active')
+            // $('.search_box').val("")
+            update_ad_list({},false)
+
 
         });
 
@@ -1342,26 +1455,6 @@ window.onload = function () {
 
         // });
 
-
-        $('body').on('keyup change', '.filter_class', function (e) {
-            let el = $(this)
-            let name = el.attr('name')
-            let val = el.val()
-            var form_data = $('#req_form').serializeArray();
-            console.log(form_data)
-            let ob = {}
-            ob.name = name;
-            ob.value = val;
-            form_data.push(ob);
-            // console.log(name)
-            localStorage.setItem("form_data", form_data);
-            console.log(localStorage.getItem("local"))
-            // console.log(form_data)
-            form_data = ArrayToObject(form_data)
-            // console.log(form_data)
-            update_ad_list(form_data, false)
-
-        });
         function ArrayToObject(arr) {
             var obj = {};
             arr.forEach(function (item) {
@@ -1485,157 +1578,57 @@ window.onload = function () {
             return all
         }
         function update_ad_list(data, update = true) {
-
+            console.log(data)
             load_animation()
             $.ajax('/ads', {
                 headers: {
                     'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
-                    // 'Content-Type':'application/json,charset=utf-8'
                 },
                 type: 'get',
                 datatype: 'json',
                 data: data,
                 success: function (data) {
+                    console.log(data)
                     stop_animation()
-                    console.log(606556);
-                    console.log(data);
                     if (!$('#ids_li').length) {
                         return
                     }
                     $('#ad_li').html(data.body)
-                    // console.log(localStorage)
                     let category
                     let subset
                     let telic
                     if (update) {
-                        category = localStorage.getItem('category')
-                        subset = localStorage.getItem('subset')
-                        telic = localStorage.getItem('telic')
-                    }
+                        category = $('#category_id').val()
+                        subset = $('#subset_id').val()
+                        telic = $('#telic_id').val()
+                        console.log(telic)
 
-
-                    setTimeout(() => {
-                        if (category) {
-                            let el = $(".toggle_ad[data-id='" + category + "']");
-                            get_category(el, category, update = false)
-                            console.log(category)
-                        }
-                    }, 1);
-                    setTimeout(() => {
-                        if (subset) {
-                            let el = $('.subset_side').eq(subset - 1)
-                            el = $(".subset_side[data-id='" + subset + "']");
-                            get_subset(el, subset, update = false)
-                            console.log(subset)
-                        }
-                    }, 1);
-                    setTimeout(() => {
-                        if (telic) {
-                            let el = $('.final_res').eq(telic - 1)
-                            el = $(".final_res[data-id='" + telic + "']");
-                            get_telic(el, telic, update = false)
-                            for (const key in localStorage) {
-                                let val = localStorage[key]
-                                if (key == "search") {
-                                    if (val) {
-                                        $('#search').addClass("active")
-                                        $('.search_box').val(val)
-                                    }
-                                }
-                                const myArray = key.split("__");
-                                if (myArray.length > 1) {
-                                    setTimeout(() => {
-                                        let name = myArray[0]
-                                        let inp = $("input[name=" + key + "]")
-                                        if (val) {
-                                            inp.closest('.accord-box ').addClass("active")
-                                            inp.val(val)
-                                        }
-                                    }, 100);
-
-                                }
+                        setTimeout(() => {
+                            if (category) {
+                                let el = $(".toggle_ad[data-id='" + category + "']");
+                                get_category(el, category, update = false)
                             }
-                        }
-                    }, 1);
-
-
-                    // console.log(111)
-                    // console.log(111)
-                    // console.log(data.all)
-                    // console.log(data.all.id)
-                    // setTimeout(() => {
-                    //     if (data.all.id) {
-                    //         $('.all_cat_show').click()
-                    //         let query
-                    //         setTimeout(() => {
-                    //             console.log(12)
-                    //             console.log(localStorage)
-                    //             console.log(data.all)
-                    //             console.log(data.all.type)
-                    //             if (data.all.type == "category") {
-
-                    //                 let category = data.all.id
-                    //                 el = $(".toggle_ad[data-id='" + category + "']");
-                    //                 get_category(el, category, update = false)
-                    //                  query = { '_method': 'get', 'type': 'category', category: category };
-
-                    //             }
-
-                    //             if (data.all.type == "subset") {
-                    //                 let subset = data.all.id
-                    //                 let all_data = get_cat(subset, "subset")
-                    //                 el = $(".toggle_ad[data-id='" + all_data.category + "']");
-                    //                 get_category(el, all_data.category, update = false)
-                    //                 setTimeout(() => {
-                    //                     let el = $('.subset_side').eq(subset - 1)
-                    //                     el = $(".subset_side[data-id='" + subset + "']");
-                    //                     get_subset(el, subset, update = false)
-                    //                 }, 20);
-                    //                 query = { '_method': 'get', 'type': 'subset', subset: subset };
-                    //             }
-                    //             if (data.all.type == "telic") {
-                    //                 let telic = data.all.id
-                    //                 let all_data = get_cat(telic, "telic")
-                    //                 el = $(".toggle_ad[data-id='" + all_data.category + "']");
-                    //                 get_category(el, all_data.category, update = false)
-                    //                 setTimeout(() => {
-                    //                     let el = $('.subset_side').eq(all_data.subset - 1)
-                    //                     el = $(".subset_side[data-id='" + all_data.subset + "']");
-                    //                     get_subset(el, all_data.subset, update = false)
-                    //                 }, 20);
-
-                    //                 setTimeout(() => {
-                    //                     let el = $('.final_res').eq(telic - 1)
-                    //                     el = $(".final_res[data-id='" + telic + "']");
-                    //                     get_telic(el, telic, update = false)
-                    //                 }, 20);
-
-                    //                 query = { '_method': 'get', 'type': 'telic', telic: telic };
-                    //             }
-                    //             console.log(726)
-                    //             console.log(query)
-                    //                 update_ad_list(query)
-
-                    //             // if(data.all.type=="category"){
-                    //             //     let category= data.all.category
-                    //             //     el = $(".toggle_ad[data-id='" + category + "']");
-                    //             //     get_category(el, category, update = false)
-                    //             // }
-                    //             // if(data.all.type=="category"){
-                    //             //     let category= data.all.category
-                    //             //     el = $(".toggle_ad[data-id='" + category + "']");
-                    //             //     get_category(el, category, update = false)
-                    //             // }
-                    //         }, 1);
-                    //     }
-                    // }, 1);
-
-
+                        }, 1);
+                        setTimeout(() => {
+                            if (subset) {
+                                let el = $('.subset_side').eq(subset - 1)
+                                el = $(".subset_side[data-id='" + subset + "']");
+                                get_subset(el, subset, update = false)
+                            }
+                        }, 1);
+                        setTimeout(() => {
+                            if (telic) {
+                                let el = $('.final_res').eq(telic - 1)
+                                el = $(".final_res[data-id='" + telic + "']");
+                                get_telic(el, telic, update = false)
+                            }
+                        }, 1);
+                    }
                 },
                 error: function (request, status, error) {
                     stop_animation()
                     console.log(request);
-                    // stop_animation()
+                    console.log(error);
                     noty('       مشکلی ایجاد شده     ', 'red', '');
                 }
             })
@@ -1675,12 +1668,15 @@ window.onload = function () {
 
             let el = $(this)
             let category = el.data('id')
+            $('#category_id').val(category)
             console.log(el)
             localStorage.removeItem('telic')
             localStorage.removeItem('subset')
+            localStorage.setItem('category', category)
             get_category(el, category, update = true)
             $('#filters_all').html("")
             $('.search_box').val("")
+            set_main("category")
         })
 
         let update
@@ -2298,7 +2294,7 @@ window.onload = function () {
                 type: 'post',
                 success: function (data) {
                     console.log(data)
-            noty("ثبت شد ", "green", "")
+                    noty("ثبت شد ", "green", "")
 
                 },
                 error: function (request, status, error) {
@@ -3607,10 +3603,10 @@ window.onload = function () {
             let el = $(this)
             let val = el.val()
             console.log(val)
-            if(el.is(':checked')){
-             console.log("checked")
-             $('#info_sec').show(400)
-            }else{
+            if (el.is(':checked')) {
+                console.log("checked")
+                $('#info_sec').show(400)
+            } else {
                 $('#info_sec').hide(400)
             }
         })

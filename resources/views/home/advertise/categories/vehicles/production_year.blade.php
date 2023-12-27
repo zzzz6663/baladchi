@@ -1,8 +1,6 @@
 <div class="select-label">
     <label for="production_year">
         مدل (سال تولید)
-
-
     </label>
     <select name="production_year" id="production_year" class="select_normal" data-place="  انتخاب کنید">
         <option value="">انتخاب کنید</option>

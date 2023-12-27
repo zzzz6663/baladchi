@@ -1,9 +1,9 @@
 @extends('main.site')
 @section('content')
-@php
-    $sadvertise=$advertise
-@endphp
-<script src="/common/map.js"></script>
+    @php
+        $sadvertise = $advertise;
+    @endphp
+    <script src="/common/map.js"></script>
 
     <div id="main">
         <div class="container">
@@ -215,7 +215,7 @@
                             @auth
                                 @if ($user->id != $advertise->user_id)
                                     <div class="pair-button    d-md-flex">
-                                        <a href="{{ route('baladchiha', ['city_id' => $user->city ? $user->city->id : 0,"advertise_id"=>$advertise->id]) }}"
+                                        <a href="{{ route('baladchiha', ['city_id' => $user->city ? $user->city->id : 0, 'advertise_id' => $advertise->id]) }}"
                                             class="icon-button theme">
                                             <span>تقاظای بازدید</span>
                                             <span class="icon">
@@ -282,72 +282,128 @@
 
                         </div>
 
-                    <div class="ads-options">
+                        <div class="ads-options">
 
-                        @foreach ($advertise->options as $option)
-                            @php
-                                $laset = $loop->last;
-                                $op = App\Models\Question::where('en', $option->name)->first();
-                            @endphp
-                            @if (!$option->val)
-                                @continue
-                            @endif
-                            {{--  @dd($option)  --}}
+                            @foreach ($advertise->options as $option)
+                                @php
+                                    $laset = $loop->last;
+                                    $op = App\Models\Question::where('en', $option->name)->first();
+                                @endphp
+                                @if (!$option->val)
+                                    @continue
+                                @endif
+                                {{--  @dd($option)  --}}
 
-                            @if ($op && $op->show)
-                                <div class="ads-option" style="">
-                                    <span class="tit"> {{ __('questions.' . $option->name) }}: </span>
-                                    <span class="val">
-                                        @if (array_key_exists($option->val, __('all_option')))
-                                            {{ __('all_option.' . $option->val) }}
-                                        @else
-                                            {{ $option->val }}
-                                        @endif
+                                @if ($op && $op->show)
+                                    <div class="ads-option" style="">
+                                        <span class="tit"> {{ __('questions.' . $option->name) }}: </span>
+                                        <span class="val">
+                                            @if ($op->en == 'brand')
+                                            @php
+                                                $brand=App\Models\Brand::find($option->val);
+                                                if(!$brand){
+                                                    continue;
+                                                }
+                                            @endphp
+                                            @if($brand->parent()->parent())
+                                            {{$brand->parent()->parent()->name}}
+                                            @endif
+                                            -
+                                            @if($brand->parent())
+                                            {{$brand->parent()->name}}
+                                            -
+                                            {{$brand->name}}
+                                            @endif
 
-                                    </span>
-                                </div>
-                            @endif
-                        @endforeach
+                                            @else
+                                                @if (array_key_exists($option->val, __('all_option')))
+                                                    {{ __('all_option.' . $option->val) }}
+                                                @else
+                                                    {{ $option->val }}
+                                                @endif
+                                            @endif
 
 
-                    </div>
-                    @if ($advertise->chck_has_price())
-                        <div class="das-in-price">
-                            <span class="tit">قیمت فروش نقدی</span>
-                            <div class="price">
-                                <span class="num">{{ number_format($advertise->chck_has_price()) }} </span>
-                                <span class="un">تومان</span>
-                            </div>
+                                        </span>
+                                    </div>
+                                @endif
+                            @endforeach
+
+
                         </div>
-                    @endif
-                        <span id="price" hidden data-price="{{ $advertise->show_option("price") }}">
+                        @if ($advertise->chck_has_price())
+                            <div class="das-in-price">
+                                <span class="tit">قیمت فروش نقدی</span>
+                                <div class="price">
+                                    <span class="num">{{ number_format($advertise->chck_has_price()) }} </span>
+                                    <span class="un">تومان</span>
+                                </div>
+                            </div>
+                        @endif
+                        <span id="price" hidden data-price="{{ $advertise->show_option('price') }}">
 
                         </span>
-                    <div class="ads-contact bnone " >
-                        @if(!$advertise->show_option("show_mobile"))
+                        <div class="ads-contact bnone ">
+                            @if (!$advertise->show_option('show_mobile'))
+                                <h4 class="icon-title orange get_phone" data-id="{{ $advertise->user->id }}">
+                                    <span class="icon">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6.366 7.682C7.30434 9.33048 8.66952 10.6957 10.318 11.634L11.202 10.396C11.3442 10.1969 11.5543 10.0569 11.7928 10.0023C12.0313 9.94779 12.2814 9.98254 12.496 10.1C13.9103 10.8729 15.4722 11.3378 17.079 11.464C17.3298 11.4839 17.5638 11.5975 17.7345 11.7823C17.9052 11.9671 18 12.2094 18 12.461V16.923C18.0001 17.1706 17.9083 17.4094 17.7424 17.5932C17.5765 17.777 17.3483 17.8927 17.102 17.918C16.572 17.973 16.038 18 15.5 18C6.94 18 0 11.06 0 2.5C0 1.962 0.027 1.428 0.082 0.898C0.107255 0.651697 0.222984 0.423521 0.40679 0.257634C0.590595 0.0917472 0.829406 -5.33578e-05 1.077 2.32673e-08H5.539C5.79056 -3.15185e-05 6.0329 0.0947515 6.21768 0.265451C6.40247 0.43615 6.51613 0.670224 6.536 0.921C6.66222 2.52779 7.12708 4.08968 7.9 5.504C8.01746 5.71856 8.05221 5.96874 7.99767 6.2072C7.94312 6.44565 7.80306 6.65584 7.604 6.798L6.366 7.682ZM3.844 7.025L5.744 5.668C5.20478 4.50409 4.83535 3.26884 4.647 2H2.01C2.004 2.166 2.001 2.333 2.001 2.5C2 9.956 8.044 16 15.5 16C15.667 16 15.834 15.997 16 15.99V13.353C14.7312 13.1646 13.4959 12.7952 12.332 12.256L10.975 14.156C10.4287 13.9437 9.89801 13.6931 9.387 13.406L9.329 13.373C7.36758 12.2567 5.74328 10.6324 4.627 8.671L4.594 8.613C4.30691 8.10199 4.05628 7.57134 3.844 7.025Z"
+                                                fill="currentColor" />
+                                        </svg>
 
-                        <h4 class="icon-title orange get_phone" data-id="{{ $advertise->user->id }}">
-                            <span class="icon">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.366 7.682C7.30434 9.33048 8.66952 10.6957 10.318 11.634L11.202 10.396C11.3442 10.1969 11.5543 10.0569 11.7928 10.0023C12.0313 9.94779 12.2814 9.98254 12.496 10.1C13.9103 10.8729 15.4722 11.3378 17.079 11.464C17.3298 11.4839 17.5638 11.5975 17.7345 11.7823C17.9052 11.9671 18 12.2094 18 12.461V16.923C18.0001 17.1706 17.9083 17.4094 17.7424 17.5932C17.5765 17.777 17.3483 17.8927 17.102 17.918C16.572 17.973 16.038 18 15.5 18C6.94 18 0 11.06 0 2.5C0 1.962 0.027 1.428 0.082 0.898C0.107255 0.651697 0.222984 0.423521 0.40679 0.257634C0.590595 0.0917472 0.829406 -5.33578e-05 1.077 2.32673e-08H5.539C5.79056 -3.15185e-05 6.0329 0.0947515 6.21768 0.265451C6.40247 0.43615 6.51613 0.670224 6.536 0.921C6.66222 2.52779 7.12708 4.08968 7.9 5.504C8.01746 5.71856 8.05221 5.96874 7.99767 6.2072C7.94312 6.44565 7.80306 6.65584 7.604 6.798L6.366 7.682ZM3.844 7.025L5.744 5.668C5.20478 4.50409 4.83535 3.26884 4.647 2H2.01C2.004 2.166 2.001 2.333 2.001 2.5C2 9.956 8.044 16 15.5 16C15.667 16 15.834 15.997 16 15.99V13.353C14.7312 13.1646 13.4959 12.7952 12.332 12.256L10.975 14.156C10.4287 13.9437 9.89801 13.6931 9.387 13.406L9.329 13.373C7.36758 12.2567 5.74328 10.6324 4.627 8.671L4.594 8.613C4.30691 8.10199 4.05628 7.57134 3.844 7.025Z"
-                                        fill="currentColor" />
-                                </svg>
+                                    </span>
+                                    <span>اطلاعات تماس</span>
+                                    {{--  <span>{{ $advertise->show_option("show_mobile") }}</span>  --}}
+                                </h4>
+                            @endif
 
-                            </span>
-                            <span>اطلاعات تماس</span>
-                            {{--  <span>{{ $advertise->show_option("show_mobile") }}</span>  --}}
-                        </h4>
-                        @endif
+                            <a href="#" class="number d-block d-md-none"></a>
 
-                        <a href="#" class="number d-block d-md-none"></a>
+                            @auth
+                                @if ($user->id != $advertise->user_id)
+                                    <div class="pair-button  d-none d-md-flex">
+                                        <a href="{{ route('baladchiha', ['city_id' => $user->city ? $user->city->id : 0, 'advertise_id' => $advertise->id]) }}"
+                                            class="icon-button   theme">
+                                            <span>تقاظای بازدید</span>
+                                            <span class="icon">
+                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.9997 0C16.3917 0 20.8777 3.88 21.8187 9C20.8787 14.12 16.3917 18 10.9997 18C5.60766 18 1.12166 14.12 0.180664 9C1.12066 3.88 5.60766 0 10.9997 0ZM10.9997 16C13.0391 15.9996 15.0181 15.3068 16.6125 14.0352C18.207 12.7635 19.3226 10.9883 19.7767 9C19.3209 7.0133 18.2046 5.24 16.6103 3.97003C15.016 2.70005 13.038 2.00853 10.9997 2.00853C8.96136 2.00853 6.98335 2.70005 5.38904 3.97003C3.79473 5.24 2.67843 7.0133 2.22266 9C2.67676 10.9883 3.79234 12.7635 5.38681 14.0352C6.98128 15.3068 8.9602 15.9996 10.9997 16ZM10.9997 13.5C9.80619 13.5 8.6616 13.0259 7.81768 12.182C6.97377 11.3381 6.49966 10.1935 6.49966 9C6.49966 7.80653 6.97377 6.66193 7.81768 5.81802C8.6616 4.97411 9.80619 4.5 10.9997 4.5C12.1931 4.5 13.3377 4.97411 14.1816 5.81802C15.0256 6.66193 15.4997 7.80653 15.4997 9C15.4997 10.1935 15.0256 11.3381 14.1816 12.182C13.3377 13.0259 12.1931 13.5 10.9997 13.5ZM10.9997 11.5C11.6627 11.5 12.2986 11.2366 12.7674 10.7678C13.2363 10.2989 13.4997 9.66304 13.4997 9C13.4997 8.33696 13.2363 7.70107 12.7674 7.23223C12.2986 6.76339 11.6627 6.5 10.9997 6.5C10.3366 6.5 9.70074 6.76339 9.2319 7.23223C8.76306 7.70107 8.49966 8.33696 8.49966 9C8.49966 9.66304 8.76306 10.2989 9.2319 10.7678C9.70074 11.2366 10.3366 11.5 10.9997 11.5Z"
+                                                        fill="currentColor" />
+                                                </svg>
+                                            </span>
+                                        </a>
 
-                        @auth
-                            @if ($user->id != $advertise->user_id)
+                                        @if ($user->check_ad_deposit($advertise))
+                                            <span>
+                                                پیشنهاد داده شده:
+                                                {{ $user->check_ad_deposit($advertise) }}
+
+                                            </span>
+                                        @else
+                                            <span class="icon-button send_deposit_pop  pointer red">
+                                                <span>پیشنهاد بیعانه</span>
+                                                <span class="icon">
+                                                    <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M11 0C17.075 0 22 2.686 22 6V10C22 13.314 17.075 16 11 16C5.033 16 0.176 13.409 0.005 10.177L0 10V6C0 2.686 4.925 0 11 0ZM11 12C7.28 12 3.99 10.993 2 9.45V10C2 11.882 5.883 14 11 14C16.01 14 19.838 11.97 19.995 10.118L20 10L20.001 9.45C18.011 10.992 14.721 12 11 12ZM11 2C5.883 2 2 4.118 2 6C2 7.882 5.883 10 11 10C16.117 10 20 7.882 20 6C20 4.118 16.117 2 11 2Z"
+                                                            fill="currentColor" />
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        @endif
+                                    </div>
+                                @endif
+
+                            @endauth
+                            @guest
                                 <div class="pair-button  d-none d-md-flex">
-                                    <a href="{{ route('baladchiha', ['city_id' => $user->city ? $user->city->id : 0,"advertise_id"=>$advertise->id]) }}"
-                                        class="icon-button   theme">
+                                    <a href="#" class="icon-button go_login theme">
                                         <span>تقاظای بازدید</span>
                                         <span class="icon">
                                             <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
@@ -359,87 +415,49 @@
                                         </span>
                                     </a>
 
-                                    @if ($user->check_ad_deposit($advertise))
-                                        <span>
-                                            پیشنهاد داده شده:
-                                            {{ $user->check_ad_deposit($advertise) }}
-
+                                    <span class="icon-button go_login  pointer red">
+                                        <span>پیشنهاد بیعانه</span>
+                                        <span class="icon">
+                                            <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M11 0C17.075 0 22 2.686 22 6V10C22 13.314 17.075 16 11 16C5.033 16 0.176 13.409 0.005 10.177L0 10V6C0 2.686 4.925 0 11 0ZM11 12C7.28 12 3.99 10.993 2 9.45V10C2 11.882 5.883 14 11 14C16.01 14 19.838 11.97 19.995 10.118L20 10L20.001 9.45C18.011 10.992 14.721 12 11 12ZM11 2C5.883 2 2 4.118 2 6C2 7.882 5.883 10 11 10C16.117 10 20 7.882 20 6C20 4.118 16.117 2 11 2Z"
+                                                    fill="currentColor" />
+                                            </svg>
                                         </span>
-                                    @else
-
-                                        <span class="icon-button send_deposit_pop  pointer red">
-                                            <span>پیشنهاد بیعانه</span>
-                                            <span class="icon">
-                                                <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11 0C17.075 0 22 2.686 22 6V10C22 13.314 17.075 16 11 16C5.033 16 0.176 13.409 0.005 10.177L0 10V6C0 2.686 4.925 0 11 0ZM11 12C7.28 12 3.99 10.993 2 9.45V10C2 11.882 5.883 14 11 14C16.01 14 19.838 11.97 19.995 10.118L20 10L20.001 9.45C18.011 10.992 14.721 12 11 12ZM11 2C5.883 2 2 4.118 2 6C2 7.882 5.883 10 11 10C16.117 10 20 7.882 20 6C20 4.118 16.117 2 11 2Z"
-                                                        fill="currentColor" />
-                                                </svg>
-                                            </span>
-                                        </span>
-                                    @endif
+                                    </span>
                                 </div>
-                            @endif
+                            @endguest
 
-                        @endauth
-                        @guest
-                            <div class="pair-button  d-none d-md-flex">
-                                <a href="#" class="icon-button go_login theme">
-                                    <span>تقاظای بازدید</span>
-                                    <span class="icon">
-                                        <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M10.9997 0C16.3917 0 20.8777 3.88 21.8187 9C20.8787 14.12 16.3917 18 10.9997 18C5.60766 18 1.12166 14.12 0.180664 9C1.12066 3.88 5.60766 0 10.9997 0ZM10.9997 16C13.0391 15.9996 15.0181 15.3068 16.6125 14.0352C18.207 12.7635 19.3226 10.9883 19.7767 9C19.3209 7.0133 18.2046 5.24 16.6103 3.97003C15.016 2.70005 13.038 2.00853 10.9997 2.00853C8.96136 2.00853 6.98335 2.70005 5.38904 3.97003C3.79473 5.24 2.67843 7.0133 2.22266 9C2.67676 10.9883 3.79234 12.7635 5.38681 14.0352C6.98128 15.3068 8.9602 15.9996 10.9997 16ZM10.9997 13.5C9.80619 13.5 8.6616 13.0259 7.81768 12.182C6.97377 11.3381 6.49966 10.1935 6.49966 9C6.49966 7.80653 6.97377 6.66193 7.81768 5.81802C8.6616 4.97411 9.80619 4.5 10.9997 4.5C12.1931 4.5 13.3377 4.97411 14.1816 5.81802C15.0256 6.66193 15.4997 7.80653 15.4997 9C15.4997 10.1935 15.0256 11.3381 14.1816 12.182C13.3377 13.0259 12.1931 13.5 10.9997 13.5ZM10.9997 11.5C11.6627 11.5 12.2986 11.2366 12.7674 10.7678C13.2363 10.2989 13.4997 9.66304 13.4997 9C13.4997 8.33696 13.2363 7.70107 12.7674 7.23223C12.2986 6.76339 11.6627 6.5 10.9997 6.5C10.3366 6.5 9.70074 6.76339 9.2319 7.23223C8.76306 7.70107 8.49966 8.33696 8.49966 9C8.49966 9.66304 8.76306 10.2989 9.2319 10.7678C9.70074 11.2366 10.3366 11.5 10.9997 11.5Z"
-                                                fill="currentColor" />
-                                        </svg>
-                                    </span>
-                                </a>
+                        </div>
 
-                                <span class="icon-button go_login  pointer red">
-                                    <span>پیشنهاد بیعانه</span>
-                                    <span class="icon">
-                                        <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11 0C17.075 0 22 2.686 22 6V10C22 13.314 17.075 16 11 16C5.033 16 0.176 13.409 0.005 10.177L0 10V6C0 2.686 4.925 0 11 0ZM11 12C7.28 12 3.99 10.993 2 9.45V10C2 11.882 5.883 14 11 14C16.01 14 19.838 11.97 19.995 10.118L20 10L20.001 9.45C18.011 10.992 14.721 12 11 12ZM11 2C5.883 2 2 4.118 2 6C2 7.882 5.883 10 11 10C16.117 10 20 7.882 20 6C20 4.118 16.117 2 11 2Z"
-                                                fill="currentColor" />
-                                        </svg>
-                                    </span>
+                        <div class="text">
+                            <div class="in-text">
+                                <h1>
+                                    توضیحات
+                                </h1>
+                                <p>
+                                    {!! $advertise->info !!}
+                                </p>
+                            </div>
+                            <div class="more-text">
+                                <span>نمایش بیشتر</span>
+                                <span class="icon">
+                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.94888 5.99999C5.08612 6.00001 5.22202 5.973 5.34882 5.92049C5.47561 5.86799 5.59084 5.79102 5.6879 5.69399L9.58789 1.794C9.78375 1.59813 9.8938 1.33249 9.8938 1.0555C9.8938 0.77851 9.78375 0.512868 9.58789 0.317006C9.39203 0.121144 9.12639 0.011098 8.8494 0.011098C8.5724 0.011098 8.30676 0.121144 8.1109 0.317006L4.9469 2.717L1.7829 0.317007C1.58704 0.121144 1.32139 0.0110983 1.0444 0.0110983C0.767412 0.0110984 0.50174 0.121144 0.305877 0.317007C0.110015 0.512869 -2.06791e-07 0.77851 -2.16131e-07 1.0555C-2.2547e-07 1.33249 0.110015 1.59813 0.305878 1.794L4.2059 5.69399C4.3034 5.79154 4.41925 5.86882 4.54678 5.92135C4.67431 5.97387 4.81096 6.00059 4.94888 5.99999Z"
+                                            fill="currentColor" />
+                                    </svg>
+
                                 </span>
                             </div>
-                        @endguest
+                        </div>
 
                     </div>
 
-                    <div class="text">
-                        <div class="in-text">
-                            <h1>
-                                توضیحات
-                            </h1>
-                            <p>
-                                {!! $advertise->info !!}
-                            </p>
-                        </div>
-                        <div class="more-text">
-                            <span>نمایش بیشتر</span>
-                            <span class="icon">
-                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M4.94888 5.99999C5.08612 6.00001 5.22202 5.973 5.34882 5.92049C5.47561 5.86799 5.59084 5.79102 5.6879 5.69399L9.58789 1.794C9.78375 1.59813 9.8938 1.33249 9.8938 1.0555C9.8938 0.77851 9.78375 0.512868 9.58789 0.317006C9.39203 0.121144 9.12639 0.011098 8.8494 0.011098C8.5724 0.011098 8.30676 0.121144 8.1109 0.317006L4.9469 2.717L1.7829 0.317007C1.58704 0.121144 1.32139 0.0110983 1.0444 0.0110983C0.767412 0.0110984 0.50174 0.121144 0.305877 0.317007C0.110015 0.512869 -2.06791e-07 0.77851 -2.16131e-07 1.0555C-2.2547e-07 1.33249 0.110015 1.59813 0.305878 1.794L4.2059 5.69399C4.3034 5.79154 4.41925 5.86882 4.54678 5.92135C4.67431 5.97387 4.81096 6.00059 4.94888 5.99999Z"
-                                        fill="currentColor" />
-                                </svg>
-
-                            </span>
-                        </div>
-                    </div>
-
                 </div>
-
-                </div>
-                @if ($images->count() )
+                @if ($images->count())
                     <div class="col-xl-6 order-1 order-xl-2">
                         <div class="ads-gallery">
                             <div class="main-pic">
@@ -502,8 +520,8 @@
                             <div class="send-message">
                                 <form action="">
                                     <div class="top">
-                                        <span class="send-button pointer send_chat" data-first="1" data-visitor="{{ $user->id }}"
-                                            data-id="{{ $advertise->id }}">
+                                        <span class="send-button pointer send_chat" data-first="1"
+                                            data-visitor="{{ $user->id }}" data-id="{{ $advertise->id }}">
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -550,7 +568,8 @@
                                     </label>
                                     <textarea name="" class="insert_note" data-id="{{ $advertise->id }}" id="" cols="30"
                                         rows="10">{{ $note }}</textarea>
-                                    <span class="send-button pointer new_note" data-visitor="15" data-id="{{ $advertise->id }}">
+                                    <span class="send-button pointer new_note" data-visitor="15"
+                                        data-id="{{ $advertise->id }}">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -722,7 +741,7 @@
                     </h3>
 
 
-                    <a href="{{ route("baladchiha",['related_baladchi'=>$advertise->id]) }}" class="more-of">
+                    <a href="{{ route('baladchiha', ['related_baladchi' => $advertise->id]) }}" class="more-of">
                         <span class="text">مشاهده همه</span>
                         <span class="icon">
                             <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
@@ -736,9 +755,9 @@
                 </div>
 
                 <div class="row">
-                        @foreach ($baladchies as  $baladchi)
-                        @include("home.single_baladchi")
-                    {{--  <div class="col-2a">
+                    @foreach ($baladchies as $baladchi)
+                        @include('home.single_baladchi')
+                        {{--  <div class="col-2a">
                         <div class="single-user">
                             <div class="top">
                                 <div class="location">
@@ -752,7 +771,7 @@
                                     </span>
                                     <span class="state">
 
-                                        @if($baladchi)
+                                        @if ($baladchi)
 
                                         @endif
                                     </span>
@@ -800,7 +819,7 @@
                             </div>
                         </div>
                     </div>  --}}
-                        @endforeach
+                    @endforeach
 
                 </div>
             </div>
@@ -818,7 +837,7 @@
                         @foreach ($advertise->user->advertises()->where('confirm', '!=', null)->take(4)->get() as $ad)
                             <div class="col-lg-3">
 
-                                @include('home.ads.single',['advertise'=>$ad])
+                                @include('home.ads.single', ['advertise' => $ad])
                             </div>
                         @endforeach
 
@@ -834,21 +853,22 @@
                         <span class="text">آگهی های مشابه</span>
                     </h3>
 
-                    @if($advertise->telic_id)
-                    <a href="{{ route("ads",['telic_id'=> $advertise->telic->id,"remove"=>1]) }}" class="more-of">
-                    @else
-                    <a href="{{ route("ads",['subset_id'=> $advertise->subset->id,"remove"=>1]) }}" class="more-of">
+                    @if ($advertise->telic_id)
+                        <a href="{{ route('ads', ['telic_id' => $advertise->telic->id, 'remove' => 1]) }}" class="more-of">
+                        @else
+                            <a href="{{ route('ads', ['subset_id' => $advertise->subset->id, 'remove' => 1]) }}"
+                                class="more-of">
                     @endif
 
-                        <span class="text">مشاهده همه</span>
-                        <span class="icon">
-                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M1.15785e-05 5.7737C-1.09174e-05 5.93381 0.0315052 6.09235 0.0927596 6.24029C0.154014 6.38822 0.243806 6.52265 0.357011 6.63588L4.907 11.1859C5.13551 11.4144 5.44543 11.5428 5.76858 11.5428C6.09174 11.5428 6.40165 11.4144 6.63016 11.1859C6.85866 10.9574 6.98705 10.6475 6.98705 10.3243C6.98705 10.0011 6.85866 9.69122 6.63016 9.46272L3.83017 5.77138L6.63016 2.08005C6.85866 1.85154 6.98705 1.54163 6.98705 1.21847C6.98705 0.895314 6.85866 0.585363 6.63016 0.356857C6.40165 0.128351 6.09174 2.50216e-08 5.76858 0C5.44543 -2.50215e-08 5.13551 0.128351 4.907 0.356857L0.357011 4.90689C0.243197 5.02063 0.153038 5.1558 0.0917627 5.30458C0.0304872 5.45336 -0.000689877 5.61279 1.15785e-05 5.7737Z"
-                                    fill="currentColor" />
-                            </svg>
-                        </span>
+                    <span class="text">مشاهده همه</span>
+                    <span class="icon">
+                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.15785e-05 5.7737C-1.09174e-05 5.93381 0.0315052 6.09235 0.0927596 6.24029C0.154014 6.38822 0.243806 6.52265 0.357011 6.63588L4.907 11.1859C5.13551 11.4144 5.44543 11.5428 5.76858 11.5428C6.09174 11.5428 6.40165 11.4144 6.63016 11.1859C6.85866 10.9574 6.98705 10.6475 6.98705 10.3243C6.98705 10.0011 6.85866 9.69122 6.63016 9.46272L3.83017 5.77138L6.63016 2.08005C6.85866 1.85154 6.98705 1.54163 6.98705 1.21847C6.98705 0.895314 6.85866 0.585363 6.63016 0.356857C6.40165 0.128351 6.09174 2.50216e-08 5.76858 0C5.44543 -2.50215e-08 5.13551 0.128351 4.907 0.356857L0.357011 4.90689C0.243197 5.02063 0.153038 5.1558 0.0917627 5.30458C0.0304872 5.45336 -0.000689877 5.61279 1.15785e-05 5.7737Z"
+                                fill="currentColor" />
+                        </svg>
+                    </span>
                     </a>
                 </div>
 
@@ -1059,34 +1079,34 @@
 
                                             <select name="deposit_day" id="deposit_day" class="select_normal"
                                                 data-place="انتخاب کنید">
-                                                <option value="">  لطفا یک گزینه را انتخاب کنید  </option>
+                                                <option value=""> لطفا یک گزینه را انتخاب کنید </option>
                                                 <option value="1">
-                                                    یک ساعت  بعد از پذیرش
+                                                    یک ساعت بعد از پذیرش
                                                 </option>
                                                 <option value="2">
-                                                    دو ساعت  بعد از پذیرش
+                                                    دو ساعت بعد از پذیرش
                                                 </option>
 
                                                 <option value="3">
-                                                    سه  ساعت  بعد از پذیرش
+                                                    سه ساعت بعد از پذیرش
                                                 </option>
                                                 <option value="6">
-                                                    شش ساعت  بعد از پذیرش
+                                                    شش ساعت بعد از پذیرش
                                                 </option>
                                                 <option value="12">
-                                                    دوازده ساعت  بعد از پذیرش
+                                                    دوازده ساعت بعد از پذیرش
                                                 </option>
 
                                                 <option value="24">
-                                                    یک روز  بعد از پذیرش
+                                                    یک روز بعد از پذیرش
                                                 </option>
 
                                                 <option value="72">
-                                                    سه روز  بعد از پذیرش
+                                                    سه روز بعد از پذیرش
                                                 </option>
 
                                                 <option value="168">
-                                                    هفت  روز  بعد از پذیرش
+                                                    هفت روز بعد از پذیرش
                                                 </option>
                                             </select>
                                         </div>

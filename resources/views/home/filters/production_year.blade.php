@@ -15,11 +15,12 @@
                 <span>از</span>
 
             </label>
-            <select name="min_production_year__min" id="min_production_year" class="nice-select filter_class" data-place="  از">
+            <select name="production_year__min" id="min_production_year" class="nice-select filter_class" data-place="  از">
+                <option value="">سال</option>
                 @for ( $i=2023; $i>=1987; $i-- )
                 <option value="{{$i}}">{{ $i }}-{{ $i-621}}</option>
                 @endfor
-                <option value="before_1987">قبل از1366- قبل از 1987</option>
+                {{--  <option value="before_1987">قبل از1366- قبل از 1987</option>  --}}
             </select>
         </div>
     </div>
@@ -27,14 +28,15 @@
     <div class="accord-content spec">
         <div>
             <label for="">
-                <span>از</span>
+                <span>تا</span>
 
             </label>
-            <select name="max_production_year" id="max_production_year" class="nice-select filter_class" data-place="  تا">
+            <select name="production_year__max" id="max_production_year" class="nice-select filter_class" data-place="  تا">
+                <option value="">سال</option>
                 @for ( $i=2023; $i>=1987; $i-- )
                 <option value="{{$i}}">{{ $i }}-{{ $i-621}}</option>
                 @endfor
-                <option value="before_1987__max">قبل از1366- قبل از 1987</option>
+                {{--  <option value="before_1987__max">قبل از1366- قبل از 1987</option>  --}}
             </select>
         </div>
     </div>

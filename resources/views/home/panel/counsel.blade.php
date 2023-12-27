@@ -100,7 +100,7 @@
 
                                 <div class="stat">
                                     <span class="tit">وضعیت : </span>
-                                    <span class="stat-box {{ $counsel->status == 'confirmed' ? 'green' : 'orange' }} ">
+                                    <span class="stat-box {{ $counsel->status == 'show' ? 'green' : 'orange' }} ">
                                         {{ __('status.' . $counsel->status) }}</span>
                                 </div>
 
@@ -260,7 +260,7 @@
 
             </div>
 
-{{--  
+{{--
             <table>
                 <thead>
                     <tr>

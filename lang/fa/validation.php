@@ -311,7 +311,7 @@ return [
         "car_plaque_pics" => "عکس خودرو با پلاک",
         "production_year" => "مدل (سال تولید)",
         "color" => "رنگ",
-        "function" => "کارکرد",
+        "functionm" => "کارکرد",
         "body_status" => "وضعیت بدنه",
         "motor_status" => "وضعیت موتور",
         "chassis_status" => "وضعیت شاسی ها",
