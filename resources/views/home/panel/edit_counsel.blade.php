@@ -21,7 +21,7 @@
                         <input type="text" name="title" id="title" value="{{ $counsel->title }}">
                     </div>
 
-                    {{--  <div class="select-label">
+                    {{--  <div class="sesslect-label">
                         <label for="question"> تعداد سوالات</label>
                         <select name="question" id="question" class="nice-select" data-place=" تعداد  سوالات">
                             <option value="">یک گزینه را انتخاب کنید </option>

@@ -15,7 +15,7 @@
                 <option value="1">یک  </option>
                 <option value="2">دو </option>
                 <option value="3"> سه</option>
-                <option value="4"> چهار</option>
+                <option value="4"> dر</option>
                 <option value="more_5"> پنج و بیشتر</option>
             </select>
         </div>

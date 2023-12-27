@@ -20,7 +20,7 @@
                 @for ( $i=2023; $i>=1987; $i-- )
                 <option value="{{$i}}">{{ $i }}-{{ $i-621}}</option>
                 @endfor
-                {{--  <option value="before_1987">قبل از1366- قبل از 1987</option>  --}}
+                {{--  <option value="before_1987">قبل از1366- قبل dddاز 1987</option>  --}}
             </select>
         </div>
     </div>

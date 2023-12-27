@@ -12,6 +12,7 @@
                                 fill="currentColor" />
                         </svg>
                     </div>
+                    {{--  ddd  --}}
                     <div id="m_search">
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -411,7 +412,7 @@
                                 </g>
                             </g>
                         </svg>  --}}
-                        <img class="logo_l" src="/icon/logo.png" alt="">
+                        <img class="logo_l" src="/icon/logo1.png" alt="">
                     </a>
                 </div>
                 @if (isset($cities_all))

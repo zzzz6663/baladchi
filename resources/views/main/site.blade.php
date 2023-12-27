@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/common/map.css">
     <link rel="stylesheet" href="/common/share.css">
     <link rel="stylesheet" href="/common/modal-loading.css">
-    <link rel="icon" type="image/x-icon" href="/icon/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/icon/favicon1.png">
 
     @vite('resources/css/app.css')
 

@@ -32,7 +32,7 @@
 </div>
 <script></script>
 <form action="" id="req_form">
-    {{--  @if (!isset($all_req['page']))
+    {{--  @if (!isset($all_req[s'page']))
         <script>
             @if (isset($all_req['remove']))
                 localStorage.clear();

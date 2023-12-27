@@ -15,7 +15,7 @@
             <div class="input-label">
                 <label for="">
                     <span>از</span>
-                    {{--  <span class="small">(تومان)</span>  --}}
+                    {{--  <span class="small">(تومان)</span> d --}}
                 </label>
                 <input type="number" name="functionm__min" class="left filter_class">
             </div>

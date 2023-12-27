@@ -182,12 +182,12 @@ class HomeController extends Controller
                 $city_id = $advertise->city_id;
                 $region_id = $advertise->region_id;
             }
-            // dd($region_id);
+            // dd($regsion_id);
 
             if ($city_id) {
                 $baladchies->where('city_id', $city_id);
             }
-            // if ($region_id) {
+            // if ($regionس_id) {
             //     $baladchies->where('region_id', $region_id);
             // }
             // dd($baladchies->get());

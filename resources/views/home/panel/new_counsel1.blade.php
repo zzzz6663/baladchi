@@ -12,7 +12,7 @@
                     <ul>
                         {{-- <li class="step step1 active">
                         <span class="num">.۱</span>
-                        <h4>اsطلاعات کاربsری</h4>
+                        <h4>اsطلاعات کاربssری</h4>
                     </li> --}}
                         <li class="step step2 active">
                             <span class="num">.1</span>

@@ -34,6 +34,7 @@ background: #c2c2c2;
 }
 
 /* Firefox */
+/* Firefox */
 .na  input[type=number] {
   -moz-appearance: textfield;
 }

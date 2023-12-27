@@ -2,7 +2,7 @@
     style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
     <div class="app-brand demo">
 
-            <img class="logo_l" src="/icon/logo.png" alt="">
+            <img class="logo_l" src="/icon/logo1.png" alt="">
 
 
     </div>

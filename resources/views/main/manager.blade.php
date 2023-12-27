@@ -32,7 +32,7 @@
    <link rel="stylesheet" href="{{ asset("/common/select2.min.css") }}">
    <link rel="stylesheet" href="{{ asset("/common/load.css") }}">
    <link rel="stylesheet" href="{{ asset("/common/modal-loading.css") }}">
-   <link rel="icon" type="image/x-icon" href="/icon/favicon.png">
+   <link rel="icon" type="image/x-icon" href="/icon/favicon1.png">
    {{--  <link rel="stylesheet" href="{{ asset("/common/css.css") }}">  --}}
 
    <link href="https://static.neshan.org/sdk/leaflet/1.4.0/leaflet.css" rel="stylesheet" type="text/css">

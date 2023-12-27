@@ -1,10 +1,10 @@
 <div id="dashboard-sidabr" >
     <div>
 
-{{--  sssss --}}
+{{--  ssssss --}}
         <div id="logo">
             <a href="{{ route('login') }}">
-                <img class="logo_l" src="/icon/logo.png" alt="">
+                <img class="logo_l" src="/icon/logo1.png" alt="">
             </a>
         </div>
 
