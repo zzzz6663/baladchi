@@ -1,5 +1,5 @@
 import './bootstrap';
-import '../../public/common/tooltipster.bundle.min';
+// import '../../public/common/tooltipster.bundle.min';
 import '../../public/common/js';
 
 // console.log(787111777118)

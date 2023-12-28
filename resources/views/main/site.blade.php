@@ -48,7 +48,7 @@
     {{--    @includeWhen((Route::currentRouteName()==''),'home.teacher.sidebar') --}}
 
 
-    {{-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
+    {{-- <script src="https://unpkg.com/axsios/dist/axios.min.js"></script> --}}
 
     {{-- <script src="/home/js/owl.carousel.min.js"></script> --}}
     {{-- <script src="/home/js/aos.js"></script> --}}
@@ -58,6 +58,7 @@
     {{-- <script src="/home/js/nouislider.min.js"></script> --}}
     {{-- <script src="/home/js/wNumb.min.js"></script> --}}
     {{-- <script src="/home/js/jquery.mmenu.min.all.js"></script> --}}
+    <script src="/common/tooltipster.bundle.min.js"></script>
     <script src="/common/load.js"></script>
     <script src="/home/js/nice-select2.js"></script>
     <script src="/common/sweet.js"></script>
