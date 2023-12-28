@@ -17,7 +17,7 @@
     $regions=  $city->regions
 @endphp
 @if($regions->count())
-<div class="accord-box">
+{{--  <div class="accord-box">
     <div class="top nob">
         <h4>
               منطقه </h4>
@@ -31,14 +31,14 @@
     <div class="accord-content">
         <div>
             <select name="region_id" id="region_id" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">   انتخاب کنید  </option>
                 @foreach ($regions as $region )
                 <option value="{{ $region ->id }}">{{ $region->name }}</option>
                 @endforeach
             </select>
         </div>
     </div>
-</div>
+</div>  --}}
 
 @endif
 

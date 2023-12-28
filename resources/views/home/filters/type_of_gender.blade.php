@@ -16,7 +16,7 @@
         <div>
             <select name="type_of_gender" id="type_of_gender" class="nice-select filter_class"
                 data-place="  انتخاب کنید">
-                <option value=""> لطفا یک گزینه را انتخاب کنید </option>
+                <option value="">   انتخاب کنید </option>
                 <option value="for_men"> مردانه</option>
                 <option value="for_women"> زنانه</option>
                 <option value="for_men_women"> زنانه , مردانه</option>

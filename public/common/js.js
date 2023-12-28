@@ -575,9 +575,9 @@ window.onload = function () {
 
 
 
-        // if ($('.tooltip_s').length) {
-        //     $('.tooltip_s').tooltipster();
-        // }
+        if ($('.tooltip_s').length) {
+            $('.tooltip_s').tooltipster();
+        }
         if ($('.get_direct').length) {
             $('.get_direct').each(function (i, obj) {
                 // let id=obj.data('id')
@@ -1199,6 +1199,7 @@ window.onload = function () {
                 data: { id: id, type: type },
                 type: 'post',
                 success: function (data) {
+                    console.log(data)
                     $('#filters_all').html(data.body)
                     setTimeout(() => {
                       init_data()
@@ -1229,7 +1230,7 @@ window.onload = function () {
                     } else {
                         let input = $("[name=" + key + "]")
                         input.closest('.accord-box').addClass("active")
-                        if (val == "on") {
+                        if (val == "on" ||val == "pictures") {
                             input.prop('checked', true);
                             input.attr('checked', 'checked');
                         } else {
@@ -1602,6 +1603,7 @@ window.onload = function () {
                         subset = $('#subset_id').val()
                         telic = $('#telic_id').val()
                         console.log(telic)
+                        console.log(subset)
 
                         setTimeout(() => {
                             if (category) {
@@ -1615,12 +1617,17 @@ window.onload = function () {
                                 el = $(".subset_side[data-id='" + subset + "']");
                                 get_subset(el, subset, update = false)
                             }
+
                         }, 1);
                         setTimeout(() => {
                             if (telic) {
                                 let el = $('.final_res').eq(telic - 1)
                                 el = $(".final_res[data-id='" + telic + "']");
                                 get_telic(el, telic, update = false)
+                            }else{
+                                let el = $('.subset_side').eq(subset - 1)
+                                el = $(".subset_side[data-id='" + subset + "']");
+                                get_telic(el, subset, update = false)
                             }
                         }, 1);
                     }
@@ -1790,10 +1797,11 @@ window.onload = function () {
 
 
         $('body').on('change', '.fom_action', function () {
-            console.log("fom_action");
             // $(this).closest('form').submit()
-            // $(this).closest('form').submit()
+            $(this).closest('form').submit()
             $('#ba_f').submit()
+            console.log("fom_action");
+
 
         });
 

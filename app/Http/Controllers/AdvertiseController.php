@@ -86,6 +86,9 @@ class AdvertiseController extends Controller
         if ($cities_all) {
             $advertises->whereIn('city_id', $cities_all);
         }
+        if ($request->region_id) {
+            $advertises->whereIn('region_id', $request->region_id);
+        }
 
         if ($request->vip) {
             $advertises->whereVip(1);
@@ -105,7 +108,7 @@ class AdvertiseController extends Controller
             "phpdebugbar-height", "phpdebugbar-open",
              "pusherTransportNonTLS", "telic_id",
              "subset_id", "type", "cities",
-              "check_city", "id", "vip",
+              "check_city", "id", "vip", "region_id",
               "region_id", "back", "now_page",
                "category_id", "remove", 'type', 'subset', "local", 'telic',
                 "remove", 'category', 'search',
@@ -127,9 +130,7 @@ class AdvertiseController extends Controller
                                 ->where('val', ">=", (int) $val);
                         });
                     }
-
                     if ($data['1'] == "max") {
-
                         $advertises->whereHas('options', function ($query) use ($data, $val) {
                             $query->where('name', $data[0])
                                 ->where('val', "<", (int) $val);
@@ -536,6 +537,9 @@ class AdvertiseController extends Controller
             $filters = $subset->questions->whereIn('en', $filters)->all();
         }
 
+        // dd( $filters );
+
+
         $user = auth()->user();
         if ($user) {
             $cities_all = $user->all_cities()->pluck("id")->toArray();
@@ -546,7 +550,7 @@ class AdvertiseController extends Controller
         return response()->json([
             'subset' => $subset,
             'telic' => $telic,
-            '' => $request->all(),
+            'all' => $request->all(),
             // 'fillters'=>  $filters,
             'body' => view('home.filters.selected_filters', compact(['filters', 'telic', 'subset', "cities_all"]))->render(),
             // 'sss'=>$telic->questions->whereIn('en', $filters)->get(),

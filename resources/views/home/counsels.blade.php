@@ -11,7 +11,7 @@
         <div class="row">
 
             <div id="sidebar">
-                <form action="">
+                <form action="" >
                 <div id="filters">
 
                     <div class="accord-box  active">

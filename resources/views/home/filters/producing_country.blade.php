@@ -13,7 +13,7 @@
     <div class="accord-content">
         <div>
             <select name="producing_country" id="producing_country" class="nice-select  filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">   انتخاب کنید  </option>
                 <option value="iran_product">ایرانی</option>
                 <option value="foreign_product"> خارجی</option>
             </select>

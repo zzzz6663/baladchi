@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="type_of_watch" id="type_of_watch" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                 <option value="analog"> آنالوگ</option>
                 <option value="digital"> دیجیتال</option>
                 <option value="smart"> هوشمند</option>

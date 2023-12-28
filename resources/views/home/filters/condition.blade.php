@@ -1,4 +1,4 @@
-<div class="accord-box">
+<div class="accord-box ">
     <div class="top nob">
         <h4>وضعیت کالا
               </h4>
@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="condition" id="condition" class="nice-select filter_class " data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">  انتخاب کنید  </option>
                 <option value="new">نو</option>
                 <option value="like_new">درحد نو</option>
                 <option value="worked">کارکرده</option>

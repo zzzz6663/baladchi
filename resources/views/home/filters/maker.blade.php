@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="maker" id="maker" class="nice-select select2 filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                <option value="apple"> apple      </option>
                <option value="samsung"> samsung      </option>
                <option value="htc"> htc      </option>

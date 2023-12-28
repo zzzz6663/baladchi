@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="payment_method" id="payment_method" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                 <option value="monthly"> ماهانه</option>
                 <option value="daily"> روزانه</option>
                 <option value="horary"> ساعتی</option>

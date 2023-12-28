@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="type_of_clothing" id="type_of_clothing" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                 <option value="manto">مانتو</option>
                 <option value="scarf"> شال و روسری</option>
                 <option value="t_shirt"> تیشرت</option>

@@ -13,7 +13,7 @@
     <div class="accord-content">
         <div>
             <select name="type_of_cosmetics" id="type_of_cosmetics" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                 <option value="cosmetics_and_beauty_products"> لوازم آرایشی و زیبایی</option>
                 <option value="medical_and_therapeutic_supplies"> لوازم طبی و درمانی</option>
                 <option value="personal_electrical_appliances"> لوازم برقی شخصی</option>

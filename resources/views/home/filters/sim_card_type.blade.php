@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="sim_card_type" id="sim_card_type" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">   انتخاب کنید  </option>
                <option value="haval">  همراه اول
             </option>
                <option value="irancell">

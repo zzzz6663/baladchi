@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="page_size" id="page_size" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                <option value="less_7_in">
           7  اینچ و کوچکتر
 

@@ -305,7 +305,7 @@
                                                     continue;
                                                 }
                                             @endphp
-                                            @if($brand->parent()->parent())
+                                            @if($brand->parent())
                                             {{$brand->parent()->parent()->name}}
                                             @endif
                                             -

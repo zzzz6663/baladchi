@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="type_of_jewelry" id="type_of_jewelry" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                 <option value="gold"> طلا</option>
                 <option value="silver"> نقره</option>
                 <option value="gold_plating"> آبکاری طلا</option>

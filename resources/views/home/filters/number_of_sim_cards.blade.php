@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="number_of_sim_cards" id="number_of_sim_cards" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">   انتخاب کنید  </option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="more_3">سه و بیشتر</option>

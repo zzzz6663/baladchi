@@ -12,7 +12,7 @@
     <div class="accord-content">
         <div>
             <select name="internal_memory" id="internal_memory" class="nice-select filter_class" data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">    انتخاب کنید  </option>
                 <option value="4gig">4 گیگ </option>
                 <option value="8gig">8 گیگ </option>
                 <option value="16gig">16 گیگ </option>

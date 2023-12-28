@@ -11,7 +11,8 @@
 
     <div class="accord-content spec">
         <div>
-            <select name="min_history__min" id="min_history" class="nice filter_class-select" data-place="  از">
+            <select name="history__min" id="min_history" class="nice filter_class-select" data-place="  از">
+                <option value=""> انتخاب  کنید</option>
                 <option value="no_history_required"> بدون نیاز به سابقه</option>
                 <option value="less_than_1_year"> کم‌تر از 1 سال</option>
                 <option value="at_least_1_year">        حداقل 1 سال</option>
@@ -31,7 +32,8 @@
 
     <div class="accord-content spec">
         <div>
-            <select name="max_history__max" id="max_history" class="nice-select filter_class" data-place="  تا">
+            <select name="history__max" id="max_history" class="nice-select filter_class" data-place="  تا">
+                <option value=""> انتخاب کنید </option>
                 <option value="no_history_required"> بدون نیاز به سابقه</option>
                 <option value="less_than_1_year"> کم‌تر از 1 سال</option>
                 <option value="at_least_1_year">        حداقل 1 سال</option>

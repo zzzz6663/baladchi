@@ -13,7 +13,7 @@
     <div class="accord-content">
         <div>
             <select name="product_type_rhinestones" id="product_type_rhinestones" class="nice-select filter_class " data-place="  انتخاب کنید">
-                {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}
+                <option value="">   انتخاب کنید  </option>
                 {{--  <option value="bag"> کیف</option>
                 <option value="shoe"> کفش</option>
                 <option value="belt"> کمربند</option>
