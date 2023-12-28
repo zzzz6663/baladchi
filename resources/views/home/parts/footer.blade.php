@@ -5,7 +5,6 @@
                 <div id="foot-logo">
                     <a href="{{ route("login") }}">
                         <img class="logo_l" src="/icon/logo1.png" alt="">
-
                     </a>
                 </div>
 

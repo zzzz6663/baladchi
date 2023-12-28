@@ -57,7 +57,6 @@ class HomeController extends Controller
     public  function  clear()
     {
 
-        return Session()->get("reqs");
         $user = auth()->user();;
         Artisan::call('optimize');
         Artisan::call('cache:clear');

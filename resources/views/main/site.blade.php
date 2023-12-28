@@ -117,7 +117,6 @@
                 </svg>
             </span>
             <div id="search">
-
                 <div class="search-form">
                     <form action="{{ route("ads") }}" method("get")>
                         @csrf
