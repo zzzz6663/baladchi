@@ -57,15 +57,15 @@ class HomeController extends Controller
     public  function  clear()
     {
 
-        // return Session()->get("reqs");
+        return Session()->get("reqs");
         $user = auth()->user();;
-        // Artisan::call('optimize');
-        // Artisan::call('cache:clear');
-        // Artisan::call('route:cache');
-        // Artisan::call('config:cache');
-        // Artisan::call('view:clear');
-        // Artisan::call('optimize:clear');
-        // Artisan::call('config:clear');
+        Artisan::call('optimize');
+        Artisan::call('cache:clear');
+        Artisan::call('route:cache');
+        Artisan::call('config:cache');
+        Artisan::call('view:clear');
+        Artisan::call('optimize:clear');
+        Artisan::call('config:clear');
         // Option::create([
         //     'optionable_id'=>"221",
         //     'App\Models\Advertise'=>"App\Models\Advertise",
@@ -79,8 +79,8 @@ class HomeController extends Controller
         // dd( $req);
         // $chat=Telic::find(23);
         // dd($chat->questions);
-        $chat=Advertise::find(80);
-        dd($chat->options->pluck("name")->toArray());
+        // $chat=Advertise::find(80);
+        // dd($chat->options->pluck("name")->toArray());
         // dd($chat->options()->whereName("depoist")->get());
         // NewMessage::dispatch($chat);
         // Auth::loginUsingId(1,true);
