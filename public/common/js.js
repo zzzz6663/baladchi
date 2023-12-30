@@ -531,6 +531,7 @@ window.onload = function () {
                 let alldata = get_items()
                 console.log(alldata)
                 update_ad_list(alldata)
+                $('#sidebar').addClass("active")
 
             }
         }
@@ -949,9 +950,33 @@ window.onload = function () {
         })
 
 
+        $(document).on('keyup', '.number_filter', function (event) {
+            let el = $(this);
+            let val = el.val();
+            console.log(808080808080808080080860)
+            if (val > 0) {
+                let num = String(val).replace(/(.)(?=(\d{3})+$)/g, '$1,')
+
+                console.log(num)
+                val = val.num2persian()
+                if (el.closest('.input-label').find('.nufi').length) {
+                    console.log(80)
+                    console.log(num)
+                    el.closest('.input-label').find('.nufi').html(num )
+                 } else {
+                    console.log(70)
+                    console.log(num)
+                    el.closest('.input-label').append(`
+                    <span class=" nufi ">
+                    ${num}
+                    </span>
 
 
+                    `)
+                }
 
+            }
+        })
 
 
 

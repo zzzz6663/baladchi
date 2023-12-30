@@ -27,7 +27,9 @@
     <link rel="icon" type="image/x-icon" href="/icon/favicon1.png">
 
     @vite('resources/css/app.css')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/common/jq.js"></script>
+
+    {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  --}}
     {{--  <script src="https://cdn.socket.io/4.4.1/socket.io.esm.min.js" type="text/javascript"></script>  --}}
     {{-- <link rel="shortcut icon" href="/home/images/logo.png"> --}}
     {{-- <link rel="apple-touch-icon" href="/home/images/logo.png"> --}}

@@ -35,13 +35,13 @@
     "file": "assets/pattern-dot-b2.53d92790.png",
     "src": "public/home/css/images/patterns/pattern-dot-b2.png"
   },
-  "public/home/css/images/patterns/pattern-dot-b4.png": {
-    "file": "assets/pattern-dot-b4.40ed682b.png",
-    "src": "public/home/css/images/patterns/pattern-dot-b4.png"
-  },
   "public/home/css/images/patterns/pattern-dot-b3.png": {
     "file": "assets/pattern-dot-b3.2b14459d.png",
     "src": "public/home/css/images/patterns/pattern-dot-b3.png"
+  },
+  "public/home/css/images/patterns/pattern-dot-b4.png": {
+    "file": "assets/pattern-dot-b4.40ed682b.png",
+    "src": "public/home/css/images/patterns/pattern-dot-b4.png"
   },
   "public/home/css/images/patterns/pattern-triangle-05.png": {
     "file": "assets/pattern-triangle-05.12b378c1.png",
@@ -63,13 +63,13 @@
     "file": "assets/pattern-triangle-40.44bbb538.png",
     "src": "public/home/css/images/patterns/pattern-triangle-40.png"
   },
-  "public/home/css/images/patterns/pattern-ver-line-10.png": {
-    "file": "assets/pattern-ver-line-10.c78705da.png",
-    "src": "public/home/css/images/patterns/pattern-ver-line-10.png"
-  },
   "public/home/css/images/patterns/pattern-ver-line-20.png": {
     "file": "assets/pattern-ver-line-20.c93780b6.png",
     "src": "public/home/css/images/patterns/pattern-ver-line-20.png"
+  },
+  "public/home/css/images/patterns/pattern-ver-line-10.png": {
+    "file": "assets/pattern-ver-line-10.c78705da.png",
+    "src": "public/home/css/images/patterns/pattern-ver-line-10.png"
   },
   "public/home/css/images/patterns/pattern-ver-line-30.png": {
     "file": "assets/pattern-ver-line-30.36c679b3.png",
@@ -99,10 +99,6 @@
     "file": "assets/Yekan-Bakh-FaNum-04 Regular.17ab4f40.eot",
     "src": "public/home/fonts/Yekan-Bakh-FaNum-04 Regular.eot"
   },
-  "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.eot": {
-    "file": "assets/Yekan-Bakh-FaNum-05-Medium.f5c6a1ae.eot",
-    "src": "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.eot"
-  },
   "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.eot": {
     "file": "assets/Yekan-Bakh-FaNum-06-Bold.2b42ebd1.eot",
     "src": "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.eot"
@@ -114,10 +110,6 @@
   "public/home/fonts/lc_lightbox.woff": {
     "file": "assets/lc_lightbox.c4028b61.woff",
     "src": "public/home/fonts/lc_lightbox.woff"
-  },
-  "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.woff": {
-    "file": "assets/Yekan-Bakh-FaNum-01-Hairline.7d9d4bfe.woff",
-    "src": "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.woff"
   },
   "public/home/fonts/Yekan-Bakh-FaNum-02-Thin.woff": {
     "file": "assets/Yekan-Bakh-FaNum-02-Thin.ce627f7e.woff",
@@ -131,10 +123,6 @@
     "file": "assets/Yekan-Bakh-FaNum-04 Regular.5342e787.woff",
     "src": "public/home/fonts/Yekan-Bakh-FaNum-04 Regular.woff"
   },
-  "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.woff": {
-    "file": "assets/Yekan-Bakh-FaNum-05-Medium.d807027d.woff",
-    "src": "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.woff"
-  },
   "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.woff": {
     "file": "assets/Yekan-Bakh-FaNum-06-Bold.3f7a07ce.woff",
     "src": "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.woff"
@@ -142,10 +130,6 @@
   "public/home/fonts/lc_lightbox.ttf": {
     "file": "assets/lc_lightbox.ab936398.ttf",
     "src": "public/home/fonts/lc_lightbox.ttf"
-  },
-  "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.ttf": {
-    "file": "assets/Yekan-Bakh-FaNum-01-Hairline.1d774f13.ttf",
-    "src": "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.ttf"
   },
   "public/home/fonts/Yekan-Bakh-FaNum-02-Thin.ttf": {
     "file": "assets/Yekan-Bakh-FaNum-02-Thin.fbed4bb4.ttf",
@@ -159,25 +143,41 @@
     "file": "assets/Yekan-Bakh-FaNum-04 Regular.a0902173.ttf",
     "src": "public/home/fonts/Yekan-Bakh-FaNum-04 Regular.ttf"
   },
-  "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.ttf": {
-    "file": "assets/Yekan-Bakh-FaNum-05-Medium.0453cc6d.ttf",
-    "src": "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.ttf"
-  },
-  "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.ttf": {
-    "file": "assets/Yekan-Bakh-FaNum-06-Bold.741b2443.ttf",
-    "src": "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.ttf"
+  "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.woff": {
+    "file": "assets/Yekan-Bakh-FaNum-01-Hairline.7d9d4bfe.woff",
+    "src": "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.woff"
   },
   "public/home/fonts/lc_lightbox.svg": {
     "file": "assets/lc_lightbox.71e6bae2.svg",
     "src": "public/home/fonts/lc_lightbox.svg"
   },
+  "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.ttf": {
+    "file": "assets/Yekan-Bakh-FaNum-01-Hairline.1d774f13.ttf",
+    "src": "public/home/fonts/Yekan-Bakh-FaNum-01-Hairline.ttf"
+  },
+  "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.ttf": {
+    "file": "assets/Yekan-Bakh-FaNum-06-Bold.741b2443.ttf",
+    "src": "public/home/fonts/Yekan-Bakh-FaNum-06-Bold.ttf"
+  },
+  "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.eot": {
+    "file": "assets/Yekan-Bakh-FaNum-05-Medium.f5c6a1ae.eot",
+    "src": "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.eot"
+  },
+  "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.woff": {
+    "file": "assets/Yekan-Bakh-FaNum-05-Medium.d807027d.woff",
+    "src": "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.woff"
+  },
+  "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.ttf": {
+    "file": "assets/Yekan-Bakh-FaNum-05-Medium.0453cc6d.ttf",
+    "src": "public/home/fonts/Yekan-Bakh-FaNum-05-Medium.ttf"
+  },
   "resources/js/app.js": {
-    "file": "assets/app.23abceec.js",
+    "file": "assets/app.9355ac6a.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.f33902b2.css",
+    "file": "assets/app.b7304ddf.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

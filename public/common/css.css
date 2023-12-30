@@ -18,9 +18,19 @@ background: #c2c2c2;
 .not_seen {
     background: #ebebeb;
 }
-
+.single-ads div.img img{
+    object-fit: cover;
+}
 .res_name {
     margin-left: 40px;
+}
+.nufi{
+    z-index: 999;
+    position: relative;
+    bottom: 64px;
+    right: 74px;
+    color: #3f9307;
+    font-size: 12px;
 }
 
 .number_format1{
@@ -674,7 +684,7 @@ display: inline-block; */
 
     #sidebar.active {
         right: 0px !important;
-        width: 80%;
+        width: 60%;
         height: 100%;
     }
 

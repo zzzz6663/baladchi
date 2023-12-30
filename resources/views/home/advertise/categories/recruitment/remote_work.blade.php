@@ -1,5 +1,5 @@
 <div class="input-toggle text red">
-    <input type="checkbox" id="remote_work" name="remote_work" {{ $advertise && $advertise->show_option("remote_work") }}  >
+    <input type="checkbox" id="remote_work" name="remote_work" {{ $advertise && $advertise->show_option("remote_work") }}  value="on">
     <label for="remote_work">
         <div class="right-sec">
             <h4>

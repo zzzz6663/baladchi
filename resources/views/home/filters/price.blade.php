@@ -10,20 +10,20 @@
     </div>
     <div class="accord-content">
         <div>
-
             <div class="input-label">
                 <label for="">
                     <span>حداقل</span>
                     <span class="small">(تومان)</span>
                 </label>
-                <input type="number"  name="price__min" class="left filter_class">
+                <input type="number"  name="price__min" class="left filter_class number_filter">
+                
             </div>
             <div class="input-label">
                 <label for="">
                     <span> حداکثر</span>
                     <span class="small">(تومان)</span>
                 </label>
-                <input type="number" name="price__max" class="left filter_class">
+                <input type="number" name="price__max" class="left filter_class number_filter">
             </div>
         </div>
     </div>

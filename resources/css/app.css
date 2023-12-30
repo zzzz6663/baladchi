@@ -9,5 +9,11 @@
 }
 .logo_l{
     width:100px;
+    margin: 0 auto;
 
+}
+
+.logo_m{
+    width:40px;
+    margin: 0 auto;
 }

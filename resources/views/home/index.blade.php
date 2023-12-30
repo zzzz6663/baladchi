@@ -11,8 +11,7 @@
         <a href="{{ route("login") }}">
             <img class="logo_l" src="/icon/logo1.png" alt="">
         </a>
-        <p>جست وجو بین هزاران آگهی همراه با مشاوران مجرب</p>
-
+        <p>درج آگهی دریافت مشاوره وخرید امن 
         {{--  <div class="tooltip" title="sssssssssssss">
             This div has a tooltip with HTMLs when you hover over it!
         </div>  --}}

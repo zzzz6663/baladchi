@@ -9,5 +9,5 @@
 </div>
 <div class="input-label big">
     <label for="deposit"> ودیعه </label>
-    <input type="number"  class="persian" name="deposit" id="deposit" placeholder="مثلا 50.000.000"  value="{{ $advertise && $advertise->show_option("deposit")?$advertise->show_option("deposit"):"" }}">
+    <input type="number"  class="persian number_format" name="deposit" id="deposit" placeholder="مثلا 50.000.000"  value="{{ $advertise && $advertise->show_option("deposit")?$advertise->show_option("deposit"):"" }}">
 </div>

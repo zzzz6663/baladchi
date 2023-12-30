@@ -31,7 +31,7 @@
 
                 <div id="mobile-logo">
                     <a href="{{ route("login") }}">
-                        <img class="logo_l" src="/icon/logo1.png" alt="">
+                        <img class="logo_m" src="/icon/favicon1.png" alt="">
                     </a>
                 </div>
 
@@ -41,7 +41,7 @@
                         <li>
 
                             @auth
-                                <a href="{{ route('panel.dashboard') }}" class="user-menu">
+                                <a href="{{ route('panel.faves') }}" class="user-menu">
                                     <span class="icon">
                                         <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">

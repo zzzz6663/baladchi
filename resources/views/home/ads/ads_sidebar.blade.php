@@ -1,7 +1,7 @@
 <div id="sidebar">
     <div id="filters">
 
-        <div class="accord-box active">
+        <div class="accord-box active side_sta">
             {{--  <div class="top">
                 <h4>دستهs بندی ها</h4>
                 <span class="toggle">
