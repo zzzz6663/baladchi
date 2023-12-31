@@ -29,8 +29,8 @@ class AdvertiseController extends Controller
         // dd($request->all());
 
         $user = auth()->user();
-    //     dd(url()->previous()
-    // );
+        //     dd(url()->previous()
+        // );
         $cities_all = [];
         Session()->put("reqs", $request->all());
         // if($request->cities){
@@ -104,15 +104,17 @@ class AdvertiseController extends Controller
             $request->page = 1;
         }
         foreach ($request->all() as $eq => $val) {
-            if (in_array($eq, ['_method', "_token",
-            "phpdebugbar-height", "phpdebugbar-open",
-             "pusherTransportNonTLS", "telic_id",
-             "subset_id", "type", "cities",
-              "check_city", "id", "vip", "region_id",
-              "region_id", "back", "now_page",
-               "category_id", "remove", 'type', 'subset', "local", 'telic',
+            if (in_array($eq, [
+                '_method', "_token",
+                "phpdebugbar-height", "phpdebugbar-open",
+                "pusherTransportNonTLS", "telic_id",
+                "subset_id", "type", "cities",
+                "check_city", "id", "vip", "region_id",
+                "region_id", "back", "now_page",
+                "category_id", "remove", 'type', 'subset', "local", 'telic',
                 "remove", 'category', 'search',
-                 "page", 'length', "pusherTransportTLS", "_", "form_data"])) {
+                "page", 'length', "pusherTransportTLS", "_", "form_data"
+            ])) {
                 continue;
             }
 
@@ -121,10 +123,7 @@ class AdvertiseController extends Controller
             if (sizeof($data) > 1) {
                 // $opertaor = $data['1'] == "min" ? '>=' : '<=';
                 if ($val) {
-
-
                     if ($data['1'] == "min") {
-
                         $advertises->whereHas('options', function ($query) use ($data, $val) {
                             $query->where('name', $data[0])
                                 ->where('val', ">=", (int) $val);
@@ -138,31 +137,33 @@ class AdvertiseController extends Controller
                     }
                 }
             } else {
-
-                switch($val){
-                    case"pictures":
-                        $advertises->whereHas('images', function ($query) use ($eq, $val, $request) {
-
-                        });
-                        break;
-                    case"on":
-                        $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
-                            $query->where('name', $eq)
-                                ->where('val', $val);
-                        });
-                        break;
-
-                        default:
-                        if($val){
+                if (in_array($eq, ['year_of_construction'])) {
+                    $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
+                        $query->where('name', $eq)
+                            ->where('val', "<", (int) $val);
+                    });
+                } else {
+                    switch ($val) {
+                        case "pictures":
+                            $advertises->whereHas('images', function ($query) use ($eq, $val, $request) {
+                            });
+                            break;
+                        case "on":
                             $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
                                 $query->where('name', $eq)
                                     ->where('val', $val);
                             });
-                        }
-
-                        break;
+                            break;
+                        default:
+                            if ($val) {
+                                $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
+                                    $query->where('name', $eq)
+                                        ->where('val', $val);
+                                });
+                            }
+                            break;
+                    }
                 }
-
             }
         }
 
@@ -519,6 +520,7 @@ class AdvertiseController extends Controller
 
     public function filters(Request $request)
     {
+
         $subset = null;
         $telic = null;
         if ($request->type == 'telic') {

@@ -1,6 +1,6 @@
 <div class="select-label">
     <label for="ad_type">
-        وضعیت موتور
+        نوع آگهی
 
 
     </label>

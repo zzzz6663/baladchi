@@ -80,7 +80,7 @@
                 <select name="hour" id="" class="nice-select" data-place="انتخاب کنید"
                     style="display: none;">
                     <option value="" selected></option>
-                    @for ($b = 1; $b < 25; $b++)
+                    @for ($b = 0; $b < 24; $b++)
                         <option value="{{ $b }}">{{ $b }} </option>
                     @endfor
                 </select>
@@ -94,7 +94,7 @@
                 <select name="min" id="" class="nice-select" data-place="انتخاب کنید"
                     style="display: none;">
                     <option value="" selected></option>
-                    @for ($c = 1; $c < 60; $c++)
+                    @for ($c = 0; $c < 60; $c++)
                         <option value="{{ $c }}">{{ $c }} </option>
                     @endfor
                 </select>

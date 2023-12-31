@@ -1551,6 +1551,7 @@ window.onload = function () {
             let type = el.data("type")
             let page = 1
             let href = el.attr("href")
+      
             localStorage.setItem("id", id);
             localStorage.setItem("type", type);
             localStorage.setItem("page", page);

@@ -7,6 +7,5 @@
         @for ($i = 1402; $i >1370 ; $i--)
         <option {{ $i==1402 ?"selected":"" }}  {{ $advertise && $advertise->show_option("year_of_construction")==$i?"selected":"" }} value="{{ $i }}"> {{ $i }}</option>
         @endfor
-        <option value="less_1370"> 1370و پایین تر   </option>
     </select>
 </div>

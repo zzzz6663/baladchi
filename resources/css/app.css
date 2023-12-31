@@ -3,7 +3,9 @@
 @import "../../public/common/css.css";
 @import "../../public/home/css/style.css";
 
-
+.modal {
+    z-index: 99999;
+}
 .tooltip{
     opacity: 1!important;
 }

@@ -184,7 +184,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/all_comment/{user}', 'HomeController@all_comment')->name('all.comment');;
 Route::get('/single_user/{user}', 'HomeController@single_user')->name('single.user');;
 Route::get('/single_ad/{advertise}', 'AdvertiseController@single_ad')->name('single.ad');;
-Route::post('/filters', 'AdvertiseController@filters')->name('filters');;
+Route::any('/filters', 'AdvertiseController@filters')->name('filters');;
 Route::get('/ads', 'AdvertiseController@ads')->name('ads');;
 // Route::get('/single_advertise/{advertise}', 'AdvertiseController@single_advertise')->name('single.advertise');;
 Route::post('/check_password', 'HomeController@check_password');
