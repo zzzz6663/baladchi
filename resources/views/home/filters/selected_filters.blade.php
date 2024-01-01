@@ -17,7 +17,7 @@
     $regions=  $city->regions
 @endphp
 @if($regions->count())
-{{--  <div class="accord-box">
+<div class="accord-box">
     <div class="top nob">
         <h4>
               منطقه </h4>
@@ -38,7 +38,7 @@
             </select>
         </div>
     </div>
-</div>  --}}
+</div>
 
 @endif
 

@@ -87,7 +87,7 @@ class AdvertiseController extends Controller
             $advertises->whereIn('city_id', $cities_all);
         }
         if ($request->region_id) {
-            $advertises->whereIn('region_id', $request->region_id);
+            $advertises->where('region_id', $request->region_id);
         }
 
         if ($request->vip) {
@@ -137,7 +137,7 @@ class AdvertiseController extends Controller
                     }
                 }
             } else {
-                if (in_array($eq, ['year_of_construction'])) {
+                if ($val && in_array($eq, ['year_of_construction'])) {
                     $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
                         $query->where('name', $eq)
                             ->where('val', "<", (int) $val);
@@ -216,7 +216,7 @@ class AdvertiseController extends Controller
 
         if ($request->ajax()) {
             return response()->json([
-                'count' => $advertises->count(),
+                // 'count' => $advertises->count(),
                 'page' => $request->page,
                 'all' => $request->all(),
                 'cities_all' => $cities_all,
@@ -260,8 +260,8 @@ class AdvertiseController extends Controller
             $avatar->move(public_path('/media/temp/'), $name_img);
             $original_image = public_path('/media/temp/' . $name_img);
             $new_image = public_path('/media/temp/' . $name_img);
-            $image = imagecreatefromjpeg($original_image);
-            imagejpeg($image, $new_image, 30);
+            // $image = imagecreatefromjpeg($original_image);
+            // imagejpeg($image, $new_image, 30);
             $data['file'] = $name_img;
         }
         return response()->json([

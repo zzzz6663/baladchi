@@ -508,7 +508,6 @@ window.onload = function () {
     if (window.jQuery) {
         moving()
         window.onhashchange = function () {
-            // console.log("backkkkkkkkkk")
         }
         // if (document.hasFocus()){
         //     console.log('Tab is active1111')
@@ -520,21 +519,27 @@ window.onload = function () {
         Object.keys(add); // ['One', 'Two', 'Three']
         let da = {}
 
-        if (performance.navigation.type == 2) {
+        if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+            console.log("backkkkkkkkkk")
+            if ($('#ad_li').length) {
+                let alldata = get_items()
+                console.log(alldata)
+              setTimeout(() => {
+                update_ad_list(alldata)
+              }, 300);
+                $('#sidebar').addClass("active")
+
+            }
+          }
+        // if (performance.navigation.type == 2) {
             // Object.keys(add).forEach(key => {
             //     if (key != "pusherTransportTLS") {
             //         da[key] = add[key]
             //         console.log(key + "===" + add[key])
             //     }
             // })
-            if ($('#ad_li').length) {
-                let alldata = get_items()
-                console.log(alldata)
-                update_ad_list(alldata)
-                $('#sidebar').addClass("active")
 
-            }
-        }
+        // }
 
         function get_items() {
             let all_data = JSON.parse(localStorage.getItem("alldata"))
@@ -1551,7 +1556,7 @@ window.onload = function () {
             let type = el.data("type")
             let page = 1
             let href = el.attr("href")
-      
+
             localStorage.setItem("id", id);
             localStorage.setItem("type", type);
             localStorage.setItem("page", page);
