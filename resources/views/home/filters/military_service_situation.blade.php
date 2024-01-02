@@ -16,18 +16,11 @@
                         <div class="label-containef">
                             <input class="filter_class" type="radio" name="military_service_situation" value="end_military_service" id="end_military_service" >
                             <label for="end_military_service">
-                                <span>    اتمام یا معافیت الزامی است </span>
+                                <span>    اتمام / معافیت  </span>
                             </label>
                         </div>
                     </li>
-                    <li>
-                        <div class="label-containef">
-                            <input class="filter_class" type="radio" name="military_service_situation" value="does_not_matter" id="does_not_matter">
-                            <label for="does_not_matter">
-                                <span>فرقی ندارد</span>
-                            </label>
-                        </div>
-                    </li>
+               
                     <li>
                         <div class="label-containef">
                             <input class="filter_class" type="radio" name="military_service_situation" value="" id="all">

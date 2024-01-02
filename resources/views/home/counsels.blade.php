@@ -383,8 +383,9 @@
 
                                     </h4>
                                     @if( $counsel->skills()->count())
-                                    <span class="stat">{{implode( " - ",$counsel->skills()->pluck("name")->toArray()) }}</span>
-
+                                    <span class="stat">
+                                        {{implode( " - ",$counsel->skills()->pluck("name")->toArray()) }}
+                                    </span>
                                     @else
                                     <span class="stat">عمومی</span>
 

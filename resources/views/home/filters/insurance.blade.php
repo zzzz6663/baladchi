@@ -1,4 +1,4 @@
-<div class="accord-box ">
+<div class="accord-box active">
 
     <div class="accord-content">
         <div class="input-toggle">

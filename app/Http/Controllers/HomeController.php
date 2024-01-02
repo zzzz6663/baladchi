@@ -253,9 +253,11 @@ class HomeController extends Controller
         }
 
         // $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
-        $counsels = $counsels->whereStatus('show')->whereHas("skills", function ($query) use ($skills) {
-            $query->whereIn("id", $skills);
-        })->latest()->paginate(10);
+        $counsels = $counsels->
+        // whereStatus('show')->whereHas("skills", function ($query) use ($skills) {
+        //     $query->whereIn("id", $skills);
+        // })->
+        latest()->paginate(10);
         return view('home.counsels', compact(['counsels', 'user']));
     }
 

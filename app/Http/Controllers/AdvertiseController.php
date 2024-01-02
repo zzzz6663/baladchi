@@ -25,7 +25,7 @@ class AdvertiseController extends Controller
     public function ads(Request $request)
     {
 
-        // cache(s)->flush();
+        // cache()->flush();
         // dd($request->all());
 
         $user = auth()->user();
@@ -529,6 +529,7 @@ class AdvertiseController extends Controller
             $subset = Subset::find($request->id);
         }
         $filters = Filter::pluck('en')->toArray();;
+        // dd(  $filters );
         $custom_filters = [];
 
         if ($telic) {
@@ -538,8 +539,11 @@ class AdvertiseController extends Controller
         if ($subset) {
             $filters = $subset->questions->whereIn('en', $filters)->all();
         }
-
-        // dd( $filters );
+        // dd( $subset );
+        // dump( $subset->questions->pluck("en")->toArray());
+        // dump( $filters->pluck("en")->toArray());
+        // dd($subset->questions()->whereIn(  'en',$filters)->get() );
+        // // dd( $filters );
 
 
         $user = auth()->user();

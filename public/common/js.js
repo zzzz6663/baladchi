@@ -519,7 +519,8 @@ window.onload = function () {
         Object.keys(add); // ['One', 'Two', 'Three']
         let da = {}
 
-        if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+        // if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+        if ( window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
             console.log("backkkkkkkkkk")
             if ($('#ad_li').length) {
                 let alldata = get_items()
@@ -1264,11 +1265,18 @@ window.onload = function () {
                             input.prop('checked', true);
                             input.attr('checked', 'checked');
                         } else {
+                            console.log(val)
+                            console.log(key)
                             let typeinp =input.attr("type")
+                            // input.val(val)
+                            $("input[name=" + key + "][value=" + val + "]").attr('checked', 'checked');
                             input.val(val)
+
                         }
 
                     }
+                }else{
+
                 }
             }
         }
