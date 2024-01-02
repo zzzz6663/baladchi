@@ -25,7 +25,7 @@ class AdvertiseController extends Controller
     public function ads(Request $request)
     {
 
-        // cache()->flush();
+        // cache(s)->flush();
         // dd($request->all());
 
         $user = auth()->user();

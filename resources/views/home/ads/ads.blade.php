@@ -96,7 +96,7 @@
                             @endforeach
                         </div>
                     </form>
-
+{{--  ss  --}}
                     <div class="sliding-menu" id="search_parent">
                         <ul id="main_list" class="proli_all">
                             @foreach ($provinces as $pro)
