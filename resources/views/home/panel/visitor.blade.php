@@ -10,6 +10,10 @@
 
         <div class="dash-title">
             <h3>ثبت نام به عنوان باز دید کننده</h3>
+            <p>
+
+جهت بازدید کننده شدن نیازی به مهارت و تخصص خاص ندارید فقط بعداز توافق بر مبلغ و نحوه پرداخت دستمزد، وجود کالا رو به خریدار تایید میدین.
+            </p>
         </div>
         <div class="form">
             @include('main.error')
@@ -62,7 +66,30 @@
 
                 <div class="input-toggle text red">
                     <input type="text" name="show_visitor"    value="">
-                    <input type="checkbox" id="show_visitor" name="show_visitor" {{ $user->show_visitor ? 'checked' : '' }}
+                    در صورت تایید، شما به عنوان بازدید کننده در آگهی های آن منطقه معرفی خواهید شد،
+                    <div class="genr-toggle">
+                        <ul>
+                            <li>
+                                <div class="label-containef">
+                                    <input type="radio"   value="1" name="show_visitor" id="consult-text" {{ $user->show_visitor ? 'checked' : '' }}>
+                                    <label for="consult-text">
+                                        <span>آماده بازدید  </span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="label-containef">
+                                    <input type="radio" name="show_visitor"  id="consult-phone"   value=""  {{ !$user->show_visitor ? 'checked' : '' }}>
+                                    <label for="consult-phone">
+                                        <span>آماده نیستم </span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    {{--  <input type="checkbox" id="show_visitor" name="show_visitor" {{ $user->show_visitor ? 'checked' : '' }}
                         value="1">
                     <label for="show_visitor">
                         <div class="right-sec">
@@ -75,7 +102,7 @@
                         <div class="togg">
                             <span></span>
                         </div>
-                    </label>
+                    </label>  --}}
                 </div>
 
                 <div class="footer-section">

@@ -1,6 +1,6 @@
 <div class="select-label">
     <label for="type_of_cooperation">
-        نوع آگهی جنسیت
+        نوع همکاری
     </label>
     <select name="type_of_cooperation" id="type_of_cooperation" class="nice-select  " data-place="  انتخاب کنید">
         {{-- <option value="">  لطفا یک گزینه را انتخاب کنید  </option> --}}

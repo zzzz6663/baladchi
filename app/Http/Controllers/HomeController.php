@@ -206,8 +206,19 @@ class HomeController extends Controller
         }
 
         if ($request->ordering == "favourite") {
-            $baladchies->withCount('comments')
-                ->orderBy('comments_count', 'desc');
+            // $baladchies->withCount(['comments' => function($query) {
+            // }]);
+
+
+            // $baladchies->whereHas(['comments' => function($query) {
+            //     // $query->orderBy('rate', 'desc');
+            // }]);
+            $baladchies->whereHas("comments", function ($query)  {
+                $query->orderBy('rate', 'desc');
+            });
+
+            // ->withCount('comments')
+            //     ->orderBy('comments_count', 'desc');
         }
 
         if ($request->related_baladchi) {

@@ -29,8 +29,12 @@ $user=auth()->user();
 <div id="map"></div>
 
 <script type="text/javascript">
-    let ch =  [{{ $lat }},{{$lon}}]
-    var myMap = new L.Map('map', {
+    var myMap =null
+    var ch =null
+     ch =  [{{ $lat }},{{$lon}}]
+
+
+     myMap = new L.Map('map', {
         key: 'web.RGcOLl7H7iw24EcC3dFhkr3QkcbvP0eA6JwqI3SD'
         , maptype: 'dreamy'
         , poi: true

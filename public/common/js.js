@@ -1876,8 +1876,8 @@ window.onload = function () {
         });
         $("#new_tag").click(function () {
             let option = $("#new_op").val()
-            if (option.length < 5) {
-                Swal.fire('حداقل پنج کاراکتر وارد کنید ');
+            if (option.length < 2) {
+                Swal.fire('حداقل دو کاراکتر وارد کنید ');
                 return
             }
 
@@ -3192,6 +3192,8 @@ window.onload = function () {
         })
 
         function get_advertise_form(type, id, ads = null) {
+
+            $('#form_advertise').html("");
             let url = '/get_advertise_form'
             if (ads) {
                 url = '/get_advertise_form/' + ads

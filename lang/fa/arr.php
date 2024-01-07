@@ -70,7 +70,7 @@ return [
     'donate_oute' => ' پرداخت کمک مالی',
     'repay_deposit' => 'پرداخت بیعانه ',
     'deposit_finish' => ' اتمام پردازش',
-    'deposit_delay' => ' در حال بیعانه',
+    'deposit_delay' => ' در منتظر قطعی شدن بیعانه',
     'master' => ' کارشناسی',
     'under_high_school' => 'زیر دیپلم ',
     'high_school' => 'دیپلم',

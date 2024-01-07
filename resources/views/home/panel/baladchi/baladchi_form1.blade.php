@@ -39,7 +39,7 @@
                 </div>
                 <div class="footer-section">
                     <div class="pair-button">
-                        <a href="route('panel.dashboard')" class="mid-button">
+                        <a href="{{ route('panel.dashboard') }}" class="mid-button">
                             انصراف
                         </a>
                         <form action=" {{ route('baladchi.form1') }}" method="post">

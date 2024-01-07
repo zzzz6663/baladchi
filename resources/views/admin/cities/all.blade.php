@@ -101,10 +101,8 @@
                     {{ $city->telics->count() }}
                 </td> --}}
                 <td>
-                    @if(!$city->lat)
                     <a class="dropdown-item" href="{{ route('city.edit', $city->id) }}"><i class="bx bx-edit-alt me-1"></i> ویرایش</a>
 
-                    @endif
                     {{-- <form  onclick="return confirm('Are you sure?')" action="{{ route('city.destroy',$city->id) }}" method="post">
                       @csrf
                       <button class="dropdown-item"><i class="bx bx-trash me-1"></i> حذف</button>

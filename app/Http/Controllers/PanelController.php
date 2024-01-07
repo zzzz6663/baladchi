@@ -302,7 +302,8 @@ class PanelController extends Controller
                 'star' => 'nullable',
                 'tags' => 'required',
 
-                'skills' => 'required|array|min:1',
+                // 'skills' => 'required|array|min:1',
+                'skills' => 'nullable',
                 'degree' => 'required',
                 'answers' => 'required',
                 'reward' => 'required',
@@ -325,7 +326,11 @@ class PanelController extends Controller
 
             $data['status'] = "created";
             $counsel = $user->counsels()->create($data);
-            $counsel->skills()->attach($data['skills']);
+            if(isset($data['skills'])){
+                $counsel->skills()->attach($data['skills']);
+
+            }
+
 
             foreach ($data['tags']  as $ke => $val) {
                 $tag = Tag::whereTag($val)->first();
@@ -341,7 +346,6 @@ class PanelController extends Controller
                 'counsel_id' => $counsel->id,
                 'amount' => $counsel->price,
                 'all' => $request->all(),
-
             ]);
         }
         return view('home.panel.new_counsel1', compact(['user', 'counsel', 'url']));
