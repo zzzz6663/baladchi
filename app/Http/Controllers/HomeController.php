@@ -215,7 +215,7 @@ class HomeController extends Controller
                 $query->select(DB::raw('coalesce(avg(rate),0)'));
             }])->whereHas("comments", function ($query) {
             });
-            $baladchies->orderBy('average_rating', 'asc');
+            $baladchies->orderBy('average_rating', 'desc');
         }
         if ($request->related_baladchi) {
             $ad = Advertise::find($request->related_baladchi);
