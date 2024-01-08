@@ -461,7 +461,7 @@
                 <div id="mainmenu">
                     <ul>
                         <li>
-                            <a href="{{ route('ads') }}">آگهی ها</a>
+                            <a  href="{{ route('ads') }}">آگهی ها</a>
                         </li>
                         <li>
                             <a href="{{ route('baladchiha') }}#share">بلدچی ها</a>

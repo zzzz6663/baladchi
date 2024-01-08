@@ -1012,8 +1012,20 @@ window.onload = function () {
                 $('#note_visitor').show(300)
             }
         }
+        if ($('.deposit_e').length) {
+            let note1 = Cookies.get('deposit_e') // => undefined
+            console.log("note1" + note1)
+            if (note1) {
+                $('#deposit_e_modal').hide(300)
+            } else {
+                $('#deposit_e_modal').show(300)
+            }
+        }
         $(document).on('click', '.cook_e', function (event) {
             Cookies.set('note2', 1)
+        })
+        $(document).on('click', '.deposit_e', function (event) {
+            Cookies.set('deposit_e', 1)
         })
 
         $(document).on('click', '.accord-box .top .toggle', function (event) {
@@ -1449,10 +1461,9 @@ window.onload = function () {
         });
         $('body').on('click', '.all_cat_show', function (e) {
             // let data = { '_method': 'get', 'type': 'category', "remove": 1 };
-            remove_items()
+            // remove_items()
             let data=get_items()
             console.log(data);
-
             $('.accord-box.side_cat').each(function (i, obj) {
                 let pl = $(this)
                 pl.removeClass('active')
@@ -1462,7 +1473,7 @@ window.onload = function () {
             // $('.accord-box.side_cat').removeClass('active')
             // $('.accord-box.side_cat').removeClass('active')
             // $('.search_box').val("")
-            update_ad_list({},false)
+            update_ad_list( {category_id: null, subset_id: null, telic_id: null},false)
 
 
         });
@@ -1816,6 +1827,11 @@ window.onload = function () {
 
 
 
+
+        // $('body').on('click', '#all_ads a', function (e) {
+        //     e.preventDefault()
+        //     console.log(18)
+        //   });
 
         $('body').on('click', '#new_tag_filter', function () {
             let el = $(this)

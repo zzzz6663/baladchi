@@ -1,7 +1,8 @@
 @extends('main.site')
 @section('content')
+    <div class="container" id="all_ads">
     <div id="ids_li"></div>
-    <div class="container">
+
         @if (request('vip'))
             <h1>
                 آگهی های Vip

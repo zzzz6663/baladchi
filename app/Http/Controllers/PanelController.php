@@ -483,7 +483,7 @@ class PanelController extends Controller
             $deposit->update(['status' => 'reject_deposit', 'accept' => Carbon::now()]);
             alert()->alert('بیعانه با موفقیت رد   شد   ');
         }
-        return  back();
+        return redirect()->route("panel.deposit",['show_cookie'=>1]);
     }
     public function cancel_deposit(Request $request, Deposit $deposit)
     {

@@ -1,5 +1,10 @@
+@if(!$json)
+
+
 @extends('main.site')
 @section('content')
+@endif
+
     @php
         $sadvertise = $advertise;
     @endphp
@@ -306,7 +311,10 @@
                                                 }
                                             @endphp
                                             @if($brand->parent())
+                                            @if($brand->parent()->parent())
                                             {{$brand->parent()->parent()->name}}
+
+                                            @endif
                                             @endif
                                             -
                                             @if($brand->parent())
@@ -1165,7 +1173,11 @@
                 </div>
 
 
+
             </div>
         </div>
     </div>
+
+    @if(!$json)
 @endsection
+@endif

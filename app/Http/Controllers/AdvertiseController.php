@@ -611,6 +611,13 @@ class AdvertiseController extends Controller
             });
         }
         $baladchies = $baladchies->get();
-        return view('home.ads.single_ad', compact(['user', 'advertise', 'images', 'user_fave', 'note', "similars", "baladchies"]));
+
+        $json=$request->json;
+        // if($request->json){
+        //     return response()->json([
+        //         'html' => view('home.ads.single_ad', compact(['user', 'advertise', 'images', 'user_fave', 'note', "similars", "baladchies"]))->render(),
+        //     ]);
+        // }
+        return view('home.ads.single_ad', compact(['user',"json", 'advertise', 'images', 'user_fave', 'note', "similars", "baladchies"]));
     }
 }

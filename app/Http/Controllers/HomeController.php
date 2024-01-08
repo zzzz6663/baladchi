@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Brand;
 use App\Models\Telic;
 use App\Models\Answer;
+use App\Models\Option;
 use App\Models\Subset;
 use App\Models\Travel;
 use App\Events\NewTest;
@@ -27,8 +28,8 @@ use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use App\Events\DirectMessage;
 use App\Models\Counselquestion;
-use App\Models\Option;
 use Morilog\Jalali\CalendarUtils;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\SendKaveCode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -129,10 +130,10 @@ class HomeController extends Controller
             'status' => $status,
         ]);
     }
-    public function remove_star(Request $request )
+    public function remove_star(Request $request)
     {
         $user = auth()->user();
-        $star=Star::find($request->id);
+        $star = Star::find($request->id);
         $star->delete();
         return response()->json([
             'status' => "ok",
@@ -163,6 +164,7 @@ class HomeController extends Controller
 
         $ad = null;
         $baladchies = User::query();
+
         $city_id = null;
         $region_id = null;
         if ($request->authenticated) {
@@ -206,21 +208,15 @@ class HomeController extends Controller
         }
 
         if ($request->ordering == "favourite") {
-            // $baladchies->withCount(['comments' => function($query) {
-            // }]);
-
-
-            // $baladchies->whereHas(['comments' => function($query) {
-            //     // $query->orderBy('rate', 'desc');
-            // }]);
-            $baladchies->whereHas("comments", function ($query)  {
-                $query->orderBy('rate', 'desc');
+            $baladchies->withCount(['comments' => function ($query) {
+                // $query->where('content', 'like', 'foo%');
+            }]);
+            $baladchies->withCount(['comments as average_rating' => function ($query) {
+                $query->select(DB::raw('coalesce(avg(rate),0)'));
+            }])->whereHas("comments", function ($query) {
             });
-
-            // ->withCount('comments')
-            //     ->orderBy('comments_count', 'desc');
+            $baladchies->orderBy('average_rating', 'asc');
         }
-
         if ($request->related_baladchi) {
             $ad = Advertise::find($request->related_baladchi);
 
@@ -265,10 +261,10 @@ class HomeController extends Controller
 
         // $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
         $counsels = $counsels->
-        // whereStatus('show')->whereHas("skills", function ($query) use ($skills) {
-        //     $query->whereIn("id", $skills);
-        // })->
-        latest()->paginate(10);
+            // whereStatus('show')->whereHas("skills", function ($query) use ($skills) {
+            //     $query->whereIn("id", $skills);
+            // })->
+            latest()->paginate(10);
         return view('home.counsels', compact(['counsels', 'user']));
     }
 
