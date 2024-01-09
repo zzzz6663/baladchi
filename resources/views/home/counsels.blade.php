@@ -11,7 +11,10 @@
         <div class="row">
 
             <div id="sidebar">
-                <form action="" >
+                <form action="{{ route("counsels") }}"  id="ba_f">
+                    @method('get')
+
+                    @csrf
                 <div id="filters">
 
                     <div class="accord-box  active">
@@ -53,7 +56,7 @@
                             <div>
 
                                 <div class="pur-search-form side">
-                                        <input type="text" class="text" name="tag" id="tag_filter" placeholder="جست وجو و انتخاب کنید">
+                                        <input type="text" class="text" name="search" id="tag_filter" value="{{ request("search") }}" placeholder="جست وجو و انتخاب کنید">
                                         <span class="search-button pointer" id="new_tag_filter">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                                 <path d="M8.625 15.75C12.56 15.75 15.75 12.56 15.75 8.625C15.75 4.68997 12.56 1.5 8.625 1.5C4.68997 1.5 1.5 4.68997 1.5 8.625C1.5 12.56 4.68997 15.75 8.625 15.75Z" stroke="#C7C7C7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -332,15 +335,15 @@
                             <ul>
                                 <li>
                                     <div class="label-containef">
-                                        <input type="radio" name="ordering" value="related" id="related">
+                                        <input type="radio"  {{ request('ordering')=='oldest' ? 'checked' : '' }} class="fom_action" form="ba_f" name="ordering" value="oldest" id="related">
                                         <label for="related">
-                                            <span>مرتبط ترین</span>
+                                            <span>قدبمی</span>
                                         </label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="label-containef">
-                                        <input type="radio" name="ordering" value="newest" id="newest" checked="">
+                                        <input type="radio"  {{ request('ordering')=='newest' ? 'checked' : '' }} class="fom_action" form="ba_f" name="ordering" value="newest" id="newest" checked="">
                                         <label for="newest">
                                             <span>جدیدترین</span>
                                         </label>
@@ -348,7 +351,7 @@
                                 </li>
                                 <li>
                                     <div class="label-containef">
-                                        <input type="radio" name="ordering" value="favourite" id="favourite">
+                                        <input type="radio"  {{ request('ordering')=='favourite' ? 'checked' : '' }} class="fom_action" form="ba_f" name="ordering" value="favourite" id="favourite">
                                         <label for="favourite">
                                             <span>محبوب ترین</span>
                                         </label>
@@ -356,7 +359,7 @@
                                 </li>
                                 <li>
                                     <div class="label-containef">
-                                        <input type="radio" name="ordering" value="point" id="point">
+                                        <input type="radio"  {{ request('ordering')=='point' ? 'checked' : '' }} class="fom_action" form="ba_f" name="ordering" value="point" id="point">
                                         <label for="point">
                                             <span>امتیاز</span>
                                         </label>

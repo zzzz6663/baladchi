@@ -2558,6 +2558,12 @@ window.onload = function () {
             $('#counsel_form').submit()
         })
 
+
+
+        $(document).on('click', '#showlink', function (event) {
+            $('#link').slideDown()
+        })
+
         $(document).on('click', '#counsel_pop', function (event) {
             $('#counsel_pay_pop').show(400)
         })

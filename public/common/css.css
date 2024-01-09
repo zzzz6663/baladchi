@@ -576,6 +576,16 @@ display: inline-block; */
         margin-top: 20px;
 
     }
+    .user-full-messg .time{
+        position: relative;
+        bottom: 32px;
+        right: 20px;
+    }
+    .user-full-messg .lefts{
+        position: relative;
+        bottom: 179px;
+    right: -26px;
+    }
 }
 
 .input-label.big input[type=file]::file-selector-button {
@@ -769,6 +779,12 @@ display: inline-block; */
     display: flex;
     justify-content: space-between;
 }
+.liner-toggle{
+    margin-bottom: 20px!important;
+}
+.alert  {
+    padding: 0rem 1rem!important;
+}
 
 .active_ch {
     font-size: 20px;
@@ -785,3 +801,4 @@ display: inline-block; */
     padding: 0px 10px !important;
     cursor: pointer;
 }
+

@@ -87,9 +87,13 @@
                                     <h3>
                                         {{ $counsel->title }}
                                         <br>
-
-                                        <a href="{{route("go.to",['url'=> $counsel->url ])}}">لینک</a>
-
+                                        @if($counsel->url )
+                                        <span class="pointer" id="showlink">
+                                                نمایش لینک
+                                        </span>
+                                        <br>
+                                        <a style="display: none" id="link" href="{{route("go.to",['url'=> $counsel->url ])}}">{{ $counsel->url }}</a>
+                                        @endif
                                     </h3>
                                 </div>
                                 <div class="lefts">
@@ -112,6 +116,7 @@
                             </div>
                             <div class="user-messg-foter">
                                 @auth
+                                @if(!($counsel->gender != $user->gender|| $counsel->degree != $user->degree || $counsel->star >= $user->comment_log()['av'] || $counsel->answers_count() >= $counsel->answers) )
                                   @if(auth()->user()->id !=$counsel->user_id)
                                   <a href="{{ route('counsel.quiz', $counsel->id) }}" class="icon-button green">
                                     @if ($user->answers()->where("counsel_id",$counsel->id)->count())
@@ -128,6 +133,9 @@
                                         </svg>
                                     </span>
                                 </a>
+                                  @endif
+                                  @else
+     <p>                             شما شرایط اختصاصی این خرید جمعی را دارا نمی باشید</p>
                                   @endif
 
 
@@ -171,6 +179,54 @@
                             </div>
 
                         </div>
+
+
+                        <div class="user-messg-keuwords">
+                            <div class="rights">
+                                <h4>شرایط  اختصاصی  این خرد جمعی  :</h4>
+                                <div class="tag-list">
+
+                                   <ul>
+                                    @if($counsel->gender)
+                                        <li>
+                                            به این خرید جمعی فقط
+                                        <span class="alert alert-success">{{ __("arr.".$counsel->gender) }} ها </span>
+                                             میتوانند پاسخ دهند
+                                        </li>
+                                    @endif
+
+                                    @if($counsel->star)
+                                    <li>
+                                      حداقل ستاره برای پاسخ دادن به این خردجمعی
+                                    <span class="alert alert-success">{{ $counsel->star }} </span>
+
+                                         می باشد
+                                    </li>
+                                @endif
+                                @if($counsel->gender)
+                                <li>
+                                     مدرک مورد نیاز برای پاسخ گویی به این
+                                     خرد جمعی باید
+                                     <span class="alert alert-success">{{ __("arr.".$counsel->degree) }}  </span>
+                                     باشد
+                                </li>
+                            @endif
+                                @if($counsel->gender)
+                                <li>
+                                  حداکثر پاسخ دهندگان به این خردجمعی
+                                     <span class="alert alert-success">{{  $counsel->answers }}  نفر</span>
+                                  می باشد
+                                </li>
+                            @endif
+
+                                   </ul>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
                         <div class="user-messg-keuwords">
                             <div class="rights">
                                 <h4>کلید واژه ها :</h4>

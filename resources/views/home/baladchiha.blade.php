@@ -214,6 +214,191 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+
+
+                    <div class="accord-box active">
+                        <div class="top nob">
+                            <h4>حداقل تعداد مشاوره</h4>
+                            <span class="toggle">
+                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.94888 5.99999C5.08612 6.00001 5.22202 5.973 5.34882 5.92049C5.47561 5.86799 5.59084 5.79102 5.6879 5.69399L9.58789 1.794C9.78375 1.59813 9.8938 1.33249 9.8938 1.0555C9.8938 0.77851 9.78375 0.512869 9.58789 0.317007C9.39203 0.121144 9.12639 0.0110984 8.8494 0.0110984C8.5724 0.0110984 8.30676 0.121144 8.1109 0.317007L4.9469 2.717L1.7829 0.317007C1.58704 0.121144 1.32139 0.0110984 1.0444 0.0110984C0.767412 0.0110984 0.50174 0.121144 0.305878 0.317007C0.110015 0.512869 2.14471e-08 0.77851 0 1.0555C-2.1447e-08 1.33249 0.110015 1.59813 0.305878 1.794L4.2059 5.69399C4.3034 5.79155 4.41925 5.86882 4.54678 5.92135C4.67431 5.97387 4.81096 6.00059 4.94888 5.99999Z" fill="currentColor"></path>
+                                </svg>
+                            </span>
+
+                        </div>
+                        <div class="accord-content">
+                            <div>
+
+                                <div class="liner-toggle">
+                                    <ul>
+                                        <li>
+                                            <div class="label-containef">
+                                                <input type="radio" name="talk" value="1" {{ request("talk")=="1"?"checked":"" }} class="fom_action" id="consult1" >
+                                                <label for="consult1">
+                                                    <span>1  مشاوره </span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="label-containef">
+                                                <input type="radio" name="talk" value="2" {{ request("talk")=="2"?"checked":"" }} class="fom_action" id="consult2">
+                                                <label for="consult2">
+                                                    <span>2  مشاوره </span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="label-containef">
+                                                <input type="radio" name="talk" value="3" {{ request("talk")=="3"?"checked":"" }} class="fom_action" id="consult3">
+                                                <label for="consult3">
+                                                    <span>3  مشاوره </span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="label-containef">
+                                                <input type="radio" name="talk" value="4" {{ request("talk")=="4"?"checked":"" }} class="fom_action" id="consult4">
+                                                <label for="consult4">
+                                                    <span>4  مشاوره </span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="label-containef">
+                                                <input type="radio" name="talk" value="5" {{ request("talk")=="5"?"checked":"" }} class="fom_action" id="consult5">
+                                                <label for="consult5">
+                                                    <span>5  مشاوره </span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="accord-box active">
+                        <div class="top nob">
+                            <h4>سن</h4>
+                            <span class="toggle">
+                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.94888 5.99999C5.08612 6.00001 5.22202 5.973 5.34882 5.92049C5.47561 5.86799 5.59084 5.79102 5.6879 5.69399L9.58789 1.794C9.78375 1.59813 9.8938 1.33249 9.8938 1.0555C9.8938 0.77851 9.78375 0.512869 9.58789 0.317007C9.39203 0.121144 9.12639 0.0110984 8.8494 0.0110984C8.5724 0.0110984 8.30676 0.121144 8.1109 0.317007L4.9469 2.717L1.7829 0.317007C1.58704 0.121144 1.32139 0.0110984 1.0444 0.0110984C0.767412 0.0110984 0.50174 0.121144 0.305878 0.317007C0.110015 0.512869 2.14471e-08 0.77851 0 1.0555C-2.1447e-08 1.33249 0.110015 1.59813 0.305878 1.794L4.2059 5.69399C4.3034 5.79155 4.41925 5.86882 4.54678 5.92135C4.67431 5.97387 4.81096 6.00059 4.94888 5.99999Z" fill="currentColor"></path>
+                                </svg>
+                            </span>
+
+                        </div>
+                        <div class="accord-content">
+                            <div>
+
+                                <div class="input-label">
+                                    <label for="">
+                                        <span>حداقل سن</span>
+                                    </label>
+                                    <input type="text" class="fom_action left" name="b_date" value="{{ request("b_date") }}" placeholder="" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accord-box active">
+                        <div class="top nob">
+                            <h4>مدرک تحصیلی</h4>
+                            <span class="toggle">
+                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.94888 5.99999C5.08612 6.00001 5.22202 5.973 5.34882 5.92049C5.47561 5.86799 5.59084 5.79102 5.6879 5.69399L9.58789 1.794C9.78375 1.59813 9.8938 1.33249 9.8938 1.0555C9.8938 0.77851 9.78375 0.512869 9.58789 0.317007C9.39203 0.121144 9.12639 0.0110984 8.8494 0.0110984C8.5724 0.0110984 8.30676 0.121144 8.1109 0.317007L4.9469 2.717L1.7829 0.317007C1.58704 0.121144 1.32139 0.0110984 1.0444 0.0110984C0.767412 0.0110984 0.50174 0.121144 0.305878 0.317007C0.110015 0.512869 2.14471e-08 0.77851 0 1.0555C-2.1447e-08 1.33249 0.110015 1.59813 0.305878 1.794L4.2059 5.69399C4.3034 5.79155 4.41925 5.86882 4.54678 5.92135C4.67431 5.97387 4.81096 6.00059 4.94888 5.99999Z" fill="currentColor"></path>
+                                </svg>
+                            </span>
+
+                        </div>
+                        <div class="accord-content">
+                            <div>
+                                <ul>
+                                    <li>
+                                        <div class="radiocontainer">
+                                            <input type="radio" class="fom_action" name="degree" checked  value="">
+                                            <label for="all_dd">
+                                                <span class="check">
+                                                    <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.6665 7.11475L10.7945 0.986084L11.7378 1.92875L4.6665 9.00008L0.423828 4.75742L1.3665 3.81475L4.6665 7.11475Z" fill="white"></path>
+                                                    </svg>
+                                                </span>
+                                                همه
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radiocontainer">
+                                            <input type="radio" class="fom_action"  name="degree" id="freex" {{ request("degree")=="under_high_school"?"checked":"" }}  value="under_high_school">
+                                            <label for="freex">
+                                                <span class="check">
+                                                    <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.6665 7.11475L10.7945 0.986084L11.7378 1.92875L4.6665 9.00008L0.423828 4.75742L1.3665 3.81475L4.6665 7.11475Z" fill="white"></path>
+                                                    </svg>
+                                                </span>
+                                                زیر دیپلم
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radiocontainer">
+                                            <input type="radio" class="fom_action" name="degree" id="wgiftx" {{ request("degree")=="high_school"?"checked":"" }}  value="high_school">
+                                            <label for="wgiftx">
+                                                <span class="check">
+                                                    <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.6665 7.11475L10.7945 0.986084L11.7378 1.92875L4.6665 9.00008L0.423828 4.75742L1.3665 3.81475L4.6665 7.11475Z" fill="white"></path>
+                                                    </svg>
+                                                </span>
+                                                دیپلم
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radiocontainer">
+                                            <input type="radio" class="fom_action" name="degree" id="master" {{ request("degree")=="master"?"checked":"" }}  value="master">
+                                            <label for="master">
+                                                <span class="check">
+                                                    <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.6665 7.11475L10.7945 0.986084L11.7378 1.92875L4.6665 9.00008L0.423828 4.75742L1.3665 3.81475L4.6665 7.11475Z" fill="white"></path>
+                                                    </svg>
+                                                </span>
+                                                کارشناسی
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radiocontainer">
+                                            <input type="radio" class="fom_action" name="degree" id="high_master" {{ request("degree")=="high_master"?"checked":"" }}  value="high_master">
+                                            <label for="high_master">
+                                                <span class="check">
+                                                    <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.6665 7.11475L10.7945 0.986084L11.7378 1.92875L4.6665 9.00008L0.423828 4.75742L1.3665 3.81475L4.6665 7.11475Z" fill="white"></path>
+                                                    </svg>
+                                                </span>
+                                                کارشناسی ارشد
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radiocontainer">
+                                            <input type="radio" class="fom_action" name="degree" id="phd" {{ request("degree")=="phd"?"checked":"" }}  value="phd">
+                                            <label for="phd">
+                                                <span class="check">
+                                                    <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.6665 7.11475L10.7945 0.986084L11.7378 1.92875L4.6665 9.00008L0.423828 4.75742L1.3665 3.81475L4.6665 7.11475Z" fill="white"></path>
+                                                    </svg>
+                                                </span>
+                                                phd
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
                     </div>
 
                 </form>

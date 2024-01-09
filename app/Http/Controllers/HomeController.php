@@ -164,7 +164,7 @@ class HomeController extends Controller
 
         $ad = null;
         $baladchies = User::query();
-
+        // dd($request->all());
         $city_id = null;
         $region_id = null;
         if ($request->authenticated) {
@@ -200,6 +200,18 @@ class HomeController extends Controller
             }
         }
 
+        if ($request->talk) {
+            $baladchies->  has('comments', '=', $request->talk)->get();
+        }
+
+        if ($request->degree) {
+            $baladchies->where('degree', $request->degree);
+        }
+
+        if ($request->b_date) {
+            $now=Carbon::now();
+            $baladchies->where('b_date', '>',  $now->subYears($request->b_date));
+        }
         if ($request->skill_id) {
             $skill = $request->skill_id;
             $baladchies->whereHas("skills", function ($query) use ($skill) {
@@ -219,7 +231,6 @@ class HomeController extends Controller
         }
         if ($request->related_baladchi) {
             $ad = Advertise::find($request->related_baladchi);
-
             if ($ad->telic_id) {
                 $baladchies->whereHas("telics", function ($query) use ($ad) {
                     $query->where("id", $ad->telic_id);
@@ -254,11 +265,21 @@ class HomeController extends Controller
         if ($request->degree) {
             $counsels->where('degree', $request->degree);
         }
-
+        if ($request->search) {
+            $search=$request->search;
+            $counsels->where('title', 'LIKE', "%{$search}%");
+        }
+        if ($request->ordering == "newest") {
+            $counsels->latest();
+        }
+        if ($request->ordering == "oldest") {
+            $counsels->oldest();
+        }
+        $skills=[];
         if ($user) {
             $skills =    $user->skills()->pluck('id')->toArray();
         }
-
+//   $counsels->whereStatus('show');
         // $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
         $counsels = $counsels->
             // whereStatus('show')->whereHas("skills", function ($query) use ($skills) {

@@ -191,7 +191,14 @@
                                     </button>
                                 </div>
                             </div>
-                            @if ($counsel->check_for_active())
+
+
+                            @if ($counsel->check_for_active() )
+                                    @if(($counsel->reward =="select_the_best_answer"  && $counsel->counselquestions()->where("a1",null)
+                                    ->where("a2",null)
+                                    ->where("a3",null)
+                                    ->where("a4",null)
+                                ->count()>0 ) || $counsel->reward !="select_the_best_answer")
                                 <form class="inline-block ess" action="{{ route('active.counsel', $counsel->id) }}"
                                     method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">
                                     @csrf
@@ -200,6 +207,11 @@
                                         تایید وانتشار
                                     </button>
                                 </form>
+                                @else
+                                حداقل یک سوال تشریحی اضافه کنید
+
+                                @endif
+
                             @else
                                 <a class="mid-button" href="{{route('panel.counsel')}}">برگشت </a>
                             @endif
