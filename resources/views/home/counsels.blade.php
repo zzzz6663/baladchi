@@ -341,6 +341,7 @@
                                         </label>
                                     </div>
                                 </li>
+                                {{--  s  --}}
                                 <li>
                                     <div class="label-containef">
                                         <input type="radio"  {{ request('ordering')=='newest' ? 'checked' : '' }} class="fom_action" form="ba_f" name="ordering" value="newest" id="newest" checked="">

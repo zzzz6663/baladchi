@@ -178,7 +178,7 @@
 
                                 {{--  @else
                                 شما
-                                @endif  --}}
+                                @endif سس --}}
 
 
                             </form>
@@ -188,11 +188,11 @@
                                 <div class="pair-button">
                                     <button form="qu_foem" class="mid-button blue pointer" value=" ">
                                         ذخیره سوال
-                                    </button>
+                                     </button>
                                 </div>
                             </div>
 
-
+{{--  ss  --}}
                             @if ($counsel->check_for_active() )
                                     @if(($counsel->reward =="select_the_best_answer"  && $counsel->counselquestions()->where("a1",null)
                                     ->where("a2",null)

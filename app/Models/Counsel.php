@@ -27,7 +27,7 @@ class Counsel extends Model
         'star',
         'status',
         'confirm',//تایید ادمین
-        'select_id',//  کاربر انتخاب شده
+        'select_id',//  کاربر انتخابس شده
         'url',//  لینک
         'img',//  عکس
 

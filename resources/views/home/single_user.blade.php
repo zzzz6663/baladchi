@@ -86,7 +86,7 @@
                     <div class="add-in-side">
                         <ul>
                             {{--  <li>
-                                <span class="tit">امکان بازدید از آگهی </span>
+                                <span class="tit">امکان بازدید از آگهسی </span>
 
                                 <span class="sts {{ $user->visit ? 'green' : 'orange' }}">
                                     {{ $user->visit ? 'دارد' : 'ندارد' }}

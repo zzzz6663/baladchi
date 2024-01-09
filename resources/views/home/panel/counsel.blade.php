@@ -448,7 +448,7 @@
                             <option value="associate_degree">کاردانی </option>
                             <option value="master"> کارشناسی</option>
                             <option value="high_master">کارشناسی ارشد </option>
-                            <option value="phd"> phd</option>
+                            <option value="سphd"> phd</option>
                             <option value="high_school">دیپلم
                             </option>
                         </select>

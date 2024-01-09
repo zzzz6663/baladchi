@@ -271,7 +271,7 @@ class User extends Authenticatable
 
 
     public function comment_log(){
-        // dd(floor($this->comments()->where('confirm', '!=', null)->avg("star")));
+        // dd(floor($this->commenسtss()->where('confirm', '!=', null)->avg("star")));
         if($count=$this->comments()->where('confirm', '!=', null)->count()){
             $av=floor($this->comments()->where('confirm', '!=', null)->avg("rate"));
             $data['all']=$this->comments()->where('confirm', '!=', null)->count() ;

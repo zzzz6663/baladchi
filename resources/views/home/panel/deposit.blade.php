@@ -290,7 +290,7 @@
                                                     </span>
                                                 </li>
                                                 {{--  <li class=" sm">
-                                                    <span class="title sm">زمان مانده تا پذیرش توسط شما</span>
+                                                    <span class="title sm">زمان مانده تا پذیرش تsوسط شما</span>
                                                     <span class="val time">12 ساعت</span>
                                                 </li>  --}}
                                             </ul>

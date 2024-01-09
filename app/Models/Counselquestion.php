@@ -17,7 +17,7 @@ class Counselquestion extends Model
         'a3',
         'a4',
         'a5',
-        'explain',//جواب تشریحی
+        'explain',//جواسسب تشریحی
         'answer',//جواب گزین های
     ];
     public function counsel(){

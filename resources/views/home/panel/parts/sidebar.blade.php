@@ -163,7 +163,7 @@
                     </a>
                 </li>
                 {{--  <li class=" {{Request::url()== route( 'panel.account')?'active':''}}">
-                    <a href="{{ route('panel.account') }}">
+                    <a href="{{ route('pسanel.account') }}">
                         <span class="icon">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C8.298 20 6.695 19.575 5.292 18.825L0 20L1.176 14.71C0.426 13.306 0 11.703 0 10C0 4.477 4.477 0 10 0ZM10 2C5.582 2 2 5.582 2 10C2 11.335 2.326 12.618 2.94 13.766L3.29 14.42L2.634 17.366L5.582 16.712L6.235 17.061C7.383 17.675 8.665 18 10 18C14.418 18 18 14.418 18 10C18 5.582 14.418 2 10 2ZM11 5V10H15V12H9V5H11Z" fill="currentColor"></path>

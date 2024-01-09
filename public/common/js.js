@@ -2578,7 +2578,7 @@ window.onload = function () {
                 confirmButtonText: 'تایید',
                 denyButtonText: `رد`,
             }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
+                /* Read more about isConfirmسed, isDenied below */
                 if (result.isConfirmed) {
                     el.closest('form').submit()
                 }
