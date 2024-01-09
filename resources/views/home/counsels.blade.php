@@ -335,8 +335,8 @@
                             <ul>
                                 <li>
                                     <div class="label-containef">
-                                        <input type="radio"  {{ request('ordering')=='oldest' ? 'checked' : '' }} class="fom_action" form="ba_f" name="ordering" value="oldest" id="related">
-                                        <label for="related">
+                                        <input type="radio"  {{ request('ordering')=='oldest' ? 'checked' : '' }} class="fom_action" form="ba_f" name="ordering" value="oldest" id="oldest">
+                                        <label for="oldest">
                                             <span>قدبمی</span>
                                         </label>
                                     </div>
