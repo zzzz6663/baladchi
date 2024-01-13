@@ -102,6 +102,10 @@
                             </svg>
                         </span>
                         <span>  بیعانه ها      </span>
+
+                        @if(auth()->user()->unread_deposit())
+                        <span class="num">{{ auth()->user()->unread_deposit() }}</span>
+                        @endif
                     </a>
                 </li>
                 <li class=" {{Request::url()== route( 'panel.counsel')?'active':''}}">

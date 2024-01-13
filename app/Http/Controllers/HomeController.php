@@ -60,15 +60,19 @@ class HomeController extends Controller
     public  function  clear()
     {
 
-        $user = auth()->user();;
-        $filenames = [];
-$files = File::allFiles('/resourse/views/home/filters');
-dd($files);
 
-foreach ($files as $file) {
-    $filename = explode('.', $file->getFilenameWithoutExtension());
-    $filenames[] = $filename[0];  // as you don't want blade or further extensions.
-}
+
+        $invitedUser = new User;
+        // $invitedUser->notify(new SendKaveCode("09373699317", 'login', 1212, '', '', '', ''));
+//         $user = auth()->user();;
+//         $filenames = [];
+// $files = File::allFiles('/resourse/views/home/filters');
+// dd($files);
+
+// foreach ($files as $file) {
+//     $filename = explode('.', $file->getFilenameWithoutExtension());
+//     $filenames[] = $filename[0];  // as you don't want blade or further extensions.
+// }
 
         // $filters=Filter::all();
         // foreach(  $filters as$filter){
@@ -76,13 +80,13 @@ foreach ($files as $file) {
         //             dump($filter->en);
         //         }
         // }
-        // Artisan::call('optimize');
-        // Artisan::call('cache:clear');
-        // Artisan::call('route:cache');
-        // Artisan::call('config:cache');
-        // Artisan::call('view:clear');
-        // Artisan::call('optimize:clear');
-        // Artisan::call('config:clear');
+        Artisan::call('optimize');
+        Artisan::call('cache:clear');
+        Artisan::call('route:cache');
+        Artisan::call('config:cache');
+        Artisan::call('view:clear');
+        Artisan::call('optimize:clear');
+        Artisan::call('config:clear');
         // Option::create([
         //     'optionable_id'=>"221",
         //     'App\Models\Advertise'=>"App\Models\Advertise",
@@ -177,8 +181,6 @@ foreach ($files as $file) {
 
     public function baladchiha(Request $request)
     {
-
-
         $ad = null;
         $baladchies = User::query();
         // dd($request->all());
@@ -200,15 +202,11 @@ foreach ($files as $file) {
                 $city_id = $advertise->city_id;
                 $region_id = $advertise->region_id;
             }
-            // dd($regsion_id);
 
             if ($city_id) {
                 $baladchies->where('city_id', $city_id);
             }
-            // if ($regionس_id) {
-            //     $baladchies->where('region_id', $region_id);
-            // }
-            // dd($baladchies->get());
+
             $baladchies->where('show_visitor', 1);
         } else {
             $baladchies->where('baladchi', '!=', null);
@@ -224,10 +222,11 @@ foreach ($files as $file) {
         if ($request->degree) {
             $baladchies->where('degree', $request->degree);
         }
-
         if ($request->b_date) {
             $now=Carbon::now();
-            $baladchies->where('b_date', '>',  $now->subYears($request->b_date));
+        // dd( $now->subYears($request->b_date));
+
+            $baladchies->where('b_date', '<',  $now->subYears($request->b_date));
         }
         if ($request->skill_id) {
             $skill = $request->skill_id;

@@ -16,6 +16,7 @@ class Deposit extends Model
         'status',
         'reflux',
         'accept',
+        'seen',
         'deposit_day',
     ];
 

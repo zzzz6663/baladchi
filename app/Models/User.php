@@ -339,7 +339,14 @@ class User extends Authenticatable
         if($uni){
             return Chat::where("to_id",$this->id)->where("uni",$uni)->where("seen",0)->count();
         }
-        return Chat::where("to_id",$this->id)->where("seen",0)->count();
+        return Chat::where("to_id",$this->id)->where("seen",null)->count();
+    }
+    public function unread_deposit(){
+
+        return Deposit::whereHas("advertise",function($query){
+            $query->where("user_id",$this->id);
+        })
+        ->where("seen",null)->count();
     }
     public function send_memo_advertise(  $advertise,$memo){
 

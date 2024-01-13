@@ -523,6 +523,7 @@ class PanelController extends Controller
     {
         $user = auth()->user();
         $indeposits = Deposit::whereIn('advertise_id', $user->advertises()->pluck('id')->toArray())->latest()->get();
+        Deposit::whereIn('advertise_id', $user->advertises()->pluck('id')->toArray())->whereNull("seen")->update(['seen'=>Carbon::now()]);;
         return view('home.panel.deposit', compact(['user', 'indeposits']));
     }
     public function assist(Request $request)
