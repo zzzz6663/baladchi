@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Brand;
 use App\Models\Telic;
 use App\Models\Answer;
+use App\Models\Filter;
 use App\Models\Option;
 use App\Models\Subset;
 use App\Models\Travel;
@@ -34,6 +35,7 @@ use App\Notifications\SendKaveCode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
@@ -59,13 +61,28 @@ class HomeController extends Controller
     {
 
         $user = auth()->user();;
-        Artisan::call('optimize');
-        Artisan::call('cache:clear');
-        Artisan::call('route:cache');
-        Artisan::call('config:cache');
-        Artisan::call('view:clear');
-        Artisan::call('optimize:clear');
-        Artisan::call('config:clear');
+        $filenames = [];
+$files = File::allFiles('/resourse/views/home/filters');
+dd($files);
+
+foreach ($files as $file) {
+    $filename = explode('.', $file->getFilenameWithoutExtension());
+    $filenames[] = $filename[0];  // as you don't want blade or further extensions.
+}
+
+        // $filters=Filter::all();
+        // foreach(  $filters as$filter){
+        //         if(!View::exists('home.filters.' . $filter->en)){
+        //             dump($filter->en);
+        //         }
+        // }
+        // Artisan::call('optimize');
+        // Artisan::call('cache:clear');
+        // Artisan::call('route:cache');
+        // Artisan::call('config:cache');
+        // Artisan::call('view:clear');
+        // Artisan::call('optimize:clear');
+        // Artisan::call('config:clear');
         // Option::create([
         //     'optionable_id'=>"221",
         //     'App\Models\Advertise'=>"App\Models\Advertise",
@@ -280,12 +297,12 @@ class HomeController extends Controller
             $skills =    $user->skills()->pluck('id')->toArray();
         }
 //   $counsels->whereStسatus('show');
-        $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
-        // $counsels = $counsels->
+        // $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
+        $counsels = $counsels->
             // whereStatus('show')->whereHas("skills", function ($query) use ($skills) {
             //     $query->whereIn("id", $skills);
             // })->
-            // latest()->paginate(10);
+            latest()->paginate(10);
         return view('home.counsels', compact(['counsels', 'user']));
     }
 
