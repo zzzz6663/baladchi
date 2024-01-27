@@ -140,7 +140,7 @@ class AdvertiseController extends Controller
                 if ($val && in_array($eq, ['year_of_construction'])) {
                     $advertises->whereHas('options', function ($query) use ($eq, $val, $request) {
                         $query->where('name', $eq)
-                            ->where('val', "<", (int) $val);
+                            ->where('val', ">", (int) $val);
                     });
                 } else {
                     switch ($val) {

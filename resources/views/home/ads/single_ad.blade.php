@@ -235,7 +235,7 @@
                                         @if ($user->check_ad_deposit($advertise))
                                             <span>
                                                 پیشنهاد داده شده:
-                                                {{ $user->check_ad_deposit($advertise) }}
+                                                {{ number_format($user->check_ad_deposit($advertise)) }}
 
                                             </span>
                                         @else

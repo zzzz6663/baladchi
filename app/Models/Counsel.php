@@ -88,6 +88,16 @@ class Counsel extends Model
     }
 
 
+    public function check_condition($user)
+    {
+        $counsel=$this;
+
+        if(!(($counsel->gender &&  $counsel->gender != $user->gender)|| ($counsel->degree && $counsel->degree != $user->degree) || ($counsel->star&& $counsel->star <= $user->comment_log()['av']) ||( $counsel->answers_count() >= $counsel->answers))){
+            return false;
+        }
+
+        return true;
+    }
     public function img()
     {
         if($this->img){

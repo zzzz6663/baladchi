@@ -82,6 +82,7 @@
                         <div class="select-label">
                             <label for="star"> حداقل ستاره ویژه</label>
                             <select name="star" id="" class="nice-select" data-place="تعداد ستاره ویژه">
+                                <option value="">همه </option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -128,6 +129,7 @@
                         <div class="select-label">
                             <label for="degree">مدرک تحصیلی</label>
                             <select name="degree" id="" class="nice-select" data-place="مدرک تحصیلی">
+                                <option value="">همه</option>
                                 <option value="under_high_school">زیر دیپلم</option>
                                 <option value="high_school"> دیپلم</option>
                                 <option value="associate_degree">کاردانی </option>

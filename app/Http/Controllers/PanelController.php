@@ -304,7 +304,7 @@ class PanelController extends Controller
 
                 // 'skills' => 'required|array|min:1',
                 'skills' => 'nullable',
-                'degree' => 'required',
+                'degree' => 'nullable',
                 'answers' => 'required',
                 'reward' => 'required',
                 'url' => 'nullable',
@@ -395,7 +395,7 @@ class PanelController extends Controller
                 'gender' => 'required',
                 'star' => 'nullable',
                 'skills' => 'required',
-                'degree' => 'required',
+                'degree' => 'nullable',
                 'answers' => 'required',
                 'url' => 'nullable',
                 // 'reward' => 'required',
@@ -515,7 +515,7 @@ class PanelController extends Controller
         ]);
         $user->update(['balance' => $user->balanece + $deposit->amount]);
         $deposit->update(['status' => 'cancelled']);
-        $deposit->advertise(['status' => 'confirmed']);
+        $deposit->advertise->update(['status' => 'confirmed']);
         alert()->alert('بیعانه با موفقیت لغو شد   ');
         return  back();
     }
