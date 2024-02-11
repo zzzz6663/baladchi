@@ -5,9 +5,9 @@
 
 
 /////////////////////////////////////
-// $('.accord-box .top .toggle_ad').click(function(){
+// $('.accord-box .top .toggle').click(function(){
 //     console.log('s')
-//     $(this).closet('.accord-box').toggleClass('active');
+//     $(this).parent().parent('.accord-box').toggleClass('active');
 // })
 
 
@@ -169,7 +169,6 @@ if($('#txtEditor').length){
 
 ////////////////////////////////////
 $('.add-charge-form .btn').click(function(e){
-    let el =$(this)
     e.preventDefault();
     var a= $(this).siblings().children('input');
     var c= $(this).siblings().children('.num');
@@ -185,44 +184,29 @@ $('.add-charge-form .btn').click(function(e){
     }
     a.val(b);
         c.text(b);
-        let num = String(b).replace(/(.)(?=(\d{3})+$)/g, '$1,')
-        console.log(60)
-        if (b > 0) {
-            b = b.num2persian()
-            if (el.closest('.input-label1').find('.green_label').length) {
-                el.closest('.input-label1').find('.green_label').html(" ( " + num + " ) " + " - " + b + "  تومان ")
-            } else {
-                el.closest('.input-label1').find(".pn").append(`
-                <p class="green_label">  ${b} - ${num}
-                تومان</p>
-                `)
-            }
-
-        }
-
 });
 ////////////////////////////////////
 $(document).on('click', 'div.sliding-menu .top', function (event) {
 
-    $(this).slideUp(300)
-    $(this).parent('').siblings().slideUp(300)
-    $(this).siblings().slideDown(400)
+    $(this).css('display','none')
+    $(this).parent('').siblings().css('display','none')
+    $(this).siblings().css('display','block')
 })
 $(document).on('click', 'div.sliding-menu .sub-slid', function (event) {
     let el= $(this)
     if(el.hasClass('no_subs')){
         return
     }
-    $(this).slideUp(300)
-    $(this).parent('').siblings().slideUp(300)
-    $(this).parent('').parent('').siblings().slideUp(300)
-    $(this).siblings().slideDown(400)
+    $(this).css('display','none')
+    $(this).parent('').siblings().css('display','none')
+    $(this).parent('').parent('').siblings().css('display','none')
+    $(this).siblings().css('display','block')
 })
 $(document).on('click', 'div.sliding-menu .sub > .back', function (event) {
-    $(this).parent().slideUp(300)
+    $(this).parent().css('display','none')
     $(this).parent('').siblings().css('display','flex')
-    $(this).parent('').parent('').siblings().slideDown(400);
-    $(this).parent('').parent('').parent('').siblings().slideDown(400);
+    $(this).parent('').parent('').siblings().css('display','block');
+    $(this).parent('').parent('').parent('').siblings().css('display','block');
 })
 ////////////////////////////
 $('.faq .top').click(function(){
@@ -268,54 +252,7 @@ $('.my-add .left-sec h4').click(function(e){
 ////////////////////////////////////
 
 //////////////////////////
-//////////////////////////////////// Comment Slid
-var valuesSlider = document.getElementById('slider-round');
-var start = $('#slider-round').data('start');
-if(!start){
-    start=0;
-}
-var inputFormat = document.getElementById('input-format')
-console.log(valuesSlider)
 
-if(valuesSlider){
-noUiSlider.create(valuesSlider, {
-    start: start,
-    tooltips: [
-        wNumb({
-    decimals: 0,
-    prefix: ' ',
-    suffix: ' %'
-}) // tooltip with custom formatting
-    ],
-    direction: 'rtl',
-    range: {
-        'min': 0,
-        'max': 100
-    }
-});
-valuesSlider.noUiSlider.on('update', function (values, handle) {
-    if(values[handle]<21){
-        $('#slid-rate').attr('class','lev1')
-    }else if(values[handle]<41){
-        $('#slid-rate').attr('class','lev2')
-
-    }else if(values[handle]<61){
-        $('#slid-rate').attr('class','lev3')
-
-    }else if(values[handle]<81){
-        $('#slid-rate').attr('class','lev4')
-
-    }else{
-
-        $('#slid-rate').attr('class','lev5')
-    }
-    inputFormat.value = values[handle];
-});
-}
-
-////////////////////////////////////
-
-//////////////////////////
 
 
 

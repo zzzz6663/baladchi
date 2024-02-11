@@ -5,11 +5,15 @@
 @foreach ($filters as $filter )
 
 @if (Illuminate\Support\Facades\View::exists('home.filters.' . $filter->en))
-        @include('home.filters.' . $filter->en)
+        @includeIf('home.filters.' . $filter->en)
 @endif
 
 @endforeach
-{{--  ss  --}}
+
+
+
+
+
 
 @if(sizeof($cities_all)==1)
 @php

@@ -956,6 +956,15 @@ window.onload = function () {
         })
 
 
+        $(document).on('click', '.child_par', function (event) {
+            let el=$(this)
+            console.log(9090)
+            $('.grandchild').slideUp(200)
+            setTimeout(() => {
+                el.closest('li').find(".grandchild").show(400)
+            }, 300);
+
+        })
         $(document).on('keyup', '.number_filter', function (event) {
             let el = $(this);
             let val = el.val();
@@ -1035,6 +1044,7 @@ window.onload = function () {
         $(document).on('click', '.select_kill_id', function (event) {
             let el = $(this)
             let id = el.data("id")
+            console.log(id)
             $('#skill_id').val(id)
             $('#ba_f').submit()
             // $(".select_kill_id").removeClass("active_ch")
@@ -1044,6 +1054,7 @@ window.onload = function () {
             $(this).hide(50)
             $(".par_c").show(400)
             $(".par_c").removeClass("active")
+            $(".par_c").removeClass("dis_none")
             $('#par_id').val("")
             $('#skill_id').val("")
         })
@@ -1052,13 +1063,15 @@ window.onload = function () {
 
         $(document).on('click', '.par_c', function (event) {
             let el = $(this)
-            let par = el.closest(".par_c")
-            par.addClass('active');
+            // let par = el.closest(".par_c")
+            // par.addClass('active');
+            $(".par_c").not($(this)).slideUp(150)
+            el.addClass("active")
             $('.all_skill').show(400)
             let id = el.data("id")
             $('#par_id').val(id)
-            console.log(id)
-            $('.select_p').removeClass("active")
+            // console.log(id)
+            // $('.select_p').removeClass("active")
             // $('.dis_none').removeClass("dis_none")
             // $(".par_c").hide(50)
             // setTimeout(() => {
@@ -1066,13 +1079,12 @@ window.onload = function () {
 
             // }, 100);
 
-
-            $('.par_c').each(function (i, obj) {
-                let elw = $(this)
-                if (!elw.hasClass("active")) {
-                    elw.hide(300)
-                }
-            });
+            // $('.par_c').each(function (i, obj) {
+            //     let elw = $(this)
+            //     if (!elw.hasClass("active")) {
+            //         elw.hide(300)
+            //     }
+            // });
         })
 
 
@@ -1214,7 +1226,9 @@ window.onload = function () {
             let el = $(this)
             let telic = el.data('id')
             let type = el.data('type')
+            console.log(9000000000000000000)
             console.log(type)
+            console.log(el)
             if(type=="telic"){
                 $('#telic_id').val(telic)
                 set_main("telic")
@@ -1233,26 +1247,30 @@ window.onload = function () {
                 let data=get_items()
                 update_ad_list(data)
             }
+            console.log(66655655454)
             let type = el.data('type')
             let id = el.data('id')
-            $.ajax('/filters', {
-                headers: {
-                    'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
-                },
-                data: { id: id, type: type },
-                type: 'post',
-                success: function (data) {
-                    console.log(data)
-                    $('#filters_all').html(data.body)
-                    setTimeout(() => {
-                      init_data()
+            if(el&& id){
+                $.ajax('/filters', {
+                    headers: {
+                        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+                    },
+                    data: { id: id, type: type },
+                    type: 'post',
+                    success: function (data) {
+                        console.log(data)
+                        $('#filters_all').html(data.body)
+                        setTimeout(() => {
+                          init_data()
 
-                    }, 500);
-                },
-                error: function (request, status, error) {
-                    console.log(request)
-                }
-            })
+                        }, 500);
+                    },
+                    error: function (request, status, error) {
+                        console.log(request)
+                    }
+                })
+            }
+
         }
        function init_data(){
             let alldata = get_items()

@@ -43,18 +43,24 @@
                         </span>
                         @if(auth()->user()->fave_memos())
                         <span class="num">
+                            1
                             {{ auth()->user()->fave_memos() }}
                         </span>
                         @endif
                     </a>
                 </li>
                 <li>
-                    <a class="iconmenu" href="#">
+                    <a class="iconmenu" href="{{ route('panel.dashboard') }}">
                         <span class="icon">
                             <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 16H16V9.031C16 5.148 12.866 2 9 2C5.134 2 2 5.148 2 9.031V16ZM9 0C13.97 0 18 4.043 18 9.031V18H0V9.031C0 4.043 4.03 0 9 0ZM6.5 19H11.5C11.5 19.663 11.2366 20.2989 10.7678 20.7678C10.2989 21.2366 9.66304 21.5 9 21.5C8.33696 21.5 7.70107 21.2366 7.23223 20.7678C6.76339 20.2989 6.5 19.663 6.5 19Z" fill="currentColor"></path>
                             </svg>
                         </span>
+                        @if(auth()->user()->unread_deposit() +   auth()->user()->unread_bill())
+                        <span class="num">
+                      {{ auth()->user()->unread_deposit()+auth()->user()->unread_bill() }}
+                        </span>
+                        @endif
 
                     </a>
 

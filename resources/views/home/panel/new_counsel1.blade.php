@@ -130,13 +130,39 @@
                             <label for="degree">مدرک تحصیلی</label>
                             <select name="degree" id="" class="nice-select" data-place="مدرک تحصیلی">
                                 <option value="">همه</option>
-                                <option value="under_high_school">زیر دیپلم</option>
-                                <option value="high_school"> دیپلم</option>
-                                <option value="associate_degree">کاردانی </option>
-                                <option value="master"> کارشناسی</option>
-                                <option value="high_master">کارشناسی ارشد </option>
-                                <option value="phd"> phd</option>
-                                <option value="high_school">دیپلم
+                                <option value="
+                                فقط
+                                under_high_school">زیر دیپلم
+
+                                </option>
+                                <option value="high_school">
+                                    فقط
+                                     دیپلم
+
+                                </option>
+                                <option value="associate_degree">
+                                    فقط
+                                    کاردانی
+
+                                </option>
+                                <option value="master">
+                                    فقط
+                                     کارشناسی
+
+                                </option>
+                                <option value="high_master">
+                                    فقط
+                                    کارشناسی ارشد
+
+                                </option>
+                                <option value="phd">
+                                    فقط
+                                     phd
+
+                                </option>
+                                <option value="high_school">
+                                    فقط
+                                    دیپلم
                                 </option>
                             </select>
                         </div>

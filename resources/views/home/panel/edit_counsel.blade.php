@@ -146,13 +146,40 @@
                         <label for="degree">مدرک تحصیلی</label>
                         <select name="degree" id="" class="nice-select" data-place="مدرک تحصیلی">
                             <option value="">یک گزینه را انتخاب کنید </option>
-                            <option {{ $counsel->degree=="under_high_school"?"selected":'' }} value="under_high_school">زیر دیپلم</option>
-                            <option {{ $counsel->degree=="high_school"?"selected":'' }} value="high_school"> دیپلم</option>
-                            <option {{ $counsel->degree=="associate_degree"?"selected":'' }} value="associate_degree">کاردانی </option>
-                            <option {{ $counsel->degree=="master"?"selected":'' }} value="master"> کارشناسی</option>
-                            <option {{ $counsel->degree=="high_master"?"selected":'' }} value="high_master">کارشناسی ارشد </option>
-                            <option {{ $counsel->degree=="phd"?"selected":'' }} value="phd"> phd</option>
-                            <option {{ $counsel->degree=="high_school"?"selected":'' }} value="high_school">دیپلم
+                            <option {{ $counsel->degree=="under_high_school"?"selected":'' }} value="under_high_school">
+                                فقط
+                                زیر دیپلم
+
+                            </option>
+                            <option {{ $counsel->degree=="high_school"?"selected":'' }} value="high_school">
+                                فقط
+                                 دیپلم
+
+                            </option>
+                            <option {{ $counsel->degree=="associate_degree"?"selected":'' }} value="associate_degree">
+                                فقط
+                                کاردانی
+
+                            </option>
+                            <option {{ $counsel->degree=="master"?"selected":'' }} value="master">
+                                فقط
+                                 کارشناسی
+
+                            </option>
+                            <option {{ $counsel->degree=="high_master"?"selected":'' }} value="high_master">
+                                فقط
+                                کارشناسی ارشد
+
+                            </option>
+                            <option {{ $counsel->degree=="phd"?"selected":'' }} value="phd">
+                                فقط
+                                 phd
+
+                            </option>
+                            <option {{ $counsel->degree=="high_school"?"selected":'' }} value="high_school">
+                                فقط
+                                دیپلم
+
                             </option>
                         </select>
                     </div>

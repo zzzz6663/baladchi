@@ -299,7 +299,7 @@ class User extends Authenticatable
         return  $data;
     }
     public function check_ad_deposit($advertise){
-        $deposit=$this->deposits()->where('advertise_id',$advertise->id)->first();
+        $deposit=$this->deposits()->where('advertise_id',$advertise->id)->whereStatus("payed")->first();
         if( $deposit){
             return  $deposit->amount;
         }
@@ -346,6 +346,11 @@ class User extends Authenticatable
         return Deposit::whereHas("advertise",function($query){
             $query->where("user_id",$this->id);
         })
+        ->where("seen",null)->count();
+    }
+    public function unread_bill(){
+
+        return $this->bills()->whereIn('status', ['bill_payed', 'bill_filed', 'created'])
         ->where("seen",null)->count();
     }
     public function send_memo_advertise(  $advertise,$memo){

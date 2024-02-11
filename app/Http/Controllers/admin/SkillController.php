@@ -32,6 +32,9 @@ class SkillController extends Controller
         if ($request->child) {
             $skills->where('parent_id','!=',null);
         }
+        if ($request->type) {
+            $skills->where('type',$request->type);
+        }
         if ($request->parent) {
             $skills->where('parent_id' ,null);
         }
@@ -47,8 +50,9 @@ class SkillController extends Controller
      */
     public function create(Request $request)
     {
+        $parent=Skill::find($request->parent_id);
 
-        return  view('admin.skill.create', compact([]));
+        return  view('admin.skill.create', compact(["parent"]));
     }
 
     /**
@@ -62,6 +66,7 @@ class SkillController extends Controller
         $data = $request->validate([
               'name'=>'required|unique:skills,name',
               'parent_id'=>'nullable',
+              'type'=>'nullable',
         ]);
 
         $skill = Skill::create($data);
@@ -90,6 +95,7 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
+
         return  view('admin.skill.edit', compact(['skill']));
     }
 
@@ -106,7 +112,7 @@ class SkillController extends Controller
         $data = $request->validate([
               'name'=>'required|unique:skills,name,'. $skill->id,
               'parent_id'=>'nullable',
-
+              'type'=>'nullable',
         ]);
 
         $skill->update($data);

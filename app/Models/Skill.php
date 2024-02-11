@@ -10,7 +10,8 @@ class Skill extends Model
     use HasFactory;
     protected $fillable=[
         'name',
-        'parent_id'
+        'parent_id',
+        'type'
     ];
     public function parent(){
         return $this->belongsTo(Skill::class,'parent_id','id');
@@ -23,6 +24,15 @@ class Skill extends Model
     }
     public function counsels(){
         return $this->belongsToMany(Counsel::class);
+    }
+
+    public function type_child(){
+        if($this->type=="parent"){
+            return "child";
+        }
+         if($this->type=="child"){
+            return "grandchild";
+        }
     }
 
 }

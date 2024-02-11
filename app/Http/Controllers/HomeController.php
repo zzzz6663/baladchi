@@ -105,6 +105,8 @@ class HomeController extends Controller
         // dd($chat->options()->whereName("depoist")->get());
         // NewMessage::dispatch($chat);
         // Auth::loginUsingId(1,true);
+
+
         // $deposit_delay_advertises = Advertise::whereStatus("deposit_delay")->get();
         // foreach ($deposit_delay_advertises as $ad) {
         //     foreach ($ad->deposits as $depo) {
@@ -216,7 +218,7 @@ class HomeController extends Controller
         }
 
         if ($request->talk) {
-            $baladchies->  has('comments', '=', $request->talk)->get();
+            $baladchies->  has('comments', '>=', $request->talk)->get();
         }
 
         if ($request->degree) {
