@@ -1679,7 +1679,7 @@ window.onload = function () {
                                 let el = $(".toggle_ad[data-id='" + category + "']");
                                 get_category(el, category, update = false)
                             }
-                        }, 1);
+                        }, 100);
                         setTimeout(() => {
                             if (subset) {
                                 let el = $('.subset_side').eq(subset - 1)
@@ -1687,7 +1687,7 @@ window.onload = function () {
                                 get_subset(el, subset, update = false)
                             }
 
-                        }, 1);
+                        }, 150);
                         setTimeout(() => {
                             console.log("exist"+telic)
                             console.log("exist"+subset)
@@ -1702,7 +1702,7 @@ window.onload = function () {
                                 el = $(".subset_side[data-id='" + subset + "']");
                                 get_telic(el, subset, update = false)
                             }
-                        }, 100);
+                        }, 200);
                     }
                 },
                 error: function (request, status, error) {

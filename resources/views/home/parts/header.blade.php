@@ -85,7 +85,6 @@
                                 @auth
                                     @if (auth()->user()->unread_message())
                                         <span class="num">
-                                            11
                                             {{ auth()->user()->unread_message() }}
                                         </span>
                                     @endif
