@@ -1692,10 +1692,12 @@ window.onload = function () {
                             console.log("exist"+telic)
                             console.log("exist"+subset)
                             if (telic) {
+                                console.log("telic_run")
                                 let el = $('.final_res').eq(telic - 1)
                                 el = $(".final_res[data-id='" + telic + "']");
                                 get_telic(el, telic, update = false)
                             }else{
+                                console.log("subset_run")
                                 let el = $('.subset_side').eq(subset - 1)
                                 el = $(".subset_side[data-id='" + subset + "']");
                                 get_telic(el, subset, update = false)
