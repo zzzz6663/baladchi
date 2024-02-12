@@ -1244,6 +1244,7 @@ window.onload = function () {
         });
         function get_telic(el, telic, update = true) {
             if (update) {
+                console.log("updated::::;:")
                 let data=get_items()
                 update_ad_list(data)
             }
@@ -1688,6 +1689,8 @@ window.onload = function () {
 
                         }, 1);
                         setTimeout(() => {
+                            console.log("exist"+telic)
+                            console.log("exist"+subset)
                             if (telic) {
                                 let el = $('.final_res').eq(telic - 1)
                                 el = $(".final_res[data-id='" + telic + "']");
