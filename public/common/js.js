@@ -1702,7 +1702,7 @@ window.onload = function () {
                                 el = $(".subset_side[data-id='" + subset + "']");
                                 get_telic(el, subset, update = false)
                             }
-                        }, 1);
+                        }, 100);
                     }
                 },
                 error: function (request, status, error) {
