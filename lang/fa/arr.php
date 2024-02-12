@@ -53,7 +53,7 @@ return [
     '4_option' => 'چهار گزینه ',
     '5_option' => 'پنج گزینه ',
     'select_the_best_answer' => 'پاداش بهترین جواب ',
-    'divide_reward' => 'تقسیم ین همه ',
+    'divide_reward' => 'تقسیم بین همه ',
     'no_reward' => ' بدون پاداش',
     'pay_counsel' => ' پرداخت  هزینه خرد جمعی',
     'show_to_answer' => ' نمایش برای جواب',
