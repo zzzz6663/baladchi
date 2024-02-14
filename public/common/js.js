@@ -1263,8 +1263,7 @@ window.onload = function () {
                         $('#filters_all').html(data.body)
                         setTimeout(() => {
                           init_data()
-
-                        }, 500);
+س                        }, 500);
                     },
                     error: function (request, status, error) {
                         console.log(request)
