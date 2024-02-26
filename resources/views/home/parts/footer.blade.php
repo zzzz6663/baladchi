@@ -18,7 +18,7 @@
             </div>
 
             <div class="copyright">
-                {{--  <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=222900&amp;Code=T79zkwXYFzdzcAi9eV6a"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=222900&amp;Code=T79zkwXYFzdzcAi9eV6a" alt="" style="cursor:pointer" id="T79zkwXYFzdzcAi9eV6a"></a>  --}}
+                <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=222900&amp;Code=T79zkwXYFzdzcAi9eV6a"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=222900&amp;Code=T79zkwXYFzdzcAi9eV6a" alt="" style="cursor:pointer" id="T79zkwXYFzdzcAi9eV6a"></a>
             </div>
             <div class="copyright">
                 <p>کليه حقوق اين سایت محفوظ میباشد.</p>
