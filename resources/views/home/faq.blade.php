@@ -1,6 +1,6 @@
 @extends('main.site')
 @section('content')
 
-@include('hone.faq_temp')
+@include('home.faq_temp')
 
 @endsection
