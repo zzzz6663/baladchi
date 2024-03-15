@@ -25,3 +25,9 @@ display: block!important;
 .single-user .user-det{
     min-height: 176px;
 }
+
+
+.accord-box.active>.accord-content
+{
+    max-height: 2000px;
+}
