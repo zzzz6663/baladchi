@@ -129,8 +129,17 @@
                     </td>
                     <td> <strong> {{ __("arr.".$skill->type) }}</strong></td>
                     <td>
-                        <a class="dropdown-item" href="{{ route('skill.edit', $skill->id) }}"><i class="bx bx-edit-alt me-1"></i> ویرایش</a>
+                        @if($skill->type=="child" && !$skill->childs()->Count())
+                        <form method="post" action="{{ route("skill.destroy",$skill->id) }}">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger">
+                                حذف
+                            </button>
+                        </form>
+                        @endif
 
+                        <a class="dropdown-item" href="{{ route('skill.edit', $skill->id) }}"><i class="bx bx-edit-alt me-1"></i> ویرایش</a>
                         @if ($skill->type !="grandchild" )
                         <a class="dropdown-item" href="{{ route('skill.create', ['type'=>$skill->type_child(),"parent_id"=>$skill->id]) }}"><i class="bx bx-edit-alt me-1"></i>
                             ساخت

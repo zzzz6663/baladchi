@@ -129,9 +129,9 @@ class SkillController extends Controller
      */
     public function destroy(Skill $skill)
     {
-        // $skill->delete();
-        // alert()->success(' مهارت  حذف شد  ' );
-        // return back();
+        $skill->delete();
+        alert()->success(' مهارت  حذف شد  ' );
+        return back();
         //
     }
 }
