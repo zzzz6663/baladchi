@@ -105,6 +105,7 @@
         <table class="table ">
             <thead class="table-dark">
                 <tr>
+                    
                     <th>id</th>
                     <th>نام </th>
                     <th>نام پدر </th>
