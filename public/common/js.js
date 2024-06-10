@@ -3493,7 +3493,26 @@ window.onload = function () {
         //     event.stopPropagation();
         // })
 
+        $('#mobile').on('input', function() {
+            var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            var englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+            var input = $(this).val();
+            var output = '';
+
+            for (var i = 0; i < input.length; i++) {
+                var char = input[i];
+                var index = persianNumbers.indexOf(char);
+                if (index !== -1) {
+                    output += englishNumbers[index];
+                } else {
+                    output += char;
+                }
+            }
+            console.log(output);
+
+            $(this).val(output);
+        });
         $('#mobile_btn').on('click', function () {
             let mobile = $('#mobile').val()
             if (mobile.length != 11) {

@@ -124,6 +124,21 @@
                         {{--  @dd($counsel->confirm)  --}}
 
                         <td>
+                            @if(!$counsel->removed )
+                            <form class="inline-block" action="{{ route('counsel.destroy', $counsel->id) }}"
+                                method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger">
+                                    حذف
+                                </button>
+                            </form>
+
+                            @else
+                            {{ Morilog\Jalali\Jalalian::forge($counsel->removed)->format('Y-m-d') }}
+                            حذف شده
+                            @endif
+
                             @if(!$counsel->confirm )
                             <form class="inline-block" action="{{ route('confirm.counsel', $counsel->id) }}"
                                 method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">

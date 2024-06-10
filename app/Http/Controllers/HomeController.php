@@ -274,6 +274,9 @@ class HomeController extends Controller
         $counsels = Counsel::query();
         $user = auth()->user();
         $skills = [];
+        $counsels->whereHas("Counselquestions", function ($query) use ($user){
+
+        }   );
         if ($request->reward) {
             $counsels->where('reward', $request->reward);
         }
@@ -297,6 +300,7 @@ class HomeController extends Controller
         if ($user) {
             $skills =    $user->skills()->pluck('id')->toArray();
         }
+        $counsels->whereNull("remove");
 //   $counsels->whereStسatus('show');
         // $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
         $counsels = $counsels->

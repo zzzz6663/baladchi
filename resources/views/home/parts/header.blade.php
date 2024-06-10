@@ -477,6 +477,9 @@
                         <li>
                             <a href="{{ route('counsels') }}">خرد جمعی</a>
                         </li>
+                        <li>
+                            <a href="https://baladchee.ir/blog">  بلاگ  </a>
+                        </li>
                     </ul>
                 </div>
                 @if (auth()->guest())
@@ -538,6 +541,9 @@
             </li>
             <li>
                 <a href="{{ route('counsels') }}">خرد جمعی</a>
+            </li>
+            <li>
+                <a href="https://baladchee.ir/blog">  بلاگ  </a>
             </li>
             <li>
                 <a href="{{ route('support') }}">پشتیبانی</a>

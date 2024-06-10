@@ -107,9 +107,21 @@
                         </div>
                         <div class="user-messg-foter">
                             @auth
+                            <a href="{{ route('counsel.quiz', $counsel->id) }}" class="icon-button green">
+                                @if ($user->answers()->where("counsel_id",$counsel->id)->count())
+                                <span>ویرایش جواب ها </span>
+                                @else
+                                <span>پاسخ دادن</span>
+                                @endif
+                                <span class="icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.99902 0H11.999C14.1208 0 16.1556 0.842855 17.6559 2.34315C19.1562 3.84344 19.999 5.87827 19.999 8C19.999 10.1217 19.1562 12.1566 17.6559 13.6569C16.1556 15.1571 14.1208 16 11.999 16V19.5C6.99902 17.5 -0.000976562 14.5 -0.000976562 8C-0.000976562 5.87827 0.841878 3.84344 2.34217 2.34315C3.84246 0.842855 5.87729 0 7.99902 0ZM9.99902 14H11.999C12.787 14 13.5672 13.8448 14.2951 13.5433C15.0231 13.2417 15.6845 12.7998 16.2417 12.2426C16.7988 11.6855 17.2408 11.0241 17.5423 10.2961C17.8438 9.56815 17.999 8.78793 17.999 8C17.999 7.21207 17.8438 6.43185 17.5423 5.7039C17.2408 4.97595 16.7988 4.31451 16.2417 3.75736C15.6845 3.20021 15.0231 2.75825 14.2951 2.45672C13.5672 2.15519 12.787 2 11.999 2H7.99902C6.40772 2 4.8816 2.63214 3.75638 3.75736C2.63116 4.88258 1.99902 6.4087 1.99902 8C1.99902 11.61 4.46102 13.966 9.99902 16.48V14Z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </a>
                             {{--  @if(!($counsel->gender != $user->gender|| $counsel->degree != $user->degree || $counsel->star <= $user->comment_log()['av'] || $counsel->answers_count() >= $counsel->answers) )  --}}
                             @if($counsel->check_condition($user) )
-                            @if(auth()->user()->id !=$counsel->user_id)
+                            @if(auth()->user()->id ==$counsel->user_id)
                             <a href="{{ route('counsel.quiz', $counsel->id) }}" class="icon-button green">
                                 @if ($user->answers()->where("counsel_id",$counsel->id)->count())
                                 <span>ویرایش جواب ها </span>
@@ -124,7 +136,7 @@
                             </a>
                             @endif
                             @else
-                            <p> شما شرایط اختصاصی این خرید جمعی را دارا نمی باشید</p>
+                            <p> شما شرایط اختصاصی این خرد جمعی را دارا نمی باشید</p>
                             @endif
 
 

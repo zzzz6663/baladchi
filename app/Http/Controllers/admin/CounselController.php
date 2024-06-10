@@ -103,14 +103,18 @@ class CounselController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(counsel $counsel)
+    public function destroy(Counsel $counsel)
     {
+        $counsel->update([
+            'removed'=>Carbon::now()
+        ]);
+
         // $counsel->delete();
-        // alert()->success(' مهارت  حذف شد  ' );
-        // return back();
+        toast()->success(' خرد جمعی از سایت   حذف شد  ' );
+        return back();
         //
     }
-    public function confirm_counsel(counsel $counsel)
+    public function confirm_counsel(Counsel $counsel)
     {
         if($counsel->confirm){
             alert()->warning('این خرد جمعی قبلا  تایید شده ');
