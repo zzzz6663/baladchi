@@ -478,7 +478,7 @@
                             <a href="{{ route('counsels') }}">خرد جمعی</a>
                         </li>
                         <li>
-                            <a href="https://baladchee.ir/blog">  بلاگ  </a>
+                            <a href="https://baladchy.com/blog">  بلاگ  </a>
                         </li>
                     </ul>
                 </div>
@@ -543,7 +543,7 @@
                 <a href="{{ route('counsels') }}">خرد جمعی</a>
             </li>
             <li>
-                <a href="https://baladchee.ir/blog">  بلاگ  </a>
+                <a href="https://baladchy.com/blog">  بلاگ  </a>
             </li>
             <li>
                 <a href="{{ route('support') }}">پشتیبانی</a>

@@ -10,6 +10,7 @@
     {{--  <title>711712</title>  --}}
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Jtf_7z20pdQqTjh3mX1PmA7hu2DQZ74UrQNsFW9aWTY" />
     {{--  <link rel="stylesheet" href="/home/css/style.css">  --}}
     {{-- <link rel="stylesheet" href="/css/iziToast.css"> --}}
     {{-- <link rel="stylesheet" href="/css/persian-datepicker.min.css"> --}}
