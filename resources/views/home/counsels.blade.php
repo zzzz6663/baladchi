@@ -382,6 +382,7 @@
                                 </div>
                                 <div class="infor">
                                     <h4>
+                                        {{ $counsel->remove }}-
                                         {{ $counsel->user->name }}
                                         {{ $counsel->user->family }}
 

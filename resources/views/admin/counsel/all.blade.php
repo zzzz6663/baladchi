@@ -133,7 +133,6 @@
                                     حذف
                                 </button>
                             </form>
-
                             @else
                             {{ Morilog\Jalali\Jalalian::forge($counsel->removed)->format('Y-m-d') }}
                             حذف شده
