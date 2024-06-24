@@ -364,6 +364,8 @@
                                         <label for="point">
                                             <span>امتیاز</span>
                                         </label>
+                                {{--    --}}
+
                                     </div>
                                 </li>
                             </ul>
