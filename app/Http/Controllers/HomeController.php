@@ -300,7 +300,7 @@ class HomeController extends Controller
         if ($user) {
             $skills =    $user->skills()->pluck('id')->toArray();
         }
-        $counsels->whereNull("remove");
+        $counsels->whereNull("removed");
 //   $counsels->whereStسatus('show');
         // $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
         $counsels = $counsels->
