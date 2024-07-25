@@ -206,6 +206,7 @@ Route::get('/make_dir', 'HomeController@make_dir')->name('make.dir');
 //صفحات وب سایت
 //صفحات وب سایتس
 //صفحات وبس سایت
+Route::get('/sitemap', 'HomeController@sitemap')->name('sitemap');
 Route::get('/', 'HomeController@index')->name('login');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/faq', 'HomeController@faq')->name('faq');

@@ -40,7 +40,9 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
-
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
@@ -370,6 +372,35 @@ class HomeController extends Controller
             'count' => $city->regions()->count(),
             'all' => $request->all()
         ]);
+    }
+    public function sitemap()
+    {
+        // ساخت نقشه سایت
+        $sitemap = Sitemap::create();
+
+        // گرفتن تمامی مسیرها
+        $routes = Route::getRoutes();
+
+        foreach ($routes as $route) {
+            $uri = $route->uri();
+
+            // شرط برای حذف مسیرهای غیر GET و مسیرهای بی‌فایده برای نقشه سایت
+            if ($route->methods()[0] !== 'GET' || in_array($uri, ['api/*', '_ignition/*', 'sanctum/*'])) {
+                continue;
+            }
+
+            $sitemap->add(Url::create(url($uri))
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(0.8));
+        }
+
+        // ذخیره نقشه سایت در فایل
+        $filePath = 'sitemap.xml';
+        $sitemap->writeToFile(public_path($filePath));
+
+        // دانلود فایل نقشه سایت
+        return response()->download(public_path($filePath))->deleteFileAfterSend(true);
     }
     public function index()
     {
