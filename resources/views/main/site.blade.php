@@ -6,11 +6,18 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>@yield('title')</title>
+    <title>@yield('title')
+
+        متخصص خرید، فروش ،مشاوره فردی و پرسشنامه ای و ثبت آگهی رایگان
+
+
+    </title>
     {{--  <title>711712</title>  --}}
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Jtf_7z20pdQqTjh3mX1PmA7hu2DQZ74UrQNsFW9aWTY" />
+    <meta name="description" content="نیازمندیها،ثبت آگهی رایگان،رهن و  اجاره، خرید فروش نو،خرید فروش کارکرده یا دست دوم استخدام،متخصص،کارشناس،مشاورفردی،مشاوره گروهی، پرسشنامه دانشجویی،پرسشنامه رضایت مندی،پیشنهاد همکاری به متخصصان، بیعانه در آگهی، کسب درآمد از طریق بازدید از آگهی ، کسب درامد از طریق مشاوره و بلدچی شدن،">
+
     {{--  <link rel="stylesheet" href="/home/css/style.css">  --}}
     {{-- <link rel="stylesheet" href="/css/iziToast.css"> --}}
     {{-- <link rel="stylesheet" href="/css/persian-datepicker.min.css"> --}}
