@@ -1,2 +1,3 @@
+Sitemap: https://baladchy.com/sitemap1.xml
 User-agent: *
 Disallow:
