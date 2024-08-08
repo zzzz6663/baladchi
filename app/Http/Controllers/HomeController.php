@@ -531,7 +531,15 @@ class HomeController extends Controller
             $advertises = cache()->put("categories", $categories);
         }
         $user = auth()->user();
-        return view('home.index', compact(['categories', 'user', 'vip_advertises', 'user_fave']));
+        $last_ads= Advertise::where('status', 'confirmed')->whereActive('1')->take(5)->get();
+    $baladchies=User::whereRole("user")->where('baladchi', '!=', null)->take(5)->get();;
+
+         $counsels = Counsel::query();
+         $counsels->whereNull("removed");
+         $counsels->whereStatus('show');
+               $counsels = $counsels->
+                   latest()->take(5)->get();;;
+        return view('home.index', compact(['categories', 'user', 'vip_advertises', 'user_fave',"last_ads","baladchies","counsels"]));
     }
 
 

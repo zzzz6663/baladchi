@@ -313,7 +313,7 @@
 
                                 </span>
                             </li>
-                            <li><span>سوالات خرد کمعی</span></li>
+                            <li><span>سوالات خرد  جمعی</span></li>
                         </ul>
                     </div>
 
