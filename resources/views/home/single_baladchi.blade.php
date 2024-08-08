@@ -55,13 +55,13 @@
                 {{$baladchi->region->name}}
                 </span>
             </div>
+         
+            @endif
             <div class="ehrazus">
                 @foreach ($baladchi->skills()->first() as $ski)
                 {{ $ski->name}}
                 @endforeach
             </div>
-            @endif
-
         </div>
         <div class="button">
             <a href="{{ route('single.user',$baladchi->id) }}" class="icon-button theme">
