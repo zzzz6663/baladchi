@@ -533,7 +533,7 @@ class HomeController extends Controller
         $user = auth()->user();
         $last_ads= Advertise::where('status', 'confirmed')->whereActive('1')->latest()->take(5)->get();
     $baladchies=User::whereRole("user")->where('baladchi', '!=', null)->latest()->take(4)->get();;
-
+//  
          $counsels = Counsel::query();
          $counsels->whereNull("removed");
          $counsels->whereStatus('show');
