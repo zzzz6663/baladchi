@@ -58,13 +58,10 @@
 
             @endif
             <div class="ehrazus">
-                @foreach ($baladchi->skills()->first() as $ski)
-                @if($ski)
-                {{ $ski->name}}
-
+                @if($firstSkill = $baladchi->skills->first())
+                {{ $firstSkill->name}}
                 @endif
-                @endforeach
-                {{--    --}}
+
             </div>
         </div>
         <div class="button">
