@@ -56,7 +56,7 @@
                 </span>
             </div>
             <div class="ehrazus">
-                @foreach ($user->skills()->first() as $ski)
+                @foreach ($baladchi->skills()->first() as $ski)
                 @endforeach
             </div>
             @endif
