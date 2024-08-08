@@ -127,7 +127,13 @@
     <div class="group-box">
         <div class="title-more">
             <h3 class="icon-title">
-                <span class="text">بلدچی ها</span>
+                <span class="text">
+                    آخرین
+
+                    بلدچی ها
+
+
+                </span>
             </h3>
         </div>
         <div class="row">
@@ -137,7 +143,11 @@
         </div>
     </div>
     <div class="group-box">
-
+        <div class="title-more">
+            <h3 class="icon-title">
+                <span class="text">آخرین آگهی ها</span>
+            </h3>
+        </div>
         <div class="row">
             @foreach ($last_ads as $advertise)
                 <div class="col-2a  col-md-4 col-sm-12">
@@ -147,6 +157,11 @@
         </div>
     </div>
     <div class="row">
+        <div class="title-more">
+            <h3 class="icon-title">
+                <span class="text">آخرین خردجمی ها</span>
+            </h3>
+        </div>
         <div class="col-12">
             @foreach ($counsels as $counsel)
 
