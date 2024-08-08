@@ -31,3 +31,9 @@ display: block!important;
 {
     max-height: 2000px;
 }
+#new_tag{
+    left: 1px;
+    background: #e1e1e1;
+    border-radius: 15px;
+    padding: 0 10px;
+}
