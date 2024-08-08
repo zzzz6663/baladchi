@@ -150,7 +150,7 @@
         </div>
         <div class="row">
             @foreach ($last_ads as $advertise)
-                <div class="col-2a  col-md-4 col-sm-12">
+                <div class="col-2  col-md-4 col-sm-12">
                     @include('home.ads.single')
                 </div>
             @endforeach

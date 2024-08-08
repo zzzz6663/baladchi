@@ -531,8 +531,8 @@ class HomeController extends Controller
             $advertises = cache()->put("categories", $categories);
         }
         $user = auth()->user();
-        $last_ads= Advertise::where('status', 'confirmed')->whereActive('1')->take(5)->get();
-    $baladchies=User::whereRole("user")->where('baladchi', '!=', null)->take(5)->get();;
+        $last_ads= Advertise::where('status', 'confirmed')->whereActive('1')->latest()->take(5)->get();
+    $baladchies=User::whereRole("user")->where('baladchi', '!=', null)->latest()->take(5)->get();;
 
          $counsels = Counsel::query();
          $counsels->whereNull("removed");

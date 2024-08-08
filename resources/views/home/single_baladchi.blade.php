@@ -55,6 +55,10 @@
                 {{$baladchi->region->name}}
                 </span>
             </div>
+            <div class="ehrazus">
+                @foreach ($user->skills()->first() as $ski)
+                @endforeach
+            </div>
             @endif
 
         </div>
