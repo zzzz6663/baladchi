@@ -139,7 +139,7 @@
     <div class="group-box">
 
         <div class="row">
-            @foreach ($last_add as $advertise)
+            @foreach ($last_ads as $advertise)
                 <div class="col-2a  col-md-4 col-sm-12">
                     @include('home.ads.single')
                 </div>
