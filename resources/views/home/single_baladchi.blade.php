@@ -55,11 +55,14 @@
                 {{$baladchi->region->name}}
                 </span>
             </div>
-         
+
             @endif
             <div class="ehrazus">
                 @foreach ($baladchi->skills()->first() as $ski)
+                @if($ski)
                 {{ $ski->name}}
+
+                @endif
                 @endforeach
             </div>
         </div>
