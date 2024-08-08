@@ -57,6 +57,7 @@
             </div>
             <div class="ehrazus">
                 @foreach ($baladchi->skills()->first() as $ski)
+                {{ $ski->name}}
                 @endforeach
             </div>
             @endif
