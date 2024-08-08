@@ -57,6 +57,7 @@
             </div>
 
             @endif
+             {{--    --}}
             <div class="ehrazus">
                 @if($firstSkill = $baladchi->skills->first())
                 {{ $firstSkill->name}}
