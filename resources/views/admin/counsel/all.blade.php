@@ -70,7 +70,7 @@
             </form>
           </div>
 
-      <div class="table-responsive text-nowrap">
+      <div class="table-responsive ">
 
 
         <table class="table ">

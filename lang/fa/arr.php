@@ -84,6 +84,7 @@ return [
     'talk_confirm' => 'مشاوره تاییدشده ',
     'male' => ' مرد',
     'femail' => '  زن ',
+    'female' => '  زن ',
     'parent' => 'پدر ',
     'child' => 'فرزند ',
     'grandchild' => 'نوه ',

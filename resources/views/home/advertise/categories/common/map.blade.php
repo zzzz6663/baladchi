@@ -46,7 +46,7 @@ $lon=$user->city->lon;
 
     var marker;
     var array = []
-    @if($advertise - > id && $advertise - > show_option("latitude"))
+    @if($advertise-> id && $advertise-> show_option("latitude"))
 
 
     var old = new L.marker(ch).addTo(myMap);

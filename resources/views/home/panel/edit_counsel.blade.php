@@ -20,7 +20,11 @@
                     </label>
                     <input type="text" name="title" id="title" value="{{ $counsel->title }}">
                 </div>
+                <div class="input-label textarea big">
+                    <label for=""> توضیحات </label>
+                    <textarea name="info" id="" cols="30" rows="10">{{ $counsel->info }}</textarea>
 
+                </div>
 
 
                 <div class="select-label">
@@ -44,6 +48,7 @@
                         <option {{ $counsel->star=="5"?'selected':'' }} value="5">5</option>
                     </select>
                 </div>
+
                 <div class="input-label big postion_relative mb-0">
                     <label for="new_op">
                         <span> کلید واژه </span>

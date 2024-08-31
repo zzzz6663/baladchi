@@ -37,3 +37,8 @@ display: block!important;
     border-radius: 15px;
     padding: 0 10px;
 }
+@media only screen and (max-width: 992px) {
+    .my-add .right-sec .inf .date-city {
+        flex-direction: column;
+    }
+}

@@ -46,7 +46,7 @@
 
 
 
-<div class="layout-wrapper layout-content-navbar">
+<div class="layout-wrapper layout-content-navbar" id="manager_sec">
     <div class="layout-container">
      @includeWhen( empty($sidebar),'admin.section.sidebar')
       @yield('login')

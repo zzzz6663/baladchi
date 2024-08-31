@@ -398,7 +398,7 @@ class PanelController extends Controller
                 'degree' => 'nullable',
                 'answers' => 'required',
                 'url' => 'nullable',
-                // 'reward' => 'required',
+                'info' => 'required',
                 'tags' => 'required',
                 // 'price' => 'required_unless:reward,no_reward',
             ]);
