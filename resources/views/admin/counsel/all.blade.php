@@ -4,7 +4,7 @@
    <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="py-3 breadcrumb-wrapper mb-4">
         جدول خرد جمعی
-    </h4>
+    </h4> 
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
