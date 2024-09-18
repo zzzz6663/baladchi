@@ -35,6 +35,13 @@
                         <option {{ $counsel->gender=="female"?'selected':'' }} value="female">زن</option>
                     </select>
                 </div>
+                <div class="select-label">
+                    <label for="show_answer"> نمایش جواب ها به سایرین </label>
+                    <select name="show_answer" id="" class="nice-select" data-place="نمایش ">
+                        <option {{ $counsel->show_answer=="1"?'selected':'' }}  value="1">نمایش  داد شود  </option>
+                        <option {{ $counsel->show_answer=="0"?'selected':'' }} value="0">پنهان باشد   </option>
+                    </select>
+                </div>
 
 
                 <div class="select-label">

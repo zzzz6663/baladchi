@@ -4,7 +4,7 @@
    <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="py-3 breadcrumb-wrapper mb-4">
         جدول خرد جمعی
-    </h4> 
+    </h4>
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
@@ -94,6 +94,8 @@
                     <th>
                         <span class="tit">وضعیت نمایش</span>
                     </th>
+                    <th> <span class="tit"> نمایش جواب ها </span></th>
+
                     <th> <span class="tit"> وضعیت </span></th>
                     <th> <span class="tit"> پاسخ دهندگان</span></th>
                    <th> <span class="tit"> پاداش</span></th>
@@ -113,6 +115,8 @@
                         <td><span>{{ $counsel->title }}</span></td>
                         <td><span>{{implode( " - ",$counsel->skills()->pluck("name")->toArray())}}</span></td>
                          <td><span>{{ $counsel->active ? 'در حال نمایش' : 'غیر فعال' }}</span></td>
+                         <td><span>{{ $counsel->show_answer ? 'فعال' : 'غیر فعال' }}</span></td>
+
                         <td><span>{{ $counsel->status }}</span></td>
                         <td><span>0 </span></td>
                         <td><span>{{ __('arr.' . $counsel->reward) }}</span></td>

@@ -30,7 +30,9 @@ class Counsel extends Model
         'select_id',//  کاربر انتخابس شده
         'url',//  لینک
         'img',//  عکس
-        'removed',//  حذف 
+        'removed',//  حذف
+        'show_answer',//  نمایش جواب ها 
+
 
     ];
     public function user(){

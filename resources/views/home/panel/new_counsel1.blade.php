@@ -80,6 +80,15 @@
                         </div>
 
                         <div class="select-label">
+                            <label for="show_answer"> نمایش جواب ها به سایرین </label>
+                            <select name="show_answer" id="" class="nice-select" data-place="نمایش ">
+                                <option value="1">نمایش  داد شود  </option>
+                                <option value="0">پنهان باشد   </option>
+                            </select>
+                        </div>
+
+
+                        <div class="select-label">
                             <label for="star"> حداقل ستاره ویژه</label>
                             <select name="star" id="" class="nice-select" data-place="تعداد ستاره ویژه">
                                 <option value="">همه </option>

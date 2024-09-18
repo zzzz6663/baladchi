@@ -297,11 +297,10 @@ class PanelController extends Controller
                 'title' => 'required|max:256',
                 'info' => 'required|max:1000',
                 'img' => 'max:1024|dimensions::min_width=1500,min_height=300',
-
+                'show_answer' => 'required',
                 'gender' => 'nullable',
                 'star' => 'nullable',
                 'tags' => 'required',
-
                 // 'skills' => 'required|array|min:1',
                 'skills' => 'nullable',
                 'degree' => 'nullable',
@@ -396,6 +395,7 @@ class PanelController extends Controller
                 'star' => 'nullable',
                 'skills' => 'required',
                 'degree' => 'nullable',
+                'show_answer' => 'required',
                 'answers' => 'required',
                 'url' => 'nullable',
                 'info' => 'required',
