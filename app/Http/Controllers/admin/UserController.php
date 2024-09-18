@@ -36,7 +36,7 @@ class UserController extends Controller
                 });
            });
         }
-
+// ss
         $users = $users->whereIn('role', ['user'])->latest()->paginate(10);
         return view('admin.users.all', compact(['users']));
     }

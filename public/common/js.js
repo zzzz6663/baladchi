@@ -3067,7 +3067,13 @@ window.onload = function () {
             $('#donate_modal').show(400)
         })
         $('.direct_pop').click(function () {
+            if(  $('#direct_modal').length){
             $('#direct_modal').show(400)
+
+            }else{
+                $('#login_mobile').show(400)
+
+            }
         })
         $('.insert_new_donate').click(function () {
             let el = $(this)

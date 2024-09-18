@@ -242,6 +242,21 @@
                     </div>
 
 
+                    <div class="user-messg-keuwords">
+                        <div class="rights">
+                            <h4>جواب ها  :</h4>
+                            @foreach ($counsel->questions as $question )
+                                <h5>
+                                    $question->question
+                                </h5>
+                            @endforeach
+                        </div>
+                        <div class="lefts">
+
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
