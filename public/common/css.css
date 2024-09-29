@@ -683,9 +683,9 @@ display: inline-block; */
     }
 
     #sidebar {
-        right: -300px !important;
+        right: -0 ;
         z-index: 3000;
-        display: block !important;
+        display: none ;
         background: #fff;
         transition: all .3s;
         position: absolute;
@@ -704,6 +704,7 @@ display: inline-block; */
 
 
     #sidebar.active {
+        display: block;
         right: 0px !important;
         width: 60%;
         height: 100%;
