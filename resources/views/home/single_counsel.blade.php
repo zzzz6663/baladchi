@@ -194,6 +194,21 @@
 
                         </div>
 
+                        <div class="user-messg-keuwords">
+                            <div class="rights">
+                                <h4>مهارتهای مورد نیاز  :</h4>
+                                <div class="tag-list">
+
+                                    {{ implode(' - ', $counsel->skills()->pluck('name')->toArray()) }}
+                                </div>
+                            </div>
+                            <div class="lefts">
+                                <button class="share-btn">
+
+                            </div>
+                        </div>
+
+
 
                         <div class="user-messg-keuwords">
                             <div class="rights">
