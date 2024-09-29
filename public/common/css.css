@@ -50,7 +50,7 @@ background: #c2c2c2;
 }
 
 .child_par {
-    
+
 }
 .li_active>div {
     border: 1px solid rgb(15, 99, 73) !important;
@@ -697,11 +697,18 @@ display: inline-block; */
         float: left;
         cursor: pointer;
     }
+    @keyframes skid {
+        from {transform: translateX(300px);}
+        to {transform: translateX(0);}
+      }
+
 
     #sidebar.active {
         right: 0px !important;
         width: 60%;
         height: 100%;
+        animation-name: skid;
+  animation-duration: .3s;
     }
 
     #dashboard-sidabr.active {
