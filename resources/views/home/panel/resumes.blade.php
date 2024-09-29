@@ -877,10 +877,10 @@
                                     </select>
                                 </div>
                                 <div class="input-label big">
-                                    <label for="">مدرک </label>
-                                    <input type="file" name="attach" placeholder="">
+                                    <label for="attach">مدرک </label>
+                                    <input type="file" name="attach" id="attach" placeholder=""  style="display: none">
                                 </div>
-                                <div class="row">
+   e                             <div class="row">
                                     <div class="col-md-6">
                                         <div class="input-label big">
                                             <label for="">تاریخ شروع</label>

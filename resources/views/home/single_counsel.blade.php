@@ -217,7 +217,7 @@
                                                 می باشد
                                             </li>
                                         @endif
-                                        @if ($counsel->gender)
+                                        @if ($counsel->degree)
                                             <li>
                                                 مدرک مورد نیاز برای پاسخ گویی به این
                                                 خرد جمعی باید
@@ -225,7 +225,7 @@
                                                 باشد
                                             </li>
                                         @endif
-                                        @if ($counsel->gender)
+                                        @if ($counsel->answers)
                                             <li>
                                                 حداکثر پاسخ دهندگان به این خردجمعی
                                                 <span class="alert alert-success">{{ $counsel->answers }} نفر</span>
