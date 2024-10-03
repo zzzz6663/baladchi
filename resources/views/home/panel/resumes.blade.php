@@ -876,11 +876,11 @@
                                         <option value="resume">رزومه</option>
                                     </select>
                                 </div>
-                                <div class="input-label big">
-                                    <label for="attach">مدرک </label>
-                                    <input type="file" name="attach" id="attach" placeholder=""  style="display: none">
+                                <div class="">
+                                    <label for="attach" style="width: 100%" class="input-label big ">مدرک </label>
+                                    <input type="file" name="attach" id="attach" placeholder="" class="name_inp" style="display: none">
                                 </div>
-   e                             <div class="row">
+                              <div class="row">
                                     <div class="col-md-6">
                                         <div class="input-label big">
                                             <label for="">تاریخ شروع</label>

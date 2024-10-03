@@ -46,10 +46,10 @@
                             <textarea name="info" id="" cols="30" rows="10"></textarea>
 
                         </div>
-                        <div class="input-label big">
-                            <label for="">تصویر </label>
-                            <input type="file" name="img" placeholder="" class="path_img" accept="image/*">
-                            <p style="color: red">
+                        <div class="">
+                            <label for="file_s" id="file_g" class="input-label big">انتخاب تصویر  </label>
+                            <input type="file" name="img" id="file_s" placeholder="" sty class="path_img" accept="image/*">
+                            <p class="txt_in" style="">
                                 حداقل ابعاد : ارتفاع :300px -
                                 عرض: 1500px -
                                 حجم:1M

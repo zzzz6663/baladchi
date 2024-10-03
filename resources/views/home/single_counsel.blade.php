@@ -78,11 +78,10 @@
                                         </span>
                                         {{-- <a href="#" class="green">({{ __('arr.'.$counsel) }} )</a> --}}
                                         {{-- <a href="#" class="green">({{ $counsel->skill->name }} )</a> --}}
-                                        <a href="#" class="green">(
+                                        {{--  <a href="#" class="green">(
                                             {{ implode(' - ', $counsel->skills()->pluck('name')->toArray()) }}
 
-
-                                            )</a>
+                                            )</a>  --}}
                                     </div>
                                     <h3>
                                         {{ $counsel->title }}
@@ -130,8 +129,10 @@
                                 </span>
                             </a>  --}}
                                     {{--  @if (!($counsel->gender != $user->gender || $counsel->degree != $user->degree || $counsel->star <= $user->comment_log()['av'] || $counsel->answers_count() >= $counsel->answers))  --}}
-                                    @if ($counsel->check_condition($user))
-                                        @if (auth()->user()->id == $counsel->user_id)
+                                    {{--  @dump($counsel->check_condition($user))  --}}
+                                    {{--  @dd($counsel->check_condition($user))  --}}
+                                    @if ($counsel->check_condition($user)['pass'])
+                                        @if (auth()->user()->id != $counsel->user_id)
                                             <a href="{{ route('counsel.quiz', $counsel->id) }}" class="icon-button green">
                                                 @if ($user->answers()->where('counsel_id', $counsel->id)->count())
                                                     <span>ویرایش جواب ها </span>
@@ -149,7 +150,32 @@
                                             </a>
                                         @endif
                                     @else
-                                        <p> شما شرایط اختصاصی این خرد جمعی را دارا نمی باشید</p>
+                                        <p style="color:red"> شما شرایط پاسخ دهی این خرد جمعی را دارا نمی باشید
+                                            <br>
+
+                                            {{--  @dd($counsel->check_condition($user))  --}}
+                                            @if(!$counsel->check_condition($user)['gender'])
+                                            جنسیت هماهنگ نمی باشد
+                                            <br>
+                                            @endif
+
+                                            @if(!$counsel->check_condition($user)['degree'])
+                                            مدرک هماهنگ نمی باشد
+                                            <br>
+                                            @endif
+
+                                            @if(!$counsel->check_condition($user)['star'])
+                                            ستاره ها  هماهنگ نمی باشد
+                                            <br>
+                                            @endif
+
+
+
+                                            @if(!$counsel->check_condition($user)['answer'])
+                                            تعداد جواب دهنده ها بیشتراز ظرفیت تعریف شده می باشد
+                                            <br>
+                                            @endif
+                                        </p>
                                     @endif
 
 
@@ -198,48 +224,64 @@
                             <div class="rights">
                                 <h4>مهارتهای مورد نیاز  :</h4>
                                 <div class="tag-list">
-
+                                    @if($counsel->skills()->count())
                                     {{ implode(' - ', $counsel->skills()->pluck('name')->toArray()) }}
+                                    @else
+                                    همه مهارت ها
+                                    @endif
                                 </div>
                             </div>
                             <div class="lefts">
-                                <button class="share-btn">
-
+                                {{--  <button class="share-btn">  --}}
                             </div>
+                            <br>
+
                         </div>
 
 
 
                         <div class="user-messg-keuwords">
                             <div class="rights">
-                                <h4>شرایط اختصاصی این خرد جمعی :</h4>
+                                <h4>شرایط پاسخ دهنده این خرد جمعی :</h4>
                                 <div class="tag-list">
 
                                     <ul class="cond">
-                                        @if ($counsel->gender)
+                                        {{--  @dd($counsel->gender)  --}}
                                             <li>
+                                        @if ($counsel->gender)
+
                                                 به این خرید جمعی فقط
                                                 <span class="alert alert-success">{{ __('arr.' . $counsel->gender) }} ها
                                                 </span>
                                                 میتوانند پاسخ دهند
+                                                @else
+                                                همه جنسیت ها
+                                            @endif
                                             </li>
-                                        @endif
 
-                                        @if ($counsel->star)
+
+
                                             <li>
+                                                @if ($counsel->star)
                                                 حداقل ستاره برای پاسخ دادن به این خردجمعی
                                                 <span class="alert alert-success">{{ $counsel->star }} </span>
                                                 می باشد
+                                                @else
+                                             همه ستاره ها
+                                                @endif
                                             </li>
-                                        @endif
-                                        @if ($counsel->degree)
+
                                             <li>
+                                        @if ($counsel->degree)
                                                 مدرک مورد نیاز برای پاسخ گویی به این
                                                 خرد جمعی باید
                                                 <span class="alert alert-success">{{ __('arr.' . $counsel->degree) }} </span>
                                                 باشد
-                                            </li>
+                                                @else
+                                                همه مدارک
                                         @endif
+
+                                            </li>
                                         @if ($counsel->answers)
                                             <li>
                                                 حداکثر پاسخ دهندگان به این خردجمعی

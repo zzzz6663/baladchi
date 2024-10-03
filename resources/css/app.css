@@ -37,10 +37,31 @@ display: block!important;
     border-radius: 15px;
     padding: 0 10px;
 }
+#file_g{
+    display: block;
+    width: 100%;
+    margin-bottom: 0!important;
+}
+.user-messg-foter .view{
+    position: relative;
+    bottom: 5px;
+    right: 42px;
+}
+.txt_in{
+    color: red;
+}
+#file_s{
+    content: "انتخاب فایل";
+    display: none;
+}
+
 @media only screen and (max-width: 992px) {
     .my-add .right-sec .inf .date-city {
         flex-direction: column;
     }
+
+.user-messg-foter .view{
+    right: 12px!important;;
 }
 
-
+}

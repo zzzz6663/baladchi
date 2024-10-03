@@ -27,7 +27,12 @@ window.Echo = new Echo({
 console.log(window.location.hostname)
 // console.log(1133112121222211212)
 
+$('.name_inp').on('change', function() {
+    console.log(44)
+    var fileName = $(this).val().split('\\').pop(); // استخراج نام فایل
+    $(this).prev('label').text('انتخاب فایل: ' + fileName); // انتخاب لیبل مربوطه و افزودن نام فایل
 
+});
 
 window.Echo.channel("home").listen("NewTest",(e)=>{
     console.log(e)

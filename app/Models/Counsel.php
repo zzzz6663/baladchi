@@ -31,7 +31,7 @@ class Counsel extends Model
         'url',//  لینک
         'img',//  عکس
         'removed',//  حذف
-        'show_answer',//  نمایش جواب ها 
+        'show_answer',//  نمایش جواب ها
 
 
     ];
@@ -94,12 +94,17 @@ class Counsel extends Model
     public function check_condition($user)
     {
         $counsel=$this;
-
-        if(!(($counsel->gender &&  $counsel->gender != $user->gender)|| ($counsel->degree && $counsel->degree != $user->degree) || ($counsel->star&& $counsel->star <= $user->comment_log()['av']) ||( $counsel->answers_count() >= $counsel->answers))){
-            return false;
+        // dump($counsel);
+        $data['gender']=!($counsel->gender &&  $counsel->gender != $user->gender);
+        $data['degree']=!($counsel->degree && $counsel->degree != $user->degree);
+        $data['star']=!($counsel->star&& $counsel->star <= $user->comment_log()['av']);
+        $data['answer']=!($counsel->answers_count() >= $counsel->answers);
+        if((($data['gender'])&& $data['degree'] && $data['star']  && $data['answer'])){
+        $data['pass']=true;
+            return  $data;
         }
-
-        return true;
+        $data['pass']=false;
+        return  $data;
     }
     public function img()
     {
