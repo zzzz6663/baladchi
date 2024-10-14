@@ -34,7 +34,7 @@ class Counsel extends Model
         'show_answer',//  نمایش جواب ها
         'sound',//  صدا
         'video',//      تصویر
-
+//
 
     ];
     public function user(){
