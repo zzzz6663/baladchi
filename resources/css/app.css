@@ -13,6 +13,11 @@
     width:100px;
     margin: 0 auto;
 
+
+}
+.hor-single-user .left {
+    max-width: 70%!important;
+    /*  */
 }
 .an_li{
     margin-bottom: 10px;
