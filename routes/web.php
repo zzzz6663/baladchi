@@ -109,9 +109,17 @@ Route::prefix('panel')->middleware(['auth',"role:user"])->group(function () {
     Route::any('/deposit', 'PanelController@deposit')->name('panel.deposit');
     Route::post('/cancel_deposit/{deposit}', 'PanelController@cancel_deposit')->name('panel.cancel.deposit');
     Route::post('/accept_deposit/{deposit}', 'PanelController@accept_deposit')->name('panel.accept.deposit');
+
+
+
+
     Route::any('/new_counsel1', 'PanelController@new_counsel1')->name('panel.new.counsel1');
     Route::any('/new_counsel2/{counsel}', 'PanelController@new_counsel2')->name('panel.new.counsel2');
     Route::any('/new_counsel3/{counsel}', 'PanelController@new_counsel3')->name('panel.new.counsel3');
+
+
+
+
     Route::any('/counsel', 'PanelController@counsel')->name('panel.counsel');
     Route::post('/finish_counsel/{counsel}', 'PanelController@finish_counsel')->name('finish.counsel');
     Route::get('/counsel_answers/{counsel}', 'PanelController@counsel_answers')->name('counsel.answers');
@@ -146,15 +154,9 @@ Route::prefix('panel')->middleware(['auth',"role:user"])->group(function () {
     Route::post('/insert_new_donate', 'PanelController@insert_new_donate')->name('insert.new.donate');
 
     // Route::post('/send_chat/{advertise}', 'PanelController@send_chat')->name('send.chat');
-
-
     Route::post('/delete_advertise/{advertise}', 'PanelController@delete_advertise')->name('delete.advertise');
     Route::post('/credit_check', 'PanelController@credit_check')->name('credit.check');
-
-
     Route::post('/remove_ad_img/{image}', 'PanelController@remove_ad_img')->name('remove.ad.img');
-
-
 });
 
 
@@ -198,6 +200,8 @@ Route::post('/reload_captcha', 'HomeController@reload_captcha')->name('reload.ca
 Route::post('/get_province_list', 'HomeController@get_province_list');
 Route::post('/get_city_list', 'HomeController@get_city_list');
 Route::post('/get_cat', 'HomeController@get_cat');
+Route::post('/get_skill', 'HomeController@get_skill');
+Route::post('/get_city/{province}', 'HomeController@get_city');
 Route::post('/get_city/{province}', 'HomeController@get_city');
 Route::post('/get_region/{city}', 'HomeController@get_region');
 Route::get('/clear', 'HomeController@clear')->name('clear');

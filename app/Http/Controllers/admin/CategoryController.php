@@ -86,8 +86,11 @@ class CategoryController extends Controller
         'name'=>'required',
         'icon'=>'nullable',
         'price'=>'nullable',
+        'active'=>'nullable',
     ]);
           $category->update($data);
+          $categories=Category::where('active', 1)->get();
+          cache()->put("categories", $categories);
         alert()->success('دسته بندی   به روز رسانی شد ','پیام جدید');
         return redirect(route('category.index'));
     }

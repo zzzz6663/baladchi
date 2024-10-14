@@ -132,7 +132,9 @@
                                     {{--  @dump($counsel->check_condition($user))  --}}
                                     {{--  @dd($counsel->check_condition($user))  --}}
                                     @if ($counsel->check_condition($user)['pass'])
-                                        @if (auth()->user()->id != $counsel->user_id)
+                                    {{--  @dd(auth()->user()->id != $counsel->user_id)  --}}
+                                    @if (true)
+
                                             <a href="{{ route('counsel.quiz', $counsel->id) }}" class="icon-button green">
                                                 @if ($user->answers()->where('counsel_id', $counsel->id)->count())
                                                     <span>ویرایش جواب ها </span>
@@ -297,6 +299,36 @@
 
                         </div>
 
+                        @if($counsel->sound())
+
+                        <div class="user-messg-keuwords">
+                            <div class="rights">
+                                <h4> صوت   :</h4>
+                            </div>
+                            <div>
+                                <audio controls>
+                                    <source src="{{ $counsel->sound() }}" type="audio/mpeg">
+                                    مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+                                </audio>
+                            </div>
+                        </div>
+                        @endif
+
+                        @if($counsel->video())
+
+                        <div class="user-messg-keuwords">
+                            <div class="rights">
+                                <h4> کلیپ   :</h4>
+                            </div>
+                            <div>
+
+                                <video width="600" height="200" controls>
+                                    <source src="{{ $counsel->video() }}" type="video/mp4">
+                                    مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+                                </video>
+                            </div>
+                        </div>
+                        @endif
 
                         <div class="user-messg-keuwords">
                             <div class="rights">
@@ -388,9 +420,10 @@
                                                 @endforeach
                                             </ul>
                                             @else
-                                                <li style="margin-bottom: 10px">
+                                                <li class="an_li">
                                                     {{ $loop->iteration }}-
-                                                    {{ $answer->answer }}
+                                                    {!! nl2br(e($answer->answer)) !!}
+
                                                 </li>
                                             @endif
                                         @endforeach

@@ -580,7 +580,41 @@ window.onload = function () {
         //     // }
         //  }; history.pushState({}, '');
 
+        // if ($('.tooltip_c').length) {
+        //     $('.tooltip_c').tooltipster();
+        // }
 
+        if ($('.tooltip-box').length) {
+
+
+            // زمانی که موس روی باکس حرکت می‌کند
+            $('.tooltip-box').on('mousemove', function(event) {
+                let el=$(this)
+                let txt=el.attr('title')
+                console.log(txt)
+                $('#tooltip_cont').text(txt)
+                // موقعیت تولتیپ را با مکان موس و فاصله تنظیم می‌کنیم
+                let tooltipWidth = $('.custom-tooltip').outerWidth();
+                let tooltipHeight = $('.custom-tooltip').outerHeight();
+
+                // تعیین موقعیت تولتیپ کمی بالاتر و سمت راست موس
+                let tooltipX = event.pageX + 10; // فاصله 10 پیکسل از سمت راست موس
+                let tooltipY = event.pageY - tooltipHeight - 10; // فاصله 10 پیکسل بالاتر از موس
+
+                // تنظیم موقعیت تولتیپ
+                $('.custom-tooltip').css({
+                    'left': tooltipX + 'px',
+                    'top': tooltipY + 'px',
+                    'display': 'block' // نمایش تولتیپ
+                });
+            });
+
+            // زمانی که موس از باکس خارج می‌شود
+            $('.tooltip-box').on('mouseleave', function() {
+                // مخفی کردن تولتیپ
+                $('.custom-tooltip').css('display', 'none');
+            });
+        }
 
         if ($('.tooltip_s').length) {
             $('.tooltip_s').tooltipster();
@@ -2398,12 +2432,16 @@ window.onload = function () {
             $('.new_at_list').show(400)
         })
 
+
         $('.add_new_skill_group').click(function () {
             $('.new_skill_list').show(400)
         })
 
+    
 
-        $('.sub_sk').unbind('click').bind('click', function (e) {
+        $('body').off('click', '.sub_sk').on('click', '.sub_sk', function (e) {
+
+        // $('.sub_sk').unbind('click').bind('click', function (e) {
             let el = $(this)
             el.addClass("animate__backOutDown")
             setTimeout(() => {

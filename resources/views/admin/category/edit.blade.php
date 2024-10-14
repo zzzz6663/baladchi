@@ -35,17 +35,16 @@
                     </div>
                   </div>
 
-                {{-- <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="basic-default-name">    انتخاب به عنوان سردسته</label>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">    نمایش </label>
                     <div class="col-sm-10">
-                      <select  class="form-control select2"  name="parent_id" id="cat_id">
+                      <select  class="form-control "  name="active" id="active">
                         <option value="">یک مورد  را انتخاب کنید </option>
-                        @foreach (App\Models\Category::all() as $cat)
-                            <option {{ old('parent_id',$cat->id)==$category->parent_id ? 'selected ':''}} value="{{ $cat->id }}">{{ $cat->name }}</option>
-                        @endforeach
+                        <option {{ old('active',$category->active)=="1"?"selected":"" }} value="1">فعال </option>
+                        <option {{ old('active',$category->active)=="0"?"selected":"" }} value="0">غیر فعال  </option>
                       </select>
                     </div>
-                  </div> --}}
+                  </div>
 
                 <div class="row justify-content-end">
                   <div class="col-sm-10">

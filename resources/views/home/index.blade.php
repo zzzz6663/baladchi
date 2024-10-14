@@ -50,8 +50,8 @@
     </div>
     @if(!request('vip'))
 
-    <div class="load-more">
-        <a href="{{ route('login',['vip'=>1]) }}" class="vip-load" style="display: inline-block">
+    <div class="load-more"    >
+        <a href="{{ route('login',['vip'=>1]) }}" class="vip-load tooltip-box" style="display: inline-block" title="{{$setting14}}"  >
             <span>دیدن آگهی های VIP</span>
             <span class="icon">
                 <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">

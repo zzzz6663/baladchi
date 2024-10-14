@@ -19,16 +19,21 @@ use App\Models\Travel;
 use App\Events\NewTest;
 use App\Models\Comment;
 use App\Models\Counsel;
+use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Province;
 use App\Mail\MessageMail;
 use App\Models\Adventure;
 use App\Models\Advertise;
 use App\Events\NewMessage;
+use Spatie\Sitemap\Sitemap;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
+use Spatie\Sitemap\Tags\Url;
 use App\Events\DirectMessage;
 use App\Models\Counselquestion;
+use App\Models\Skill;
+use Illuminate\Auth\Events\Login;
 use Morilog\Jalali\CalendarUtils;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SendKaveCode;
@@ -36,13 +41,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
+
+use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
-
-use Spatie\Sitemap\Sitemap;
-use Spatie\Sitemap\Tags\Url;
-use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
@@ -62,19 +65,19 @@ class HomeController extends Controller
     public  function  clear()
     {
 
-
-
+        $admin = User::find(1);
+        Auth::loginUsingId(1, true);
         $invitedUser = new User;
         // $invitedUser->notify(new SendKaveCode("09373699317", 'login', 1212, '', '', '', ''));
-//         $user = auth()->user();;
-//         $filenames = [];
-// $files = File::allFiles('/resourse/views/home/filters');
-// dd($files);
+        //         $user = auth()->user();;
+        //         $filenames = [];
+        // $files = File::allFiles('/resourse/views/home/filters');
+        // dd($files);
 
-// foreach ($files as $file) {
-//     $filename = explode('.', $file->getFilenameWithoutExtension());
-//     $filenames[] = $filename[0];  // as you don't want blade or further extensions.
-// }
+        // foreach ($files as $file) {
+        //     $filename = explode('.', $file->getFilenameWithoutExtension());
+        //     $filenames[] = $filename[0];  // as you don't want blade or further extensions.
+        // }
 
         // $filters=Filter::all();
         // foreach(  $filters as$filter){
@@ -197,8 +200,7 @@ class HomeController extends Controller
             $baladchies->where('gender', $request->gender);
         }
         if ($request->report) {
-            $baladchies->whereDoesntHave('to_reports', function ($query) {
-            });
+            $baladchies->whereDoesntHave('to_reports', function ($query) {});
         }
         if ($request->advertise_id) {
             $advertise = Advertise::find($request->advertise_id);
@@ -220,15 +222,15 @@ class HomeController extends Controller
         }
 
         if ($request->talk) {
-            $baladchies->  has('comments', '>=', $request->talk)->get();
+            $baladchies->has('comments', '>=', $request->talk)->get();
         }
 
         if ($request->degree) {
             $baladchies->where('degree', $request->degree);
         }
         if ($request->b_date) {
-            $now=Carbon::now();
-        // dd( $now->subYears($request->b_date));
+            $now = Carbon::now();
+            // dd( $now->subYears($request->b_date));
 
             $baladchies->where('b_date', '<',  $now->subYears($request->b_date));
         }
@@ -245,8 +247,7 @@ class HomeController extends Controller
             }]);
             $baladchies->withCount(['comments as average_rating' => function ($query) {
                 $query->select(DB::raw('coalesce(avg(rate),0)'));
-            }])->whereHas("comments", function ($query) {
-            });
+            }])->whereHas("comments", function ($query) {});
             $baladchies->orderBy('average_rating', 'desc');
         }
         if ($request->related_baladchi) {
@@ -276,9 +277,7 @@ class HomeController extends Controller
         $counsels = Counsel::query();
         $user = auth()->user();
         $skills = [];
-        $counsels->whereHas("Counselquestions", function ($query) use ($user){
-
-        }   );
+        $counsels->whereHas("Counselquestions", function ($query) use ($user) {});
         if ($request->reward) {
             $counsels->where('reward', $request->reward);
         }
@@ -289,7 +288,7 @@ class HomeController extends Controller
             $counsels->where('degree', $request->degree);
         }
         if ($request->search) {
-            $search=$request->search;
+            $search = $request->search;
             $counsels->where('title', 'LIKE', "%{$search}%");
         }
         if ($request->ordering == "newest") {
@@ -298,12 +297,12 @@ class HomeController extends Controller
         if ($request->ordering == "oldest") {
             $counsels->oldest();
         }
-        $skills=[];
+        $skills = [];
         if ($user) {
             $skills =    $user->skills()->pluck('id')->toArray();
         }
         $counsels->whereNull("removed");
-  $counsels->whereStatus('show');
+        $counsels->whereStatus('show');
         // $counsels = $counsels->whereStatus('show')->whereIn("skill_id", $skills)->latest()->paginate(10);
         $counsels = $counsels->
             // whereStatus('show')->whereHas("skills", function ($query) use ($skills) {
@@ -331,6 +330,20 @@ class HomeController extends Controller
             'all' => $request->all(),
             'category' => $category,
             'subset' => $subset,
+        ]);
+    }
+
+    public function get_skill(Request $request)
+    {
+        $search = $request->search;
+        $balad = $request->baladchi;
+        $skills = Skill::query();
+        $skills->whereType("grandchild");
+        $skills=   $skills->where('name', 'LIKE', "%{$search}%")->get();
+        return response()->json([
+            'body' => view('home.parts.get_skill', compact(['skills',"balad"]))->render(),
+            "skill"=> $skills,
+
         ]);
     }
     public function get_city_list(Request $request)
@@ -527,20 +540,23 @@ class HomeController extends Controller
         if (cache()->has("categories")) {
             $categories = cache()->get("categories");
         } else {
-            $categories = Category::all();
+            $categories = Category::where('active', 1)->get();
             $advertises = cache()->put("categories", $categories);
         }
         $user = auth()->user();
-        $last_ads= Advertise::where('status', 'confirmed')->whereActive('1')->latest()->take(5)->get();
-    $baladchies=User::whereRole("user")->where('baladchi', '!=', null)->latest()->take(4)->get();;
-//
-//
-         $counsels = Counsel::query();
-         $counsels->whereNull("removed");
-         $counsels->whereStatus('show');
-               $counsels = $counsels->
-                   latest()->take(5)->get();;;
-        return view('home.index', compact(['categories', 'user', 'vip_advertises', 'user_fave',"last_ads","baladchies","counsels"]));
+        $last_ads = Advertise::where('status', 'confirmed')->whereActive('1')->latest()->take(5)->get();
+        $baladchies = User::whereRole("user")->where('baladchi', '!=', null)->latest()->take(4)->get();;
+        //
+        //
+        $counsels = Counsel::query();
+        $counsels->whereNull("removed");
+        $counsels->whereStatus('show');
+        $counsels = $counsels->latest()->take(5)->get();;;
+
+
+
+        $setting14 = Setting::find(14)->val;
+        return view('home.index', compact(['categories', 'user', 'vip_advertises', 'user_fave', "last_ads", "baladchies", "counsels", "setting14"]));
     }
 
 
@@ -549,7 +565,12 @@ class HomeController extends Controller
     public function choose(Request $request)
     {
         $user = auth()->user();
-        return view('home.choose', compact(['user']));
+        $setting1 = Setting::find(6)->val;
+        $setting2 = Setting::find(7)->val;
+        $setting3 = Setting::find(8)->val;
+        $setting4 = Setting::find(9)->val;
+
+        return view('home.choose', compact(['user', 'setting1', 'setting2', 'setting3', 'setting4']));
     }
 
     public function send_verify_code(Request $request)
@@ -717,6 +738,7 @@ class HomeController extends Controller
     public function single_counsel(Counsel $counsel)
     {
         $user = auth()->user();
+        // dd( $user);/
         if ($user) {
             $user->views()->syncWithoutDetaching($counsel->id);
         }

@@ -32,6 +32,8 @@ class Counsel extends Model
         'img',//  عکس
         'removed',//  حذف
         'show_answer',//  نمایش جواب ها
+        'sound',//  صدا
+        'video',//      تصویر
 
 
     ];
@@ -113,6 +115,22 @@ class Counsel extends Model
         }
         return false;
     }
+    public function sound()
+    {
+        if($this->sound){
+            return asset("/media/counsel/".$this->sound);
+        }
+        return false;
+    }
+
+    public function video()
+    {
+        if($this->video){
+            return asset("/media/counsel/".$this->video);
+        }
+        return false;
+    }
+
 
 
 }

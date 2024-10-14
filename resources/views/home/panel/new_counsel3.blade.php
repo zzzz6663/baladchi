@@ -31,6 +31,114 @@
                         </li>
                     </ul>
                 </div>
+
+                <div id="register-stpes">
+                    <div class="dash-title">
+                        <h3>تعریف سوال
+
+                            جدید
+
+
+                        </h3>
+
+
+                    </div>
+                    @include('main.error')
+
+                    <div id="register">
+
+                        <div class="form">
+                            <form action="{{ route('panel.new.counsel3', $counsel->id) }}" id="qu_foem" method="post">
+                                @csrf
+                                @method('post')
+                                <div class="input-label big">
+                                    <label for="question">
+                                        <span> سوالت چیه ؟ </span>
+                                    </label>
+                                    <input type="text" name="question" id="question">
+                                </div>
+
+                                <h6>
+                                    اگه میخوای سوالت گزینه‌ای باشه اینجا میتونی تا پنج تا گزینه اضافه کنی، در غیر اینصورت
+                                    جوابها تشریحی خواهند بود
+                                </h6>
+                                <div class="input-label big postion_relative">
+                                    <label for="new_op">
+                                        <span> گزینه جدید </span>
+                                    </label>
+                                    <input type="text" name="new_op" id="new_op">
+                                    <span class=" pointer postion_absolute" id="new_option" value=" ">
+                                        اضافه
+                                    </span>
+                                </div>
+                                <div class=" ">
+                                    <ul id="listq">
+                                        @foreach (old('options', []) as $option)
+                                            <li class="parent_li">
+                                                <input type="text" name="options[]" value="{{ $option }}">
+                                                <span class="remove_pa">
+                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.99999 4.58599L10.243 0.342987C10.6335 -0.0474781 11.2665 -0.0474791 11.657 0.342986C12.0475 0.733452 12.0475 1.36652 11.657 1.75699L7.41399 5.99999L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.41399L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 5.99999L0.342987 1.75699C-0.0474782 1.36652 -0.0474791 0.733452 0.342986 0.342986C0.733452 -0.0474791 1.36652 -0.0474789 1.75699 0.342987L5.99999 4.58599Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+                                </div>
+
+                                {{--  @if ($counsel->counselquestions()->count() < 10)  --}}
+
+                                {{--  @else
+                                شما
+                                @endif سس --}}
+
+
+                            </form>
+
+                            <h6>
+                                اگه سوال دیگه ای داری مجددا ثبت کن در غیر اینصورت دکمه تایید و انتشار رو بزن
+                            </h6>
+
+                            <div class="ess">
+                                <div class="footer-section inline-block ess" style="justify-content:space-around">
+                                    <div class="pair-button">
+                                        <button form="qu_foem" class="mid-button blue pointer" value=" ">
+                                            ذخیره سوال
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {{--  ss  --}}
+                                @if ($counsel->check_for_active())
+                                    @if (
+                                        ($counsel->reward == 'select_the_best_answer' &&
+                                            $counsel->counselquestions()->where('a1', null)->where('a2', null)->where('a3', null)->where('a4', null)->count() > 0) ||
+                                            $counsel->reward != 'select_the_best_answer')
+                                        <form class="inline-block ess" action="{{ route('active.counsel', $counsel->id) }}"
+                                            method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">
+                                            @csrf
+                                            @method('post')
+                                            <button class="mid-button blue pointer ">
+                                                تایید وانتشار
+                                            </button>
+                                        </form>
+                                    @else
+                                        حداقل یک سوال تشریحی اضافه کنید
+                                    @endif
+                                @else
+                                    <a class="mid-button" href="{{ route('panel.counsel') }}">برگشت </a>
+                                @endif
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
                 <div class="dash-main-content">
                     <div class="tra-table">
 
@@ -120,108 +228,6 @@
                 </div>
                 {{--  @if (!$counsel->active)  --}}
 
-                <div id="register-stpes">
-                    <div class="dash-title">
-                        <h3>تعریف سوال
-
-                            جدید
-
-
-                        </h3>
-
-
-                    </div>
-                    @include('main.error')
-
-                    <div id="register">
-
-                        <div class="form">
-                            <form action="{{ route('panel.new.counsel3', $counsel->id) }}" id="qu_foem" method="post" >
-                                @csrf
-                                @method('post')
-                                <div class="input-label big">
-                                    <label for="question">
-                                        <span> عنوان </span>
-                                    </label>
-                                    <input type="text" name="question" id="question">
-                                </div>
-
-                                <div class="input-label big postion_relative">
-                                    <label for="new_op">
-                                        <span> گزینه جدید </span>
-                                    </label>
-                                    <input type="text" name="new_op" id="new_op">
-                                    <span class=" pointer postion_absolute" id="new_option" value=" ">
-                                        اضافه
-                                    </span>
-                                </div>
-                                <div class=" ">
-                                    <ul id="listq">
-                                        @foreach (old('options', []) as $option)
-                                            <li class="parent_li">
-                                                <input type="text" name="options[]" value="{{ $option }}">
-                                                <span class="remove_pa">
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M5.99999 4.58599L10.243 0.342987C10.6335 -0.0474781 11.2665 -0.0474791 11.657 0.342986C12.0475 0.733452 12.0475 1.36652 11.657 1.75699L7.41399 5.99999L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.41399L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 5.99999L0.342987 1.75699C-0.0474782 1.36652 -0.0474791 0.733452 0.342986 0.342986C0.733452 -0.0474791 1.36652 -0.0474789 1.75699 0.342987L5.99999 4.58599Z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                            </li>
-                                        @endforeach
-
-                                    </ul>
-                                </div>
-
-                                {{--  @if ($counsel->counselquestions()->count() < 10)  --}}
-
-                                {{--  @else
-                                شما
-                                @endif سس --}}
-
-
-                            </form>
-
-                            <div class="ess">
-                            <div class="footer-section inline-block ess" style="justify-content:space-around">
-                                <div class="pair-button">
-                                    <button form="qu_foem" class="mid-button blue pointer" value=" ">
-                                        ذخیره سوال
-                                     </button>
-                                </div>
-                            </div>
-
-{{--  ss  --}}
-                            @if ($counsel->check_for_active() )
-                                    @if(($counsel->reward =="select_the_best_answer"  && $counsel->counselquestions()->where("a1",null)
-                                    ->where("a2",null)
-                                    ->where("a3",null)
-                                    ->where("a4",null)
-                                ->count()>0 ) || $counsel->reward !="select_the_best_answer")
-                                <form class="inline-block ess" action="{{ route('active.counsel', $counsel->id) }}"
-                                    method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">
-                                    @csrf
-                                    @method('post')
-                                    <button class="mid-button blue pointer ">
-                                        تایید وانتشار
-                                    </button>
-                                </form>
-                                @else
-                                حداقل یک سوال تشریحی اضافه کنید
-
-                                @endif
-
-                            @else
-                                <a class="mid-button" href="{{route('panel.counsel')}}">برگشت </a>
-                            @endif
-                        </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
                 {{--  @endif  --}}
 
 

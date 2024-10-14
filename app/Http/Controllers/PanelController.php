@@ -296,11 +296,18 @@ class PanelController extends Controller
             $validator = Validator::make($request->all(), [
                 'title' => 'required|max:256',
                 'info' => 'required|max:1000',
-                'img' => 'max:1024|dimensions::min_width=1500,min_height=300',
+                // 'img' => 'max:1024|dimensions::min_width=1500,min_height=300',
+                // 'video' => 'nullable|file|mimes:mp4', // |max:3196 Max size in kilobytes (2 MB = 2048 KB)
+                // 'sound' => 'nullable|file|mimes:mp3', // Max size in kilobytes (2 MB = 2048 KB)
+                'img' => 'nullable',
+                'video' => 'nullable', // |max:3196 Max size in kilobytes (2 MB = 2048 KB)
+                'sound' => 'nullable',
+
                 'show_answer' => 'required',
                 'gender' => 'nullable',
                 'star' => 'nullable',
                 'tags' => 'required',
+
                 // 'skills' => 'required|array|min:1',
                 'skills' => 'nullable',
                 'degree' => 'nullable',
@@ -322,6 +329,25 @@ class PanelController extends Controller
                 $img->move(public_path('/media/counsel/'), $name_img);
                 $data['img'] = $name_img;
             }
+
+            if ($request->hasFile('video')) {
+                $video = $request->file('video');
+                $rand = rand(10, 100);
+                $name_video = 'video_' . $user->id  . '.' . $video->getClientOriginalExtension();
+                $video->move(public_path('/media/counsel/'), $name_video);
+                $data['video'] = $name_video;
+            }
+
+
+            if ($request->hasFile('sound')) {
+                $sound = $request->file('sound');
+                $rand = rand(10, 100);
+                $name_sound = 'sound_' . $user->id  . '.' . $sound->getClientOriginalExtension();
+                $sound->move(public_path('/media/counsel/'), $name_sound);
+                $data['sound'] = $name_sound;
+            }
+
+
 
             $data['status'] = "created";
             $counsel = $user->counsels()->create($data);
@@ -393,6 +419,10 @@ class PanelController extends Controller
                 'title' => 'required|max:256',
                 'gender' => 'required',
                 'star' => 'nullable',
+                'img' => 'nullable',
+                'video' => 'nullable', // |max:3196 Max size in kilobytes (2 MB = 2048 KB)
+                'sound' => 'nullable',
+
                 'skills' => 'required',
                 'degree' => 'nullable',
                 'show_answer' => 'required',
@@ -407,6 +437,37 @@ class PanelController extends Controller
                 return response()->json($validator->errors());
             }
             $data = $validator->safe()->all();
+
+            if ($request->hasFile('img')) {
+                $img = $request->file('img');
+                $rand = rand(10, 100);
+                $name_img = 'img_' . $user->id  . '.' . $img->getClientOriginalExtension();
+                $img->move(public_path('/media/counsel/'), $name_img);
+                $data['img'] = $name_img;
+            }
+
+            if ($request->hasFile('video')) {
+                $video = $request->file('video');
+                $rand = rand(10, 100);
+                $name_video = 'video_' . $user->id  . '.' . $video->getClientOriginalExtension();
+                $video->move(public_path('/media/counsel/'), $name_video);
+                $data['video'] = $name_video;
+            }
+
+
+            if ($request->hasFile('sound')) {
+                $sound = $request->file('sound');
+                $rand = rand(10, 100);
+                $name_sound = 'sound_' . $user->id  . '.' . $sound->getClientOriginalExtension();
+                $sound->move(public_path('/media/counsel/'), $name_sound);
+                $data['sound'] = $name_sound;
+            }
+
+
+
+
+
+
             $data['confirm'] = null;
             $counsel->update($data);
             $counsel->tags()->sync([]);
@@ -433,7 +494,7 @@ class PanelController extends Controller
         $user = auth()->user();
         $user->counsels()->where('reward', '!=', 'no_reward')->wherePay(0)->delete();
 
-        $counsels = $user->counsels()->latest()->get();
+        $counsels = $user->counsels()->whereNull("removed")->latest()->get();
 
         return view('home.panel.counsel', compact(['user', 'counsels']));
     }
@@ -723,7 +784,13 @@ class PanelController extends Controller
     public function baladchi()
     {
         $user = auth()->user();
-        return view('home.panel.baladchi.baladchi', compact(['user']));
+        if(!$user->see_balachi){
+            $user->update([
+                'see_balachi'=>1
+            ]);
+        }
+        $setting8 = Setting::find(8)->val;
+        return view('home.panel.baladchi.baladchi', compact(['user',"setting8"]));
     }
 
 

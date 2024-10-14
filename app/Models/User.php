@@ -50,6 +50,7 @@ class User extends Authenticatable
         'visit',
         'show_visitor',
         'salary',
+        'see_balachi'//دیدن قسمت بلد چیها ,
     ];
 
 

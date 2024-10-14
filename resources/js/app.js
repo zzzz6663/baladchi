@@ -34,6 +34,45 @@ $('.name_inp').on('change', function() {
 
 });
 
+
+$('body').on('click', '.clear_search', function (e) {
+    $('#skill_search_list').html("")
+    $('#skill_list').slideDown(200)
+    $('#skill_search_list').slideUp(200)
+})
+$('#skill_search').on('input', function() {
+    let el=$(this)
+    var search = el.val();
+    let baladchi=el.data("balad");
+    console.log(baladchi)
+
+    $.ajax('/get_skill', {
+        headers: {
+            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+        },
+        data: { search: search,baladchi:baladchi },
+        type: 'post',
+        success: function (data) {
+            console.log(data)
+            $('#skill_search_list').html(data.body)
+            $('#skill_list').slideUp(200)
+            $('#skill_search_list').slideDown(200)
+        },
+        error: function (request, status, error) {
+            console.log(request)
+        }
+    })
+
+});
+$('.file_s').on('change', function() {
+    let el=$(this)
+    var fileName = el.val().split('\\').pop();
+    console.log(fileName)
+    el.closest(".file_par").find('.file_name').text(fileName);
+});
+
+
+
 window.Echo.channel("home").listen("NewTest",(e)=>{
     console.log(e)
 })

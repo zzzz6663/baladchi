@@ -5,6 +5,9 @@
 
     <div id="register-stpes">
         <div class="dash-title">
+            <h5 class="alert alert-warning">
+                {{$setting8}}
+            </h5>
             <h3>
                 @if($user->baladchi)
                 شما به عنوان بلد چی هستید

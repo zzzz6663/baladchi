@@ -10,13 +10,11 @@
 
                 <div class="stepes ss">
                     <ul>
-                        {{-- <li class="step step1 active">
-                        <span class="num">.۱</span>
-                        <h4>اsطلاعات کاربssری</h4>
-                    </li> --}}
+
                         <li class="step step2 active">
                             <span class="num">.1</span>
                             <h4> تعریف خرد جمعی</h4>
+
                         </li>
                         <li class="step step3">
                             <span class="num">.2</span>
@@ -25,16 +23,21 @@
                         <li class="step step4">
                             <span class="num">.3</span>
                             <h4> سوالات </h4>
+
+
                         </li>
                     </ul>
                 </div>
+                <h5>
+                    سلام اینجا میتونید پرسشنامه تهیه کنید
+                </h5>
                 <div class="form par2">
                     <form action="" id="counsel_form" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('post')
                         <div class="input-label big">
                             <label for="title">
-                                <span> عنوان </span>
+                                <span> برای سوال(ات)ت چه عنوانی میذاری ؟ </span>
                             </label>
                             <input type="text" name="title" id="title">
                         </div>
@@ -42,19 +45,101 @@
 
 
                         <div class="input-label textarea big">
-                            <label for=""> توضیحات </label>
+                            <label for=""> یکم راجع به سوالاتت توضیح میدی؟ </label>
                             <textarea name="info" id="" cols="30" rows="10"></textarea>
 
                         </div>
-                        <div class="">
-                            <label for="file_s" id="file_g" class="input-label big">انتخاب تصویر  </label>
-                            <input type="file" name="img" id="file_s" placeholder="" sty class="path_img" accept="image/*">
+
+
+
+                        <div class="file_par">
+                            <label for="file_ss" id="file_sound" class="input-label big ">
+                                <span class="select_inp">
+                                    انتخاب صدا
+                                </span>
+                                <span class="file_name">
+
+                                </span>
+                            </label>
+                            <input type="file" name="sound" id="file_ss" placeholder="" accept="audio/*" sty
+                                class="path_img file_s" accept="image/*">
+                            <p class="txt_in" style="">
+                                حداکثر حجم
+                                :3M
+                            </p>
+                            -
+                        </div>
+
+
+                        <h6>
+                            اگه سوالت لینک خاصی داره اینجا وارد کن
+                        </h6>
+                        <div class="input-label big" id="url" style="display:">
+                            <label for="price">
+                                <span>لینک </span>
+                            </label>
+                            <input type="text" name="url" id="url" value="{{ $url }}">
+                        </div>
+
+                        <h6>
+                            برای دیده شدن سوالت بهتره از کلیدواژه استفاده کنی
+                        </h6>
+                        <div class="input-label big postion_relative mb-0">
+
+                            <label for="new_op">
+
+                                <span> کلید واژه </span>
+                            </label>
+                            <input type="text" name="new_op" id="new_op">
+                            <span class=" pointer postion_absolute" id="new_tag" value=" ">
+                                اضافه
+                            </span>
+                        </div>
+
+                        <div>
+                            <ul id="listq" class="tlist">
+
+                            </ul>
+                        </div>
+
+                        <div class="file_par">
+                            <label for="file_sv" id="file_video" class="input-label big ">
+                                <span class="select_inp">
+                                    انتخاب کلیپ
+                                </span>
+                                <span class="file_name">
+
+                                </span>
+                            </label>
+                            <input type="file" name="video" id="file_sv" placeholder="" accept="video/*" sty
+                                class="path_img file_s" accept="image/*">
+                            <p class="txt_in" style="">
+                                حداکثر حجم
+                                :3M
+                            </p>
+                            -
+                        </div>
+
+
+
+                        <div class="file_par">
+                            <h6>
+                                واسه خوش آمد گویی به پاسخ دهنده ها عکس می‌ذارید؟
+                            </h6>
+                            <label for="file_s" id="file_g" class="input-label big ">
+                                <span class="select_inp">
+                                    انتخاب تصویر
+                                </span>
+                                <span class="file_name">
+
+                                </span>
+                            </label>
+                            <input type="file" name="img" id="file_s" placeholder="" sty class="path_img file_s"
+                                accept="image/*">
                             <p class="txt_in" style="">
                                 حداقل ابعاد : ارتفاع :300px -
                                 عرض: 1500px -
                                 حجم:1M
-
-
                             </p>
                             -
                         </div>
@@ -82,8 +167,8 @@
                         <div class="select-label">
                             <label for="show_answer"> نمایش جواب ها به سایرین </label>
                             <select name="show_answer" id="" class="nice-select" data-place="نمایش ">
-                                <option value="1">نمایش  داد شود  </option>
-                                <option value="0">پنهان باشد   </option>
+                                <option value="1">نمایش داد شود </option>
+                                <option value="0">پنهان باشد </option>
                             </select>
                         </div>
 
@@ -99,15 +184,9 @@
                                 <option value="5">5</option>
                             </select>
                         </div>
-                        <div class="input-label big postion_relative mb-0">
-                            <label for="new_op">
-                                <span> کلید واژه </span>
-                            </label>
-                            <input type="text" name="new_op" id="new_op">
-                            <span class=" pointer postion_absolute" id="new_tag" value=" ">
-                                اضافه
-                            </span>
-                        </div>
+
+
+
                         <div>
                             <ul id="listq" class="tlist">
 
@@ -139,14 +218,16 @@
                             <label for="degree">مدرک تحصیلی</label>
                             <select name="degree" id="" class="nice-select" data-place="مدرک تحصیلی">
                                 <option value="">همه</option>
-                                <option value="
+                                <option
+                                    value="
                                 فقط
-                                under_high_school">زیر دیپلم
+                                under_high_school">
+                                    زیر دیپلم
 
                                 </option>
                                 <option value="high_school">
                                     فقط
-                                     دیپلم
+                                    دیپلم
 
                                 </option>
                                 <option value="associate_degree">
@@ -156,7 +237,7 @@
                                 </option>
                                 <option value="master">
                                     فقط
-                                     کارشناسی
+                                    کارشناسی
 
                                 </option>
                                 <option value="high_master">
@@ -166,7 +247,7 @@
                                 </option>
                                 <option value="phd">
                                     فقط
-                                     phd
+                                    phd
 
                                 </option>
                                 <option value="high_school">
@@ -193,13 +274,6 @@
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
-                        </div>
-
-                        <div class="input-label big" id="url" style="display:">
-                            <label for="price">
-                                <span>لینک </span>
-                            </label>
-                            <input type="text" name="url" id="url" value="{{ $url }}">
                         </div>
 
 
@@ -259,19 +333,29 @@
     </div>
 
 
-    <div class="modal fade new_skill_list" id="search-modal" tabindex="-1" role="dialog" style="display: none" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: block;">
+    <div class="modal fade new_skill_list" id="search-modal" tabindex="-1" role="dialog" style="display: none"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: block;">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title right" id="exampleModalLongTitle">انتخاب دسته بندی</h5>
                     <button type="button" class="close close_pops" data-dismiss="modal" aria-label="Close">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.99999 4.58599L10.243 0.342987C10.6335 -0.0474781 11.2665 -0.0474791 11.657 0.342986C12.0475 0.733452 12.0475 1.36652 11.657 1.75699L7.41399 5.99999L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.41399L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 5.99999L0.342987 1.75699C-0.0474782 1.36652 -0.0474791 0.733452 0.342986 0.342986C0.733452 -0.0474791 1.36652 -0.0474789 1.75699 0.342987L5.99999 4.58599Z" fill="currentColor"></path>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.99999 4.58599L10.243 0.342987C10.6335 -0.0474781 11.2665 -0.0474791 11.657 0.342986C12.0475 0.733452 12.0475 1.36652 11.657 1.75699L7.41399 5.99999L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.41399L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 5.99999L0.342987 1.75699C-0.0474782 1.36652 -0.0474791 0.733452 0.342986 0.342986C0.733452 -0.0474791 1.36652 -0.0474789 1.75699 0.342987L5.99999 4.58599Z"
+                                fill="currentColor"></path>
                         </svg>
 
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="pur-search-form">
+                        <form action="">
+                            <input type="text" id="skill_search" class="text" placeholder="جستجوی در مهارت ها ">
+
+                        </form>
+                    </div>
                     {{-- <div class="pur-search-form">
                             <form action="">
                                 <input type="text" class="text" placeholder="چست وجوی استان و شهر">
@@ -289,88 +373,111 @@
                                 </button>
                             </form>
                         </div>  --}}
-
-                    <div class="sliding-menu">
+                        <div id="skill_search_list" style="display: none"></div>
+                        <div class="sliding-menu" id="skill_list">
                         <ul>
                             @foreach (App\Models\Skill::where('type', 'parent')->get() as $skill_par)
-                            <li>
-                                <div class="top" style="display: flex;">
-                                    <span class="cat-item">
-                                        <span class="icon">
-                                            <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2 18V4.70002C1.99994 4.49474 2.06305 4.29442 2.18077 4.12625C2.29849 3.95809 2.4651 3.83022 2.658 3.76002L12.329 0.244017C12.4045 0.216523 12.4856 0.20765 12.5653 0.218151C12.645 0.228651 12.721 0.258216 12.7869 0.304337C12.8527 0.350459 12.9065 0.411778 12.9436 0.483095C12.9807 0.554413 13 0.633625 13 0.714017V5.66702L19.316 7.77202C19.5152 7.83837 19.6885 7.96573 19.8112 8.13607C19.934 8.3064 20.0001 8.51105 20 8.72102V18H22V20H0V18H2ZM4 18H11V2.85502L4 5.40102V18ZM18 18V9.44202L13 7.77502V18H18Z" fill="currentColor"></path>
+                                <li>
+                                    <div class="top" style="display: flex;">
+                                        <span class="cat-item">
+                                            <span class="icon">
+                                                <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M2 18V4.70002C1.99994 4.49474 2.06305 4.29442 2.18077 4.12625C2.29849 3.95809 2.4651 3.83022 2.658 3.76002L12.329 0.244017C12.4045 0.216523 12.4856 0.20765 12.5653 0.218151C12.645 0.228651 12.721 0.258216 12.7869 0.304337C12.8527 0.350459 12.9065 0.411778 12.9436 0.483095C12.9807 0.554413 13 0.633625 13 0.714017V5.66702L19.316 7.77202C19.5152 7.83837 19.6885 7.96573 19.8112 8.13607C19.934 8.3064 20.0001 8.51105 20 8.72102V18H22V20H0V18H2ZM4 18H11V2.85502L4 5.40102V18ZM18 18V9.44202L13 7.77502V18H18Z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="text">{{ $skill_par->name }}</span>
+                                        </span>
+                                        <span class="toggle">
+                                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M4.94888 5.99999C5.08612 6.00001 5.22202 5.973 5.34882 5.92049C5.47561 5.86799 5.59084 5.79102 5.6879 5.69399L9.58789 1.794C9.78375 1.59813 9.8938 1.33249 9.8938 1.0555C9.8938 0.77851 9.78375 0.512869 9.58789 0.317007C9.39203 0.121144 9.12639 0.0110984 8.8494 0.0110984C8.5724 0.0110984 8.30676 0.121144 8.1109 0.317007L4.9469 2.717L1.7829 0.317007C1.58704 0.121144 1.32139 0.0110984 1.0444 0.0110984C0.767412 0.0110984 0.50174 0.121144 0.305878 0.317007C0.110015 0.512869 2.14471e-08 0.77851 0 1.0555C-2.1447e-08 1.33249 0.110015 1.59813 0.305878 1.794L4.2059 5.69399C4.3034 5.79155 4.41925 5.86882 4.54678 5.92135C4.67431 5.97387 4.81096 6.00059 4.94888 5.99999Z"
+                                                    fill="currentColor"></path>
                                             </svg>
                                         </span>
-                                        <span class="text">{{ $skill_par->name }}</span>
-                                    </span>
-                                    <span class="toggle">
-                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4.94888 5.99999C5.08612 6.00001 5.22202 5.973 5.34882 5.92049C5.47561 5.86799 5.59084 5.79102 5.6879 5.69399L9.58789 1.794C9.78375 1.59813 9.8938 1.33249 9.8938 1.0555C9.8938 0.77851 9.78375 0.512869 9.58789 0.317007C9.39203 0.121144 9.12639 0.0110984 8.8494 0.0110984C8.5724 0.0110984 8.30676 0.121144 8.1109 0.317007L4.9469 2.717L1.7829 0.317007C1.58704 0.121144 1.32139 0.0110984 1.0444 0.0110984C0.767412 0.0110984 0.50174 0.121144 0.305878 0.317007C0.110015 0.512869 2.14471e-08 0.77851 0 1.0555C-2.1447e-08 1.33249 0.110015 1.59813 0.305878 1.794L4.2059 5.69399C4.3034 5.79155 4.41925 5.86882 4.54678 5.92135C4.67431 5.97387 4.81096 6.00059 4.94888 5.99999Z" fill="currentColor"></path>
-                                        </svg>
-                                    </span>
-                                </div>
-
-                                <div class="sub" style="display: none;">
-                                    <div class="back">
-                                        <span class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <line x1="5" y1="12" x2="19" y2="12">
-                                                </line>
-                                                <line x1="13" y1="18" x2="19" y2="12">
-                                                </line>
-                                                <line x1="13" y1="6" x2="19" y2="12">
-                                                </line>
-                                            </svg>
-                                        </span>
-                                        <span>بازگشت به همهٔ دسته‌ها</span>
                                     </div>
-                                    <ul>
-                                        @foreach ($skill_par->childs() as $s_child)
-                                        <li class="select_skill">
-                                            <div class="sub-slid  "  >
-                                                <span>{{ $s_child->name }}</span>
-                                                <span class="icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <polyline points="15 6 9 12 15 18"></polyline>
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="sub">
-                                                <div class="back">
-                                                    <span class="icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                            </path>
-                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                            <line x1="13" y1="18" x2="19" y2="12"></line>
-                                                            <line x1="13" y1="6" x2="19" y2="12"></line>
-                                                        </svg>
-                                                    </span>
-                                                    <span>بازگشت به همهٔ
-                                                        {{ $skill_par->name }}
-                                                    </span>
-                                                </div>
 
-                                                <ul>
-                                                    @foreach ($s_child->childs() as $n_child )
-                                                    <li>
-                                                        <div class="sub-slid-end sub_sk animate__animated"   data-id="{{ $n_child->id }}" id="sub_sk{{ $n_child->id}}" data-name="{{ $n_child->name }}">
-                                                            <span>{{ $n_child->name }}</span>
-
+                                    <div class="sub" style="display: none;">
+                                        <div class="back">
+                                            <span class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-arrow-right" width="18"
+                                                    height="18" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <line x1="5" y1="12" x2="19" y2="12">
+                                                    </line>
+                                                    <line x1="13" y1="18" x2="19" y2="12">
+                                                    </line>
+                                                    <line x1="13" y1="6" x2="19" y2="12">
+                                                    </line>
+                                                </svg>
+                                            </span>
+                                            <span>بازگشت به همهٔ دسته‌ها</span>
+                                        </div>
+                                        <ul>
+                                            @foreach ($skill_par->childs() as $s_child)
+                                                <li class="select_skill">
+                                                    <div class="sub-slid  ">
+                                                        <span>{{ $s_child->name }}</span>
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="icon icon-tabler icon-tabler-chevron-left"
+                                                                width="18" height="18" viewBox="0 0 24 24"
+                                                                stroke-width="2" stroke="currentColor" fill="none"
+                                                                stroke-linecap="round" stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
+                                                                </path>
+                                                                <polyline points="15 6 9 12 15 18"></polyline>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                    <div class="sub">
+                                                        <div class="back">
+                                                            <span class="icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    class="icon icon-tabler icon-tabler-arrow-right"
+                                                                    width="18" height="18" viewBox="0 0 24 24"
+                                                                    stroke-width="2" stroke="#2c3e50" fill="none"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none">
+                                                                    </path>
+                                                                    <line x1="5" y1="12" x2="19"
+                                                                        y2="12"></line>
+                                                                    <line x1="13" y1="18" x2="19"
+                                                                        y2="12"></line>
+                                                                    <line x1="13" y1="6" x2="19"
+                                                                        y2="12"></line>
+                                                                </svg>
+                                                            </span>
+                                                            <span>بازگشت به همهٔ
+                                                                {{ $skill_par->name }}
+                                                            </span>
                                                         </div>
-                                                    </li>
 
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        @endforeach
+                                                        <ul>
+                                                            @foreach ($s_child->childs() as $n_child)
+                                                                <li>
+                                                                    <div class="sub-slid-end sub_sk animate__animated"
+                                                                        data-id="{{ $n_child->id }}"
+                                                                        id="sub_sk{{ $n_child->id }}"
+                                                                        data-name="{{ $n_child->name }}">
+                                                                        <span>{{ $n_child->name }}</span>
 
-                                    </ul>
-                                </div>
-                            </li>
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+                                </li>
                             @endforeach
 
                         </ul>

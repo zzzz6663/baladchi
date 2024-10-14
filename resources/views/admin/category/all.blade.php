@@ -67,6 +67,7 @@
                         <th>نام </th>
                         <th>icon </th>
                         <th>قیمت </th>
+                        <th>نمایش </th>
                         <th> زیر دسته میانی</th>
                         <th>عمل‌ها</th>
                     </tr>
@@ -86,6 +87,12 @@
                         <td>
                            {{number_format($category->price) }}
                            تومان
+                        </td>
+                        <td>
+
+                            <span class="alert alert-{{ $category->active==1?'success':'danger'}}">
+                                      {{ $category->active==1?'نمایش':'مخفی'}}
+                            </span>
                         </td>
                         <td>
                             <span class="badge bg-label-primary me-1">

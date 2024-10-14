@@ -50,7 +50,7 @@
 
 <body>
     @include('home.parts.header')
-
+    <div class="custom-tooltip" id="tooltip_cont"></div>
     <div id="main">
         <div class=" d- " id="wra">
             @yield('content')

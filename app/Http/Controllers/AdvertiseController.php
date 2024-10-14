@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\Telic;
 use App\Models\Filter;
 use App\Models\Subset;
+use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Province;
 use App\Models\Question;
@@ -25,7 +26,7 @@ class AdvertiseController extends Controller
     public function ads(Request $request)
     {
 
-        // cache()->flush();
+        // cache()->flush();categoriescategories
         // dd($request->all());
 
         $user = auth()->user();
@@ -71,7 +72,7 @@ class AdvertiseController extends Controller
         if (cache()->has("categories")) {
             $categories = cache()->get("categories");
         } else {
-            $categories = Category::all();
+            $categories = Category::where('active', 1)->get();
             $advertises = cache()->put("categories", $categories);
         }
         $user = auth()->user();
@@ -442,7 +443,7 @@ class AdvertiseController extends Controller
     }
     public function new_advertise()
     {
-        $categories = Category::all();
+        $categories = Category::where('active', 1)->get();
         $questions = Question::get();
         $ar = [];
         foreach ($questions as $qu) {
@@ -618,6 +619,7 @@ class AdvertiseController extends Controller
         //         'html' => view('home.ads.single_ad', compact(['user', 'advertise', 'images', 'user_fave', 'note', "similars", "baladchies"]))->render(),
         //     ]);
         // }
-        return view('home.ads.single_ad', compact(['user',"json", 'advertise', 'images', 'user_fave', 'note', "similars", "baladchies"]));
+        $setting16=Setting::find(16)->val;
+        return view('home.ads.single_ad', compact(['user',"json", 'advertise', 'images', 'user_fave', 'note', "similars", "baladchies","setting16"]));
     }
 }

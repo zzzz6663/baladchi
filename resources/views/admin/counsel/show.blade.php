@@ -89,19 +89,30 @@
                                     <div class="card mb-4">
                                         <div class="card-body">
 
-                                        <h5>
-                                            توضیحات:
-                                        </h5>
+                                            <h5>
+                                                توضیحات:
+                                            </h5>
 
-                                        {{ $counsel->info }}
+                                            {{ $counsel->info }}
 
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h5>صدا</h5>
+                                    <audio controls>
+                                        <source src="{{ $counsel->sound() }}" type="audio/mpeg">
+                                        مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+                                    </audio>
 
-
+                                </div>
+                                <div class="col-lg-6">
+                                    <h5>ویئو</h5>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

@@ -15,8 +15,9 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-6">
-                        <div class="single-action">
-                            <a href="{{ route('new.advertise') }}">
+                        <div class="single-action" >
+
+                            <a href="{{ route('new.advertise') }}" title="{{$setting1}}" class="tooltip-box">
                                 <div class="icon">
                                     <svg width="84" height="65" viewBox="0 0 84 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M27.9197 46.8951L24.647 52.1398L32.0446 57.2455L39.7753 50C39.7753 50 35.6897 39.3664 34.5306 38.6006C33.3715 37.8349 27.9197 46.8951 27.9197 46.8951Z" fill="white"></path>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="col-6">
                         <div class="single-action">
-                            <a href="{{ route('panel.counsel') }}">
+                            <a href="{{ route('panel.counsel') }}" title="{{$setting2}}" class="tooltip-box">
                                 <div class="icon">
                                     <svg width="80" height="65" viewBox="0 0 80 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M79.6534 55.0873H3.55578C3.51962 55.0873 3.48494 55.073 3.45937 55.0475C3.4338 55.022 3.41943 54.9874 3.41943 54.9514C3.41943 54.9153 3.4338 54.8807 3.45937 54.8552C3.48494 54.8298 3.51962 54.8154 3.55578 54.8154H79.6534C79.6896 54.8154 79.7243 54.8298 79.7498 54.8552C79.7754 54.8807 79.7898 54.9153 79.7898 54.9514C79.7898 54.9874 79.7754 55.022 79.7498 55.0475C79.7243 55.073 79.6896 55.0873 79.6534 55.0873Z" fill="#D1D3D4"></path>
@@ -116,7 +117,7 @@
                     </div>
                     <div class="col-6">
                         <div class="single-action">
-                            <a href="{{ route('baladchi.form1') }}">
+                            <a href="{{ route('baladchi.form1') }}" title="{{$setting3}}" class="tooltip-box">
                                 <div class="icon">
                                     <svg width="96" height="65" viewBox="0 0 96 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M42.5725 16.7817C42.5725 16.7817 42.806 13.1924 42.5725 12.1999C42.3391 11.2074 40.9352 8.80419 40.4683 8.97897C40.0014 9.15375 39.9422 9.85912 40.4683 10.7954C40.4683 10.7954 37.4862 8.36411 36.3469 8.40781C35.2077 8.4515 34.5664 9.91842 34.7407 10.6207C34.9151 11.3229 37.5423 12.5401 37.7228 13.1175C37.9033 13.6949 38.364 17.7524 38.364 17.7524" fill="white"></path>
@@ -186,7 +187,7 @@
                     </div>
                     <div class="col-6">
                         <div class="single-action">
-                            <a href="{{ route('panel.visitor') }}">
+                            <a href="{{ route('panel.visitor') }}" title="{{$setting4}}" class="tooltip-box">
                                 <div class="icon">
                                     <svg width="66" height="65" viewBox="0 0 66 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M56.6504 31.7206H62.2717C62.8127 30.6038 62.9225 29.3087 62.9538 28.0503C62.9826 26.9099 62.9538 25.7485 62.6088 24.6631C62.1593 23.2721 61.1973 22.1057 59.9195 21.4021C58.6416 20.6986 57.1442 20.5109 55.7331 20.8775C55.3834 20.4689 54.9159 20.1794 54.395 20.049C53.8959 19.9415 52.4141 20.0857 52.3984 20.5969C52.4048 20.7571 52.4535 20.9128 52.5396 21.0479C53.0492 22.0074 53.8462 22.7834 54.4734 23.6695C55.95 25.7065 56.2009 28.9207 56.6504 31.7206Z" fill="white"></path>

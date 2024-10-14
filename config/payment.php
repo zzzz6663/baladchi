@@ -264,7 +264,7 @@ return [
             'apiPaymentUrl' => 'https://gateway.zibal.ir/start/',
             'apiVerificationUrl' => 'https://gateway.zibal.ir/v1/verify',
 
-            'mode' => 'sandbox', // can be normal, direct
+            'mode' => 'normal', // can be normal, direct
 
             'merchantId' => '8985104c-d390-11e8-850b-005056a205be',
             'callbackUrl' => 'http://netista.ir//bill_verify',
