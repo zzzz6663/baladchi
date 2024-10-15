@@ -119,7 +119,7 @@
                         </div>
                         <div>
                             <audio controls>
-                                <source src="{{ $counsel->sound() }}" type="audio/mpeg">
+                                <source src="{{ $counsel->sound_clip() }}" type="audio/mpeg">
                                 مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
                             </audio>
                         </div>

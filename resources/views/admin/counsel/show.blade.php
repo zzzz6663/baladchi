@@ -104,10 +104,13 @@
                                 <div class="col-lg-6">
                                     <h5>صدا</h5>
                                     <audio controls>
-                                        <source src="{{ $counsel->sound() }}" type="audio/mpeg">
+                                        <source src="{{ $counsel->sound_clip() }}" type="audio/mpeg">
                                         مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
                                     </audio>
-
+                                    <video width="600" height="200" controls>
+                                        <source src="{{ $counsel->video_clip() }}" type="video/mp4">
+                                        مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+                                    </video>
                                 </div>
                                 <div class="col-lg-6">
                                     <h5>ویئو</h5>

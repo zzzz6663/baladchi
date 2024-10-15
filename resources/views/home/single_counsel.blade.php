@@ -299,31 +299,28 @@
 
                         </div>
 
-                        @if($counsel->sound())
-
+                        @if($counsel->sound_clip())
                         <div class="user-messg-keuwords">
                             <div class="rights">
                                 <h4> صوت   :</h4>
                             </div>
                             <div>
                                 <audio controls>
-                                    <source src="{{ $counsel->sound() }}" type="audio/mpeg">
+                                    <source src="{{ $counsel->sound_clip() }}" type="audio/mpeg">
                                     مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
                                 </audio>
                             </div>
                         </div>
                         @endif
 
-                        @if($counsel->video())
-
+                        @if($counsel->video_clip())
                         <div class="user-messg-keuwords">
                             <div class="rights">
                                 <h4> کلیپ   :</h4>
                             </div>
                             <div>
-
                                 <video width="600" height="200" controls>
-                                    <source src="{{ $counsel->video() }}" type="video/mp4">
+                                    <source src="{{ $counsel->video_clip() }}" type="video/mp4">
                                     مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
                                 </video>
                             </div>

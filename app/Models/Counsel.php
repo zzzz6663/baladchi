@@ -115,7 +115,7 @@ class Counsel extends Model
         }
         return false;
     }
-    public function sound()
+    public function sound_clip()
     {
         if($this->sound){
             return asset("/media/counsel/".$this->sound);
@@ -123,7 +123,7 @@ class Counsel extends Model
         return false;
     }
 
-    public function video()
+    public function video_clip()
     {
         if($this->video){
             return asset("/media/counsel/".$this->video);
