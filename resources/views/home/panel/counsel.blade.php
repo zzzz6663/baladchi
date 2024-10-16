@@ -5,7 +5,6 @@
             <div class="search-title">
 
 
-                <h4 class="dash-in-title">اخرین خردجمعی ها </h4>
                 <a class="icon-button red" href="{{ route('panel.new.counsel1') }}">
                     <span> خردجمعی جدید</span>
                     <span class="icon">
@@ -16,8 +15,10 @@
 
                     </span>
                 </a>
+                <br>
+                <h4 class="dash-in-title">آخرین سوالاتی که شما ثبت کرده اید</h4>
+
             </div>
-            {{--  ddd  --}}
 
 
             <div class="my-add-list">
