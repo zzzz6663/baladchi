@@ -31,10 +31,7 @@
                                                     <span>
                                                         {{ $advertise->user->name }}
                                                         {{ $advertise->user->family }} -
-
-
                                                     </span>
-
                                                 </li>
                                                 <li class="d-flex align-items-center mb-3">
                                                     <span class="fw-semibold mx-2"> شهر :</span>
@@ -42,9 +39,7 @@
                                                         {{ $advertise->city->name }}
                                                         {{ $advertise->city->province->name }}
                                                     </span>
-
                                                 </li>
-
                                             </ul>
                                         </div>
                                     </div>
@@ -139,8 +134,6 @@
                                                     @else
                                                 {{$option->val}}
                                                 @endif
-
-
                                             </span>
                                         </div>
                                         @endforeach
@@ -154,6 +147,16 @@
 
                         </div>
 
+                    </div>
+
+                    <div class="row">
+                        @foreach ($advertise->images as $img )
+                        <div class="col-lg-4">
+                            <img src="{{ $img->ad_img()}}" alt="">
+
+                        </div>
+
+                        @endforeach
                     </div>
 
                 </div><!-- /.portlet-body -->

@@ -35,11 +35,33 @@ $('.name_inp').on('change', function() {
 });
 
 
+$('body').on('click', '#show_modwl_coun', function (e) {
+$('#quest-modal-no').slideDown(400)
+
+
+})
+
+
+
 $('body').on('click', '.clear_search', function (e) {
     $('#skill_search_list').html("")
     $('#skill_list').slideDown(200)
     $('#skill_search_list').slideUp(200)
 })
+$('#salary_inp').on('input keypress', function() {
+    let el=$(this)
+    var search = Number(el.val());
+    console.log(search)
+    if(search>0){
+        $('#sebd_da').slideDown(200)
+    }else{
+        $('#sebd_da').slideUp(200)
+
+    }
+});
+$('.all_con').click(function() {
+    $('.par_s').slideToggle(); // باز و بسته شدن بخش par_s
+});
 $('#skill_search').on('input', function() {
     let el=$(this)
     var search = el.val();

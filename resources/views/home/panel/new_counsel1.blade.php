@@ -52,7 +52,7 @@
 
 
 
-                        <div class="file_par">
+                        {{--  <div class="file_par">
                             <label for="file_ss" id="file_sound" class="input-label big ">
                                 <span class="select_inp">
                                     انتخاب صدا
@@ -68,7 +68,7 @@
                                 :3M
                             </p>
                             -
-                        </div>
+                        </div>  --}}
 
 
                         <h6>
@@ -101,7 +101,7 @@
 
                             </ul>
                         </div>
-
+{{--
                         <div class="file_par">
                             <label for="file_sv" id="file_video" class="input-label big ">
                                 <span class="select_inp">
@@ -118,7 +118,7 @@
                                 :3M
                             </p>
                             -
-                        </div>
+                        </div>  --}}
 
 
 
@@ -156,7 +156,7 @@
                     </div>  --}}
 
                         <div class="select-label">
-                            <label for="gender"> جنسیت</label>
+                            <label for="gender"> جنسیت پاسخ دهنده ها</label>
                             <select name="gender" id="gender" class="nice-select" data-place=" جنسیت">
                                 <option value="">هر دو </option>
                                 <option value="male">مرد</option>
@@ -165,7 +165,7 @@
                         </div>
 
                         <div class="select-label">
-                            <label for="show_answer"> نمایش جواب ها به سایرین </label>
+                            <label for="show_answer"> جواب سوالتون رو بقیه ببینن؟</label>
                             <select name="show_answer" id="" class="nice-select" data-place="نمایش ">
                                 <option value="1">نمایش داد شود </option>
                                 <option value="0">پنهان باشد </option>
@@ -174,8 +174,11 @@
 
 
                         <div class="select-label">
-                            <label for="star"> حداقل ستاره ویژه</label>
-                            <select name="star" id="" class="nice-select" data-place="تعداد ستاره ویژه">
+                            {{--  <label for="star"> متخصصین ممکنه به واسطه نظر و رضایت مخاطبان ستاره ویژه داشته باشن، از نظر شما لازمه اونها ستاره ویژه داشته باشن؟</label>  --}}
+                            <label for="star">
+                                متخصصین  از نظر شما لازمه اونها ستاره ویژه داشته باشن؟
+                            </label>
+                            <select name="star" id="star" class="nice-select" data-place="تعداد ستاره ویژه">
                                 <option value="">همه </option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -194,7 +197,7 @@
                         </div>
 
                         <div class="choose-cat-title">
-                            <h4>انتخاب مهارت<span>(انتخاب حداکثر 2 مورد) </span></h4>
+                            <h4>پاسخ دهنده ت چه مهارتی داشته باشه؟ <span>(انتخاب حداکثر 2 مورد) </span></h4>
                             <span class="add add_new_skill_group pointer ">
                                 + افزودن
                             </span>
@@ -215,7 +218,7 @@
                         </select>
                     </div>  --}}
                         <div class="select-label">
-                            <label for="degree">مدرک تحصیلی</label>
+                            <label for="degree">پاسخ دهنده ت چه مدرکی داشته باشه ؟</label>
                             <select name="degree" id="" class="nice-select" data-place="مدرک تحصیلی">
                                 <option value="">همه</option>
                                 <option
@@ -268,7 +271,7 @@
                         </select>
                     </div>  --}}
                         <div class="select-label">
-                            <label for="answers"> حداکثر پاسخ دهنده گان</label>
+                            <label for="answers"> چند نفر میتونن سوال شما رو جواب بدن</label>
                             <select name="answers" id="answers" class="nice-select" data-place=" پاسخ دهنده گان   ">
                                 @for ($i = 5; $i < 50; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>

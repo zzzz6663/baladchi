@@ -59,6 +59,7 @@ Route::prefix('admin')->namespace('admin')->group(function () {
 
     Route::any('/add_filter_to_telic/{telic}', 'FilterController@add_filter_to_telic')->name('add.filter.to.telic')->middleware(['role:admin']);
     Route::any('/add_filter_to_subset/{subset}', 'FilterController@add_filter_to_subset')->name('add.filter.to.subset')->middleware(['role:admin']);
+    Route::post('/insert_attach_answer', 'CounselController@insert_attach_answer')->name('insert.attach.answer')->middleware(['role:admin']);
     Route::post('/confirm_counsel/{counsel}', 'CounselController@confirm_counsel')->name('confirm.counsel')->middleware(['role:admin']);
     Route::post('/confirm_comment/{comment}', 'CommentController@confirm_comment')->name('confirm.comment')->middleware(['role:admin']);
     Route::post('/user_authenticate/{user}', 'UserController@user_authenticate')->name('user.authenticate')->middleware(['role:admin']);

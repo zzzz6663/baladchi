@@ -147,7 +147,6 @@
                             <!-- About User -->
                             <!-- Profile Overview -->
                             <div class="row">
-
                                 <div class="col-lg-6">
                                     <div class="card mb-4">
                                         <div class="card-body">
@@ -244,6 +243,56 @@
                     </div>
 
                 </div><!-- /.portlet-body -->
+
+                <div class="portlet-body">
+                    <div class="row">
+                        <h1>
+                            اضافه کردن صوت و کلیپ به جواب ها 
+                        </h1>
+                        <div class="col-xl-12 col-lg-5 col-md-5">
+                            @include('main.error')
+                            <form action="{{ route('insert.attach.answer') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('post')
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label for="answer_id">انتخاب جواب </label>
+
+                                        <select name="answer_id"  class="form-control" id="answer_id">
+                                            <option value="">انتخاب کنید </option>
+                                            @foreach ($counsel->answers()->get() as $ans)
+                                            <option value="{{$ans->id}}">
+                                                {{mb_substr($ans->answer, 0, 30, "UTF-8")}}  ....
+                                        {{--  {{$ans->answer}}  --}}
+                                                از
+                                                {{$ans->user->name}} 
+                                                {{$ans->user->family}} 
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="sound">اضافه کردن صوت </label>
+                                        <input type="file" id="sound" name="sound" placeholder="" accept="audio/*"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="video">اضافه کردن ویدئو </label>
+                                        <input type="file" id="video" name="video" placeholder="" accept="video/*"
+                                            class="form-control">
+                                    </div>
+                                </div>
+
+                                <br>
+                                <input type="submit" name="" value="ذخیره " id="" class="btn btn-info">
+                                <br>
+                                <br>
+                                <br>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div><!-- /.portlet -->
         </div>
     </div>

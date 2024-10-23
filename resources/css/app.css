@@ -15,9 +15,26 @@
 
 
 }
+.par_s{
+    display: flex;
+}
+.par_s li{
+    margin-bottom: 30px;
+ 
+}
 .hor-single-user .left {
     max-width: 70%!important;
     /*  */
+}
+.takmil .right-sec div.img{
+    margin-left:128px;
+
+}
+.video_c{
+    max-width: 100%;
+}
+#dash-profile-edit .profile-header-edit{
+    margin-bottom: 20px!important;
 }
 .an_li{
     margin-bottom: 10px;

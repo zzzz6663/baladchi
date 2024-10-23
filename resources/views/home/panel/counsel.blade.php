@@ -16,12 +16,21 @@
                     </span>
                 </a>
                 <br>
-                <h4 class="dash-in-title">آخرین سوالاتی که شما ثبت کرده اید</h4>
+
 
             </div>
+        </div>
+    </div>
+    <div class="dash-main-content">
 
+        <div class="tra-table">
+       
 
             <div class="my-add-list">
+                @if($counsels->count())
+                <h4 class="dash-in-title">آخرین سوالاتی که شما ثبت کرده اید</h4>
+
+                @endif
                 @foreach ($counsels as $counsel)
                     <div class="my-add">
                         <div class="right-sec">

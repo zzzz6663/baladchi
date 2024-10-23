@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Counsel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Answer;
 use Carbon\Carbon;
 
 class CounselController extends Controller
@@ -114,6 +115,35 @@ class CounselController extends Controller
         return back();
         //
     }
+    public function insert_attach_answer(Answer $answer,Request $request){
+       
+        $answer=Answer::find($request->answer_id);
+        $data=$request->validate([
+            'answer_id'=>"required"
+        ]);
+        if ($request->hasFile('video')) {
+            $video = $request->file('video');
+            $rand = rand(10, 100);
+            $name_video = 'video_' . $answer->id  . '.' . $video->getClientOriginalExtension();
+            $video->move(public_path('/media/counsel/'), $name_video);
+            $data['video'] = $name_video;
+        }
+
+
+        if ($request->hasFile('sound')) {
+            $sound = $request->file('sound');
+            $rand = rand(10, 100);
+            $name_sound = 'sound_' . $answer->id  . '.' . $sound->getClientOriginalExtension();
+            $sound->move(public_path('/media/counsel/'), $name_sound);
+            $data['sound'] = $name_sound;
+        }
+        $answer->update($data);
+
+        alert()->success('خرد جمعی باموفقیت تایید شد');
+        return redirect()->route("counsel.show",$answer->Counsel->id);
+    }
+
+
     public function confirm_counsel(Counsel $counsel)
     {
         if($counsel->confirm){

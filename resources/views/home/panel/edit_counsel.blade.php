@@ -25,7 +25,7 @@
 
                     </div>
 
-                    <div class="file_par">
+                    {{--  <div class="file_par">
                         <label for="file_ss" id="file_sound" class="input-label big ">
                             <span class="select_inp">
                                 انتخاب صدا
@@ -47,15 +47,11 @@
                                 مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
                             </audio>
                         @endif
-                    </div>
+                    </div>  --}}
 
 
-                    <br>
-                    <br>
-                    <br>
 
-
-                    <div class="file_par">
+                    {{--  <div class="file_par">
                         <label for="file_sv" id="file_video" class="input-label big ">
                             <span class="select_inp">
                                 انتخاب کلیپ
@@ -77,14 +73,10 @@
                                 مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
                             </video>
                         @endif
-
                     </div>
+  --}}
 
 
-
-                    <br>
-                    <br>
-                    <br>
 
                     <div class="file_par">
                         <h6>

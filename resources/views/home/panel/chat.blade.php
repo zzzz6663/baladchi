@@ -2,7 +2,7 @@
 @section('content')
     <div id="chat-boxes">
         <div class="backhome">
-            <a href="#" class="back-home-btn">
+            <a href="{{route("login")}}" class="back-home-btn">
                 <span class="icon">
                     <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path

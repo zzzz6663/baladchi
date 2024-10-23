@@ -567,11 +567,11 @@
                                 ها</a>
                         </li>
                         <li>
-                            <a href="{{ route('baladchiha') }}#share" title="{{ $setting7 }}"
+                            <a href="{{ route('baladchiha') }}#share" title="{{ $setting8 }}"
                                 class="tooltip-box">بلدچی ها</a>
                         </li>
                         <li>
-                            <a href="{{ route('counsels') }}" title="{{ $setting8 }}" class="tooltip-box">خرد
+                            <a href="{{ route('counsels') }}" title="{{ $setting7 }}" class="tooltip-box">خرد
                                 جمعی</a>
                         </li>
                         <li>

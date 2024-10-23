@@ -49,8 +49,12 @@
             </div> --}}
 
                         <div class="input-label big active">
-                            <label for="">دستمزد شما برای یک ساعت مشاوره</label>
-                            <input type="tell" value="{{ old('salary', $user->salary) }}" name="salary"
+                            <label for="">
+
+                                دستمزد شما برای یک ساعت مشاوره
+                                (تومان)
+                            </label>
+                            <input type="number" value="{{ old('salary', $user->salary) }}" id="salary_inp" name="salary"
                                 class="number_format" placeholder=" دستمزد شما برای یک ساعت مشاوره">
                         </div>
 
@@ -217,7 +221,7 @@
                                 <a href="{{ route('baladchi.form2') }}" class="mid-button">
                                     برگشت
                                 </a>
-                                <form action=" {{ route('baladchi.form3') }}" method="post">
+                                <form action=" {{ route('baladchi.form3') }}" id="form_ssa" method="post" style="display: {{old("salary",$user->salary)?"":"none"}}">
                                     @csrf
                                     @method('post')
                                     <input id="sebd_da"
@@ -541,7 +545,7 @@
                     </div>
 
                     <div class="pair-button">
-                        <button class="mid-button close_pops">
+                        <button class="mid-button close_pops" id="baladchi_form3_btn" style="display: none">
                             انصراف
                         </button>
                         {{-- <button class="mid-button orange2">

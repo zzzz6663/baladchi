@@ -101,7 +101,15 @@ class Counsel extends Model
         $data['degree']=!($counsel->degree && $counsel->degree != $user->degree);
         $data['star']=!($counsel->star&& $counsel->star <= $user->comment_log()['av']);
         $data['answer']=!($counsel->answers_count() >= $counsel->answers);
-        if((($data['gender'])&& $data['degree'] && $data['star']  && $data['answer'])){
+
+        if($counsel->skills()->count()){
+            $data['skill']= array_intersect  ($counsel->skills()->pluck('id')->toArray(),$user->skills()->pluck('id')->toArray());
+        }else{
+            $data['skill'] =false;
+
+
+        }
+        if((($data['gender'])&& $data['degree'] && $data['star']  && $data['answer'])&&  $data['skill']){
         $data['pass']=true;
             return  $data;
         }

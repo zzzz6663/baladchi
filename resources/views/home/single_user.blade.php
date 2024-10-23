@@ -59,7 +59,11 @@
                     <div class="class-price">
                         {{--  <span class="percent">۹%</span>  --}}
                         <span class="num">
+                            @if( (is_numeric($user->salary)) )
+
                             {{ number_format($user->salary) }}
+                            @endif
+
                         </span>
                         <span class="un">تومان</span>
 

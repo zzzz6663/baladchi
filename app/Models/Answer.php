@@ -14,6 +14,8 @@ class Answer extends Model
         'question_id',
         'type',
         'answer',
+        'sound',
+        'video',
     ];
     public function counsel (){
         return $this->belongsTo(Counsel::class);
@@ -23,5 +25,20 @@ class Answer extends Model
     }
     public function question (){
         return $this->belongsTo(Counselquestion::class);
+    }
+    public function sound_clip()
+    {
+        if($this->sound){
+            return asset("/media/counsel/".$this->sound);
+        }
+        return false;
+    }
+
+    public function video_clip()
+    {
+        if($this->video){
+            return asset("/media/counsel/".$this->video);
+        }
+        return false;
     }
 }

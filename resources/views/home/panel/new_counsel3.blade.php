@@ -103,9 +103,9 @@
                                 اگه سوال دیگه ای داری مجددا ثبت کن در غیر اینصورت دکمه تایید و انتشار رو بزن
                             </h6>
 
-                            <div class="ess">
-                                <div class="footer-section inline-block ess" style="justify-content:space-around">
-                                    <div class="pair-button">
+                            <div class="ess" style="text-align: left">
+                                <div class="footer-section  ess" style="justify-content:flex-end ;text-align: left">
+                                    <div class="pair-button" style="justify-content: flex-end">
                                         <button form="qu_foem" class="mid-button blue pointer" value=" ">
                                             ذخیره سوال
                                         </button>
@@ -113,25 +113,7 @@
                                 </div>
 
                                 {{--  ss  --}}
-                                @if ($counsel->check_for_active())
-                                    @if (
-                                        ($counsel->reward == 'select_the_best_answer' &&
-                                            $counsel->counselquestions()->where('a1', null)->where('a2', null)->where('a3', null)->where('a4', null)->count() > 0) ||
-                                            $counsel->reward != 'select_the_best_answer')
-                                        <form class="inline-block ess" action="{{ route('active.counsel', $counsel->id) }}"
-                                            method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">
-                                            @csrf
-                                            @method('post')
-                                            <button class="mid-button blue pointer ">
-                                                تایید وانتشار
-                                            </button>
-                                        </form>
-                                    @else
-                                        حداقل یک سوال تشریحی اضافه کنید
-                                    @endif
-                                @else
-                                    <a class="mid-button" href="{{ route('panel.counsel') }}">برگشت </a>
-                                @endif
+
                             </div>
 
                         </div>
@@ -225,6 +207,29 @@
 
                         </table>
                     </div>
+                    <div style="text-align: left">
+                        <br>
+                        @if ($counsel->check_for_active())
+                        @if (
+                            ($counsel->reward == 'select_the_best_answer' &&
+                                $counsel->counselquestions()->where('a1', null)->where('a2', null)->where('a3', null)->where('a4', null)->count() > 0) ||
+                                $counsel->reward != 'select_the_best_answer')
+                            <form class="inline-block ess" action="{{ route('active.counsel', $counsel->id) }}"
+                                method="post" data-message="بعد از تایید آگهی شما حذف  خواهد شد ">
+                                @csrf
+                                @method('post')
+                                <button class="mid-button blue pointer ">
+                                    تایید وانتشار
+                                </button>
+                            </form>
+                        @else
+                            حداقل یک سوال تشریحی اضافه کنید
+                        @endif
+                    @else
+                        <a class="mid-button" href="{{ route('panel.counsel') }}">برگشت </a>
+                    @endif
+                    </div>
+
                 </div>
                 {{--  @if (!$counsel->active)  --}}
 

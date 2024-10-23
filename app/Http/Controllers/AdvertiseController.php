@@ -83,7 +83,7 @@ class AdvertiseController extends Controller
         if ($request->telic && $request->type == "telic") {
             $advertises->where('telic_id', $request->telic);
         }
-        $advertises->where('expired_at', '>', Carbon::now()->subDays(30)->toDateTimeString());
+        // $advertises->where('expired_at', '>', Carbon::now()->subDays(30)->toDateTimeString());
         if ($cities_all) {
             $advertises->whereIn('city_id', $cities_all);
         }
@@ -98,7 +98,7 @@ class AdvertiseController extends Controller
             $search = $request->search;
             $advertises->where("title", "like", "%$search%");
         }
-
+        // dd( $advertises->get());
         $advertises->where('status', 'confirmed')->whereActive('1');
 
         if (!$request->page) {
