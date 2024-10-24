@@ -20,7 +20,7 @@
 }
 .par_s li{
     margin-bottom: 30px;
- 
+
 }
 .hor-single-user .left {
     max-width: 70%!important;
@@ -128,6 +128,9 @@ display: block!important;
 @media only screen and (max-width: 992px) {
     .my-add .right-sec .inf .date-city {
         flex-direction: column;
+    }
+    .single-ads{
+        min-height: 340px;
     }
 
 .user-messg-foter .view{
