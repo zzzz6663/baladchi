@@ -105,8 +105,7 @@ class Counsel extends Model
         if($counsel->skills()->count()){
             $data['skill']= array_intersect  ($counsel->skills()->pluck('id')->toArray(),$user->skills()->pluck('id')->toArray());
         }else{
-            $data['skill'] =false;
-
+            $data['skill'] =true;
 
         }
         if((($data['gender'])&& $data['degree'] && $data['star']  && $data['answer'])&&  $data['skill']){

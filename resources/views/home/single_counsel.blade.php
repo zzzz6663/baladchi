@@ -206,7 +206,7 @@
 
                         </div>
 
-                   
+
                         <div class="user-messg-keuwords" style="display: block">
                             <h1 class="all_con">
                                 شرایط کامل این خرد جمعی
@@ -218,7 +218,7 @@
                                 <li>
                                     <h4>شرایط پاسخ دهنده این خرد جمعی :</h4>
                                     <div class="tag-list">
-    
+
                                         <ul class="cond">
                                             {{--  @dd($counsel->gender)  --}}
                                             <li>
@@ -231,9 +231,9 @@
                                                     همه جنسیت ها
                                                 @endif
                                             </li>
-    
-    
-    
+
+
+
                                             <li>
                                                 @if ($counsel->star)
                                                     حداقل ستاره برای پاسخ دادن به این خردجمعی
@@ -243,7 +243,7 @@
                                                     همه ستاره ها
                                                 @endif
                                             </li>
-    
+
                                             <li>
                                                 @if ($counsel->degree)
                                                     مدرک مورد نیاز برای پاسخ گویی به این
@@ -254,7 +254,7 @@
                                                 @else
                                                     همه مدارک
                                                 @endif
-    
+
                                             </li>
                                             @if ($counsel->answers)
                                                 <li>
@@ -263,21 +263,21 @@
                                                     می باشد
                                                 </li>
                                             @endif
-    
+
                                         </ul>
-    
+
                                     </div>
                                 </li>
                                 <li>
                                     <div class="rights">
                                         <h4>کلید واژه ها :</h4>
                                         <div class="tag-list">
-        
+
                                             @foreach ($counsel->tags as $tag)
                                                 <a href="{{ route('counsels', ['tag_id', $tag->id]) }}"
                                                     class="single-tag">{{ $tag->tag }} </a>
                                             @endforeach
-        
+
                                         </div>
                                     </div>
                                     <div class="lefts">
@@ -314,9 +314,9 @@
                         </div>
 
 
- 
 
- 
+
+
                         @if ($counsel->show_answer)
                             <div class="user-messg-keuwords">
                                 <div class="">
@@ -590,7 +590,7 @@
 
 
                         @if (!$counsel->check_condition($user)['skill'])
-                       مهارت شما با مهارتهای مورد نیاز این خرد جمعی  هماهنگ نمی باشد 
+                       مهارت شما با مهارتهای مورد نیاز این خرد جمعی  هماهنگ نمی باشد
                         <br>
                         مهارت های شما:
                         @if($user)
