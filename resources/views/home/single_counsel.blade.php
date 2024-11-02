@@ -328,6 +328,13 @@
                                         </h5>
                                         <ul>
                                             @foreach ($question->answers as $answer)
+                                            <h6 class="d-flex ffd" >
+                                                <img class="avatar" src="{{$answer->user->avatar()}}" alt="">
+                                               <span class="ti">
+                                                {{$answer->user->name}}
+                                                {{$answer->user->family}}
+                                               </span>
+                                            </h6>
                                                 @if ($question->type == 'multi')
                                                     <ul>
                                                         @foreach ($counsel->Counselquestions()->whereType('multi')->get() as $question)

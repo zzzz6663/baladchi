@@ -572,7 +572,10 @@
                         </li>
                         <li>
                             <a href="{{ route('counsels') }}" title="{{ $setting7 }}" class="tooltip-box">خرد
-                                جمعی</a>
+                                جمعی
+                                ها
+
+                            </a>
                         </li>
                         <li>
                             <a href="https://baladchy.com/blog" title="{{ $setting12 }}" class="tooltip-box">
@@ -581,8 +584,8 @@
                     </ul>
                 </div>
 
-                @if (auth()->guest())
-                    <div class="add-ads go_login">
+                {{--  @if (auth()->guest())  --}}
+                    {{--  <div class="add-ads go_login">
                         <button class="icon-button red  tooltip-box" title="{{$setting17}}" >
                             <span>شروع فعالیت</span>
                             <span class="icon">
@@ -593,8 +596,8 @@
 
                             </span>
                         </button>
-                    </div>
-                @else
+                    </div>  --}}
+                {{--  @else  --}}
                     <div class="add-ads ">
                         <a class="icon-button red  tooltip-box" title="{{$setting17}}"  href="{{ route('choose') }}">
                             <span>شروع فعالیت</span>
@@ -607,7 +610,7 @@
                             </span>
                         </a>
                     </div>
-                @endif
+                {{--  @endif  --}}
 
             </div>
         </div>
@@ -639,7 +642,7 @@
                 <a href="{{ route('baladchiha') }}">بلدچی ها</a>
             </li>
             <li>
-                <a href="{{ route('counsels') }}">خرد جمعی</a>
+                <a href="{{ route('counsels') }}">خرد جمعی ها</a>
             </li>
             <li>
                 <a href="https://baladchy.com/blog"> بلاگ </a>

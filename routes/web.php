@@ -162,7 +162,6 @@ Route::prefix('panel')->middleware(['auth',"role:user"])->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/choose', 'HomeController@choose')->name('choose');
     Route::post('/get_phone/{user}', 'HomeController@get_phone')->name('get.phone');
     Route::post('/check_fave/{advertise}', 'AdvertiseController@check_fave')->name('check.fave');
     Route::post('/check_fave_user/{user}', 'HomeController@check_fave_user')->name('check.fave.user');
@@ -183,6 +182,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('/choose', 'HomeController@choose')->name('choose');
 
 Route::get('/all_comment/{user}', 'HomeController@all_comment')->name('all.comment');;
 Route::get('/single_user/{user}', 'HomeController@single_user')->name('single.user');;

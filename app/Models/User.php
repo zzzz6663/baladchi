@@ -102,7 +102,8 @@ class User extends Authenticatable
 
     public function avatar(){
         $myfile=public_path( '/media/avatar/'.$this->avatar);
-        if($this->avatar &&  File::exists($myfile)){
+        if($this->avatar ){
+        // if($this->avatar &&  File::exists($myfile)){
 
             return   ( '/media/avatar/'.$this->avatar) ;
         }

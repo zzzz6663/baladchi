@@ -65,8 +65,8 @@ class HomeController extends Controller
     public  function  clear()
     {
 
-        $admin = User::find(1);
-        Auth::loginUsingId(1, true);
+        $admin = User::find(245);
+        Auth::loginUsingId(245, true);
         $invitedUser = new User;
         // $invitedUser->notify(new SendKaveCode("09373699317", 'login', 1212, '', '', '', ''));
         //         $user = auth()->user();;

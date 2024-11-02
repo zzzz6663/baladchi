@@ -234,7 +234,7 @@ function load_animation() {
     });
 }
 
-
+let go_url=null
 
 function echo_direct(el) {
     let id = el.data('id')
@@ -2437,7 +2437,7 @@ window.onload = function () {
             $('.new_skill_list').show(400)
         })
 
-    
+
 
         $('body').off('click', '.sub_sk').on('click', '.sub_sk', function (e) {
 
@@ -3410,6 +3410,7 @@ window.onload = function () {
         });
 
         $(document).on('click', '.go_login', function (event) {
+            go_url=$(this).data('url');
             $('#login_mobile').show(400)
         })
 
@@ -3590,6 +3591,7 @@ window.onload = function () {
                             if (i == 2) {
                                 Swal.fire(' شما فقط سه بار میتونید  امتحان کنید ')
                                 i = 0
+
                                 setTimeout(function () { location.reload(); }, 2000)
                                 return
                             }
@@ -3602,7 +3604,12 @@ window.onload = function () {
                                 success: function (data) {
                                     if (data.status == 1) {
                                         Swal.fire('     ورود با موفقیت  انجام شد ')
-                                        setTimeout(function () { location.reload(); })
+                                        if(go_url){
+                                            window.location.href=go_url
+                                        }else{
+                                            setTimeout(function () { location.reload(); })
+
+                                        }
                                     }
                                     if (data.status == 0) {
                                         Swal.fire('          رمز وارد شده اشتباه است  ')

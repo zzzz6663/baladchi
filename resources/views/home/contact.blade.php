@@ -96,14 +96,29 @@
                     </div>
                     <div class="inf">
                         <h4>گفت و گو</h4>
+                        @auth
+                        <div class="inf  pointer send_support"  id="send_direct">
+                            <h4>گفت و گو</h4>
+                            <p>پیام به پشتیبانی <span> (پاسخگویی فوری)</span>
+                                <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.9505 7.06506H2.96875" stroke="#4F4F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M6.89833 1L1 6.89833L6.89833 12.7967" stroke="#4F4F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            </p>
+                        </div>
+                        @endauth
+                        @guest
                         <p>پیام به پشتیبانی <span> (پاسخگویی فوری)</span>
                             <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.9505 7.06506H2.96875" stroke="#4F4F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path d="M6.89833 1L1 6.89833L6.89833 12.7967" stroke="#4F4F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
-
-
                         </p>
+                        @endguest
+
+
+
+
                     </div>
                 </div>
                 <div class="single-contact-info">

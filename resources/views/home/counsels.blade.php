@@ -474,6 +474,7 @@
                                         <div class="infor">
                                             <h4>
                                                 {{--    --}}
+                                                {{--  @dd($counsel->user)  --}}
                                                 {{ $counsel->remove }}-
                                                 {{ $counsel->user->name }}
                                                 {{ $counsel->user->family }}

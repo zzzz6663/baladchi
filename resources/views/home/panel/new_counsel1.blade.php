@@ -278,12 +278,16 @@
                                 @endfor
                             </select>
                         </div>
+                        <br>
 
-
+                        <p>
+                            برای ایجاد انگیزه و افزایش جذابیت میتونید به پاسخ دهنده ها پاداش مالی بدین
+                        </p>
+                        <br>
                         <div class="select-label">
                             <label for="reward"> پاداش پرداختی </label>
                             <select name="reward" id="reward" class="nice-select" data-place="پاداش پرداختی">
-                                <option value="no_reward"> بدون پاداش </option>
+                                <option value="no_reward" selected> بدون پاداش </option>
                                 <option value="select_the_best_answer"> پاداش بهترین جواب </option>
                                 <option value="divide_reward"> تقسیم بین همه </option>
                             </select>

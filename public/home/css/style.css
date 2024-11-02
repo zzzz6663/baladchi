@@ -1334,9 +1334,9 @@ div.checkbox-row input:checked ~ label span.check svg {
   .load-more.pagina {
     justify-content: center;
   }
-  .load-more.pagina .pagination {
+  /* .load-more.pagina .pagination {
     display: none;
-  }
+  } */
   .load-more.pagina .vip-load {
     transform: translate(0%);
     position: static;
