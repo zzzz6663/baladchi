@@ -247,7 +247,7 @@
                 <div class="portlet-body">
                     <div class="row">
                         <h1>
-                            اضافه کردن صوت و کلیپ به جواب ها 
+                            اضافه کردن صوت و کلیپ به جواب ها
                         </h1>
                         <div class="col-xl-12 col-lg-5 col-md-5">
                             @include('main.error')
@@ -265,8 +265,8 @@
                                                 {{mb_substr($ans->answer, 0, 30, "UTF-8")}}  ....
                                         {{--  {{$ans->answer}}  --}}
                                                 از
-                                                {{$ans->user->name}} 
-                                                {{$ans->user->family}} 
+                                                {{$ans->user->name}}
+                                                {{$ans->user->family}}
                                             </option>
                                             @endforeach
                                         </select>
@@ -292,6 +292,59 @@
                             </form>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="portlet-body">
+                    <div class="row">
+
+                        @foreach ($counsel->answers()->get() as $ans)
+                        @if($ans->sound_clip())
+                        <div class="user-messg-keuwords">
+                            <div class="rights">
+                                <h4> صوت :</h4>
+                                <p>
+                                    {{mb_substr($ans->answer, 0, 30, "UTF-8")}}  ....
+
+                                </p>
+                            </div>
+
+
+                            <div>
+                                <audio class="sound_c" controls>
+                                    <source src="{{ $ans->sound_clip() }}"
+                                        type="audio/mpeg">
+                                    مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+                                </audio>
+
+                            </div>
+                            <div class="rights">
+                                <a href="{{route("counsel.show",[$counsel->id,"type"=>"sound",'id'=>$ans->id])}}" class="btn btn-danger">حذف صدا</a>
+                             </div>
+                        </div>
+                        @endif
+                        @if ($ans->video_clip())
+                        <div class="user-messg-keuwords">
+                            <div class="rights">
+                                <h4> کلیپ :</h4>
+                            </div>
+                            <div>
+                                <video class="video_c" width="600" height="200"
+                                    controls>
+                                    <source src="{{ $ans->video_clip() }}"
+                                        type="video/mp4">
+                                    مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+                                </video>
+                            </div>
+                            <div class="rights">
+                                <a href="{{route("counsel.show",[$counsel->id,"type"=>"video",'id'=>$ans->id])}}" class="btn btn-danger">حذف کلیپ</a>
+                             </div>
+                        </div>
+                    @endif
+
+                        @endforeach
+                    </div>
+
                 </div>
             </div><!-- /.portlet -->
         </div>

@@ -34,6 +34,23 @@ class Answer extends Model
         return false;
     }
 
+    public function sound_path()
+    {
+        if($this->sound){
+
+            return     base_path("public/media/counsel/" . $this->sound);
+        }
+        return false;
+    }
+
+    public function video_path()
+    {
+        if($this->video){
+
+            return     base_path("public/media/counsel/" . $this->video);
+        }
+        return false;
+    }
     public function video_clip()
     {
         if($this->video){

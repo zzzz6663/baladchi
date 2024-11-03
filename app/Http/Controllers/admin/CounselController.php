@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
+use Carbon\Carbon;
+use App\Models\Answer;
 use App\Models\Counsel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Answer;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 
 class CounselController extends Controller
 {
@@ -61,9 +62,31 @@ class CounselController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(counsel $counsel)
+    public function show(counsel $counsel,Request $request)
     {
+        $type=$request->type;
+        $id=$request->id;
 
+        if($type){
+            if($type=="sound"){
+                $answer=Answer::find( $id);
+                File::delete(   $answer->sound_path());
+                $answer->update([
+                    'sound'=>null
+                ]);
+                toast()->success("فایل صدا با موفقیت حذف شد ");
+            }
+            if($type=="video"){
+                $answer=Answer::find( $id);
+                File::delete(   $answer->video_path());
+                $answer->update([
+                    'video'=>null
+                ]);
+                toast()->success("فایل صدا با موفقیت حذف شد ");
+            }
+
+            return redirect()->route("counsel.show",$counsel->id);
+        }
         return  view('admin.counsel.show', compact(['counsel']));
     }
 
@@ -116,7 +139,7 @@ class CounselController extends Controller
         //
     }
     public function insert_attach_answer(Answer $answer,Request $request){
-       
+
         $answer=Answer::find($request->answer_id);
         $data=$request->validate([
             'answer_id'=>"required"
@@ -139,7 +162,7 @@ class CounselController extends Controller
         }
         $answer->update($data);
 
-        alert()->success('خرد جمعی باموفقیت تایید شد');
+        alert()->success('خرد جمعی به روز رسانی  شد');
         return redirect()->route("counsel.show",$answer->Counsel->id);
     }
 
