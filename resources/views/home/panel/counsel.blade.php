@@ -3,8 +3,6 @@
     <div class="dash-main-content">
         <div class="tra-table">
             <div class="search-title">
-
-
                 <a class="icon-button red" href="{{ route('panel.new.counsel1') }}">
                     <span> خردجمعی جدید</span>
                     <span class="icon">
@@ -16,15 +14,13 @@
                     </span>
                 </a>
                 <br>
-
-
             </div>
         </div>
     </div>
     <div class="dash-main-content">
 
         <div class="tra-table">
-       
+
 
             <div class="my-add-list">
                 @if($counsels->count())

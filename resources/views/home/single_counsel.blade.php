@@ -1,4 +1,10 @@
 @extends('main.site')
+@section('title')
+{{ $counsel->title }}
+@endsection
+@section('desc')
+{{ $counsel->info }}
+@endsection
 @section('content')
     <div id="main">
         <div class="container">
