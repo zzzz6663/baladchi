@@ -7,10 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>@yield('title',"   متخصص خرید، فروش، مشاوره و ثبت پرسشنامه | بلدچی")
-
-{{--    --}}
-
-
     </title>
     {{--  <title>711712</title>  --}}
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,7 +16,7 @@
 @yield('desc',"    خرید و فروش، رهن و اجاره، ثبت آگهی رایگان، ثبت پرسشنامه دانشجویی،
      استخدام متخصص و کارشناس و مشاور، کسب درآمد از طریق مشاوره در بلدچی")
 
-    "
+    ">
     {{--  <link rel="stylesheet" href="/home/css/style.css">  --}}
     {{-- <link rel="stylesheet" href="/css/iziToast.css"> --}}
     {{-- <link rel="stylesheet" href="/css/persian-datepicker.min.css"> --}}
