@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>@yield('title',"   متخصص خرید، فروش، مشاوره و ثبت پرسشنامه | بلدچی")
 
-
+{{--    --}}
 
 
     </title>

@@ -4,7 +4,7 @@
 @endsection
 @section('desc')
 {{ $counsel->info }}
-@endsection
+@endsection 
 @section('content')
     <div id="main">
         <div class="container">
