@@ -1,4 +1,14 @@
 @extends('main.site')
+@section('title')
+{{ $user->name }}
+{{ $user->family }}
+کارشناس
+{{ implode(' - ', $user->skills()->pluck('name')->toArray()) }}
+@endsection
+@section('desc')
+{{ $user->bio }}
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
