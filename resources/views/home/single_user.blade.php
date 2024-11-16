@@ -6,7 +6,7 @@
 {{ implode(' - ', $user->skills()->pluck('name')->toArray()) }}
 @endsection
 @section('desc')
-{{ $user->bio }}
+{{ $user->info }}
 @endsection
 
 @section('content')
