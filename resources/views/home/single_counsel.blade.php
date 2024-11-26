@@ -4,7 +4,7 @@
 @endsection
 @section('desc')
 {{ $counsel->info }}
-@endsection 
+@endsection
 @section('content')
     <div id="main">
         <div class="container">
@@ -52,8 +52,10 @@
                                 <span class="onl green"></span>
                             </div>
                             <h4 class="name">
-                                {{ $counsel->user->name }}
-                                {{ $counsel->user->family }}
+                                <a href="{{route("single.user",$counsel->user->id)}}">
+                                    {{ $counsel->user->name }}
+                                    {{ $counsel->user->family }}
+                                  </a>
                             </h4>
                             <div class="stat red">پرسشنامه</div>
                         </div>
@@ -337,8 +339,10 @@
                                             <h6 class="d-flex ffd" >
                                                 <img class="avatar" src="{{$answer->user->avatar()}}" alt="">
                                                <span class="ti">
-                                                {{$answer->user->name}}
-                                                {{$answer->user->family}}
+                                                <a href="{{route("single.user",$answer->user->id)}}">
+                                                    {{ $answer->user->name }}
+                                                    {{ $answer->user->family }}
+                                                  </a>
                                                </span>
                                             </h6>
                                                 @if ($question->type == 'multi')
@@ -407,7 +411,7 @@
                                                 @if ($answer->sound_clip())
                                                     <div class="user-messg-keuwords">
                                                         <div class="rights">
-                                                            <h4> صوت :</h4>
+                                                            <h4>  صوت ارسالی متخصص :</h4>
                                                         </div>
                                                         <div>
                                                             <audio class="sound_c" controls>
@@ -422,10 +426,10 @@
                                                 @if ($answer->video_clip())
                                                     <div class="user-messg-keuwords">
                                                         <div class="rights">
-                                                            <h4> کلیپ :</h4>
+                                                            <h4> ویدئو ارسالی متخصص :</h4>
                                                         </div>
                                                         <div>
-                                                            <video class="video_c" width="600" height="200"
+                                                            <video class="video_c" width="600" height="200" title="{{$counsel->title}}"
                                                                 controls>
                                                                 <source src="{{ $answer->video_clip() }}"
                                                                     type="video/mp4">
