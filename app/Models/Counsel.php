@@ -97,6 +97,8 @@ class Counsel extends Model
     {
         $counsel=$this;
         // dump($counsel);
+        if($user){
+
         $data['gender']=!($counsel->gender &&  $counsel->gender != $user->gender);
         $data['degree']=!($counsel->degree && $counsel->degree != $user->degree);
         $data['star']=!($counsel->star&& $counsel->star <= $user->comment_log()['av']);
@@ -114,6 +116,9 @@ class Counsel extends Model
         }
         $data['pass']=false;
         return  $data;
+        }
+        return  [];
+
     }
     public function img()
     {
