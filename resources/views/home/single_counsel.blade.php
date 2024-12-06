@@ -342,7 +342,14 @@
                                         <ul>
                                             @foreach ($question->answers as $answer)
                                             <h6 class="d-flex ffd" >
-                                                <img class="avatar" src="{{$answer->user->avatar()}}" alt="">
+
+                                                <a href="{{ $answer->user->avatar() }}" data-lightbox="roadtrip{{ $answer->user->id }}">
+                                                    <img src="{{ $answer->user->avatar() }}" alt="">
+                                                    </a>
+
+
+
+                                                {{--  <img class="avatar" src="{{$answer->user->avatar()}}" alt="">  --}}
                                                <span class="ti">
                                                 <a href="{{route("single.user",$answer->user->id)}}">
                                                     {{ $answer->user->name }}
