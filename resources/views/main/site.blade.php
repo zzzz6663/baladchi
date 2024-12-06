@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="/common/map.css">
     <link rel="stylesheet" href="/common/share.css">
     <link rel="stylesheet" href="/common/modal-loading.css">
+    <link rel="stylesheet" href="/common/lightbox.min.css">
     <link rel="icon" type="image/x-icon" href="/icon/favicon1.png">
 
     @vite('resources/css/app.css')
@@ -105,6 +106,7 @@
     <script src="/common/wNumb.min.js"></script>
     <script src="/common/nouislider.min.js"></script>
     <script src="/common/cookie.js"></script>
+    <script src="/common/lightbox.min.js"></script>
     {{--  <script src="/build/assets/app.9d7899cc.js"></script>  --}}
 
     {{--  <script src="/build/assets/app.9d1780cd.js"></script>  --}}

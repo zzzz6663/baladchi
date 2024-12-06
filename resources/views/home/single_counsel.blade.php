@@ -586,6 +586,8 @@
                         </svg>
 
                     </div>
+                    @auth
+
 
                     <p>
                         شما شرایط زیر را برای پاسخ گویی به سوال ندارید
@@ -632,6 +634,7 @@
                         @endif
                     </p>
 
+                    @endauth
 
                     <div class="pair-button">
                         <button class="mid-button close_pops">

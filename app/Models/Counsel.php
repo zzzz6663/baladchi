@@ -97,6 +97,7 @@ class Counsel extends Model
     {
         $counsel=$this;
         // dump($counsel);
+        // dump($counsel);
         if($user){
 
         $data['gender']=!($counsel->gender &&  $counsel->gender != $user->gender);

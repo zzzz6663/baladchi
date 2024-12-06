@@ -27,7 +27,12 @@
 
         <div class="user-det">
             <div class="img">
-                <img src="{{ $baladchi->avatar() }}" alt="">
+
+                <a href="{{ $baladchi->avatar() }}" data-lightbox="roadtrip{{ $baladchi->id }}">
+                    <img src="{{ $baladchi->avatar() }}" alt="">
+                    </a>
+
+
             </div>
             <h4 class="name">
                 <a href="{{ route('single.user',$baladchi->id) }}">

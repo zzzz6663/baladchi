@@ -94,6 +94,11 @@ $('.file_s').on('change', function() {
 });
 
 
+lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true
+  })
+
 
 window.Echo.channel("home").listen("NewTest",(e)=>{
     console.log(e)
