@@ -224,7 +224,10 @@
                     <div class="balad-user">
                         <div class="avatar">
                             <div class="img">
-                                <img src="{{ $user->avatar() }}" alt="">
+                                <a href="{{ $user->avatar() }}" data-lightbox="roadtrip{{ $user->id }}">
+                                    <img src="{{ $user->avatar() }}" alt="">
+                                    </a>
+                                {{--  <img src="{{ $user->avatar() }}" alt="">  --}}
                             </div>
                         </div>
                         <div class="balad-name">
@@ -1388,7 +1391,13 @@
                             <div class="single-comment">
                                 <div class="right-sec">
                                     <div class="img">
-                                        <img src="{{ $comment->user->avatar() }}" alt="">
+
+                                        <a href="{{ $comment->user->avatar() }}" data-lightbox="roadtrip{{ $comment->user->id }}">
+                                            <img src="{{ $comment->user->avatar() }}" alt="">
+                                            </a>
+
+
+                                        {{--  <img src="{{ $comment->user->avatar() }}" alt="">  --}}
                                     </div>
                                     <div class="raste">
                                         {{--  <span class="icon">

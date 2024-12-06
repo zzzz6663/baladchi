@@ -468,7 +468,11 @@
                                 <div class="hor-single-user {{ $counsel->check_seen() }}">
                                     <div class="right">
                                         <div class="img">
-                                            <img src="{{ $counsel->user->avatar() }}" alt="">
+                                            <a href="{{ $counsel->user->avatar() }}" data-lightbox="roadtrip{{ $counsel->user->id }}">
+                                                <img src="{{ $counsel->user->avatar() }}" alt="">
+                                                </a>
+
+                                            {{--  <img src="{{ $counsel->user->avatar() }}" alt="">  --}}
                                             <span class="onl"></span>
                                         </div>
                                         <div class="infor">

@@ -48,7 +48,12 @@
                     <div class="right-sec">
                         <div class="user-naswe">
                             <div class="img">
-                                <img src="{{ $counsel->user->avatar() }}" alt="">
+
+                                <a href="{{ $counsel->user->avatar() }}" data-lightbox="roadtrip{{ $counsel->user->id }}">
+                                    <img src="{{ $counsel->user->avatar() }}" alt="">
+                                    </a>
+
+                                {{--  <img src="{{ $counsel->user->avatar() }}" alt="">  --}}
                                 <span class="onl green"></span>
                             </div>
                             <h4 class="name">

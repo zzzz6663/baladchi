@@ -838,7 +838,11 @@
                     <div class="single-comment">
                         <div class="right-sec">
                             <div class="img">
-                                <img src="{{ $comment->user->avatar() }}" alt="">
+                                <a href="{{ $comment->user->avatar() }}" data-lightbox="roadtrip{{ $comment->user->id }}">
+                                    <img src="{{ $comment->user->avatar() }}" alt="">
+                                    </a>
+
+
                             </div>
                             <div class="rate">
                                 <span class="icon">

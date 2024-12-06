@@ -21,7 +21,9 @@
             <div class="portlet-title">
 
                 <div   class="text-center">
-                    <img src="{{$user->avatar()}}" alt="">
+                    <a href="{{ $user->avatar() }}" data-lightbox="roadtrip{{ $user->id }}">
+                        <img src="{{ $user->avatar() }}" alt="">
+                        </a>
 
                 </div>
                 <div   class="text-center">
