@@ -333,7 +333,7 @@
                         @if ($counsel->show_answer)
                             <div class="user-messg-keuwords">
                                 <div class="">
-                                    <h4>جواب ها :</h4>
+                                    <h4>سوالات  :</h4>
                                     @foreach ($counsel->Counselquestions as $question)
                                         <h5>
                                             {{ $loop->iteration }}-
@@ -344,7 +344,7 @@
                                             <h6 class="d-flex ffd" >
 
                                                 <a href="{{ $answer->user->avatar() }}" data-lightbox="roadtrip{{ $answer->user->id }}">
-                                                    <img src="{{ $answer->user->avatar() }}" alt="">
+                                                    <img class="avatar" src="{{ $answer->user->avatar() }}" alt="">
                                                     </a>
 
 
