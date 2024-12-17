@@ -117,7 +117,7 @@
                         </div>
 
                     </div>
-                    @if($counsel->sound())
+                    @if($counsel->sound_clip())
 
                     <div class="user-messg-keuwords">
                         <div class="rights">
@@ -132,7 +132,7 @@
                     </div>
                     @endif
 
-                    @if($counsel->video())
+                    @if($counsel->video_clip())
 
                     <div class="user-messg-keuwords">
                         <div class="rights">
@@ -141,7 +141,7 @@
                         <div>
 
                             <video width="600" height="200" controls>
-                                <source src="{{ $counsel->video() }}" type="video/mp4">
+                                <source src="{{ $counsel->video_clip() }}" type="video/mp4">
                                 مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
                             </video>
                         </div>

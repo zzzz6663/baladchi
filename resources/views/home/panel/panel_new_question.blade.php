@@ -63,7 +63,6 @@
                         اگه سوال دیگه ای داری مجددا ثبت کن در غیر اینصورت دکمه تایید و انتشار رو بزن
                     </h6>
 
-                    @if ($counsel->counselquestions()->count() < 5)
                         <div class="footer-section" style="justify-content:space-around">
                             <div class="pair-button">
                                 <a href=" {{ route('panel.counsel', $counsel->id) }}" class="mid-button">
@@ -77,6 +76,8 @@
                                 </button>
 
                             </div>
+                    @if ($counsel->counselquestions()->count() < 5)
+
                         @else
                     @endif
 
