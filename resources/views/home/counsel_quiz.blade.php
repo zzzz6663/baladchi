@@ -8,7 +8,12 @@
                 <div class="modal-content" style="border:none">
                     <div class="balad-box">
                         <div class="balad-pic">
-                            <div class="head"><img src="{{ $counsel->img() }}" alt=""></div>
+                            <div class="head">
+                                <a href="{{ $counsel->img() }}" data-lightbox="gallerysss" class="">
+                                    <img src="{{ $counsel->img() }}" alt="">
+
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-header">

@@ -566,7 +566,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $setting1 = Setting::find(6)->val;
-        $setting2 = Setting::find(7)->val;
+        $setting2 = Setting::find(18)->val;
         $setting3 = Setting::find(8)->val;
         $setting4 = Setting::find(9)->val;
 

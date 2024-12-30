@@ -26,7 +26,7 @@ class SettingController extends Controller
         // if($request->province){
         //     $settings->where('province_id',$request->province);
         // }
-        $settings = $settings->latest()->paginate(10);
+        $settings = $settings->latest()->paginate(40);
         return view('admin.setting.all',compact(['settings']));
     }
 
