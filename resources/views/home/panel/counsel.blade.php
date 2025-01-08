@@ -1,4 +1,5 @@
 @extends('main.panel')
+
 @section('content')
     <div class="dash-main-content">
         <div class="tra-table">
@@ -10,7 +11,6 @@
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 6V0H8V6H14V8H8V14H6V8H0V6H6Z" fill="currentColor"></path>
                         </svg>
-
                     </span>
                 </a>
                 <br>
@@ -18,14 +18,10 @@
         </div>
     </div>
     <div class="dash-main-content">
-
         <div class="tra-table">
-
-
             <div class="my-add-list">
                 @if($counsels->count())
                 <h4 class="dash-in-title">آخرین سوالاتی که شما ثبت کرده اید</h4>
-
                 @endif
                 @foreach ($counsels as $counsel)
                     <div class="my-add">
@@ -80,7 +76,6 @@
                         </div>
                         <div class="left-sec">
                             <div>
-
                                 <div class="accord-box  active">
                                     <div class="top nob">
                                         <div class="side-filter-title">

@@ -1,4 +1,10 @@
 @extends('main.site')
+@section('title')
+بلدچی ها ،متخصصان، کارشناسان
+@endsection
+@section('desc')
+اینجا پروفایل کارشناسان و متخصصان رو میتونی ببینی بهشون امتیاز بدی ازشون حمایت کنی یا ازشون مشاوره بگیری
+@endsection
 @section('content')
     <div id="main">
         <div class="container">

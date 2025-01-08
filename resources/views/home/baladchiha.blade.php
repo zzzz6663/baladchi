@@ -1,4 +1,5 @@
 @extends('main.site')
+
 @section('content')
     <div class="container">
 
@@ -534,7 +535,9 @@
 
                                 </span>
                             </li>
-                            <li><span>بازدید کننده ها</span></li>
+                            <li><span>
+                                متخصصان
+                                   </span></li>
                         </ul>
                     </div>
                     @if ($ad)

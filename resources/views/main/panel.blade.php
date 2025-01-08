@@ -32,7 +32,6 @@
 <body>
 <div id="dashboard">
     @include('home.panel.parts.sidebar')
-
     <div id="dashborad-content">
     @include('home.panel.parts.header')
         <div id="dashmain" class="full">

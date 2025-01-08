@@ -3,7 +3,7 @@
     $setting12 = Setting::find(12)->val;
     $setting15 = Setting::find(15)->val;
     $setting7 = Setting::find(7)->val;
-    $setting8 = Setting::find(8)->val;
+    $setting13 = Setting::find(13)->val;
     $setting17 = Setting::find(17)->val;
 @endphp
 
@@ -567,7 +567,7 @@
                                 ها</a>
                         </li>
                         <li>
-                            <a href="{{ route('baladchiha') }}#share" title="{{ $setting8 }}"
+                            <a href="{{ route('baladchiha') }}#share" title="{{ $setting13 }}"
                                 class="tooltip-box">بلدچی ها</a>
                         </li>
                         <li>
