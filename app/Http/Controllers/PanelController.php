@@ -417,13 +417,13 @@ class PanelController extends Controller
             $user = auth()->user();
             $validator = Validator::make($request->all(), [
                 'title' => 'required|max:256',
-                'gender' => 'required',
+                'gender' => 'nullable',
                 'star' => 'nullable',
                 'img' => 'nullable',
                 'video' => 'nullable', // |max:3196 Max size in kilobytes (2 MB = 2048 KB)
                 'sound' => 'nullable',
 
-                'skills' => 'required',
+                'skills' => 'nullable',
                 'degree' => 'nullable',
                 'show_answer' => 'required',
                 'answers' => 'required',
@@ -478,7 +478,10 @@ class PanelController extends Controller
                 }
                 $counsel->tags()->attach($tag->id);
             }
-            $counsel->skills()->sync(   $data['skills']);
+            if($request->skills){
+                $counsel->skills()->sync(   $data['skills']);
+
+            }
 
             return response()->json([
                 'status' => "ok",

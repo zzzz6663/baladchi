@@ -67,7 +67,7 @@
 
             <h5>
                 <div id="consult" style="text-align: center">
-                    <a href="http://127.0.0.1:8000/panel/baladchi">
+                    <a href="{{ route("panel.baladchi") }}">
                         <span class="fig">
                             <svg width="73" height="91" viewBox="0 0 73 91" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M30.2403 19.4768C30.2403 19.4768 43.9933 23.1258 40.0643 41.9828C36.1353 60.8398 48.2473 60.0978 58.5643 58.4568L59.2173 63.2898C59.2173 63.2898 32.2033 71.6398 28.6033 47.8968C25.0033 24.1538 30.2403 19.4768 30.2403 19.4768Z" fill="#029591"></path>
